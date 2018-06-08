@@ -94,9 +94,11 @@ $(function() {
 
 function updateResult() {
   if(studentData[1][1]+studentData[1][2]+studentData[1][3]>=75){
-    document.getElementById("result").innerHTML = "Yay, accepted!"
+    $("#result").text("Yay, accepted!")
+    $("#result").css("color","green")
   } else {
     document.getElementById("result").innerHTML = "Sorry, rejected..."
+    $("#result").css("color", "red")
   }
 }
   

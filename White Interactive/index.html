@@ -32,14 +32,16 @@
 
   <div class="jumbotron">
     <h1 class="display-4">Hello!</h1>
-    <p class="lead">This is a simple visualization of your application to the University of Minnesota.</p>
+    <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
     <hr class="my-4">
-    <p>The admission decision was computed using a computer science algorithm.</p>
+    <p>Part of the admission process was done with the help of an SVM machine learning algorithm that was trained and tested with previous years' application data to accurately match our admission committee's decision process. This means the algorithm calculates numerical scores for each input, weights them, and sums the result to determine a final score for each user, which is then compared with an acceptance threshold. If the score is higher, the person is accepted. You can tweak the values below to find out the exact contribution of each score, and see the total impact on the decision.
+ 
+      The contribution of each value is color-coded in the bar.</p>
 
     <div class="card">
       <div class="card-body">
         <h2>
-      Your admission result
+      Example Admission Result
       </h2>
 
 
@@ -73,7 +75,9 @@
 
         
       </div>
-      <h5 id="result">Sorry, rejected...</h5>
+      
+      <p class="text-center" id="footnote">*Hovering over a section on the graph will show the contribution of that section to the total score, after being weighted</p>
+      <h5 class="text-center" id="result" style="color: red">Sorry, rejected...</h5>
 
     </div>
 

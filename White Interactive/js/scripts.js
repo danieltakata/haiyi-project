@@ -2,7 +2,7 @@ $(function() {
 
   var studentData = [
     ['Total Score', 'GPA', 'GRE', 'Recommendation'],
-    ['Total Score', 20, 20, 15], // Base values = 2, 300, 3
+    ['', 20, 20, 15], // Base values = 2, 300, 3
     //['Los Angeles, CA', 3792000, 3694000],
     //['Chicago, IL', 2695000, 2896000],
     //['Houston, TX', 2099000, 1953000],
@@ -102,9 +102,11 @@ $(function() {
 
   function updateResult() {
     if(studentData[1][1]+studentData[1][2]+studentData[1][3]>=75){
-      document.getElementById("result").innerHTML = "Yay, accepted!"
+      $("#result").text("Yay, accepted!")
+      $("#result").css("color","green")
     } else {
       document.getElementById("result").innerHTML = "Sorry, rejected..."
+      $("#result").css("color", "red")
     }
   }
 
