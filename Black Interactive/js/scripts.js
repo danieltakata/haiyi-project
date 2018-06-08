@@ -98,33 +98,19 @@ function drawStacked() {
           'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
         ['', 160, 169, 4, 3.51, 168, 0, 3.5, 4, 8, 8, 8],
       ]);
-      //                         
-
-      var options = {
-        // title: 'Population of Largest U.S. Cities',
-        chartArea: {width: '80%'},
-        isStacked: true,
-        hAxis: {
-          title: 'Total Score',
-          minValue: 0,
-          maxValue: 300
-        },
-        legend: { position: 'none' }
-        // vAxis: {
-        //   title: 'City'
-        // }
-      };
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-    }
-
-function drawStacked() {
-      var data = google.visualization.arrayToDataTable([
+      var data2 = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
          'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
           'PS Score',  'Diversity Score', 
           'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
-        ['', 144, 152, 3, 3.69, 32, 0, 1.5,1.5,2,2,2],
+        ['', 144, 152,3,3.69, 32, 0,1.5,1.5,2,2,2],
+      ]);
+      var data3 = google.visualization.arrayToDataTable([
+        ['Name', 'GRE - verbal',  'GRE - quant',
+         'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
+          'PS Score',  'Diversity Score', 
+          'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
+        ['', 168, 166, 5.5,3.87,650,1,5,5,11,11,11 ],
       ]);
       //                         
 
@@ -135,13 +121,51 @@ function drawStacked() {
         hAxis: {
           title: 'Total Score',
           minValue: 0,
-          maxValue: 300
+          maxValue: 900
         },
         legend: { position: 'none' }
         // vAxis: {
         //   title: 'City'
         // }
       };
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
+
+       var options2 = {
+        // title: 'Population of Largest U.S. Cities',
+        chartArea: {width: '80%'},
+        isStacked: true,
+        hAxis: {
+          title: 'Total Score',
+          minValue: 0,
+          maxValue: 900
+        },
+        legend: { position: 'none' }
+        // vAxis: {
+        //   title: 'City'
+        // }
+      };
+
+       var options3 = {
+        // title: 'Population of Largest U.S. Cities',
+        chartArea: {width: '80%'},
+        isStacked: true,
+        hAxis: {
+          title: 'Total Score',
+          minValue: 0,
+          maxValue: 900
+        },
+        legend: { position: 'none' }
+        // vAxis: {
+        //   title: 'City'
+        // }
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
       chart.draw(data, options);
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
+      chart.draw(data2, options2);
+
+      var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
+      chart.draw(data3, options3);
     }
+
