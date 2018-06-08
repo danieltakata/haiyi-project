@@ -121,7 +121,11 @@ function drawStacked() {
         hAxis: {
           title: 'Total Score',
           minValue: 0,
-          maxValue: 900
+          maxValue: 1200,
+          gridlines:{
+            color:"black"
+          },
+          ticks: [{v:600,f:"acceptance threshold"},{v:1200, f:""}]
         },
         legend: { position: 'none' }
         // vAxis: {
@@ -136,7 +140,11 @@ function drawStacked() {
         hAxis: {
           title: 'Total Score',
           minValue: 0,
-          maxValue: 900
+          maxValue: 1200,
+          gridlines:{
+            color:"black"
+          },
+          ticks: [{v:600,f:"acceptance threshold"},{v:1200, f:""}]
         },
         legend: { position: 'none' }
         // vAxis: {
@@ -151,7 +159,11 @@ function drawStacked() {
         hAxis: {
           title: 'Total Score',
           minValue: 0,
-          maxValue: 900
+          maxValue: 1200,
+          gridlines:{
+            color:"black"
+          },
+          ticks: [{v:600,f:"acceptance threshold"},{v:1200, f:""}]
         },
         legend: { position: 'none' }
         // vAxis: {
