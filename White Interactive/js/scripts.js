@@ -147,3 +147,20 @@ $(function() {
     chart.draw(data, options);
   }
 });
+
+
+//reset
+
+$(document).ready(function() 
+{
+    $('#reset-form').on('click', function()
+    {
+        $("#my-form").trigger("reset");
+    });
+
+    $('#clear-form').on('click', function()
+    { 
+        $('#my-form').find('input:text, input:password, select, textarea').val('');
+        $('#my-form').find('input:radio, input:checkbox').prop('checked', false);
+    });
+});
