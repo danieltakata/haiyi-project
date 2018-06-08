@@ -1,0 +1,173 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Grad Admission Data Visualization</title>
+  <!-- <meta name="description" content="The HTML5 Herald"> -->
+  <!-- <meta name="author" content="SitePoint"> -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+  <!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  <style type="text/css">
+   .black {
+    color: black
+   }
+  </style>
+</head>
+
+<body>
+
+  <div class="jumbotron">
+    <h1 class="display-4">Hello!</h1>
+    <p class="lead">This is a simple visualization of your application to the University of Minnesota.</p>
+    <hr class="my-4">
+    <p>The admission decision was computed using a computer science algorithm.</p>
+
+    <!-- <div class="card">
+      <div class="card-body">
+
+        <h2>
+      Your admission result
+      </h2>
+
+
+        <p>
+          <label for="amount">GPA:</label>
+          <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </p>
+        <div id="gpa-slider"></div>
+
+        <p>GRE:</p>
+        <div id="gre-slider"></div>
+
+        <div id="chart_div"></div>
+      </div>
+    </div> -->
+
+  </div>
+
+<div class="container">
+    <div class="card-deck">
+        <div class="card border-success md-3 text-center">
+          <img class="card-img-top" src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-ponsy-deer.png" alt="Card image cap">
+          <div class="card-body text-success">
+            <h5 class="card-title">Alice</h5>
+          </div>
+            <!-- ID 63 -->
+          <div class="card-body">
+            <p class="card-text black">GRE - verbal : 160</p>
+            <p class="card-text black">GRE - quant : 169</p>
+            <p class="card-text black">GRE - writing : 4</p>
+            <p class="card-text black">GPA : 3.51</p>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text black">School Ranking: 168</p>
+            <p class="card-text black">Highest Degree: Bachelor </p>
+            <p class="card-text black">Personal Statement: 3.5 </p>
+            <p class="card-text black">Diversity Score: 4 </p>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text black">Recommendation Letter 1: 8 </p>
+            <p class="card-text black">Recommendation Letter 2: 8 </p>
+            <p class="card-text black">Recommendation Letter 3: 8 </p>
+          </div>
+
+          <div class="card-footer text-success">
+            Accepted
+            <div id="chart_div"></div>
+          </div>
+        </div>
+
+    <div class="card border-danger md-3 text-center">
+          <img class="card-img-top" src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-ponsy-deer.png" alt="Card image cap">
+          <div class="card-body text-danger">
+            <h5 class="card-title">Bob</h5>
+          </div>
+            <!-- ID 6 -->
+          <div class="card-body">
+            <p class="card-text black">GRE - verbal : 134</p>
+            <p class="card-text black">GRE - quant : 155</p>
+            <p class="card-text black">GRE - writing : 1.5</p>
+            <p class="card-text black">GPA : 3.33</p>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text black">School Ranking: 14</p>
+            <p class="card-text black">Highest Degree: Master</p>
+            <p class="card-text black">Personal Statement: 1.5 </p>
+            <p class="card-text black">Diversity Score: 1.5 </p>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text black">Recommendation Letter 1: 2 </p>
+            <p class="card-text black">Recommendation Letter 2: 2 </p>
+            <p class="card-text black">Recommendation Letter 3: 2 </p>
+          </div>
+
+          <div class="card-footer text-danger">
+            Declined
+          </div>
+        </div>
+                                
+
+    <div class="card border-success md-3 text-center">
+          <img class="card-img-top" src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-ponsy-deer.png" alt="Card image cap">
+          <div class="card-body text-success">
+            <h5 class="card-title">Clair</h5>
+          </div>
+            <!-- ID 99 -->
+          <div class="card-body">
+            <p class="card-text black">GRE - verbal : 170</p>
+            <p class="card-text black">GRE - quant : 168</p>
+            <p class="card-text black">GRE - writing : 5.5</p>
+            <p class="card-text black">GPA : 3.63</p>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text black">School Ranking: 569</p>
+            <p class="card-text black">Highest Degree: Bachelor </p>
+            <p class="card-text black">Personal Statement: 5</p>
+            <p class="card-text black">Diversity Score: 4.5 </p>
+          </div>
+
+          <div class="card-body">
+            <p class="card-text black">Recommendation Letter 1: 11 </p>
+            <p class="card-text black">Recommendation Letter 2: 11 </p>
+            <p class="card-text black">Recommendation Letter 3: 11 </p>
+          </div>
+
+          <div class="card-footer text-success">
+            Accepted
+          </div>
+        </div>
+                          
+  </div>
+</div>
+  
+
+
+
+
+  <!-- Javascript below -->
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>
+<!-- Source: https://codepen.io/jasper/pen/bpLLZe -->
