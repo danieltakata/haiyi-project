@@ -93,7 +93,7 @@ $(function() {
 });
 
 function updateResult() {
-  if(studentData[1][1]+studentData[1][2]+studentData[1][3]>75){
+  if(studentData[1][1]+studentData[1][2]+studentData[1][3]>=75){
     document.getElementById("result").innerHTML = "Yay, accepted!"
   } else {
     document.getElementById("result").innerHTML = "Sorry, rejected..."
