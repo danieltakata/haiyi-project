@@ -2,7 +2,7 @@ $(function() {
 
   var studentData = [
     ['Total Score', 'GPA', 'GRE', 'Recommendation'],
-    ['Total Score', 50, 40, 30], // Base values = 2.5, 300, 3
+    ['Total Score', 20, 20, 15], // Base values = 2, 300, 3
     //['Los Angeles, CA', 3792000, 3694000],
     //['Chicago, IL', 2695000, 2896000],
     //['Houston, TX', 2099000, 1953000],
@@ -13,14 +13,15 @@ $(function() {
     $("#gpa-input").change(function(){
       // alert($("#gpa-input").val());
       //$("#amount").val($("#gpa-input").val())
-      $("#gpa-slider").slider("value",$("#gpa-input").val())
+      $("#gpa-slider").slider("value",$("#gpa-input").val());
+      updateResult();
     });
 
 
   $("#gpa-slider").slider({
     // options
     range: "min",
-    value: 2.5,
+    value: 2,
     min: 0.0,
     max: 4.0,
     step: 0.1,
@@ -32,9 +33,17 @@ $(function() {
       $("#gpa-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][1] = ui.value*20;
+      studentData[1][1] = ui.value*10;
       drawStacked();
+      updateResult();
     }
+  });
+
+  $("#gre-input").change(function(){
+    // alert($("#gpa-input").val());
+    //$("#amount").val($("#gpa-input").val())
+    $("#gre-slider").slider("value",$("#gre-input").val());
+    updateResult();
   });
 
   $("#gre-slider").slider({
@@ -52,9 +61,17 @@ $(function() {
       $("#gre-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][2] = (ui.value-260);
+      studentData[1][2] = (ui.value-260)/2;
       drawStacked();
+      updateResult();
     }
+  });
+
+  $("#rec-input").change(function(){
+    // alert($("#gpa-input").val());
+    //$("#amount").val($("#gpa-input").val())
+    $("#rec-slider").slider("value",$("#rec-input").val());
+    updateResult();
   });
 
   $("#rec-slider" ).slider({
@@ -72,8 +89,9 @@ $(function() {
     value: 3,
     step: 1,
     change: function(event, ui) {
-      studentData[1][3] = ui.value*10;
+      studentData[1][3] = ui.value*5;
       drawStacked();
+      updateResult();
     }
 });
 
@@ -82,6 +100,13 @@ $(function() {
   });
   google.charts.setOnLoadCallback(drawStacked);
 
+  function updateResult() {
+    if(studentData[1][1]+studentData[1][2]+studentData[1][3]>75){
+      document.getElementById("result").innerHTML = "Yay, accepted!"
+    } else {
+      document.getElementById("result").innerHTML = "Sorry, rejected..."
+    }
+  }
 
   function drawStacked() {
 
@@ -106,7 +131,7 @@ $(function() {
       hAxis: {
         title: 'total Score',
         minValue: 0,
-        maxValue: 200,
+        maxValue: 100,
       },
       vAxis: {
         title: ''
