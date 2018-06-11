@@ -90,36 +90,37 @@
 google.charts.load('current', {packages: ['corechart', 'bar']});
 google.charts.setOnLoadCallback(drawStacked);
 
+var greVerW = 1, greQuanW = 1, greWriW = 3, gpaW = 25, rankW = 0.1, masW = 15, psW = 20, diverW = 2, recW = 10; 
 function drawStacked() {
       var data = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
          'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
           'PS Score',  'Diversity Score', 
           'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
-        ['', 160, 169, 4, 3.51, 168, 0, 3.5, 4, 8, 8, 8],
+        ['', 160*greVerW, 169*greQuanW, 4*greWriW, 3.51*gpaW, (700-168)*rankW, 0*masW, 3.5*psW, 4*diverW, 8*recW, 8*recW, 8*recW],
       ]);
       var data2 = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
          'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
           'PS Score',  'Diversity Score', 
           'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
-        ['', 144, 152,3,3.69, 32, 0,1.5,1.5,2,2,2],
+        ['', 144*greVerW, 152*greQuanW,3*greWriW,3.69*gpaW, (700-32)*rankW, 0*masW,1.5*psW,1.5*diverW,2*recW,2*recW,2*recW],
       ]);
       var data3 = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
          'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
           'PS Score',  'Diversity Score', 
           'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
-        ['', 168, 166, 5.5,3.87,650,1,5,5,11,11,11 ],
+        ['', 168*greVerW, 166*greQuanW, 5.5*greWriW,3.87*gpaW,(700-650)*rankW,1*masW,5*psW,5*diverW,11*recW,11*recW,11*recW ],
       ]);
       //                         
 
       var options = {
-        // title: 'Population of Largest U.S. Cities',
+        title:'Admission Result',
         chartArea: {width: '80%'},
         isStacked: true,
         hAxis: {
-          title: 'Total Score',
+          title: '',
           minValue: 0,
           maxValue: 1200,
           gridlines:{
@@ -134,17 +135,17 @@ function drawStacked() {
       };
 
        var options2 = {
-        // title: 'Population of Largest U.S. Cities',
+        title:'Admission Result',
         chartArea: {width: '80%'},
         isStacked: true,
         hAxis: {
-          title: 'Total Score',
+          title: '',
           minValue: 0,
           maxValue: 1200,
           gridlines:{
             color:"black"
           },
-          ticks: [{v:600,f:"acceptance threshold"},{v:1200, f:""}]
+          ticks: [{v:600,f:"Acceptance Threshold"},{v:1200, f:""}]
         },
         legend: { position: 'none' }
         // vAxis: {
@@ -153,17 +154,17 @@ function drawStacked() {
       };
 
        var options3 = {
-        // title: 'Population of Largest U.S. Cities',
+        title:'Admission Result',
         chartArea: {width: '80%'},
         isStacked: true,
         hAxis: {
-          title: 'Total Score',
+          title: '',
           minValue: 0,
           maxValue: 1200,
           gridlines:{
             color:"black"
           },
-          ticks: [{v:600,f:"acceptance threshold"},{v:1200, f:""}]
+          ticks: [{v:600,f:"Acceptance Threshold"},{v:1200, f:""}]
         },
         legend: { position: 'none' }
         // vAxis: {
