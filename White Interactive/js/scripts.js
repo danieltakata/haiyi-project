@@ -8,7 +8,11 @@ $(function() {
     //['Houston, TX', 2099000, 1953000],
     //['Philadelphia, PA', 1526000, 1517000]
   ]
-
+  
+  var importantIndex = 1
+  var dummy = 999
+  var adjustedData = [-16, -8.885, -2.975]
+  var i
 
     $("#gpa-input").change(function(){
       // alert($("#gpa-input").val());
@@ -29,19 +33,17 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      //$("#gpa-amount").val(ui.value) // code
       $("#gpa-input").val(ui.value)
     },
     change: function(event, ui) {
       studentData[1][1] = ui.value*10;
+      adjustedData[0] = 10*(ui.value-3.63)
       drawStacked();
       updateResult();
     }
   });
 
   $("#gre-input").change(function(){
-    // alert($("#gpa-input").val());
-    //$("#amount").val($("#gpa-input").val())
     $("#gre-slider").slider("value",$("#gre-input").val());
     updateResult();
   });
@@ -57,19 +59,17 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      //$("#gre-amount").val(ui.value) // code
       $("#gre-input").val(ui.value)
     },
     change: function(event, ui) {
       studentData[1][2] = (ui.value-260)/2;
+      adjustedData[1] = (ui.value-317.77)/2;
       drawStacked();
       updateResult();
     }
   });
 
   $("#rec-input").change(function(){
-    // alert($("#gpa-input").val());
-    //$("#amount").val($("#gpa-input").val())
     $("#rec-slider").slider("value",$("#rec-input").val());
     updateResult();
   });
@@ -80,7 +80,6 @@ $(function() {
         // code
     },
     slide: function( event, ui ) {
-      //$("#rec-amount").val(ui.value) // code
       $("#rec-input").val(ui.value)
     },
     range:"min",
@@ -90,6 +89,7 @@ $(function() {
     step: 1,
     change: function(event, ui) {
       studentData[1][3] = ui.value*5;
+	  adjustedData[2] = (ui.value - 3.595)*5
       drawStacked();
       updateResult();
     }
@@ -101,12 +101,21 @@ $(function() {
   google.charts.setOnLoadCallback(drawStacked);
 
   function updateResult() {
+	$("#a" + studentData[0][importantIndex]).val( "" );
     if(studentData[1][1]+studentData[1][2]+studentData[1][3]>=75){
       $("#result").text("Yay, accepted!")
       $("#result").css("color","green")
     } else {
-      document.getElementById("result").innerHTML = "Sorry, rejected..."
-      $("#result").css("color", "red")
+	  for (i=0; i < adjustedData.length; i++){
+			if (dummy > adjustedData[i]) {
+				dummy = adjustedData[i];
+				importantIndex = i+1;
+			}
+		}
+		dummy = 9999;
+		$("#a" + studentData[0][importantIndex]).val( "Most important!" );
+        document.getElementById("result").innerHTML = "Sorry, rejected..."
+        $("#result").css("color", "red")
     }
   }
 
