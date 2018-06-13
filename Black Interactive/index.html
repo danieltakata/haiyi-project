@@ -40,36 +40,125 @@
 
     <div class="card">
       <div class="card-body">
-        <h2>
-      Example Admission Result
-      </h2>
+        <div class="container">
+
+          <div class="row">
+            <h2>
+              Example Admission Result
+            </h2>
+
+          </div>
+          <form id="my-form">
+
+          <!--row 1 - GRE-->
+          <div class="row">
+            <div class="col">
+              <label>GRE-Verbal:</label>
+                <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
+                <input type="text" maxlength=100 id="aGPA" readonly style="border:0" color:#000000 value="Most important!">
 
 
-        <p>
-          <label for="amount">GPA:</label>
-          <input type="text" id="gpa-input" title="GPA weighted by 20x" name="name" value="2"/>
-          <input type="text" id="gpa-amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-        </p>
-        
-      
-        <div id="gpa-slider"></div>
-      </br>
+                <div id="greV-slider"></div>
 
-        <p>
-          <label for="amount">GRE:</label>
-          <input type="text" id="gre-input" title="Pop-UpPop-UpPop-Up Here" name="name" value="300" />
-          <input type="text" id="gre-amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-        </p>
+            </div>
+            <div class="col">
 
-        <div id="gre-slider"></div>
-      </br>
-        <p>
-          <label for="amount">Recommendation:</label>
-          <input type="text" id="rec-input" title="Pop-UpPop-UpPop-Up Here" name="name" value="3" />
-          <input type="text" id="rec-amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-        </p>
+              <label>GRE-Quantitative:</label>
+              <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
+              <input type="text" maxlength=60 id="aGRE" readonly style="border:0" color:#000000 value="">
 
-        <div id="rec-slider"></div>
+              <div id="greQ-slider"></div>
+            </div>
+            <div class="col">
+
+              <label>GRE-Writing:</label>
+              <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
+              <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
+
+              <div id="greW-slider"></div>
+            </div>
+          </div>
+
+        </br>
+          <!--row 2 - GPA-->
+          <div class="row">
+            <div class="col">
+              <label>GPA:</label>
+                <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
+                <input type="text" maxlength=100 id="aGPA" readonly style="border:0" color:#000000 value="Most important!">
+
+                <div id="gpa-slider"></div>
+
+            </div>
+            <div class="col">
+
+              <label>Institution Rank:</label>
+              <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
+              <input type="text" maxlength=60 id="aGRE" readonly style="border:0" color:#000000 value="">
+
+              <div id="rank-slider"></div>
+            </div>
+            <div class="col">
+
+              <label>Highest Degree:</label>
+              <input type="text" id="deg-input" title="Highest Degree" name="name" value="0" />
+              <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
+
+              <div id="deg-slider"></div>
+            </div>
+          </div>
+
+        </br>
+          <!--row 3 - Recommendation-->
+          <div class="row">
+            <div class="col">
+              <label>Recommendation 1:</label>
+                <input type="text" id="rec1-input" title="Recommendation 1" name="name" value="40" />
+                <input type="text" maxlength=100 id="aGPA" readonly style="border:0" color:#000000 value="Most important!">
+
+                <div id="rec1-slider"></div>
+
+            </div>
+            <div class="col">
+
+              <label>Recommendation 2:</label>
+              <input type="text" id="rec2-input" title="Recommendation 2" name="name" value="50" />
+              <input type="text" maxlength=60 id="aGRE" readonly style="border:0" color:#000000 value="">
+
+              <div id="rec2-slider"></div>
+            </div>
+            <div class="col">
+
+              <label>Recommendation 3:</label>
+              <input type="text" id="rec3-input" title="Recommendation 3" name="name" value="60" />
+              <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
+
+              <div id="rec3-slider"></div>
+            </div>
+          </div>
+
+        </br>
+        <!--row 4 - Personal/Diversity Statement-->
+        <div class="row">
+          <div class="col">
+            <label>Personal Statement:</label>
+              <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
+              <input type="text" maxlength=100 id="aGPA" readonly style="border:0" color:#000000 value="Most important!">
+            </br>
+              <div id="ps-slider"></div>
+
+          </div>
+          <div class="col">
+
+            <label>Diversity Statement:</label>
+            <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
+            <input type="text" maxlength=60 id="aGRE" readonly style="border:0" color:#000000 value="">
+          </br>
+            <div id="diver-slider"></div>
+          </div>
+          <div class="col"></div>
+          
+        </div>
 
 
         

@@ -61,7 +61,7 @@ $("#greQ-slider").slider({
     // code
   },
   slide: function(event, ui) {
-    $("#greV-input").val(ui.value)
+    $("#greQ-input").val(ui.value)
   },
   change: function(event, ui) {
     studentData[1][2] = (ui.value-130)*greQuanWt;
