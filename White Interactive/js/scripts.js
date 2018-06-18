@@ -1,20 +1,24 @@
 $(function() {
 
   // weights
-  var greVerWt = 0.5, greQuanWt = 0.5, greWriWt = 3, gpaWt = 10, rankWt = -0.1, degWt = 20, psWt = 10, diverWt = 10, recWt = .5;
+  var greVerWt = 0.5, greQuanWt = 0.5, greWriWt = 3, gpaWt = 10, rankWt = -0.1, degWt = 20, psWt = 10, diverWt = 10, recWt = .5; 
   // default values
-  var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 2.0, rankVal = 500, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3;
+  var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 2.0, rankVal = 500, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3; 
 
   var studentData = [
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Deg', 'Rec1', 'Rec2', 'Rec3', 'PS', 'Diversity'],
-    ['', (greVerVal-130)*greVerWt, (greQuanVal-130)*greQuanWt, greWriVal*greWriWt, gpaVal*gpaWt, rankVal*rankWt, degVal*degWt,
+    ['', (greVerVal-130)*greVerWt, (greQuanVal-130)*greQuanWt, greWriVal*greWriWt, gpaVal*gpaWt, rankVal*rankWt, degVal*degWt, 
       rec1*recWt, rec2*recWt, rec3*recWt, psVal*psWt, diverVal*diverWt],
-
+    ['', 152.33, 164.75, 3.715, 3.61, 173.08, 0.53, 64.5, 64.5, 64.5, 3.54, 3.58]
   ]
-
-  var importantIndex = 1
+  
+  var importantIndex = 4
   var dummy = 999
-  var adjustedData = [-16, -8.885, -2.975]
+  var adjustedData = [(greVerVal-studentData[2][1])*greVerWt, (greQuanVal-studentData[2][2])*greQuanWt,
+                      (greWriVal-studentData[2][3])*greWriWt, (gpaVal-studentData[2][4])*gpaWt,
+                      (rankVal-studentData[2][5])*rankWt, (degVal-studentData[2][6])*degWt,
+					  (rec1-studentData[2][7])*recWt, (rec2-studentData[2][8])*recWt,
+					  (rec3-studentData[2][9])*recWt, (psVal-studentData[2][10])*psWt]
   var i
 
     $("#greV-input").change(function(){
@@ -38,7 +42,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][1] = (ui.value-130)*greVerWt;
-      adjustedData[0] = 10*(ui.value-3.63)
+      adjustedData[0] = (ui.value-studentData[2][1])*greVerWt
       drawStacked();
       updateResult();
     }
@@ -65,7 +69,7 @@ $("#greQ-slider").slider({
   },
   change: function(event, ui) {
     studentData[1][2] = (ui.value-130)*greQuanWt;
-    adjustedData[0] = 10*(ui.value-3.63)
+    adjustedData[1] = (ui.value-studentData[2][2])*greQuanWt
     drawStacked();
     updateResult();
   }
@@ -92,7 +96,7 @@ slide: function(event, ui) {
 },
 change: function(event, ui) {
   studentData[1][3] = ui.value*greWriWt;
-  adjustedData[0] = 10*(ui.value-3.63)
+  adjustedData[2] = (ui.value-studentData[2][3])*greWriWt
   drawStacked();
   updateResult();
 }
@@ -110,7 +114,7 @@ change: function(event, ui) {
     value: 2,
     min: 0.0,
     max: 4.0,
-    step: 0.1,
+    step: 0.01,
     start: function(event, ui) {
       // code
     },
@@ -119,7 +123,7 @@ change: function(event, ui) {
     },
     change: function(event, ui) {
       studentData[1][4] = ui.value*gpaWt;
-      adjustedData[0] = 10*(ui.value-3.63)
+      adjustedData[3] = (ui.value-studentData[2][4])*gpaWt
       drawStacked();
       updateResult();
     }
@@ -136,7 +140,7 @@ change: function(event, ui) {
       	value: 500,
      		min: 1,
         max: 1000,
-        step: 5,
+        step: 1,
     start: function(event, ui) {
       // code
     },
@@ -145,7 +149,7 @@ change: function(event, ui) {
     },
     change: function(event, ui) {
       studentData[1][5] = ui.value*rankWt;
-      adjustedData[1] = (ui.value-317.77)/2;
+      adjustedData[4] = (ui.value-studentData[2][5])*rankWt;
       drawStacked();
       updateResult();
     }
@@ -172,7 +176,7 @@ $("#deg-slider").slider({
   },
   change: function(event, ui) {
     studentData[1][6] = ui.value*degWt;
-    adjustedData[0] = 10*(ui.value-3.63)
+    adjustedData[5] = (ui.value-studentData[2][6])*degWt;
     drawStacked();
     updateResult();
   }
@@ -198,7 +202,7 @@ $("#rec1-slider" ).slider({
   step: 1,
   change: function(event, ui) {
     studentData[1][7] = ui.value*recWt;
-  adjustedData[2] = (ui.value - 3.595)*5
+    adjustedData[6] = (ui.value-studentData[2][7])*recWt
     drawStacked();
     updateResult();
   }
@@ -224,7 +228,7 @@ value: 50,
 step: 1,
 change: function(event, ui) {
   studentData[1][8] = ui.value*recWt;
-adjustedData[2] = (ui.value - 3.595)*5
+  adjustedData[7] = (ui.value-studentData[2][8])*recWt;
   drawStacked();
   updateResult();
 }
@@ -250,7 +254,7 @@ value: 60,
 step: 1,
 change: function(event, ui) {
   studentData[1][9] = ui.value*recWt;
-adjustedData[2] = (ui.value - 3.595)*5
+  adjustedData[8] = (ui.value-studentData[2][9])*recWt;
   drawStacked();
   updateResult();
 }
@@ -277,7 +281,7 @@ slide: function(event, ui) {
 },
 change: function(event, ui) {
   studentData[1][10] = ui.value*psWt;
-  adjustedData[0] = 10*(ui.value-3.63)
+  adjustedData[9] = (ui.value-studentData[2][10])*psWt
   drawStacked();
   updateResult();
 }
@@ -303,7 +307,6 @@ slide: function(event, ui) {
 },
 change: function(event, ui) {
   studentData[1][11] = ui.value*diverWt;
-  adjustedData[0] = 10*(ui.value-3.63)
   drawStacked();
   updateResult();
 }
@@ -319,6 +322,7 @@ change: function(event, ui) {
     if(studentData[1][1]+studentData[1][2]+studentData[1][3]+studentData[1][4]+studentData[1][5]+studentData[1][6]+
       studentData[1][7]+studentData[1][8]+studentData[1][9]+studentData[1][10]+studentData[1][11]>=250){
       $("#result").text("Yay, accepted!")
+	    document.getElementById("lookat").style.color = "white";
       $("#result").css("color","green")
     } else {
 	  for (i=0; i < adjustedData.length; i++){
@@ -329,7 +333,8 @@ change: function(event, ui) {
 		}
 		dummy = 9999;
 		$("#a" + studentData[0][importantIndex]).val( "Most important!" );
-        document.getElementById("result").innerHTML = "Sorry, rejected..."
+        document.getElementById("result").innerHTML = "Sorry, rejected...";
+	    document.getElementById("lookat").style.color = "black";
         $("#result").css("color", "red")
     }
   }
@@ -365,19 +370,17 @@ change: function(event, ui) {
       },
       vAxis: {
         title: ''
-      },
-      // grouped by color of similar shade
-      colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF']
+      }
     };
     var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
     chart.draw(data, options);
   }
 });
-
+updateResult();
 
 //reset
 
-$(document).ready(function()
+$(document).ready(function() 
 {
     $('#reset-form').on('click', function()
     {
@@ -385,7 +388,7 @@ $(document).ready(function()
     });
 
     $('#clear-form').on('click', function()
-    {
+    { 
         $('#my-form').find('input:text, input:password, select, textarea').val('');
         $('#my-form').find('input:radio, input:checkbox').prop('checked', false);
     });
