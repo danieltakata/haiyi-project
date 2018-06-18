@@ -1,17 +1,17 @@
 $(function() {
 
   // weights
-  var greVerWt = 0.5, greQuanWt = 0.5, greWriWt = 3, gpaWt = 10, rankWt = -0.1, degWt = 20, psWt = 10, diverWt = 10, recWt = .5; 
+  var greVerWt = 0.5, greQuanWt = 0.5, greWriWt = 3, gpaWt = 10, rankWt = -0.1, degWt = 20, psWt = 10, diverWt = 10, recWt = .5;
   // default values
-  var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 2.0, rankVal = 500, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3; 
+  var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 2.0, rankVal = 500, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3;
 
   var studentData = [
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Deg', 'Rec1', 'Rec2', 'Rec3', 'PS', 'Diversity'],
-    ['', (greVerVal-130)*greVerWt, (greQuanVal-130)*greQuanWt, greWriVal*greWriWt, gpaVal*gpaWt, rankVal*rankWt, degVal*degWt, 
+    ['', (greVerVal-130)*greVerWt, (greQuanVal-130)*greQuanWt, greWriVal*greWriWt, gpaVal*gpaWt, rankVal*rankWt, degVal*degWt,
       rec1*recWt, rec2*recWt, rec3*recWt, psVal*psWt, diverVal*diverWt],
-    
+
   ]
-  
+
   var importantIndex = 1
   var dummy = 999
   var adjustedData = [-16, -8.885, -2.975]
@@ -365,7 +365,9 @@ change: function(event, ui) {
       },
       vAxis: {
         title: ''
-      }
+      },
+      // grouped by color of similar shade
+      colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF']
     };
     var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
     chart.draw(data, options);
@@ -375,7 +377,7 @@ change: function(event, ui) {
 
 //reset
 
-$(document).ready(function() 
+$(document).ready(function()
 {
     $('#reset-form').on('click', function()
     {
@@ -383,7 +385,7 @@ $(document).ready(function()
     });
 
     $('#clear-form').on('click', function()
-    { 
+    {
         $('#my-form').find('input:text, input:password, select, textarea').val('');
         $('#my-form').find('input:radio, input:checkbox').prop('checked', false);
     });
