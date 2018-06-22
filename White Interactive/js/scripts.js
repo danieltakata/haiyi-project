@@ -338,11 +338,11 @@ $(function() {
   google.charts.setOnLoadCallback(drawStacked);
 
   function updateResult() {
-    $("#a" + studentData[0][importantIndex]).val("");
+    //$("#a" + studentData[0][importantIndex]).val("");
     if (studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] + studentData[1][6] +
       studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] + studentData[1][11] >= 250) {
       $("#result").text("Yay, accepted!")
-      document.getElementById("lookat").style.color = "white";
+      //document.getElementById("lookat").style.color = "white";
       $("#result").css("color", "green")
     } else {
       /* for (i = 0; i < adjustedData.length; i++) {
@@ -354,7 +354,7 @@ $(function() {
       dummy = 9999;
       $("#a" + studentData[0][importantIndex]).val("Most important!"); */
       document.getElementById("result").innerHTML = "Sorry, rejected...";
-      document.getElementById("lookat").style.color = "black";
+      //document.getElementById("lookat").style.color = "black";
       $("#result").css("color", "red")
     }
   }
