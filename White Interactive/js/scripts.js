@@ -30,6 +30,7 @@ $(function() {
     ]
   ]
 
+/* 
   var importantIndex = 4
   var dummy = 999
   var adjustedData = [(greVerVal - studentData[1][1]) * greVerWt, (greQuanVal - studentData[1][2]) * greQuanWt,
@@ -38,7 +39,7 @@ $(function() {
     (rec1 - studentData[1][7]) * recWt, (rec2 - studentData[1][8]) * recWt,
     (rec3 - studentData[1][9]) * recWt, (psVal - studentData[1][10]) * psWt
   ]
-  var i
+  var i */
 
   $("#greV-input").change(function() {
     $("#greV-slider").slider("value", $("#greV-input").val());
@@ -61,7 +62,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][1] = (ui.value ) * greVerWt;
-      adjustedData[0] = (ui.value - studentData[1][1]) * greVerWt
+      //adjustedData[0] = (ui.value - studentData[1][1]) * greVerWt
       drawStacked();
       updateResult();
     }
@@ -88,7 +89,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][2] = (ui.value) * greQuanWt;
-      adjustedData[1] = (ui.value - studentData[1][2]) * greQuanWt
+      //adjustedData[1] = (ui.value - studentData[1][2]) * greQuanWt
       drawStacked();
       updateResult();
     }
@@ -115,7 +116,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][3] = ui.value * greWriWt;
-      adjustedData[2] = (ui.value - studentData[1][3]) * greWriWt
+      //adjustedData[2] = (ui.value - studentData[1][3]) * greWriWt
       drawStacked();
       updateResult();
     }
@@ -142,7 +143,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][4] = ui.value * gpaWt;
-      adjustedData[3] = (ui.value - studentData[1][4]) * gpaWt
+      //adjustedData[3] = (ui.value - studentData[1][4]) * gpaWt
       drawStacked();
       updateResult();
     }
@@ -168,7 +169,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][5] = ui.value * rankWt;
-      adjustedData[4] = (ui.value - studentData[1][5]) * rankWt;
+      //adjustedData[4] = (ui.value - studentData[1][5]) * rankWt;
       drawStacked();
       updateResult();
     }
@@ -195,7 +196,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][6] = ui.value * degWt;
-      adjustedData[5] = (ui.value - studentData[1][6]) * degWt;
+      //adjustedData[5] = (ui.value - studentData[1][6]) * degWt;
       drawStacked();
       updateResult();
     }
@@ -221,7 +222,7 @@ $(function() {
     step: 1,
     change: function(event, ui) {
       studentData[1][7] = ui.value * recWt;
-      adjustedData[6] = (ui.value - studentData[1][7]) * recWt
+      //adjustedData[6] = (ui.value - studentData[1][7]) * recWt
       drawStacked();
       updateResult();
     }
@@ -247,7 +248,7 @@ $(function() {
     step: 1,
     change: function(event, ui) {
       studentData[1][8] = ui.value * recWt;
-      adjustedData[7] = (ui.value - studentData[1][8]) * recWt;
+      //adjustedData[7] = (ui.value - studentData[1][8]) * recWt;
       drawStacked();
       updateResult();
     }
@@ -273,7 +274,7 @@ $(function() {
     step: 1,
     change: function(event, ui) {
       studentData[1][9] = ui.value * recWt;
-      adjustedData[8] = (ui.value - studentData[1][9]) * recWt;
+      //adjustedData[8] = (ui.value - studentData[1][9]) * recWt;
       drawStacked();
       updateResult();
     }
@@ -300,7 +301,7 @@ $(function() {
     },
     change: function(event, ui) {
       studentData[1][10] = ui.value * psWt;
-      adjustedData[9] = (ui.value - studentData[1][10]) * psWt
+      //adjustedData[9] = (ui.value - studentData[1][10]) * psWt
       drawStacked();
       updateResult();
     }
@@ -344,14 +345,14 @@ $(function() {
       document.getElementById("lookat").style.color = "white";
       $("#result").css("color", "green")
     } else {
-      for (i = 0; i < adjustedData.length; i++) {
+      /* for (i = 0; i < adjustedData.length; i++) {
         if (dummy > adjustedData[i]) {
           dummy = adjustedData[i];
           importantIndex = i + 1;
         }
       }
       dummy = 9999;
-      $("#a" + studentData[0][importantIndex]).val("Most important!");
+      $("#a" + studentData[0][importantIndex]).val("Most important!"); */
       document.getElementById("result").innerHTML = "Sorry, rejected...";
       document.getElementById("lookat").style.color = "black";
       $("#result").css("color", "red")
