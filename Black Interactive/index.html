@@ -50,127 +50,235 @@
           </div>
           <form id="my-form">
 
-          <!--row 1 - GRE-->
-          <div class="row">
-            <div class="col">
-              <label>GRE-Verbal:</label>
-                <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
+          <!--Features Text/Input/Sliders-->
+         <div class="row">
+            <div class="col-12">
+              <!--GRE-V Row-->
+              <div class='row'>
+                <div class='col-2'>
+                    <label>GRE-Verbal:</label>
 
+                </div>
+                <div class='col-4'>
+                    <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
 
-                <div id="greV-slider"></div>
+                </div>
+                <div class='col-6'>
+                    <div id="greV-slider"></div>
 
-            </div>
-            <div class="col">
+                </div>
+              </div>
+              <!--GRE-Q Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>GRE-Quantitative:</label>
 
-              <label>GRE-Quantitative:</label>
-              <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
 
-              <div id="greQ-slider"></div>
-            </div>
-            <div class="col">
+                  </div>
+                  <div class='col-6'>
+                      <div id="greQ-slider"></div>
 
-              <label>GRE-Writing:</label>
-              <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
+                  </div>
+                </div>
+              <!--GRE-W Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>GRE-Writing:</label>
 
-              <div id="greW-slider"></div>
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="greW-slider"></div>
+
+                  </div>
+                </div>
+              <!--GPA Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>GPA:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="gpa-slider"></div>
+
+                  </div>
+                </div>
+              <!--Institution Rank Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>Institution Rank:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="rank-slider"></div>
+
+                  </div>
+                </div>
+              <!--Degree Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>Highest Degree:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="deg-input" title="Bachelors = 0, Masters = 1" name="name" value="0" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="deg-slider"></div>
+
+                  </div>
+                </div>
+              <!--Personal Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>Personal Statement:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="ps-slider"></div>
+
+                  </div>
+                </div>
+              <!--Diversity Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>Diversity Statement:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="diver-slider"></div>
+
+                  </div>
+                </div>
+              <!--Rec1 Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>Letter of Rec. 1 Score:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="rec1-input" title="Letter of Recommendation 1 Score" name="name" value="40" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="rec1-slider"></div>
+
+                  </div>
+                </div>
+              <!--Rec2 Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>Letter of Rec. 2 Score:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="rec2-input" title="Letter of Recommendation 2 Score" name="name" value="50" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="rec2-slider"></div>
+
+                  </div>
+                </div>
+              <!--Rec3 Row-->
+              <div class='row'>
+                  <div class='col-2'>
+                      <label>Letter of Rec. 3 Score:</label>
+
+                  </div>
+                  <div class='col-4'>
+                      <input type="text" id="rec3-input" title="Letter of Recommendation 3 Score" name="name" value="60" />
+
+                  </div>
+                  <div class='col-6'>
+                      <div id="rec3-slider"></div>
+
+                  </div>
+                </div>
+              
             </div>
           </div>
 
         </br>
-          <!--row 2 - GPA-->
+          <!-- Old Code
           <div class="row">
             <div class="col">
-              <label>GPA:</label>
-                <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
+              
 
-                <div id="gpa-slider"></div>
 
             </div>
             <div class="col">
 
-              <label>Institution Rank:</label>
-              <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
-
-              <div id="rank-slider"></div>
+              
             </div>
             <div class="col">
 
-              <label>Highest Degree:</label>
-<<<<<<< HEAD
-              <input type="text" id="deg-input" title="Bachelors = 0, Masters = 1" name="name" value="0" />
+              
               <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
-=======
-              <input type="text" id="deg-input" title="Highest Degree" name="name" value="0" />
->>>>>>> 899b49a6ab1e3e7c88bdfd2a095367e99d5d6dec
 
-              <div id="deg-slider"></div>
             </div>
-          </div>
+          </div> -->
 
-        </br>
-          <!--row 3 - Recommendation-->
+        <!-- </br>
           <div class="row">
             <div class="col">
-<<<<<<< HEAD
-              <label>Letter of Rec. 1 Score:</label>
-                <input type="text" id="rec1-input" title="Letter of Recommendation 1 Score" name="name" value="40" />
+              
                 <input type="text" maxlength=100 id="aGPA" readonly style="border:0" color:#000000 value="Most important!">
-=======
-              <label>Recommendation 1:</label>
-                <input type="text" id="rec1-input" title="Recommendation 1" name="name" value="40" />
->>>>>>> 899b49a6ab1e3e7c88bdfd2a095367e99d5d6dec
 
-                <div id="rec1-slider"></div>
 
             </div>
             <div class="col">
 
-<<<<<<< HEAD
-              <label>Letter of Rec. 2 Score:</label>
-              <input type="text" id="rec2-input" title="Letter of Recommendation 2 Score" name="name" value="50" />
+              
               <input type="text" maxlength=60 id="aGRE" readonly style="border:0" color:#000000 value="">
-=======
-              <label>Recommendation 2:</label>
-              <input type="text" id="rec2-input" title="Recommendation 2" name="name" value="50" />
->>>>>>> 899b49a6ab1e3e7c88bdfd2a095367e99d5d6dec
 
-              <div id="rec2-slider"></div>
             </div>
             <div class="col">
 
-<<<<<<< HEAD
-              <label>Letter of Rec. 3 Score:</label>
-              <input type="text" id="rec3-input" title="Letter of Recommendation 3 Score" name="name" value="60" />
+              
               <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
-=======
-              <label>Recommendation 3:</label>
-              <input type="text" id="rec3-input" title="Recommendation 3" name="name" value="60" />
->>>>>>> 899b49a6ab1e3e7c88bdfd2a095367e99d5d6dec
 
-              <div id="rec3-slider"></div>
             </div>
-          </div>
+          </div> -->
 
-        </br>
-        <!--row 4 - Personal/Diversity Statement-->
+        <!-- </br>
         <div class="row">
           <div class="col">
-            <label>Personal Statement:</label>
-              <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
+            
             </br>
-              <div id="ps-slider"></div>
 
           </div>
           <div class="col">
 
-            <label>Diversity Statement:</label>
-            <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
+           
           </br>
-            <div id="diver-slider"></div>
           </div>
           <div class="col"></div>
           
-        </div>
+        </div> -->
 
 
         
