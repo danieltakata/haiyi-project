@@ -1,94 +1,29 @@
-// $(function() {
-
-//   var studentData = [
-//     ['Total Score', 'GPA', 'GRE', 'Recommendation'],
-//     ['Total Score', 34, 320, 100],
-//     //['Los Angeles, CA', 3792000, 3694000],
-//     //['Chicago, IL', 2695000, 2896000],
-//     //['Houston, TX', 2099000, 1953000],
-//     //['Philadelphia, PA', 1526000, 1517000]
-//   ]
-
-//   $("#gpa-slider").slider({
-//     // options
-//     range: "min",
-//     value: 3.0,
-//     min: 0.0,
-//     max: 4.0,
-//     step: 0.1,
-//     start: function(event, ui) {
-//       // code
-//     },
-//     slide: function(event, ui) {
-//       $("#amount").val(ui.value) // code
-//     },
-//     change: function(event, ui) {
-//       studentData[1][1] = ui.value;
-//       drawStacked();
-//     }
-//   });
-
-//   $("#gre-slider").slider({
-//     // options
-//     range: "min",
-//       	value: 3.0,
-//      		min: 0.0,
-//         max: 4.0,
-//         step:0.1,
-//     start: function(event, ui) {
-//       // code
-//     },
-//     slide: function(event, ui) {
-//       // code
-//     },
-//     change: function(event, ui) {
-//       studentData[1][2] = ui.value;
-//       drawStacked();
-//     }
-//   });
+$(function() {
 
 
-
-//   google.charts.load('current', {
-//     packages: ['corechart', 'bar']
-//   });
-//   google.charts.setOnLoadCallback(drawStacked);
+$("#landing-page").fadeIn();
+$(".landingcontent").fadeIn();
 
 
-//   function drawStacked() {
+$("#startButton").on("click", function() {
+      $(".landingcontent").fadeOut();
 
-//     var donutRangeSlider = new google.visualization.ControlWrapper({
-//       'controlType': 'NumberRangeFilter',
-//       'containerId': 'filter_div',
-//       'options': {
-//         'filterColumnLabel': 'GPA'
-//       }
-//     });
+      setTimeout(function() {
+          $("#landing-page").fadeOut();
+      }, 500);
 
-//     var data = google.visualization.arrayToDataTable(studentData);
+      setTimeout(function() {
+      // $("#main-page").animateRotate(0, 0);
+      // $("#main-page").css("height", "25px");
+      // $("#main-page").css("width", "375px");
+          $("#main-page").fadeIn();
+          $(".maincontent").fadeIn(300);
+          drawStacked();
+      }, 1000);
+  });
 
-
-
-//     var options = {
-//       title: 'Admission Result',
-//       chartArea: {
-//         width: '50%'
-//       },
-//       isStacked: true,
-//       hAxis: {
-//         title: 'total Score',
-//         minValue: 0,
-//       },
-//       vAxis: {
-//         title: ''
-//       }
-//     };
-//     var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-//     chart.draw(data, options);
-//   }
-// });
 google.charts.load('current', {packages: ['corechart', 'bar']});
-google.charts.setOnLoadCallback(drawStacked);
+// google.charts.setOnLoadCallback(drawStacked);
 
 var greVerW = 1, greQuanW = 1, greWriW = 3, gpaW = 25, rankW = 0.1, masW = 15, psW = 20, diverW = 2, recW = 10;
 function drawStacked() {
@@ -131,9 +66,6 @@ function drawStacked() {
         // grouped by color of similar shade
         colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF'],
         legend: { position: 'none' }
-        // vAxis: {
-        //   title: 'City'
-        // }
       };
 
 
@@ -146,3 +78,5 @@ function drawStacked() {
       var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
       chart.draw(data3, options);
     }
+
+});

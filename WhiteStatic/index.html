@@ -23,154 +23,133 @@
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
-  <style type="text/css">
-   .black {
-    color: black
-   }
-  </style>
 </head>
 
 <body>
 
-  <div class="jumbotron">
-    <h1 class="display-4">Hello!</h1>
-    <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
-    <hr class="my-4">
-    <p>	Part of the admission process was done with the help of an SVM machine learning algorithm that was trained and tested with previous years'
-      application data to accurately match our admission committee's decision process. This means the algorithm calculates numerical scores for
-      each input, weights them, and sums the result to determine a final score for each user, which is then compared with an acceptance threshold.
-      If the score is higher, the person is accepted. You can read the examples below to find out more, and see precisely how different
-      scores could affect the decision.</p>
-	<p>The metric colored red is expected to reap the greatest benefit with work. Rejected applicants are advised to focus on improving this metric the most.</p>
 
-    <!-- <div class="card">
-      <div class="card-body">
-
-        <h2>
-      Your admission result
-      </h2>
-
-
-        <p>
-          <label for="amount">GPA:</label>
-          <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  <div id="landing-page">
+    <div class="landingcontent">
+      <div class="jumbotron">
+        <h1 class="display-4">Hello!</h1>
+        <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+        <hr class="my-4">
+        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
+          This algorithm works by adding together the applicant’s scores in different areas to create a total score. The algorithm compares this sum to an acceptance threshold it has calculated based on data from previous years. If the applicant’s total
+          score is above this threshold, they are accepted. On the following page you will see the scores for three applicants to the university, along with whether those candidates were admitted. The chart below these scores represent how various factors
+          contributed to the algorithm’s decision.
         </p>
-        <div id="gpa-slider"></div>
+        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
 
-        <p>GRE:</p>
-        <div id="gre-slider"></div>
-
-        <div id="chart_div"></div>
+        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
       </div>
-    </div> -->
 
+    </div>
   </div>
 
-<div class="container">
-    <div class="card-deck">
-        <div class="card border-success md-3 text-center">
-          <!-- <img class="card-img-top" src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-ponsy-deer.png" alt="Card image cap">
-          <div class="card-body text-success">
-            <h5 class="card-title">Alice</h5>
-          </div> -->
-            <!-- ID 63 -->
-          <div class="card-body">
-            <p class="card-text black">GRE - verbal : 160</p>
-            <p class="card-text black">GRE - quant : 169</p>
-            <p class="card-text black">GRE - writing : 4</p>
-            <p class="card-text black">GPA : 3.51</p>
+  <div id="main-page">
+    <div class="maincontent">
+
+      <div class="jumbotron main-visualization">
+        <!-- <h1 class="display-4">Admission Explainer</h1> -->
+        <p class="lead">Admission decision helper.</p>
+        <hr class="my-4">
+        <p class="">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+      </div>
+
+      <div class="container">
+        <div class="card-deck">
+          <div class="card border-success md-3 text-center">
+            <div class="card-body">
+              <p class="card-text black">GRE - verbal : 160</p>
+              <p class="card-text black">GRE - quant : 169</p>
+              <p class="card-text black">GRE - writing : 4</p>
+              <p class="card-text black">GPA : 3.51</p>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text black">School Ranking: 168</p>
+              <p class="card-text black">Highest Degree: Bachelor </p>
+              <p class="card-text black">Personal Statement: 3.5 </p>
+              <p class="card-text black">Diversity Score: 4 </p>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text black">Recommendation Letter 1: 8 </p>
+              <p class="card-text black">Recommendation Letter 2: 8 </p>
+              <p class="card-text black">Recommendation Letter 3: 8 </p>
+            </div>
+
+            <div class="card-footer text-success">
+              Accepted
+              <div id="chart_div"></div>
+            </div>
           </div>
 
-          <div class="card-body">
-            <p class="card-text black">School Ranking: 168</p>
-            <p class="card-text black">Highest Degree: Bachelor </p>
-            <p class="card-text black">Personal Statement: 3.5 </p>
-            <p class="card-text black">Diversity Score: 4 </p>
-          </div>
-
-          <div class="card-body">
-            <p class="card-text black">Recommendation Letter 1: 8 </p>
-            <p class="card-text black">Recommendation Letter 2: 8 </p>
-            <p class="card-text black">Recommendation Letter 3: 8 </p>
-          </div>
-
-          <div class="card-footer text-success">
-            Accepted
-            <div id="chart_div"></div>
-          </div>
-        </div>
-
-    <div class="card border-danger md-3 text-center">
-          <!-- <img class="card-img-top" src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-ponsy-deer.png" alt="Card image cap">
-          <div class="card-body text-danger">
+          <div class="card border-danger md-3 text-center">
+            <!-- <img class="card-img-top" src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-ponsy-deer.png" alt="Card image cap">
+            <div class="card-body text-danger">
             <h5 class="card-title">Bob</h5>
           </div> -->
             <!-- ID 6 -->
-          <div class="card-body">
-            <p class="card-text black">GRE - verbal : 134</p>
-            <p class="card-text black">GRE - quant : 155</p>
-            <p class="card-text black">GRE - writing : 1.5</p>
-            <p >GPA : 3.33</p>
+            <div class="card-body">
+              <p class="card-text black">GRE - verbal : 134</p>
+              <p class="card-text black">GRE - quant : 155</p>
+              <p class="card-text black">GRE - writing : 1.5</p>
+              <p>GPA : 3.33</p>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text black">School Ranking: 14</p>
+              <p class="card-text black">Highest Degree: Master</p>
+              <p class="card-text black">Personal Statement: 1.5 </p>
+              <p class="card-text black">Diversity Score: 1.5 </p>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text black">Recommendation Letter 1: 2 </p>
+              <p class="card-text black">Recommendation Letter 2: 2 </p>
+              <p class="card-text black">Recommendation Letter 3: 2 </p>
+            </div>
+
+            <div class="card-footer text-danger">
+              Declined
+              <div id="chart_div2"></div>
+            </div>
           </div>
 
-          <div class="card-body">
-            <p class="card-text black">School Ranking: 14</p>
-            <p class="card-text black">Highest Degree: Master</p>
-            <p class="card-text black">Personal Statement: 1.5 </p>
-            <p class="card-text black">Diversity Score: 1.5 </p>
+
+          <div class="card border-success md-3 text-center">
+            <div class="card-body">
+              <p class="card-text black">GRE - verbal : 170</p>
+              <p class="card-text black">GRE - quant : 168</p>
+              <p class="card-text black">GRE - writing : 5.5</p>
+              <p class="card-text black">GPA : 3.63</p>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text black">School Ranking: 569</p>
+              <p class="card-text black">Highest Degree: Bachelor </p>
+              <p class="card-text black">Personal Statement: 5</p>
+              <p class="card-text black">Diversity Score: 4.5 </p>
+            </div>
+
+            <div class="card-body">
+              <p class="card-text black">Recommendation Letter 1: 11 </p>
+              <p class="card-text black">Recommendation Letter 2: 11 </p>
+              <p class="card-text black">Recommendation Letter 3: 11 </p>
+            </div>
+
+            <div class="card-footer text-success">
+              Accepted
+              <div id="chart_div3"></div>
+            </div>
           </div>
 
-          <div class="card-body">
-            <p class="card-text black">Recommendation Letter 1: 2 </p>
-            <p class="card-text black">Recommendation Letter 2: 2 </p>
-            <p class="card-text black">Recommendation Letter 3: 2 </p>
-          </div>
-
-          <div class="card-footer text-danger">
-            Declined
-            <div id="chart_div2"></div>
-          </div>
         </div>
-
-
-    <div class="card border-success md-3 text-center">
-          <!-- <img class="card-img-top" src="http://www.lovemarks.com/wp-content/uploads/profile-avatars/default-avatar-ponsy-deer.png" alt="Card image cap">
-          <div class="card-body text-success">
-            <h5 class="card-title">Clair</h5>
-          </div> -->
-            <!-- ID 99 -->
-          <div class="card-body">
-            <p class="card-text black">GRE - verbal : 170</p>
-            <p class="card-text black">GRE - quant : 168</p>
-            <p class="card-text black">GRE - writing : 5.5</p>
-            <p class="card-text black">GPA : 3.63</p>
-          </div>
-
-          <div class="card-body">
-            <p class="card-text black">School Ranking: 569</p>
-            <p class="card-text black">Highest Degree: Bachelor </p>
-            <p class="card-text black">Personal Statement: 5</p>
-            <p class="card-text black">Diversity Score: 4.5 </p>
-          </div>
-
-          <div class="card-body">
-            <p class="card-text black">Recommendation Letter 1: 11 </p>
-            <p class="card-text black">Recommendation Letter 2: 11 </p>
-            <p class="card-text black">Recommendation Letter 3: 11 </p>
-          </div>
-
-          <div class="card-footer text-success">
-            Accepted
-            <div id="chart_div3"></div>
-          </div>
-        </div>
-
+      </div>
+    </div>
   </div>
-</div>
-
-<br />
-<br />
-
 
 
   <!-- Javascript below -->
@@ -178,4 +157,3 @@
 </body>
 
 </html>
-<!-- Source: https://codepen.io/jasper/pen/bpLLZe -->
