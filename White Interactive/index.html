@@ -3,6 +3,12 @@
 <html lang="en">
 
 <head>
+  <style>
+    label {
+      padding-bottom: 6px;
+      padding-top: 11px;
+    }
+  </style>
   <meta charset="utf-8">
 
   <title>Grad Admission Data Visualization</title>
@@ -34,11 +40,9 @@
     <h1 class="display-4">Hello!</h1>
     <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
     <hr class="my-4">
-    <p>Part of the admission process was done with the help of an SVM machine learning algorithm that was trained and tested with previous years' 
-      application data to accurately match our admission committee's decision process. This means the algorithm calculates numerical scores for
-      each input, weights them, and sums the result to determine a final score for each user, which is then compared with an acceptance threshold.
-      If the score is higher, the person is accepted. You can tweak the values below to find out the exact contribution of each score, and see the
-      total impact on the decision. The contribution of each value is color-coded in the bar.</p>
+    <p>Part of the admission process was done with the help of an SVM machine learning algorithm that was trained and tested with previous years' application data to accurately match our admission committee's decision process. This means the algorithm calculates
+      numerical scores for each input, weights them, and sums the result to determine a final score for each user, which is then compared with an acceptance threshold. If the score is higher, the person is accepted. You can tweak the values below to find
+      out the exact contribution of each score, and see the total impact on the decision. The contribution of each value is color-coded in the bar.</p>
 
     <div class="card">
       <div class="card-body">
@@ -50,198 +54,194 @@
             </h2>
 
           </div>
-          <form id="my-form">
 
-         <!--Features Text/Input/Sliders-->
-         <div class="row">
+          <!--Features Text/Input/Sliders-->
+          <div class="row">
             <div class="col-12">
               <!--GRE-V Row-->
               <div class='row'>
                 <div class='col-2'>
-                    <label>GRE-Verbal:</label>
+                  <label>GRE-Verbal:</label>
 
                 </div>
                 <div class='col-4'>
-                    <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
+                  <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
 
                 </div>
                 <div class='col-6'>
-                    <div id="greV-slider"></div>
+                  <div id="greV-slider"></div>
 
                 </div>
               </div>
               <!--GRE-Q Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>GRE-Quantitative:</label>
+                <div class='col-2'>
+                  <label>GRE-Quantitative:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="greQ-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="greQ-slider"></div>
+
+                </div>
+              </div>
               <!--GRE-W Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>GRE-Writing:</label>
+                <div class='col-2'>
+                  <label>GRE-Writing:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="greW-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="greW-slider"></div>
+
+                </div>
+              </div>
               <!--GPA Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>GPA:</label>
+                <div class='col-2'>
+                  <label>GPA:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="gpa-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="gpa-slider"></div>
+
+                </div>
+              </div>
               <!--Institution Rank Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>Institution Rank:</label>
+                <div class='col-2'>
+                  <label>Institution Rank:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rank-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="rank-slider"></div>
+
+                </div>
+              </div>
               <!--Degree Row-->
+
               <div class='row'>
-                  <div class='col-2'>
-                      <label>Highest Degree:</label>
+                <div class='col-6'>
+                  <label>Highest Degree:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="deg-input" title="Bachelors = 0, Masters = 1" name="name" value="0" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="deg-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-6'>
+                  <select name="Highest Degree" id="deg-dropdown">
+                      <option value="0">High School</option>
+                      <option value="0">Associate's</option>
+                      <option value="0">Bachelor's</option>
+                      <option value="1">Master's</option>
+                    </select>
+
+                </div>
+              </div>
               <!--Personal Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>Personal Statement:</label>
+                <div class='col-2'>
+                  <label>Personal Statement:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="ps-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="ps-slider"></div>
+
+                </div>
+              </div>
               <!--Diversity Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>Diversity Statement:</label>
+                <div class='col-2'>
+                  <label>Diversity Statement:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="diver-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="diver-slider"></div>
+
+                </div>
+              </div>
               <!--Rec1 Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>Letter of Rec. 1 Score:</label>
+                <div class='col-2'>
+                  <label>Letter of Rec. 1 Score:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rec1-input" title="Letter of Recommendation 1 Score" name="name" value="40" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rec1-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="rec1-input" title="Letter of Recommendation 1 Score" name="name" value="40" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="rec1-slider"></div>
+
+                </div>
+              </div>
               <!--Rec2 Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>Letter of Rec. 2 Score:</label>
+                <div class='col-2'>
+                  <label>Letter of Rec. 2 Score:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rec2-input" title="Letter of Recommendation 2 Score" name="name" value="50" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rec2-slider"></div>
-
-                  </div>
                 </div>
+                <div class='col-4'>
+                  <input type="text" id="rec2-input" title="Letter of Recommendation 2 Score" name="name" value="50" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="rec2-slider"></div>
+
+                </div>
+              </div>
               <!--Rec3 Row-->
               <div class='row'>
-                  <div class='col-2'>
-                      <label>Letter of Rec. 3 Score:</label>
+                <div class='col-2'>
+                  <label>Letter of Rec. 3 Score:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rec3-input" title="Letter of Recommendation 3 Score" name="name" value="60" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rec3-slider"></div>
-
-                  </div>
                 </div>
-              
+                <div class='col-4'>
+                  <input type="text" id="rec3-input" title="Letter of Recommendation 3 Score" name="name" value="60" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="rec3-slider"></div>
+
+                </div>
+              </div>
+
             </div>
           </div>
-		</div>
-      </br>
-      <div id="chart_div"></div>
-
         </div>
+        </br>
+        <div id="chart_div"></div>
 
-        <p class="text-center" id="footnote">
-          *Hovering over a section on the graph will show the contribution of that section to the total score, after being weighted</p>
-        <h5 class="text-center" id="result" style="color: red">Sorry, rejected...</h5>
       </div>
 
+      <p class="text-center" id="footnote">
+        *Hovering over a section on the graph will show the contribution of that section to the total score, after being weighted</p>
+      <h5 class="text-center" id="result" style="color: red">Sorry, rejected...</h5>
     </div>
 
   </div>
 
-  <div>
-    <input type="button" id="reset-form" value="Reset" />
-  </div>
-  </form>
+
 
 
 
