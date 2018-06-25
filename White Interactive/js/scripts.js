@@ -48,6 +48,7 @@ $(function() {
       updateResult();
     }
   });
+  $( "#greV-slider .ui-slider-range" ).css('background', '#CC0000');
 
   $("#greQ-input").change(function(){
     $("#greQ-slider").slider("value",$("#greQ-input").val());
@@ -76,6 +77,7 @@ $("#greQ-slider").slider({
     updateResult();
   }
 });
+  $( "#greQ-slider .ui-slider-range" ).css('background', '#FF0000');
 
 $("#greW-input").change(function(){
   $("#greW-slider").slider("value",$("#greW-input").val());
@@ -104,6 +106,7 @@ change: function(event, ui) {
   updateResult();
 }
 });
+  $( "#greW-slider .ui-slider-range" ).css('background', '#FF9999');
 
     $("#gpa-input").change(function(){
       $("#gpa-slider").slider("value",$("#gpa-input").val());
@@ -132,6 +135,7 @@ change: function(event, ui) {
       updateResult();
     }
   });
+  $( "#gpa-slider .ui-slider-range" ).css('background', '#5BE500');
 
   $("#rank-input").change(function(){
     $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
@@ -159,6 +163,7 @@ change: function(event, ui) {
       updateResult();
     }
   });
+  $( "#rank-slider .ui-slider-range" ).css('background', '#62D119');
 
 $("#deg-dropdown").selectmenu({
   change: function(event, ui) {
@@ -195,6 +200,7 @@ $("#rec1-slider" ).slider({
     updateResult();
   }
 });
+  $( "#rec1-slider .ui-slider-range" ).css('background', '#8900E5');
 
 $("#rec2-input").change(function(){
 $("#rec2-slider").slider("value",$("#rec2-input").val());
@@ -222,6 +228,7 @@ change: function(event, ui) {
   updateResult();
 }
 });
+  $( "#rec2-slider .ui-slider-range" ).css('background', '#AD33FF');
 
 $("#rec3-input").change(function(){
 $("#rec3-slider").slider("value",$("#rec3-input").val());
@@ -249,6 +256,7 @@ change: function(event, ui) {
   updateResult();
 }
 });
+  $( "#rec3-slider .ui-slider-range" ).css('background', '#D699FF');
 
 $("#ps-input").change(function(){
   $("#ps-slider").slider("value",$("#ps-input").val());
@@ -277,6 +285,7 @@ change: function(event, ui) {
   updateResult();
 }
 });
+  $( "#ps-slider .ui-slider-range" ).css('background', '#00F7FF');
 
 $("#diver-input").change(function(){
   $("#diver-slider").slider("value",$("#diver-input").val());
@@ -303,6 +312,7 @@ change: function(event, ui) {
   updateResult();
 }
 });
+  $( "#diver-slider .ui-slider-range" ).css('background', '#99FBFF');
 
   google.charts.load('current', {
     packages: ['corechart', 'bar']
