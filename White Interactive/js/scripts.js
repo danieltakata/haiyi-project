@@ -1,7 +1,7 @@
 $(function() {
 
   // weights
-  var greVerWt = 0.1149111843, greQuanWt = 0.08803203101, greWriWt = .2926697271, gpaWt = 1.584509831, rankWt = 0.003, degWt = 1, psWt = .0234, diverWt = .0108, recWt = .008; 
+  var greVerWt = 0.1149111843, greQuanWt = 0.08803203101, greWriWt = .2926697271, gpaWt = 1.584509831, rankWt = 0.0025, degWt = .8, psWt = .0234, diverWt = .0508, recWt = .012; 
   // default values
   var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 3.6, rankVal = 200, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3; 
 
@@ -162,7 +162,7 @@ change: function(event, ui) {
 
 $("#deg-dropdown").selectmenu({
   change: function(event, ui) {
-    studentData[1][6] = ui.value*degWt;
+    studentData[1][6] = $("#deg-dropdown").val()*degWt;
 //    adjustedData[5] = (ui.value-studentData[2][6])*degWt;
     drawStacked();
     updateResult();
