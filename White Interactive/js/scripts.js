@@ -358,9 +358,10 @@ change: function(event, ui) {
     var options = {
       title: 'Admission Result',
       chartArea: {
-        width: '50%'
+        width: '70%'
       },
       isStacked: true,
+	  legend: {position: 'none'},
       hAxis: {
         title: '',
         minValue: 0,
