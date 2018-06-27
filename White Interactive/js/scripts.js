@@ -7,35 +7,69 @@ google.charts.load('current', {
 google.charts.setOnLoadCallback(function(){
 
   // weights
-  var greVerWt = 0.1149111843,
-    greQuanWt = 0.08803203101,
-    greWriWt = .2926697271,
-    gpaWt = 1.584509831,
-    rankWt = 0.0025,
-    degWt = .8,
-    psWt = .0234,
-    diverWt = .0508,
-    recWt = .012;
-  // default values
-  var greVerVal = 150,
-    greQuanVal = 150,
-    greWriVal = 3,
-    gpaVal = 3.6,
-    rankVal = 200,
-    degVal = 0,
-    rec1 = 40,
-    rec2 = 50,
-    rec3 = 60,
-    psVal = 3,
-    diverVal = 3;
+  var weights = [
+	0.114911184251    // GRE-verb
+    ,0.0880320310069  // GRE-quant
+    ,0.2926697271     // GRE-write
+    ,1.584509831      // GPA
+    ,0.00294640714041 // Inst-Rank
+    ,1                // Major
+    ,1                // Recommendation letter 1
+	,0.00643092126893 // Rec1 inst
+    ,1                // Recommendation letter 2
+	,0.00109465199226 // Rec2 inst
+    ,1                // Recommendation letter 3
+	,0.00163152813703 // Rec3 inst
+    ,0.756277254266   // Personal Statement
+    ,0.317935719456   // Diversity score
+	,1                // Country of origin
+	];
+  // inital values
+  var vals = [
+    5              // GRE-verb - 130
+    ,15            // GRE-quant - 130
+    ,2             // GRE-write
+    ,2.3           // GPA
+    ,812           // Inst-Rank
+    ,1.5594831748  // Major
+    ,2.00627220247 // Recommendation letter 1
+	,400           // 1000 - Rec1 inst rank
+    ,1.52087808051 // Recommendation letter 2
+	,300           // 1000 - Rec2 inst rank
+    ,0.87623872879 // Recommendation letter 3
+	,200           // 1000 - Rec3 inst rank
+    ,1             // Personal Statement - 1
+    ,1             // Diversity score - 1
+	,0             // Country of origin
+	];
 
   var studentData = [
-    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Deg', 'Rec1', 'Rec2', 'Rec3', 'PS', 'Diversity'],
-    ['', greVerVal * greVerWt, greQuanVal * greQuanWt, greWriVal * greWriWt, gpaVal * gpaWt, (1000 - rankVal) * rankWt, degVal * degWt,
-      rec1 * recWt, rec2 * recWt, rec3 * recWt, psVal * psWt, diverVal * diverWt
-    ]
-    //    ,['', 152.33, 164.75, 3.715, 3.61, 173.08, 0.53, 64.5, 64.5, 64.5, 3.54, 3.58] //average values
-  ]
+    ['Total Score'
+	, 'GRE-verb'
+	, 'GRE-quant'
+	, 'GRE-write'
+	, 'GPA'
+	, 'Inst-Rank'
+	, 'Major'
+	, 'Rec1'
+	, 'Rec1 Rank'
+	, 'Rec2'
+	, 'Rec2 Rank'
+	, 'Rec3'
+	, 'Rec3 Rank'
+	, 'PS'
+	, 'Diversity'
+	, 'Country'
+	],
+    ['',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  ];
+  for ( var i=0; i<15; i++) {
+	  studentData[1][i+1] = vals[i]*weights[i];
+  }
+  
+  var threshold = 42.962524 - 130*weights[0] - 130*weights[1] - weights[4] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[12] - weights[13]
+  
+  var barcolors = ['#F01010', '#FB0074', '#C82CCC', '#006DFF', '#0089FF', '#90A0E0', '#00BF70', '#00BF70', '#009F00', '#009F00', '#5BE500', '#5BE500', '#FFA500', '#E05050', '#FF90B0']
 
   /*  var importantIndex = 4
     var dummy = 999
@@ -47,78 +81,72 @@ google.charts.setOnLoadCallback(function(){
     var i */
 
   $("#greV-input").change(function() {
-    $("#greV-slider").slider("value", $("#greV-input").val());
+    $("#greV-slider").slider("value", $("#greV-input").val() - 130);
     updateResult();
   });
-  $("#greV-input").val(greVerVal);
+  $("#greV-input").val(vals[0] + 130);
 
 
   $("#greV-slider").slider({
     // options
     range: "min",
-    value: greVerVal,
-    min: 130,
-    max: 170,
+    value: vals[0],
+    min: 0,
+    max: 40,
     step: 1,
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#greV-input").val(ui.value)
+      $("#greV-input").val(ui.value + 130)
     },
     change: function(event, ui) {
-      studentData[1][1] = ui.value * greVerWt;
-      //      adjustedData[0] = (ui.value-studentData[2][1])*greVerWt
+      studentData[1][1] = ui.value * weights[0];
       drawStacked();
       updateResult();
     }
   });
-  $("#greV-slider .ui-slider-range").css('background', '#CC0000');
+  $("#greV-slider .ui-slider-range").css('background', barcolors[0]);
 
   $("#greQ-input").change(function() {
-    $("#greQ-slider").slider("value", $("#greQ-input").val());
+    $("#greQ-slider").slider("value", $("#greQ-input").val() - 130);
     updateResult();
   });
-  $("#greQ-input").val(greQuanVal);
+  $("#greQ-input").val(vals[1] + 130);
 
 
   $("#greQ-slider").slider({
     // options
     range: "min",
-    value: greQuanVal,
-    min: 130,
-    max: 170,
+    value: vals[1],
+    min: 0,
+    max: 40,
     step: 1,
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#greQ-input").val(ui.value)
+      $("#greQ-input").val(ui.value + 130)
     },
     change: function(event, ui) {
-      studentData[1][2] = ui.value * greQuanWt;
+      studentData[1][2] = ui.value * weights[1];
       //    adjustedData[1] = (ui.value-studentData[2][2])*greQuanWt
       drawStacked();
       updateResult();
     }
   });
-  $("#greQ-slider .ui-slider-range").css('background', '#FF0000');
+  $("#greQ-slider .ui-slider-range").css('background', barcolors[1]);
 
   $("#greW-input").change(function() {
     $("#greW-slider").slider("value", $("#greW-input").val());
     updateResult();
   });
-  $("#greW-input").val(greWriVal);
-
-  $("#greW-input").change(function() {
-    $("#greW-slider").slider("value", $("#greW-input").val());
-    updateResult();
-  });
+  $("#greW-input").val(vals[2]);
 
   $("#greW-slider").slider({
     // options
     range: "min",
-    value: greWriVal,
+    value: vals[2],
     min: 0,
     max: 6,
     step: 0.5,
@@ -129,41 +157,24 @@ google.charts.setOnLoadCallback(function(){
       $("#greW-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][3] = ui.value * greWriWt;
+      studentData[1][3] = ui.value * weights[2];
       //  adjustedData[2] = (ui.value-studentData[2][3])*greWriWt
       drawStacked();
       updateResult();
     }
   });
-  $("#greW-slider .ui-slider-range").css('background', '#FF9999');
+  $("#greW-slider .ui-slider-range").css('background', barcolors[2]);
 
-  $("#greW-slider").slider({
-    // options
-    range: "min",
-    value: 3,
-    min: 0,
-    max: 6,
-    step: 0.5,
-    start: function(event, ui) {
-      // code
-    },
-    slide: function(event, ui) {
-      $("#greW-input").val(ui.value)
-    },
-    change: function(event, ui) {
-      studentData[1][3] = ui.value * greWriWt;
-      //adjustedData[2] = (ui.value - studentData[1][3]) * greWriWt
-      drawStacked();
-      updateResult();
-    }
+  $("#gpa-input").change(function() {
+    $("#gpa-slider").slider("value", $("#gpa-input").val());
+    updateResult();
   });
-  $("#gpa-input").val(gpaVal);
-
+  $("#gpa-input").val(vals[3]);
 
   $("#gpa-slider").slider({
     // options
     range: "min",
-    value: gpaVal,
+    value: vals[3],
     min: 0.0,
     max: 4.0,
     step: 0.01,
@@ -174,24 +185,24 @@ google.charts.setOnLoadCallback(function(){
       $("#gpa-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][4] = ui.value * gpaWt;
+      studentData[1][4] = ui.value * weights[3];
       //      adjustedData[3] = (ui.value-studentData[2][4])*gpaWt
       drawStacked();
       updateResult();
     }
   });
-  $("#gpa-slider .ui-slider-range").css('background', '#5BE500');
+  $("#gpa-slider .ui-slider-range").css('background', barcolors[3]);
 
   $("#rank-input").change(function() {
     $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
     updateResult();
   });
-  $("#rank-input").val(rankVal)
+  $("#rank-input").val(vals[4])
 
   $("#rank-slider").slider({
     // options
     range: "min",
-    value: 1000 - rankVal,
+    value: 1000 - vals[4],
     min: 0,
     max: 999,
     step: 1,
@@ -202,169 +213,200 @@ google.charts.setOnLoadCallback(function(){
       $("#rank-input").val(1000 - ui.value)
     },
     change: function(event, ui) {
-      studentData[1][5] = ui.value * rankWt;
+      studentData[1][5] = (1000 - ui.value) * weights[4];
       //      adjustedData[4] = (ui.value-studentData[2][5])*rankWt;
       drawStacked();
       updateResult();
     }
   });
-  $("#rank-slider .ui-slider-range").css('background', '#62D119');
+  $("#rank-slider .ui-slider-range").css('background', barcolors[4]);
 
-  $("#deg-dropdown").selectmenu({
+  $("#maj-dropdown").selectmenu({
     change: function(event, ui) {
-      studentData[1][6] = $("#deg-dropdown").val() * degWt;
-      //    adjustedData[5] = (ui.value-studentData[2][6])*degWt;
+      studentData[1][6] = $("#maj-dropdown").val() * weights[5];
       drawStacked();
       updateResult();
     }
   });
 
-  $("#rec1-input").change(function() {
-    $("#rec1-slider").slider("value", $("#rec1-input").val());
+  $("#rec1-dropdown").selectmenu({
+    change: function(event, ui) {
+      studentData[1][7] = $("#rec1-dropdown").val() * weights[6];
+      drawStacked();
+      updateResult();
+    }
+  });
+  
+  $("#rec1rank-input").change(function() {
+    $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
     updateResult();
   });
-  $("#rec1-input").val(rec1);
+  $("#rec1rank-input").val(1000 - vals[7]);
 
-  $("#rec1-slider").slider({
+  $("#rec1rank-slider").slider({
     // options
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#rec1-input").val(ui.value)
+      $("#rec1rank-input").val(1000 - ui.value)
     },
     range: "min",
-    min: 1,
-    max: 100,
-    value: rec1,
+    min: 0,
+    max: 999,
+    value: vals[7],
     step: 1,
     change: function(event, ui) {
-      studentData[1][7] = ui.value * recWt;
+      studentData[1][8] = ui.value * weights[7];
       //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       drawStacked();
       updateResult();
     }
   });
-  $("#rec1-slider .ui-slider-range").css('background', '#8900E5');
+  $("#rec1rank-slider .ui-slider-range").css('background', barcolors[7]);
 
-  $("#rec2-input").change(function() {
-    $("#rec2-slider").slider("value", $("#rec2-input").val());
+  $("#rec2-dropdown").selectmenu({
+    change: function(event, ui) {
+      studentData[1][9] = $("#rec2-dropdown").val() * weights[8];
+      drawStacked();
+      updateResult();
+    }
+  });
+  
+  $("#rec2rank-input").change(function() {
+    $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
     updateResult();
   });
-  $("#rec2-input").val(rec2)
+  $("#rec2rank-input").val(1000 - vals[9]);
 
-  $("#rec2-slider").slider({
+  $("#rec2rank-slider").slider({
     // options
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#rec2-input").val(ui.value)
+      $("#rec2rank-input").val(1000 - ui.value)
     },
     range: "min",
-    min: 1,
-    max: 100,
-    value: rec2,
+    min: 0,
+    max: 999,
+    value: vals[9],
     step: 1,
     change: function(event, ui) {
-      studentData[1][8] = ui.value * recWt;
-      //  adjustedData[7] = (ui.value-studentData[2][8])*recWt;
+      studentData[1][10] = ui.value * weights[9];
+      //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       drawStacked();
       updateResult();
     }
   });
-  $("#rec2-slider .ui-slider-range").css('background', '#AD33FF');
+  $("#rec2rank-slider .ui-slider-range").css('background', barcolors[9]);
 
-  $("#rec3-input").change(function() {
-    $("#rec3-slider").slider("value", $("#rec3-input").val());
+  $("#rec3-dropdown").selectmenu({
+    change: function(event, ui) {
+      studentData[1][11] = $("#rec3-dropdown").val() * weights[10];
+      drawStacked();
+      updateResult();
+    }
+  });
+  
+  $("#rec3rank-input").change(function() {
+    $("#rec3rank-slider").slider("value", 1000 - $("#rec3rank-input").val());
     updateResult();
   });
-  $("#rec3-input").val(rec3);
+  $("#rec3rank-input").val(1000 - vals[11]);
 
-  $("#rec3-slider").slider({
+  $("#rec3rank-slider").slider({
     // options
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#rec3-input").val(ui.value)
+      $("#rec3rank-input").val(1000 - ui.value)
     },
     range: "min",
-    min: 1,
-    max: 100,
-    value: rec3,
+    min: 0,
+    max: 999,
+    value: vals[11],
     step: 1,
     change: function(event, ui) {
-      studentData[1][9] = ui.value * recWt;
-      //  adjustedData[8] = (ui.value-studentData[2][9])*recWt;
+      studentData[1][12] = ui.value * weights[11];
+      //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       drawStacked();
       updateResult();
     }
   });
-  $("#rec3-slider .ui-slider-range").css('background', '#D699FF');
+  $("#rec3rank-slider .ui-slider-range").css('background', barcolors[11]);
 
   $("#ps-input").change(function() {
-    $("#ps-slider").slider("value", $("#ps-input").val());
+    $("#ps-slider").slider("value", $("#ps-input").val() - 1);
     updateResult();
   });
-  $("#ps-input").val(psVal)
+  $("#ps-input").val(vals[12] + 1)
 
 
   $("#ps-slider").slider({
     // options
     range: "min",
-    value: psVal,
-    min: 1,
-    max: 5,
+    value: vals[12],
+    min: 0,
+    max: 4,
     step: 0.5,
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#ps-input").val(ui.value)
+      $("#ps-input").val(ui.value + 1)
     },
     change: function(event, ui) {
-      studentData[1][10] = ui.value * psWt;
+      studentData[1][13] = ui.value * weights[12];
       //  adjustedData[9] = (ui.value-studentData[2][10])*psWt
       drawStacked();
       updateResult();
     }
   });
-  $("#ps-slider .ui-slider-range").css('background', '#00F7FF');
+  $("#ps-slider .ui-slider-range").css('background', barcolors[12]);
 
   $("#diver-input").change(function() {
-    $("#diver-slider").slider("value", $("#diver-input").val());
+    $("#diver-slider").slider("value", $("#diver-input").val() - 1);
     updateResult();
   });
-  $("#diver-input").val(diverVal);
+  $("#diver-input").val(vals[13] + 1);
 
   $("#diver-slider").slider({
     // options
     range: "min",
-    value: diverVal,
-    min: 1,
-    max: 5,
+    value: vals[13],
+    min: 0,
+    max: 4,
     step: 0.5,
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#diver-input").val(ui.value)
+      $("#diver-input").val(ui.value + 1)
     },
     change: function(event, ui) {
-      studentData[1][11] = ui.value * diverWt;
+      studentData[1][14] = ui.value * weights[13];
       drawStacked();
       updateResult();
     }
   });
-  $("#diver-slider .ui-slider-range").css('background', '#99FBFF');
+  $("#diver-slider .ui-slider-range").css('background', barcolors[13]);
 
+  $("#country-dropdown").selectmenu({
+    change: function(event, ui) {
+      studentData[1][15] = $("#country-dropdown").val() * weights[14];
+      drawStacked();
+      updateResult();
+    }
+  });
 
 
   function updateResult() {
     //	$("#a" + studentData[0][importantIndex]).val( "" );
-    if (studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] + studentData[1][6] +
-      studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] + studentData[1][11] >= 42.96) {
+    if (studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] +
+	  studentData[1][6] + studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] +
+	  studentData[1][11] + studentData[1][12] + studentData[1][13] + studentData[1][14] >= threshold) {
       $("#result").text("Yay, accepted!")
       //document.getElementById("lookat").style.color = "white";
       $("#result").css("color", "green")
@@ -382,7 +424,6 @@ google.charts.setOnLoadCallback(function(){
       $("#result").css("color", "red")
     }
   }
-
   function drawStacked() {
 
     var donutRangeSlider = new google.visualization.ControlWrapper({
@@ -407,24 +448,26 @@ google.charts.setOnLoadCallback(function(){
       hAxis: {
         title: '',
         minValue: 0,
-        maxValue: 50,
+        maxValue: 40.236724062345,
         gridlines: {
           color: "black",
         },
         ticks: [{
-          v: 42.96,
+          v: threshold,
           f: "Acceptance Threshold"
         }, {
-          v: 50,
+          v: 40.236724062345,
           f: ""
         }]
       },
       vAxis: {
         title: ''
       },
-      colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF']
+      colors: barcolors
     };
     var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
     chart.draw(data, options);
   }
+  updateResult()
+  drawStacked()
 });

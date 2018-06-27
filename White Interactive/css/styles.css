@@ -1,3 +1,7 @@
 #footnote {
     font-style: italic
 }
+div.sli {
+    position: relative;
+	top: 9px;
+}

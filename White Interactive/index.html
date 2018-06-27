@@ -3,12 +3,6 @@
 <html lang="en">
 
 <head>
-  <style>
-    label {
-      padding-bottom: 6px;
-      padding-top: 11px;
-    }
-  </style>
   <meta charset="utf-8">
 
   <title>Grad Admission Data Visualization</title>
@@ -61,167 +55,273 @@
               <!--GRE-V Row-->
               <div class='row'>
                 <div class='col-2'>
-                  <label>GRE-Verbal:</label>
+                  <label>GRE-Verbal: <span title='Verbal score for the Graduate Readiness Exam.'>(?)</span></label>
 
                 </div>
                 <div class='col-4'>
-                  <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
+                  <input type="text" id="greV-input" title="Enter GRE-Verbal Score from 130-170" name="name" />
 
                 </div>
                 <div class='col-6'>
-                  <div id="greV-slider"></div>
+                  <div class='sli' id="greV-slider"></div>
 
                 </div>
               </div>
               <!--GRE-Q Row-->
               <div class='row'>
                 <div class='col-2'>
-                  <label>GRE-Quantitative:</label>
+                  <label>GRE-Quantitative: <span title='Quantitative score for the Graduate Readiness Exam.'>(?)</span></label>
 
                 </div>
                 <div class='col-4'>
-                  <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
+                  <input type="text" id="greQ-input" title="Enter GRE-Quantitative Score from 130-170" name="name" />
 
                 </div>
                 <div class='col-6'>
-                  <div id="greQ-slider"></div>
+                  <div class='sli' id="greQ-slider"></div>
 
                 </div>
               </div>
               <!--GRE-W Row-->
               <div class='row'>
                 <div class='col-2'>
-                  <label>GRE-Writing:</label>
+                  <label>GRE-Writing: <span title='Writing score for the Graduate Readiness Exam.'>(?)</span></label>
 
                 </div>
                 <div class='col-4'>
-                  <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
+                  <input type="text" id="greW-input" title="Enter GRE-Writing Score from 0-6" name="name" />
 
                 </div>
                 <div class='col-6'>
-                  <div id="greW-slider"></div>
+                  <div class='sli' id="greW-slider"></div>
 
                 </div>
               </div>
               <!--GPA Row-->
               <div class='row'>
                 <div class='col-2'>
-                  <label>GPA:</label>
+                  <label>GPA: <span title='Grade Point Average for highest relevant education.'>(?)</span></label>
 
                 </div>
                 <div class='col-4'>
-                  <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
+                  <input type="text" id="gpa-input" title="Enter GPA from 0.0-4.0" name="name" />
 
                 </div>
                 <div class='col-6'>
-                  <div id="gpa-slider"></div>
+                  <div class='sli' id="gpa-slider"></div>
 
                 </div>
               </div>
               <!--Institution Rank Row-->
               <div class='row'>
                 <div class='col-2'>
-                  <label>Institution Rank:</label>
+                  <label>Institution Rank: <span title='National Ranking for the institution of highest relevant education.'>(?)</span></label>
 
                 </div>
                 <div class='col-4'>
-                  <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
+                  <input type="text" id="rank-input" title="Enter Institution Rank from 1-1000" name="name" />
 
                 </div>
                 <div class='col-6'>
-                  <div id="rank-slider"></div>
+                  <div class='sli' id="rank-slider"></div>
 
                 </div>
               </div>
-              <!--Degree Row-->
+			  <br/>
+              <!--Major Row-->
 
               <div class='row'>
                 <div class='col-6'>
-                  <label>Highest Degree:</label>
+                  <label>Major: <span title="Major received from highest relevant education.">(?)</span></label>
 
                 </div>
                 <div class='col-6'>
-                  <select name="Highest Degree" id="deg-dropdown">
-                      <option value="0">High School</option>
-                      <option value="0">Associate's</option>
-                      <option value="0">Bachelor's</option>
-                      <option value="1">Master's</option>
+                  <select name="Major" id="maj-dropdown">
+                      <option value="1.5594831748">Computer Science</option>
+                      <option value="1.5594831748">Computer Engineering</option>
+                      <option value="0">Math</option>
+                      <option value="0">Engineering</option>
+                      <option value="0.30693782874">Other</option>
                     </select>
 
                 </div>
               </div>
-              <!--Personal Row-->
-              <div class='row'>
-                <div class='col-2'>
-                  <label>Personal Statement:</label>
-
-                </div>
-                <div class='col-4'>
-                  <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
-
-                </div>
-                <div class='col-6'>
-                  <div id="ps-slider"></div>
-
-                </div>
-              </div>
-              <!--Diversity Row-->
-              <div class='row'>
-                <div class='col-2'>
-                  <label>Diversity Statement:</label>
-
-                </div>
-                <div class='col-4'>
-                  <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
-
-                </div>
-                <div class='col-6'>
-                  <div id="diver-slider"></div>
-
-                </div>
-              </div>
+			  <br/>
               <!--Rec1 Row-->
               <div class='row'>
                 <div class='col-2'>
                   <label>Letter of Rec. 1 Score:</label>
 
                 </div>
-                <div class='col-4'>
-                  <input type="text" id="rec1-input" title="Letter of Recommendation 1 Score" name="name" value="40" />
-
-                </div>
                 <div class='col-6'>
-                  <div id="rec1-slider"></div>
+                  <select name="" id="rec1-dropdown">
+                      <option value="2.00627220247">Top 5%</option>
+                      <option value="0.93864978431">Top 10%</option>
+                      <option value="0.27703027917">Top 20%</option>
+                      <option value="0">Top 50%</option>
+                    </select>
 
                 </div>
               </div>
+              <!--Rec1 Institute Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>Institution Rank of Recommender:</label>
+
+                </div>
+                <div class='col-4'>
+                  <input type="text" id="rec1rank-input" title="Enter Rec1 Institution Rank from 1-1000" name="name" />
+
+                </div>
+                <div class='col-6'>
+                  <div class='sli' id="rec1rank-slider"></div>
+
+                </div>
+              </div>
+			  <br/>
               <!--Rec2 Row-->
               <div class='row'>
                 <div class='col-2'>
                   <label>Letter of Rec. 2 Score:</label>
 
                 </div>
-                <div class='col-4'>
-                  <input type="text" id="rec2-input" title="Letter of Recommendation 2 Score" name="name" value="50" />
-
-                </div>
                 <div class='col-6'>
-                  <div id="rec2-slider"></div>
+                  <select name="" id="rec2-dropdown">
+                      <option value="1.52087808051">Top 5%</option>
+                      <option value="1.00101344554">Top 10%</option>
+                      <option value="0">Top 20%</option>
+                      <option value="0.44907150816">Top 50%</option>
+                    </select>
 
                 </div>
               </div>
+              <!--Rec2 Institute Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>Institution Rank of Recommender:</label>
+
+                </div>
+                <div class='col-4'>
+                  <input type="text" id="rec2rank-input" title="Enter Rec2 Institution Rank from 1-1000" name="name" />
+
+                </div>
+                <div class='col-6'>
+                  <div class='sli' id="rec2rank-slider"></div>
+
+                </div>
+              </div>
+			  <br/>
               <!--Rec3 Row-->
               <div class='row'>
                 <div class='col-2'>
                   <label>Letter of Rec. 3 Score:</label>
 
                 </div>
+                <div class='col-6'>
+                  <select name="" id="rec3-dropdown">
+                      <option value="0.87623872879">Top 5%</option>
+                      <option value="1.51416715224">Top 10%</option>
+                      <option value="1.11329686474">Top 20%</option>
+                      <option value="0">Top 50%</option>
+                    </select>
+
+                </div>
+              </div>
+              <!--Rec3 Institute Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>Institution Rank of Recommender:</label>
+
+                </div>
                 <div class='col-4'>
-                  <input type="text" id="rec3-input" title="Letter of Recommendation 3 Score" name="name" value="60" />
+                  <input type="text" id="rec3rank-input" title="Enter Rec3 Institution Rank from 1-1000" name="name" />
 
                 </div>
                 <div class='col-6'>
-                  <div id="rec3-slider"></div>
+                  <div class='sli' id="rec3rank-slider"></div>
+
+                </div>
+              </div>
+			  <br/>
+              <!--Personal Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>Personal Statement: <span title='Graded score for Personal Statement Essay.'>(?)</span></label>
+
+                </div>
+                <div class='col-4'>
+                  <input type="text" id="ps-input" title="Enter Personal Statement Score from 1-5" name="name" />
+
+                </div>
+                <div class='col-6'>
+                  <div class='sli' id="ps-slider"></div>
+
+                </div>
+              </div>
+              <!--Diversity Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>Diversity Statement: <span title='Graded score for Diversity Statement Essay.'>(?)</span></label>
+
+                </div>
+                <div class='col-4'>
+                  <input type="text" id="diver-input" title="Enter Diversity Statement Score from 1-5" name="name" />
+
+                </div>
+                <div class='col-6'>
+                  <div class='sli' id="diver-slider"></div>
+
+                </div>
+              </div>
+              <!--Country Row-->
+
+              <div class='row'>
+                <div class='col-6'>
+                  <label>Country of Origin:</label>
+
+                </div>
+                <div class='col-6'>
+                  <select name="Country" id="country-dropdown">
+                      <option value="0">United States of America</option>
+                      <option value="0.513354407198">Algeria</option>
+                      <option value="0.513354407198">Argentina</option>
+                      <option value="1.03588023043">Bangladesh</option>
+                      <option value="0.513354407198">Brazil</option>
+                      <option value="0.53487712355">Canada</option>
+                      <option value="1.03588023043">China</option>
+                      <option value="0.513354407198">Colombia</option>
+                      <option value="0.513354407198">Democratic Republic of the Congo</option>
+                      <option value="0.513354407198">Egypt</option>
+                      <option value="0.513354407198">Ethiopia</option>
+                      <option value="0.48266027481">France</option>
+                      <option value="0.48266027481">Germany</option>
+                      <option value="1.03588023043">India</option>
+                      <option value="1.03588023043">Indonesia</option>
+                      <option value="1.03588023043">Iran</option>
+                      <option value="1.03588023043">Iraq</option>
+                      <option value="0.48266027481">Italy</option>
+                      <option value="1.03588023043">Japan</option>
+                      <option value="0.513354407198">Kenya</option>
+                      <option value="0.513354407198">Mexico</option>
+                      <option value="1.03588023043">Myanmar</option>
+                      <option value="0.513354407198">Nigeria</option>
+                      <option value="1.03588023043">Pakistan</option>
+                      <option value="1.03588023043">Philippines</option>
+                      <option value="0.48266027481">Poland</option>
+                      <option value="0.48266027481">Russia</option>
+                      <option value="0.513354407198">South Africa</option>
+                      <option value="1.03588023043">South Korea</option>
+                      <option value="0.48266027481">Spain</option>
+                      <option value="0.513354407198">Sudan</option>
+                      <option value="0.513354407198">Tanzania</option>
+                      <option value="1.03588023043">Thailand</option>
+                      <option value="0.48266027481">Turkey</option>
+                      <option value="0.513354407198">Uganda</option>
+                      <option value="0.48266027481">Ukraine</option>
+                      <option value="0.48266027481">United Kingdom</option>
+                      <option value="1.03588023043">Vietnam</option>
+					  <option value="0.513354407198">Other</option>
+                    </select>
 
                 </div>
               </div>
