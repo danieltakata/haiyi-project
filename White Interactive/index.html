@@ -133,19 +133,34 @@
 
                 </div>
               </div>
-              <!--Degree Row-->
-
+              <!--Major Row-->
               <div class='row'>
                 <div class='col-6'>
-                  <label>Highest Degree: <span title="Highest degree received. Enter High School, Associate's, Bachelor's, or Master's">(?)</span></label>
+                  <label>Major: <span title="Major received from highest relevant education. Enter CS/CE, STEM, or some other">(?)</span></label>
 
                 </div>
                 <div class='col-6'>
-                  <select name="Highest Degree" id="deg-dropdown">
-                      <option value="0">High School</option>
-                      <option value="0">Associate's</option>
-                      <option value="0">Bachelor's</option>
-                      <option value="1">Master's</option>
+                  <select name="" id="major-dropdown">
+                      <option value="csce">CS/CE</option>
+                      <option value="stem">STEM</option>
+                      <option value="other">Other</option>
+                    </select>
+
+                </div>
+              </div>
+              <!--Country Row-->
+              <div class='row'>
+                <div class='col-6'>
+                  <label>Country: <span title="Country of origin. Enter USA, Canada, Asia, Europe, or some other">(?)</span></label>
+
+                </div>
+                <div class='col-6'>
+                  <select name="" id="ctry-dropdown">
+                      <option value="usa">USA</option>
+                      <option value="canada">Canada</option>
+                      <option value="asia">Asia</option>
+                      <option value="euro">Europe</option>
+                      <option value="other">Other</option>
                     </select>
 
                 </div>
@@ -182,50 +197,98 @@
               </div>
               <!--Rec1 Row-->
               <div class='row'>
-                <div class='col-2'>
-                  <label>Letter of Rec. 1: <span title='Graded score for first letter of recommendation. Enter a value from 1-100'>(?)</span></label>
-
-                </div>
-                <div class='col-4'>
-                  <input type="text" id="rec1-input" title="Enter Letter of Recommendation 1 Score from 1-100" name="name" value="40" />
+                <div class='col-6'>
+                  <label>Letter of Rec. 1: <span title="Percentile ranking for first letter of recommendation">(?)</span></label>
 
                 </div>
                 <div class='col-6'>
-                  <div id="rec1-slider"></div>
+                  <select name="" id="rec1-dropdown">
+                      <option value="rec1top5Wt">Top 5%</option>
+                      <option value="rec1top10Wt">Top 10%</option>
+                      <option value="rec1top20Wt">Top 20%</option>
+                      <option value="rec1top50Wt">Top 50%</option>
+                    </select>
+
+                </div>
+              </div>
+              <!--Rec1 Institute Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>: <span title='National Ranking of the institution of origin for the first letter of recommendation. Enter a value from 1-1000'>(?)</span></label>
+
+                </div>
+                <div class='col-4'>
+                  <input type="text" id="rec1rank-input" title="Enter Rec1 Institution Rank from 1-1000" name="name" value="500" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="rec1rank-slider"></div>
 
                 </div>
               </div>
               <!--Rec2 Row-->
               <div class='row'>
-                <div class='col-2'>
-                  <label>Letter of Rec. 2: <span title='Graded score for second letter of recommendation. Enter a value from 1-100'>(?)</span></label>
-
-                </div>
-                <div class='col-4'>
-                  <input type="text" id="rec2-input" title="Enter Letter of Recommendation 2 Score from 1-100" name="name" value="50" />
+                <div class='col-6'>
+                  <label>Letter of Rec. 2: <span title="Percentile ranking for second letter of recommendation">(?)</span></label>
 
                 </div>
                 <div class='col-6'>
-                  <div id="rec2-slider"></div>
+                  <select name="" id="rec2-dropdown">
+                      <option value="rec2top5Wt">Top 5%</option>
+                      <option value="rec2top10Wt">Top 10%</option>
+                      <option value="rec2top20Wt">Top 20%</option>
+                      <option value="rec2top50Wt">Top 50%</option>
+                    </select>
+
+                </div>
+              </div>
+              <!--Rec2 Institute Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>: <span title='National Ranking of the institution of origin for the second letter of recommendation. Enter a value from 1-1000'>(?)</span></label>
+
+                </div>
+                <div class='col-4'>
+                  <input type="text" id="rec2rank-input" title="Enter Rec2 Institution Rank from 1-1000" name="name" value="500" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="rec2rank-slider"></div>
 
                 </div>
               </div>
               <!--Rec3 Row-->
               <div class='row'>
-                <div class='col-2'>
-                  <label>Letter of Rec. 3: <span title='Graded score for third letter of recommendation. Enter a value from 1-100'>(?)</span></label>
-
-                </div>
-                <div class='col-4'>
-                  <input type="text" id="rec3-input" title="Enter Letter of Recommendation 3 Score from 1-100" name="name" value="60" />
+                <div class='col-6'>
+                  <label>Letter of Rec. 3: <span title="Percentile ranking for third letter of recommendation">(?)</span></label>
 
                 </div>
                 <div class='col-6'>
-                  <div id="rec3-slider"></div>
+                  <select name="" id="rec3-dropdown">
+                      <option value="rec3top5Wt">Top 5%</option>
+                      <option value="rec3top10Wt">Top 10%</option>
+                      <option value="rec3top20Wt">Top 20%</option>
+                      <option value="rec3top50Wt">Top 50%</option>
+                    </select>
 
                 </div>
               </div>
+              <!--Rec3 Institute Row-->
+              <div class='row'>
+                <div class='col-2'>
+                  <label>: <span title='National Ranking of the institution of origin for the third letter of recommendation. Enter a value from 1-1000'>(?)</span></label>
 
+                </div>
+                <div class='col-4'>
+                  <input type="text" id="rec3rank-input" title="Enter Rec3 Institution Rank from 1-1000" name="name" value="500" />
+
+                </div>
+                <div class='col-6'>
+                  <div id="rec3rank-slider"></div>
+
+                </div>
+              </div>
+              
             </div>
           </div>
         </div>
