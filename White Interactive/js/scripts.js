@@ -42,8 +42,8 @@ google.charts.setOnLoadCallback(function(){
     rec2instWt = -1.58e-03,
     rec3instWt = -1.58e-03
   // default values (for sliders)
-  var greVerVal = 150,
-    greQuanVal = 150,
+  var greVerVal = 170,
+    greQuanVal = 170,
     greWriVal = 3,
     gpaVal = 3.6,
     rankVal = 200,
@@ -55,17 +55,19 @@ google.charts.setOnLoadCallback(function(){
 
   var studentData = [
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 
-    'Country', 'Rec1', 'Rec2', 'Rec3', 'Rec1-inst', 'Rec2-inst', 'Rec3-inst', 
+    'Country', 'Rec1', 'Rec2', 'Rec3', 
+    'Rec1-inst', 'Rec2-inst', 'Rec3-inst', 
     'PS', 'Diversity'],
-    ['', (greVerVal-130) * greVerWt, (greQuanVal-130) * greQuanWt, greWriVal * greWriWt, gpaVal * gpaWt, rankVal * rankWt, csceWt,
-      usaWt, rec1top5Wt, rec2top5Wt, rec3top5Wt, rec1instVal * rec1instWt, rec2instVal * rec2instWt, rec3instVal * rec3instWt, 
+    ['', (greVerVal-130) * greVerWt, (greQuanVal-130) * greQuanWt, greWriVal * greWriWt, gpaVal * gpaWt, rankVal * rankWt, csceWt + 0.8304791985,
+      usaWt + 0.5237106007, rec1top5Wt + 0.8421408468, rec2top5Wt + 0.8250712596, rec3top5Wt + 0.8450858476, 
+      rec1instVal * rec1instWt + 0.006982607425 * 1000, rec2instVal * rec2instWt + 1.58e-03 * 1000, rec3instVal * rec3instWt + 1.58e-03 * 1000, 
       psVal * psWt, diverVal * diverWt
     ]
     //    ,['', 152.33, 164.75, 3.715, 3.61, 173.08, 0.53, 64.5, 64.5, 64.5, 3.54, 3.58] //average values
   ]
 
   for (var i = 1; i < studentData.length; i ++){
-    studentData[1][i] = studentData[1][i]/33.66839414*100
+    studentData[1][i] = studentData[1][i] / 33.66839414 * 100
   }
 
   /*  var importantIndex = 4
@@ -98,7 +100,7 @@ google.charts.setOnLoadCallback(function(){
       $("#greV-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][1] = (ui.value-130) * greVerWt /33.66839414*100;
+      studentData[1][1] = (ui.value-130) * greVerWt / 33.66839414 * 100;
       //      adjustedData[0] = (ui.value-studentData[2][1])*greVerWt
       drawStacked();
       updateResult();
@@ -127,7 +129,7 @@ google.charts.setOnLoadCallback(function(){
       $("#greQ-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][2] = (ui.value-130) * greQuanWt /33.66839414*100;
+      studentData[1][2] = (ui.value-130) * greQuanWt / 33.66839414 * 100;
       //    adjustedData[1] = (ui.value-studentData[2][2])*greQuanWt
       drawStacked();
       updateResult();
@@ -160,7 +162,7 @@ google.charts.setOnLoadCallback(function(){
       $("#greW-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][3] = ui.value * greWriWt /33.66839414*100;
+      studentData[1][3] = ui.value * greWriWt / 33.66839414 * 100;
       //  adjustedData[2] = (ui.value-studentData[2][3])*greWriWt
       drawStacked();
       updateResult();
@@ -182,7 +184,7 @@ google.charts.setOnLoadCallback(function(){
       $("#greW-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][3] = ui.value * greWriWt /33.66839414*100;
+      studentData[1][3] = ui.value * greWriWt / 33.66839414 * 100;
       //adjustedData[2] = (ui.value - studentData[1][3]) * greWriWt
       drawStacked();
       updateResult();
@@ -205,7 +207,7 @@ google.charts.setOnLoadCallback(function(){
       $("#gpa-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][4] = ui.value * gpaWt /33.66839414*100;
+      studentData[1][4] = ui.value * gpaWt / 33.66839414 * 100;
       //      adjustedData[3] = (ui.value-studentData[2][4])*gpaWt
       drawStacked();
       updateResult();
@@ -233,7 +235,7 @@ google.charts.setOnLoadCallback(function(){
       $("#rank-input").val(1000 - ui.value)
     },
     change: function(event, ui) {
-      studentData[1][5] = ui.value * rankWt /33.66839414*100;
+      studentData[1][5] = ui.value * rankWt / 33.66839414 * 100;
       //      adjustedData[4] = (ui.value-studentData[2][5])*rankWt;
       drawStacked();
       updateResult();
@@ -254,7 +256,7 @@ google.charts.setOnLoadCallback(function(){
         studentData[1][6] = otherWt;
         break;
       }
-      studentData[1][6] = studentData[1][6]/33.66839414*100;
+      studentData[1][6] = (studentData[1][6] + 0.8304791985) / 33.66839414 * 100;
       drawStacked();
       updateResult();
     }
@@ -279,7 +281,7 @@ google.charts.setOnLoadCallback(function(){
         studentData[1][7] = elseWt;
         break;
       }      
-      studentData[1][7] = studentData[1][7]/33.66839414*100;
+      studentData[1][7] = (studentData[1][7] + 0.5237106007) / 33.66839414 * 100;
       drawStacked();
       updateResult();
     }
@@ -301,7 +303,7 @@ google.charts.setOnLoadCallback(function(){
         studentData[1][8] = rec1top50Wt;
         break;
       }      
-      studentData[1][8] = studentData[1][8]/33.66839414*100;
+      studentData[1][8] = (studentData[1][8] + 0.8421408468) / 33.66839414 * 100;
       drawStacked();
       updateResult();
     }
@@ -323,7 +325,7 @@ google.charts.setOnLoadCallback(function(){
         studentData[1][9] = rec2top50Wt;
         break;
       }      
-      studentData[1][9] = studentData[1][9]/33.66839414*100;
+      studentData[1][9] = (studentData[1][9] + 0.8250712596) / 33.66839414 * 100;
       drawStacked();
       updateResult();
     }
@@ -345,7 +347,7 @@ google.charts.setOnLoadCallback(function(){
         studentData[1][10] = rec3top50Wt;
         break;
       }      
-      studentData[1][10] = studentData[1][10]/33.66839414*100;
+      studentData[1][10] = (studentData[1][10] + 0.8450858476) / 33.66839414 * 100;
       drawStacked();
       updateResult();
     }
@@ -371,7 +373,7 @@ google.charts.setOnLoadCallback(function(){
     value: rec1instVal,
     step: 1,
     change: function(event, ui) {
-      studentData[1][11] = ui.value * rec1instWt/33.66839414*100;
+      studentData[1][11] = (ui.value * rec1instWt + 0.006982607425 * 1000) / 33.66839414 * 100;
       //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       drawStacked();
       updateResult();
@@ -399,7 +401,7 @@ google.charts.setOnLoadCallback(function(){
     value: rec2instVal,
     step: 1,
     change: function(event, ui) {
-      studentData[1][12] = ui.value * recWt/33.66839414*100;
+      studentData[1][12] = (ui.value * rec2instWt + 1.58e-03 * 1000) / 33.66839414 * 100;
       //  adjustedData[7] = (ui.value-studentData[2][8])*recWt;
       drawStacked();
       updateResult();
@@ -427,7 +429,7 @@ google.charts.setOnLoadCallback(function(){
     value: rec3instVal,
     step: 1,
     change: function(event, ui) {
-      studentData[1][13] = ui.value * recWt/33.66839414*100;
+      studentData[1][13] = (ui.value * rec3instWt + 1.58e-03 * 1000) / 33.66839414 * 100;
       //  adjustedData[8] = (ui.value-studentData[2][9])*recWt;
       drawStacked();
       updateResult();
@@ -456,7 +458,7 @@ google.charts.setOnLoadCallback(function(){
       $("#ps-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][14] = ui.value * psWt/33.66839414*100;
+      studentData[1][14] = ui.value * psWt / 33.66839414 * 100;
       //  adjustedData[9] = (ui.value-studentData[2][10])*psWt
       drawStacked();
       updateResult();
@@ -484,7 +486,7 @@ google.charts.setOnLoadCallback(function(){
       $("#diver-input").val(ui.value)
     },
     change: function(event, ui) {
-      studentData[1][15] = ui.value * diverWt/33.66839414*100;
+      studentData[1][15] = ui.value * diverWt / 33.66839414 * 100;
       drawStacked();
       updateResult();
     }
@@ -495,10 +497,21 @@ google.charts.setOnLoadCallback(function(){
 
   function updateResult() {
     //	$("#a" + studentData[0][importantIndex]).val( "" );
-    var rawScore = (studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] + studentData[1][6] +
+    var correction = 0.5237106007 + 0.8304791985 + 0.8421408468 + 0.8250712596 + 0.8450858476 + 0.006982607425 * 1000 + 1.58e-03 * 1000 + 1.58e-03 * 1000
+    var rawScore = ((studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] + studentData[1][6] +
+    studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] + studentData[1][11] + studentData[1][12] +
+    studentData[1][13] + studentData[1][14] + studentData[1][15]) * 33.66839414 / 100) - correction - 17.08976608
+    /*var rawScore = (studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] + studentData[1][6] +
       studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] + studentData[1][11] + studentData[1][12] +
-      studentData[1][13] + studentData[1][14] + studentData[1][15] - 17.08976608)
-    if ((rawScore + 26.1499034)/ 33.66839414 * 100 >= 77.66899512) {
+      studentData[1][13] + studentData[1][14] + studentData[1][15] - 17.08976608)*/
+
+    console.log('UPDATED SCORE: ' + rawScore);
+    var adjustedScore = (rawScore + 26.1499034)/ 33.66839414 * 100;
+    console.log('ADJUSTED SCORE: ' + adjustedScore);
+
+    if (sum(studentData[1]) >= (77.66899512-26.90991819+correction)) {
+      console.log('UPDATED SCORE: ' + rawScore);
+
       $("#result").text("Yay, accepted!")
       //document.getElementById("lookat").style.color = "white";
       $("#result").css("color", "green")
@@ -518,6 +531,8 @@ google.charts.setOnLoadCallback(function(){
   }
 
   function drawStacked() {
+
+    var correction = 0.5237106007 + 0.8304791985 + 0.8421408468 + 0.8250712596 + 0.8450858476 + 0.006982607425 * 1000 + 1.58e-03 * 1000 + 1.58e-03 * 1000
 
     var donutRangeSlider = new google.visualization.ControlWrapper({
       'controlType': 'NumberRangeFilter',
@@ -541,15 +556,15 @@ google.charts.setOnLoadCallback(function(){
       hAxis: {
         title: '',
         minValue: 0,
-        maxValue: 100-26.90991819,
+        maxValue: 100 - 26.90991819 + correction,
         gridlines: {
           color: "black",
         },
         ticks: [{
-          v: 77.66899512-26.90991819,
+          v: 77.66899512 - 26.90991819 + correction,
           f: "Acceptance Threshold"
         }, {
-          v: 100,
+          v: 100 - 26.90991819 + correction,
           f: ""
         }]
       },
