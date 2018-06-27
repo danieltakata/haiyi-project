@@ -17,9 +17,9 @@ google.charts.setOnLoadCallback(function(){
     ,1                // Recommendation letter 1
 	,0.00643092126893 // Rec1 inst
     ,1                // Recommendation letter 2
-	,0.00109465199226 // Rec2 inst
+	,0.00163152813703 // Rec2 inst
     ,1                // Recommendation letter 3
-	,0.00163152813703 // Rec3 inst
+	,0.00109465199226 // Rec3 inst
     ,0.756277254266   // Personal Statement
     ,0.317935719456   // Diversity score
 	,1                // Country of origin
@@ -27,17 +27,17 @@ google.charts.setOnLoadCallback(function(){
   // inital values
   var vals = [
     5              // GRE-verb - 130
-    ,15            // GRE-quant - 130
+    ,8             // GRE-quant - 130
     ,2             // GRE-write
-    ,2.3           // GPA
-    ,812           // Inst-Rank
+    ,2.2           // GPA
+    ,69            // 1000 - Inst-Rank
     ,1.5594831748  // Major
     ,2.00627220247 // Recommendation letter 1
-	,400           // 1000 - Rec1 inst rank
+	,156           // 1000 - Rec1 inst rank
     ,1.52087808051 // Recommendation letter 2
-	,300           // 1000 - Rec2 inst rank
-    ,0.87623872879 // Recommendation letter 3
-	,200           // 1000 - Rec3 inst rank
+	,89            // 1000 - Rec2 inst rank
+    ,1.51416715224 // Recommendation letter 3
+	,212           // 1000 - Rec3 inst rank
     ,1             // Personal Statement - 1
     ,1             // Diversity score - 1
 	,0             // Country of origin
@@ -67,7 +67,7 @@ google.charts.setOnLoadCallback(function(){
 	  studentData[1][i+1] = vals[i]*weights[i];
   }
   
-  var threshold = 42.962524 - 130*weights[0] - 130*weights[1] - weights[4] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[12] - weights[13]
+  var threshold = 42.962524 - 130*weights[0] - 130*weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[12] - weights[13]
   
   var barcolors = ['#F01010', '#FB0074', '#C82CCC', '#006DFF', '#0089FF', '#90A0E0', '#00BF70', '#00BF70', '#009F00', '#009F00', '#5BE500', '#5BE500', '#FFA500', '#E05050', '#FF90B0']
 
@@ -197,12 +197,12 @@ google.charts.setOnLoadCallback(function(){
     $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
     updateResult();
   });
-  $("#rank-input").val(vals[4])
+  $("#rank-input").val(1000 - vals[4])
 
   $("#rank-slider").slider({
     // options
     range: "min",
-    value: 1000 - vals[4],
+    value: vals[4],
     min: 0,
     max: 999,
     step: 1,
@@ -213,7 +213,7 @@ google.charts.setOnLoadCallback(function(){
       $("#rank-input").val(1000 - ui.value)
     },
     change: function(event, ui) {
-      studentData[1][5] = (1000 - ui.value) * weights[4];
+      studentData[1][5] = ui.value * weights[4];
       //      adjustedData[4] = (ui.value-studentData[2][5])*rankWt;
       drawStacked();
       updateResult();
