@@ -1,15 +1,66 @@
 $(function() {
 
+  // constant term
+  var SVM_constant = -17.08976608
+
   // weights
-  var greVerWt = 0.5, greQuanWt = 0.5, greWriWt = 3, gpaWt = 10, rankWt = -0.1, degWt = 20, psWt = 10, diverWt = 10, recWt = .5; 
-  // default values
-  var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 2.0, rankVal = 500, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3; 
+  var greVerWt = 0.1376453793,
+    greQuanWt = 0.07802271239,
+    greWriWt = 0.3124308781,
+    gpaWt = 1.456150174,
+    rankWt = 0.003788262564,
+    // major weights
+    csceWt = 1.025214391,
+    stemWt = -0.8304791985,
+    otherWt = -0.1947351929,
+    // country weights
+    usaWt = -0.5237106007,
+    canadaWt = 0.01552394752,
+    asiaWt = 0.5767599123,
+    euroWt = -0.0685732591,
+    elseWt = 0,
+    //
+    psWt = 0.8300898821,
+    diverWt = 0.4184694261,
+    // recommendation weights
+    rec1top5Wt = 1.025707346,
+    rec1top10Wt = 0.3958125738,
+    rec1top20Wt = -0.5793790725,
+    rec1top50Wt = -0.8421408468,
+    rec2top5Wt = 0.9066696731,
+    rec2top10Wt = 0.2192430001,
+    rec2top20Wt = -0.8250712596,
+    rec2top50Wt = -0.3008414136,
+    rec3top5Wt = -0.07554566214,
+    rec3top10Wt = 0.6270885095,
+    rec3top20Wt = 0.2935430003,
+    rec3top50Wt = -0.8450858476,
+    rec1instWt = -0.006982607425,
+    rec2instWt = -1.58e-03,
+    rec3instWt = -1.58e-03
+  // default values (for sliders)
+  var greVerVal = 170,
+    greQuanVal = 170,
+    greWriVal = 3,
+    gpaVal = 3.6,
+    rankVal = 200,
+    rec1instVal = 500,
+    rec2instVal = 500,
+    rec3instVal = 500,
+    psVal = 3,
+    diverVal = 3;
 
   var studentData = [
-    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Deg', 'Rec1', 'Rec2', 'Rec3', 'PS', 'Diversity'],
-    ['', (greVerVal-130)*greVerWt, (greQuanVal-130)*greQuanWt, greWriVal*greWriWt, gpaVal*gpaWt, rankVal*rankWt, degVal*degWt, 
-      rec1*recWt, rec2*recWt, rec3*recWt, psVal*psWt, diverVal*diverWt],
-    
+    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 
+    'Country', 'Rec1', 'Rec2', 'Rec3', 
+    'Rec1-inst', 'Rec2-inst', 'Rec3-inst', 
+    'PS', 'Diversity'],
+    ['', (greVerVal-130) * greVerWt, (greQuanVal-130) * greQuanWt, greWriVal * greWriWt, gpaVal * gpaWt, rankVal * rankWt, csceWt,
+      usaWt, rec1top5Wt, rec2top5Wt, rec3top5Wt, 
+      rec1instVal * rec1instWt, rec2instVal * rec2instWt, rec3instVal * rec3instWt, 
+      psVal * psWt, diverVal * diverWt
+    ]
+
   ]
 
    
@@ -22,7 +73,7 @@ $(function() {
 $("#greV-slider").slider({
   // options
   range: "min",
-  value: 150,
+  value: greVerVal,
   min: 130,
   max: 170,
   step: 1,
@@ -33,7 +84,7 @@ $("#greV-slider").slider({
     $("#greV-input").val(ui.value)
   },
   change: function(event, ui) {
-    studentData[1][1] = (ui.value-130)*greVerWt;
+    studentData[1][1] = (ui.value-130) * greVerWt;
     // drawStacked();
     updateResult();
   }
@@ -48,7 +99,7 @@ $("#greQ-input").change(function(){
 $("#greQ-slider").slider({
 // options
 range: "min",
-value: 150,
+value: greQuanVal,
 min: 130,
 max: 170,
 step: 1,
@@ -59,7 +110,7 @@ slide: function(event, ui) {
   $("#greQ-input").val(ui.value)
 },
 change: function(event, ui) {
-  studentData[1][2] = (ui.value-130)*greQuanWt;
+  studentData[1][2] = (ui.value-130) * greQuanWt;
   // drawStacked();
   updateResult();
 }
@@ -74,7 +125,7 @@ updateResult();
 $("#greW-slider").slider({
 // options
 range: "min",
-value: 3,
+value: greWriVal,
 min: 0,
 max: 6,
 step: 0.5,
@@ -85,7 +136,7 @@ slide: function(event, ui) {
 $("#greW-input").val(ui.value)
 },
 change: function(event, ui) {
-studentData[1][3] = ui.value*greWriWt;
+studentData[1][3] = ui.value * greWriWt;
 // drawStacked();
 updateResult();
 }
@@ -100,7 +151,7 @@ updateResult();
 $("#gpa-slider").slider({
   // options
   range: "min",
-  value: 2,
+  value: gpaVal,
   min: 0.0,
   max: 4.0,
   step: 0.1,
@@ -111,7 +162,7 @@ $("#gpa-slider").slider({
     $("#gpa-input").val(ui.value)
   },
   change: function(event, ui) {
-    studentData[1][4] = ui.value*gpaWt;
+    studentData[1][4] = ui.value * gpaWt;
     // drawStacked();
     updateResult();
   }
@@ -125,7 +176,7 @@ $("#rank-input").change(function(){
 $("#rank-slider").slider({
   // options
   range: "min",
-      value: 500,
+      value: rankVal,
        min: 1,
       max: 1000,
       step: 5,
@@ -136,111 +187,196 @@ $("#rank-slider").slider({
     $("#rank-input").val(ui.value)
   },
   change: function(event, ui) {
-    studentData[1][5] = ui.value*rankWt;
+    console.log("Slider Value: "+ui.value);
+    console.log("Weight: "+rankWt);
+    studentData[1][5] = ui.value * rankWt;
+    console.log("Result " + studentData[1][5])
     // drawStacked();
     updateResult();
   }
 });
 
-$("#deg-input").change(function(){
-  $("#deg-slider").slider("value",$("#deg-input").val());
+$("#major-dropdown").selectmenu({
+  change: function(event, ui) {
+    switch ($("#major-dropdown").val()){
+      case 'csce':
+      studentData[1][6] = csceWt;
+      break;
+      case 'stem':
+      studentData[1][6] = stemWt;
+      break;
+      case 'other':
+      studentData[1][6] = otherWt;
+      break;
+    }
+    studentData[1][6] = studentData[1][6];
+    updateResult();
+  }
+});
+
+$("#ctry-dropdown").selectmenu({
+  change: function(event, ui) {
+    switch ($("#ctry-dropdown").val()){
+      case 'usa':
+      studentData[1][7] = usaWt;
+      break;
+      case 'canada':
+      studentData[1][7] = canadaWt;
+      break;
+      case 'asia':
+      studentData[1][7] = asiaWt;
+      break;
+      case 'euro':
+      studentData[1][7] = euroWt;
+      break;
+      case 'other':
+      studentData[1][7] = elseWt;
+      break;
+    }      
+    studentData[1][7] = studentData[1][7];
+    updateResult();
+  }
+});
+
+$("#rec1-dropdown").selectmenu({
+  change: function(event, ui) {
+    switch ($("#rec1-dropdown").val()){
+      case 'rec1top5Wt':
+      studentData[1][8] = rec1top5Wt;
+      break;
+      case 'rec1top10Wt':
+      studentData[1][8] = rec1top10Wt;
+      break;
+      case 'rec1top20Wt':
+      studentData[1][8] = rec1top20Wt;
+      break;
+      case 'rec1top50Wt':
+      studentData[1][8] = rec1top50Wt;
+      break;
+    }      
+    studentData[1][8] = studentData[1][8];
+    updateResult();
+  }
+});
+
+$("#rec2-dropdown").selectmenu({
+  change: function(event, ui) {
+    switch ($("#rec2-dropdown").val()){
+      case 'rec2top5Wt':
+      studentData[1][9] = rec2top5Wt;
+      break;
+      case 'rec2top10Wt':
+      studentData[1][9] = rec2top10Wt;
+      break;
+      case 'rec2top20Wt':
+      studentData[1][9] = rec2top20Wt;
+      break;
+      case 'rec2top50Wt':
+      studentData[1][9] = rec2top50Wt;
+      break;
+    }      
+    studentData[1][9] = studentData[1][9];
+    updateResult();
+  }
+});
+
+$("#rec3-dropdown").selectmenu({
+  change: function(event, ui) {
+    switch ($("#rec3-dropdown").val()){
+      case 'rec3top5Wt':
+      studentData[1][10] = rec3top5Wt;
+      break;
+      case 'rec3top10Wt':
+      studentData[1][10] = rec3top10Wt;
+      break;
+      case 'rec3top20Wt':
+      studentData[1][10] = rec3top20Wt;
+      break;
+      case 'rec3top50Wt':
+      studentData[1][10] = rec3top50Wt;
+      break;
+    }      
+    studentData[1][10] = studentData[1][10];
+    updateResult();
+  }
+});
+
+$("#rec1rank-input").change(function() {
+  $("#rec1rank-slider").slider("value", $("#rec1rank-input").val());
   updateResult();
 });
+$("#rec1rank-input").val(rec1instVal);
 
-
-$("#deg-slider").slider({
-// options
-range: "min",
-value: 0,
-min: 0,
-max: 1,
-step: 1,
-start: function(event, ui) {
-  // code
-},
-slide: function(event, ui) {
-  $("#deg-input").val(ui.value)
-},
-change: function(event, ui) {
-  studentData[1][6] = ui.value*degWt;
-  // drawStacked();
-  updateResult();
-}
-});
-
-$("#rec1-input").change(function(){
-$("#rec1-slider").slider("value",$("#rec1-input").val());
-updateResult();
-});
-
-$("#rec1-slider" ).slider({
-// options
-start: function (event, ui) {
+$("#rec1rank-slider").slider({
+  // options
+  start: function(event, ui) {
     // code
-},
-slide: function( event, ui ) {
-  $("#rec1-input").val(ui.value)
-},
-range:"min",
-min: 1,
-max: 100,
-value: 40,
-step: 1,
-change: function(event, ui) {
-  studentData[1][7] = ui.value*recWt;
-  // drawStacked();
+  },
+  slide: function(event, ui) {
+    $("#rec1rank-input").val(1000-ui.value)
+  },
+  range: "min",
+  min: 1,
+  max: 1000,
+  value: rec1instVal,
+  step: 1,
+  change: function(event, ui) {
+    studentData[1][11] = ui.value * rec1instWt;
+    //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
+    updateResult();
+  }
+});
+
+$("#rec2rank-input").change(function() {
+  $("#rec2rank-slider").slider("value", $("#rec2rank-input").val());
   updateResult();
-}
+});
+$("#rec2rank-input").val(rec2instVal)
+
+$("#rec2rank-slider").slider({
+  // options
+  start: function(event, ui) {
+    // code
+  },
+  slide: function(event, ui) {
+    $("#rec2rank-input").val(ui.value)
+  },
+  range: "min",
+  min: 1,
+  max: 1000,
+  value: rec2instVal,
+  step: 1,
+  change: function(event, ui) {
+    studentData[1][12] = ui.value * rec2instWt;
+    //  adjustedData[7] = (ui.value-studentData[2][8])*recWt;
+    updateResult();
+  }
 });
 
-$("#rec2-input").change(function(){
-$("#rec2-slider").slider("value",$("#rec2-input").val());
-updateResult();
+$("#rec3rank-input").change(function() {
+  $("#rec3rank-slider").slider("value", $("#rec3rank-input").val());
+  updateResult();
 });
+$("#rec3rank-input").val(rec3instVal);
 
-$("#rec2-slider" ).slider({
-// options
-start: function (event, ui) {
-  // code
-},
-slide: function( event, ui ) {
-$("#rec2-input").val(ui.value)
-},
-range:"min",
-min: 1,
-max: 100,
-value: 50,
-step: 1,
-change: function(event, ui) {
-studentData[1][8] = ui.value*recWt;
-// drawStacked();
-updateResult();
-}
-});
-
-$("#rec3-input").change(function(){
-$("#rec3-slider").slider("value",$("#rec3-input").val());
-updateResult();
-});
-
-$("#rec3-slider" ).slider({
-// options
-start: function (event, ui) {
-  // code
-},
-slide: function( event, ui ) {
-$("#rec3-input").val(ui.value)
-},
-range:"min",
-min: 1,
-max: 100,
-value: 60,
-step: 1,
-change: function(event, ui) {
-studentData[1][9] = ui.value*recWt;
-// drawStacked();
-updateResult();
-}
+$("#rec3rank-slider").slider({
+  // options
+  start: function(event, ui) {
+    // code
+  },
+  slide: function(event, ui) {
+    $("#rec3rank-input").val(ui.value)
+  },
+  range: "min",
+  min: 1,
+  max: 1000,
+  value: rec3instVal,
+  step: 1,
+  change: function(event, ui) {
+    studentData[1][13] = ui.value * rec3instWt;
+    //  adjustedData[8] = (ui.value-studentData[2][9])*recWt;
+    updateResult();
+  }
 });
 
 $("#ps-input").change(function(){
@@ -252,7 +388,7 @@ updateResult();
 $("#ps-slider").slider({
 // options
 range: "min",
-value: 3,
+value: psVal,
 min: 1,
 max: 5,
 step: 0.5,
@@ -263,7 +399,7 @@ slide: function(event, ui) {
 $("#ps-input").val(ui.value)
 },
 change: function(event, ui) {
-studentData[1][10] = ui.value*psWt;
+studentData[1][14] = ui.value * psWt;
 // drawStacked();
 updateResult();
 }
@@ -277,7 +413,7 @@ updateResult();
 $("#diver-slider").slider({
 // options
 range: "min",
-value: 3,
+value: diverVal,
 min: 1,
 max: 5,
 step: 0.5,
@@ -288,7 +424,7 @@ slide: function(event, ui) {
 $("#diver-input").val(ui.value)
 },
 change: function(event, ui) {
-studentData[1][11] = ui.value*diverWt;
+studentData[1][15] = ui.value * diverWt;
 // drawStacked();
 updateResult();
 }
@@ -297,9 +433,15 @@ updateResult();
 
 function updateResult() {
   var totalScore = studentData[1][1]+studentData[1][2]+studentData[1][3]+studentData[1][4]+studentData[1][5]+studentData[1][6]+
-  studentData[1][7]+studentData[1][8]+studentData[1][9]+studentData[1][10]+studentData[1][11];
-  // console.log('SCORE: ' + totalScore);
-  if(totalScore>=250){
+  studentData[1][7]+studentData[1][8]+studentData[1][9]+studentData[1][10]+studentData[1][11]+studentData[1][12]+studentData[1][13]
+  +studentData[1][14]+studentData[1][15];
+  totalScore += SVM_constant;
+  console.log('SCORE: ' + totalScore);
+  console.log("Value * Weight for each:")
+  for(var i = 1; i < studentData[1].length; i++){
+    console.log('' + studentData[0][i] + ' ' +  studentData[1][i]);
+  }
+  if(totalScore>=0){
     $("#result").text("Yay, accepted!")
     $("#result").css("color","green")
   } else {

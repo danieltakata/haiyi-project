@@ -354,7 +354,7 @@ google.charts.setOnLoadCallback(function(){
   });
 
   $("#rec1rank-input").change(function() {
-    $("#rec1rank-slider").slider("value", $("#rec1rank-input").val());
+    $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
     updateResult();
   });
   $("#rec1rank-input").val(rec1instVal);
@@ -365,12 +365,12 @@ google.charts.setOnLoadCallback(function(){
       // code
     },
     slide: function(event, ui) {
-      $("#rec1rank-input").val(ui.value)
+      $("#rec1rank-input").val(1000-ui.value)
     },
     range: "min",
-    min: 1,
-    max: 1000,
-    value: rec1instVal,
+    min: 0,
+    max: 999,
+    value: 1000-rec1instVal,
     step: 1,
     change: function(event, ui) {
       studentData[1][11] = (ui.value * rec1instWt + 0.006982607425 * 1000) / 33.66839414 * 100;
@@ -509,7 +509,7 @@ google.charts.setOnLoadCallback(function(){
     var adjustedScore = (rawScore + 26.1499034)/ 33.66839414 * 100;
     console.log('ADJUSTED SCORE: ' + adjustedScore);
 
-    if (sum(studentData[1]) >= (77.66899512-26.90991819+correction)) {
+    if (adjustedScore >= (77.66899512-26.90991819+correction)) {
       console.log('UPDATED SCORE: ' + rawScore);
 
       $("#result").text("Yay, accepted!")
