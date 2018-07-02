@@ -1,10 +1,34 @@
-// Load Google Charts first
+$(function() {
+  $(".landingcontent").hide();
+});
 
+// Load Google Charts first
 google.charts.load('current', {
   packages: ['corechart', 'bar']
 });
 // Only starts running after google charts is loaded
 google.charts.setOnLoadCallback(function(){
+
+  $(".landingcontent").fadeIn();
+
+  $("#startButton").on("click", function() {
+        $(".landingcontent").fadeOut();
+
+        setTimeout(function() {
+            $("#landing-page").fadeOut();
+        }, 500);
+
+        setTimeout(function() {
+        // $("#main-page").animateRotate(0, 0);
+        // $("#main-page").css("height", "25px");
+        // $("#main-page").css("width", "375px");
+            $("#main-page").fadeIn();
+            $(".maincontent").fadeIn(300);
+            updateResult()
+            drawStacked()
+        }, 1000);
+    });
+
 
   // weights
   var weights = [
@@ -66,9 +90,9 @@ google.charts.setOnLoadCallback(function(){
   for ( var i=0; i<15; i++) {
 	  studentData[1][i+1] = vals[i]*weights[i];
   }
-  
+
   var threshold = 42.962524 - 130*weights[0] - 130*weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[12] - weights[13]
-  
+
   var barcolors = ['#F01010', '#FB0074', '#C82CCC', '#006DFF', '#0089FF', '#90A0E0', '#00BF70', '#00BF70', '#009F00', '#009F00', '#5BE500', '#5BE500', '#FFA500', '#E05050', '#FF90B0']
 
   /*  var importantIndex = 4
@@ -236,7 +260,7 @@ google.charts.setOnLoadCallback(function(){
       updateResult();
     }
   });
-  
+
   $("#rec1rank-input").change(function() {
     $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
     updateResult();
@@ -272,7 +296,7 @@ google.charts.setOnLoadCallback(function(){
       updateResult();
     }
   });
-  
+
   $("#rec2rank-input").change(function() {
     $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
     updateResult();
@@ -308,7 +332,7 @@ google.charts.setOnLoadCallback(function(){
       updateResult();
     }
   });
-  
+
   $("#rec3rank-input").change(function() {
     $("#rec3rank-slider").slider("value", 1000 - $("#rec3rank-input").val());
     updateResult();
@@ -468,6 +492,5 @@ google.charts.setOnLoadCallback(function(){
     var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
     chart.draw(data, options);
   }
-  updateResult()
-  drawStacked()
+
 });

@@ -2,292 +2,255 @@
 
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-  
-    <title>Grad Admission Data Visualization</title>
-    <!-- <meta name="description" content="The HTML5 Herald"> -->
-    <!-- <meta name="author" content="SitePoint"> -->
-  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
-  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <!--[if lt IE 9]>
+<head>
+  <meta charset="utf-8">
+
+  <title>Grad Admission Data Visualization</title>
+  <!-- <meta name="description" content="The HTML5 Herald"> -->
+  <!-- <meta name="author" content="SitePoint"> -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+  <!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
-  </head>
+</head>
 
 <body>
 
+  <div id="landing-page">
+    <div class="landingcontent">
+      <div class="jumbotron">
+        <h1 class="display-4">Hello!</h1>
+        <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+        <hr class="my-4">
+        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works. On the following page you will see the different factors that are taken into account by the algorithm when deciding whether or not to admit an applicant. You can adjust the values below to find out the exact contribution of each score, and see the total impact on the decision. (any other info needed so they can answer questions at the end)</p>
+        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
 
-  
+        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+      </div>
 
-  <div class="jumbotron">
-    <h1 class="display-4">Hello!</h1>
-    <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
-    <hr class="my-4">
-    <p>Part of the admission process was done with the help of an algorithm that was trained and tested with previous years' application data 
-      to accurately match our admission committee's decision process. You can tweak the values below to find out the approximate 
-      contribution of each score, and see the total impact on the decision.</p>
+    </div>
+  </div>
 
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
 
-          <div class="row">
-            <h2>
+  <div id="main-page">
+    <div class="maincontent">
+
+
+      <div class="jumbotron main-visualization">
+        <!-- <h1 class="display-4">Admission Explainer</h1> -->
+        <p class="lead">Admission decision helper.</p>
+        <hr class="my-4">
+        <p class="">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="container">
+
+              <div class="row">
+                <h2>
               Example Admission Result
             </h2>
 
-          </div>
-          <form id="my-form">
-
-          <!--Features Text/Input/Sliders-->
-         <div class="row">
-            <div class="col-12">
-              <!--GRE-V Row-->
-              <div class='row'>
-                <div class='col-2'>
-                    <label>GRE-Verbal:</label>
-
-                </div>
-                <div class='col-4'>
-                    <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
-
-                </div>
-                <div class='col-6'>
-                    <div id="greV-slider"></div>
-
-                </div>
               </div>
-              <!--GRE-Q Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>GRE-Quantitative:</label>
+              <form id="my-form">
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
+                <!--Features Text/Input/Sliders-->
+                <div class="row">
+                  <div class="col-12">
+                    <!--GRE-V Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>GRE-Verbal:</label>
 
-                  </div>
-                  <div class='col-6'>
-                      <div id="greQ-slider"></div>
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="greV-input" title="GRE-Verbal" name="name" value="150" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="greV-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--GRE-Q Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>GRE-Quantitative:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="greQ-input" title="GRE-Quantitative" name="name" value="150" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="greQ-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--GRE-W Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>GRE-Writing:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="greW-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--GPA Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>GPA:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="gpa-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--Institution Rank Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>Institution Rank:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="rank-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--Degree Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>Highest Degree:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="deg-input" title="Bachelors = 0, Masters = 1" name="name" value="0" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="deg-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--Personal Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>Personal Statement:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="ps-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--Diversity Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>Diversity Statement:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="diver-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--Rec1 Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>Letter of Rec. 1 Score:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="rec1-input" title="Letter of Recommendation 1 Score" name="name" value="40" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="rec1-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--Rec2 Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>Letter of Rec. 2 Score:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="rec2-input" title="Letter of Recommendation 2 Score" name="name" value="50" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="rec2-slider"></div>
+
+                      </div>
+                    </div>
+                    <!--Rec3 Row-->
+                    <div class='row'>
+                      <div class='col-2'>
+                        <label>Letter of Rec. 3 Score:</label>
+
+                      </div>
+                      <div class='col-4'>
+                        <input type="text" id="rec3-input" title="Letter of Recommendation 3 Score" name="name" value="60" />
+
+                      </div>
+                      <div class='col-6'>
+                        <div id="rec3-slider"></div>
+
+                      </div>
+                    </div>
 
                   </div>
                 </div>
-              <!--GRE-W Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>GRE-Writing:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="greW-input" title="GRE-Writing" name="name" value="3" />
+                </br>
 
-                  </div>
-                  <div class='col-6'>
-                      <div id="greW-slider"></div>
 
-                  </div>
-                </div>
-              <!--GPA Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>GPA:</label>
 
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="gpa-input" title="GPA" name="name" value="2" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="gpa-slider"></div>
-
-                  </div>
-                </div>
-              <!--Institution Rank Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>Institution Rank:</label>
-
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rank-input" title="Institution Rank" name="name" value="500" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rank-slider"></div>
-
-                  </div>
-                </div>
-              <!--Degree Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>Highest Degree:</label>
-
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="deg-input" title="Bachelors = 0, Masters = 1" name="name" value="0" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="deg-slider"></div>
-
-                  </div>
-                </div>
-              <!--Personal Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>Personal Statement:</label>
-
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="ps-input" title="Personal Statement" name="name" value="3" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="ps-slider"></div>
-
-                  </div>
-                </div>
-              <!--Diversity Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>Diversity Statement:</label>
-
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="diver-input" title="Diversity Statement" name="name" value="3" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="diver-slider"></div>
-
-                  </div>
-                </div>
-              <!--Rec1 Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>Letter of Rec. 1 Score:</label>
-
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rec1-input" title="Letter of Recommendation 1 Score" name="name" value="40" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rec1-slider"></div>
-
-                  </div>
-                </div>
-              <!--Rec2 Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>Letter of Rec. 2 Score:</label>
-
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rec2-input" title="Letter of Recommendation 2 Score" name="name" value="50" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rec2-slider"></div>
-
-                  </div>
-                </div>
-              <!--Rec3 Row-->
-              <div class='row'>
-                  <div class='col-2'>
-                      <label>Letter of Rec. 3 Score:</label>
-
-                  </div>
-                  <div class='col-4'>
-                      <input type="text" id="rec3-input" title="Letter of Recommendation 3 Score" name="name" value="60" />
-
-                  </div>
-                  <div class='col-6'>
-                      <div id="rec3-slider"></div>
-
-                  </div>
-                </div>
-              
             </div>
+            <h5 class="text-center" id="result" style="color:red">Sorry, rejected...</h5>
+
           </div>
 
-        </br>
-          <!-- Old Code
-          <div class="row">
-            <div class="col">
-              
-
-
-            </div>
-            <div class="col">
-
-              
-            </div>
-            <div class="col">
-
-              
-              <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
-
-            </div>
-          </div> -->
-
-        <!-- </br>
-          <div class="row">
-            <div class="col">
-              
-                <input type="text" maxlength=100 id="aGPA" readonly style="border:0" color:#000000 value="Most important!">
-
-
-            </div>
-            <div class="col">
-
-              
-              <input type="text" maxlength=60 id="aGRE" readonly style="border:0" color:#000000 value="">
-
-            </div>
-            <div class="col">
-
-              
-              <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
-
-            </div>
-          </div> -->
-
-        <!-- </br>
-        <div class="row">
-          <div class="col">
-            
-            </br>
-
-          </div>
-          <div class="col">
-
-           
-          </br>
-          </div>
-          <div class="col"></div>
-          
-        </div> -->
-
-
-        
+        </div>
       </div>
-      <h5 class="text-center" id="result" style="color:red">Sorry, rejected...</h5>
-
     </div>
-
   </div>
+
 
 
 

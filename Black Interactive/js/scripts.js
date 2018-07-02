@@ -1,18 +1,39 @@
 $(function() {
 
+  $("#landing-page").fadeIn();
+  $(".landingcontent").fadeIn();
+
+
+  $("#startButton").on("click", function() {
+        $(".landingcontent").fadeOut();
+
+        setTimeout(function() {
+            $("#landing-page").fadeOut();
+        }, 500);
+
+        setTimeout(function() {
+        // $("#main-page").animateRotate(0, 0);
+        // $("#main-page").css("height", "25px");
+        // $("#main-page").css("width", "375px");
+            $("#main-page").fadeIn();
+            $(".maincontent").fadeIn(300);
+            // drawStacked();
+        }, 1000);
+    });
+
   // weights
-  var greVerWt = 0.5, greQuanWt = 0.5, greWriWt = 3, gpaWt = 10, rankWt = -0.1, degWt = 20, psWt = 10, diverWt = 10, recWt = .5; 
+  var greVerWt = 0.5, greQuanWt = 0.5, greWriWt = 3, gpaWt = 10, rankWt = -0.1, degWt = 20, psWt = 10, diverWt = 10, recWt = .5;
   // default values
-  var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 2.0, rankVal = 500, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3; 
+  var greVerVal = 150, greQuanVal = 150, greWriVal = 3, gpaVal = 2.0, rankVal = 500, degVal = 0, rec1 = 40, rec2 = 50, rec3 = 60, psVal = 3, diverVal = 3;
 
   var studentData = [
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Deg', 'Rec1', 'Rec2', 'Rec3', 'PS', 'Diversity'],
-    ['', (greVerVal-130)*greVerWt, (greQuanVal-130)*greQuanWt, greWriVal*greWriWt, gpaVal*gpaWt, rankVal*rankWt, degVal*degWt, 
+    ['', (greVerVal-130)*greVerWt, (greQuanVal-130)*greQuanWt, greWriVal*greWriWt, gpaVal*gpaWt, rankVal*rankWt, degVal*degWt,
       rec1*recWt, rec2*recWt, rec3*recWt, psVal*psWt, diverVal*diverWt],
-    
+
   ]
 
-   
+
   $("#greV-input").change(function(){
     $("#greV-slider").slider("value",$("#greV-input").val());
     updateResult();
@@ -307,5 +328,5 @@ function updateResult() {
     $("#result").css("color", "red")
   }
 }
-  
+
 });
