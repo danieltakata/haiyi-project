@@ -17,8 +17,8 @@ $(function() {
         // $("#main-page").css("width", "375px");
             $("#main-page").fadeIn();
             $(".maincontent").fadeIn(300);
-            // drawStacked();
-        }, 1000);
+            updateResult();
+        }, 300);
     });
 
   // weights
@@ -319,14 +319,27 @@ updateResult();
 function updateResult() {
   var totalScore = studentData[1][1]+studentData[1][2]+studentData[1][3]+studentData[1][4]+studentData[1][5]+studentData[1][6]+
   studentData[1][7]+studentData[1][8]+studentData[1][9]+studentData[1][10]+studentData[1][11];
-  // console.log('SCORE: ' + totalScore);
-  if(totalScore>=250){
-    $("#result").text("Yay, accepted!")
-    $("#result").css("color","green")
-  } else {
-    document.getElementById("result").innerHTML = "Sorry, rejected..."
-    $("#result").css("color", "red")
-  }
+
+  // Loading animation
+  $("#result").css('opacity',1).animate({opacity:0}
+    , 200, function () {
+      $(".loader").css('visibility','visible');
+      setTimeout(function() {
+        $(".loader").css('visibility','hidden');
+        if (totalScore >= 250) {
+          $("#result").text("Admission accepted.");
+          $("#result").css("color", "green");
+        } else {
+          $("#result").text("Admission rejected.");
+          $("#result").css("color", "red");
+        }
+        $("#result").css('opacity',0).animate({opacity:1}, 200);
+      }, 500);
+  });
+
+
+
+
 }
 
 });

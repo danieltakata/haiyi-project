@@ -26,7 +26,7 @@ google.charts.setOnLoadCallback(function(){
             $(".maincontent").fadeIn(300);
             updateResult()
             drawStacked()
-        }, 1000);
+        }, 300);
     });
 
 
@@ -427,26 +427,29 @@ google.charts.setOnLoadCallback(function(){
 
 
   function updateResult() {
-    //	$("#a" + studentData[0][importantIndex]).val( "" );
-    if (studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] +
+    var totalScore = studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] +
 	  studentData[1][6] + studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] +
-	  studentData[1][11] + studentData[1][12] + studentData[1][13] + studentData[1][14] >= threshold) {
-      $("#result").text("Yay, accepted!")
-      //document.getElementById("lookat").style.color = "white";
-      $("#result").css("color", "green")
-    } else {
-      /* 	  for (i=0; i < adjustedData.length; i++){
-      			if (dummy > adjustedData[i]) {
-      				dummy = adjustedData[i];
-      				importantIndex = i+1;
-      			}
-      		}
-      		dummy = 9999;
-      		$("#a" + studentData[0][importantIndex]).val( "Most important!" ); */
-      document.getElementById("result").innerHTML = "Sorry, rejected...";
-      //	    document.getElementById("lookat").style.color = "black";
-      $("#result").css("color", "red")
-    }
+	  studentData[1][11] + studentData[1][12] + studentData[1][13] + studentData[1][14];
+
+
+    // Loading animation
+    $(".result").css('opacity',1).animate({opacity:0}
+      , 200, function () {
+        $(".loader").css('visibility','visible');
+        setTimeout(function() {
+          $(".loader").css('visibility','hidden');
+          if (totalScore >= threshold) {
+            $("#result").text("Admission accepted.");
+            $("#result").css("color", "green");
+          } else {
+            $("#result").text("Admission rejected.");
+            $("#result").css("color", "red");
+          }
+          $(".result").css('opacity',0).animate({opacity:1}, 200);
+        }, 500);
+    });
+
+
   }
   function drawStacked() {
 
