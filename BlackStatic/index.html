@@ -24,100 +24,106 @@
 </head>
 
 <body>
+  <div id='app'>
 
-    <!-- <div id="landing-page">
-      <div class="landingcontent">
-        <div class="jumbotron">
-          <h1 class="display-4">Hello!</h1>
-          <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
-          <hr class="my-4">
-          <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
-            On the following page you will see the scores for three applicants to the university, along with whether those candidates were admitted. For each applicant, you will see the different factors that are taken into account by the algorithm when
-            deciding whether or not to admit. (other instructions for what to pay attention to based on what questions they’ll be asked at the end).
-          </p>
-          <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+    <transition>
+      <div id="landing-page" v-if="landingPage == 1">
+        <div class="landingcontent">
+          <div class="jumbotron">
+            <h1 class="display-4">Hello!</h1>
+            <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+            <hr class="my-4">
+            <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
+              On the following page you will see the scores for three applicants to the university, along with whether those candidates were admitted. For each applicant, you will see the different factors that are taken into account by the algorithm
+              when deciding whether or not to admit. (other instructions for what to pay attention to based on what questions they’ll be asked at the end).
+            </p>
+            <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
 
-          <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+            <button type="button" v-on:click="landingPage = !landingPage" id="startButton" class="btn btn-primary">Let's Start</button>
+          </div>
+
         </div>
-
       </div>
-    </div> -->
+    </transition>
 
-    <div id="main-page">
-      <div class="maincontent" id='app'>
-        <div class="jumbotron main-visualization">
-          <p class="lead">Admission decision helper.</p>
-          <hr class="my-4">
-          <p class="">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
-        </div>
 
-        <div class="container-fluid">
-          <div class="row flex-row flex-nowrap studentCards">
-            <div v-for="student, index in students" class="card border-success col-3 text-center">
-              <div v-if="student.admission == 1" class="card-body text-success">
-                <h5 class="card-title">Student {{index + 1}}</h5>
+    <transition name="fade">
+      <div id="main-page" v-if="landingPage == 0">
+        <div class="maincontent" id='app'>
+          <div class="jumbotron main-visualization">
+            <p class="lead">Admission decision helper.</p>
+            <hr class="my-4">
+            <p class="">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+          </div>
+
+          <div class="container-fluid">
+            <div class="row flex-row flex-nowrap studentCards">
+              <div v-for="student, index in students" class="card border-success col-3 text-center">
+                <div v-if="student.admission == 1" class="card-body text-success">
+                  <h5 class="card-title">Student {{index + 1}}</h5>
+                </div>
+                <div v-else class="card-body text-danger">
+                  <h5 class="card-title">Student {{index + 1}}</h5>
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text ">GRE - Verbal <span title='Verbal score for the Graduate Readiness Exam. Value ranges from 130-170'></span>: {{student.GREv + 130}}</p>
+                  <p class="card-text ">GRE - Quantitative <span title='Quantitative score for the Graduate Readiness Exam. Value ranges from 130-170'></span>: {{student.GREq + 130}}</p>
+                  <p class="card-text ">GRE - Writing <span title='Writing score for the Graduate Readiness Exam. Value ranges from 0-6'></span>: {{student.GREw}} </p>
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text ">GPA <span title='Grade Point Average for highest relevant education. Value ranges from 0.0-4.0'></span>: {{student.GPA}}</p>
+                  <p class="card-text ">Major<span title='Major that the student graduated from'></span>: {{student.Major}}</p>
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text ">University Ranking <span title='Global Ranking for the institution that highest relevant education was received at. Value ranges from 1-1000'></span>: {{student.inst_rank}}</p>
+                  <p class="card-text ">Country of Education <span title="Country that the student receives the highest degree"></span>: {{student.Country}}</p>
+                  <p class="card-text ">Personal Statement <span title='Graded score for Personal Statement Essay. Value ranges from 1-5'></span>: {{student.PS}} </p>
+                  <p class="card-text ">Diversity Score <span title='Graded score for Diversity Statement Essay. Value ranges from 1-5.'></span>: {{student.Diversity}} </p>
+                </div>
+
+                <div class="card-body">
+                  <p class="card-text ">Recommendation Letter 1 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
+                  <p class="text-right">
+                    {{student.RL1}}, from a university ranked {{student.RL1inst}}
+                  </p>
+                  <p class="card-text ">Recommendation Letter 2 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
+                  <p class="text-right">
+                    {{student.RL2}}, from a university ranked {{student.RL2inst}}
+                  </p>
+                  <p class="card-text font-italic">Recommendation Letter 3 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
+                  <p class="text-right">
+                    {{student.RL3}}, from a university ranked {{student.RL3inst}}
+                  </p>
+
+                </div>
+
+
+
+                <div v-if="student.admission == 1" class="card-footer text-success">
+                  Admitted
+                </div>
+                <div v-else class="card-footer text-danger">
+                  Declined
+                </div>
+
               </div>
-              <div v-else class="card-body text-danger">
-                <h5 class="card-title">Student {{index + 1}}</h5>
-              </div>
-
-              <div class="card-body">
-                <p class="card-text ">GRE - Verbal <span title='Verbal score for the Graduate Readiness Exam. Value ranges from 130-170'></span>: {{student.GREv + 130}}</p>
-                <p class="card-text ">GRE - Quantitative <span title='Quantitative score for the Graduate Readiness Exam. Value ranges from 130-170'></span>: {{student.GREq + 130}}</p>
-                <p class="card-text ">GRE - Writing <span title='Writing score for the Graduate Readiness Exam. Value ranges from 0-6'></span>: {{student.GREw}} </p>
-              </div>
-
-              <div class="card-body">
-                <p class="card-text ">GPA <span title='Grade Point Average for highest relevant education. Value ranges from 0.0-4.0'></span>: {{student.GPA}}</p>
-                <p class="card-text ">Major<span title='Major that the student graduated from'></span>: {{student.Major}}</p>
-              </div>
-
-              <div class="card-body">
-                <p class="card-text ">University Ranking <span title='Global Ranking for the institution that highest relevant education was received at. Value ranges from 1-1000'></span>: {{student.inst_rank}}</p>
-                <p class="card-text ">Country of Education <span title="Country that the student receives the highest degree"></span>: {{student.Country}}</p>
-                <p class="card-text ">Personal Statement <span title='Graded score for Personal Statement Essay. Value ranges from 1-5'></span>: {{student.PS}} </p>
-                <p class="card-text ">Diversity Score <span title='Graded score for Diversity Statement Essay. Value ranges from 1-5.'></span>: {{student.Diversity}} </p>
-              </div>
-
-              <div class="card-body">
-                <p class="card-text ">Recommendation Letter 1 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
-                <p class="text-right">
-                   {{student.RL1}}, from a university ranked {{student.RL1inst}}
-                </p>
-                <p class="card-text ">Recommendation Letter 2 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
-                <p class="text-right">
-                   {{student.RL2}}, from a university ranked {{student.RL2inst}}
-                </p>
-                <p class="card-text font-italic">Recommendation Letter 3 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
-                <p class="text-right">
-                   {{student.RL3}}, from a university ranked {{student.RL3inst}}
-                </p>
-
-              </div>
 
 
-
-              <div v-if="student.admission == 1" class="card-footer text-success">
-                Admitted
-              </div>
-              <div v-else class="card-footer text-danger">
-                Declined
-              </div>
 
             </div>
-
-
-
           </div>
         </div>
       </div>
-    </div>
+    </transition>
 
 
+  </div>
 
-
-      <!-- Javascript below -->
-      <script src="js/scripts.js"></script>
+  <!-- Javascript below -->
+  <script src="js/scripts.js"></script>
 </body>
 
 </html>

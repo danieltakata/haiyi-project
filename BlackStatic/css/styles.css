@@ -5,14 +5,24 @@ html, body {
   width: 100%;
 }
 
-.black {
- color: black
+.card {
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-bottom:  40px;
 }
 
 .studentCards{
   width: auto;
   overflow-x: auto;
   white-space: nowrap;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 /* #landing-page {
@@ -43,8 +53,3 @@ html, body {
   padding-top: 32px;
   padding-bottom:32px;
 } */
-
-
-.black {
-  color: black
-}

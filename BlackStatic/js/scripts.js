@@ -327,7 +327,7 @@ var app = new Vue({
     "RL3inst": 227
   }
 ],
-    message: 'Hello Vue!'
+    landingPage: 1
   }
 })
 
