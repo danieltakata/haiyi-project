@@ -1,24 +1,357 @@
-$(function() {
+var app = new Vue({
+  el: '#app',
+  data: {
+    students: [
+  {
+    "admission": 1,
+    "GREv": 32,
+    "GREq": 40,
+    "GREw": 5,
+    "GPA": 3.11,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 13,
+    "GREq": 29,
+    "GREw": 2.5,
+    "GPA": 3.31,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.81,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.42,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 4,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 221,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.56,
+    "Major": "Computer Science",
+    "inst_rank": 1,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 245,
+    "RL2": "Top 20%",
+    "RL2inst": 221,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.56,
+    "Major": "Computer Science",
+    "inst_rank": 347,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 221,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.56,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 4.5,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 243,
+    "RL2": "Top 20%",
+    "RL2inst": 223,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.49,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 2.5,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.6,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.6,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 2,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3,
+    "GPA": 3.74,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 5%",
+    "RL1inst": 1,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.57,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3.5,
+    "RL1": "Top 50%",
+    "RL1inst": 494,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.57,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 5%",
+    "RL2inst": 1,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.36,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 50%",
+    "RL2inst": 482,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.57,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 5%",
+    "RL3inst": 1
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.71,
+    "Major": "Computer Science",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 4,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 50%",
+    "RL3inst": 464
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.71,
+    "Major": "Engineering Major",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 3.5,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 221,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.49,
+    "Major": "Other Major",
+    "inst_rank": 173,
+    "Country": "US",
+    "PS": 3.5,
+    "Diversity": 4,
+    "RL1": "Top 20%",
+    "RL1inst": 244,
+    "RL2": "Top 20%",
+    "RL2inst": 222,
+    "RL3": "Top 20%",
+    "RL3inst": 227
+  }
+],
+    message: 'Hello Vue!'
+  }
+})
 
-
-$("#landing-page").fadeIn();
-$(".landingcontent").fadeIn();
-
-
-$("#startButton").on("click", function() {
-      $(".landingcontent").fadeOut();
-
-      setTimeout(function() {
-          $("#landing-page").fadeOut();
-      }, 500);
-
-      setTimeout(function() {
-      // $("#main-page").animateRotate(0, 0);
-      // $("#main-page").css("height", "25px");
-      // $("#main-page").css("width", "375px");
-          $("#main-page").fadeIn();
-          $(".maincontent").fadeIn(300);
-          drawStacked();
-      }, 300);
-  });
-});
+// $(function() {
+//
+//
+// $("#landing-page").fadeIn();
+// $(".landingcontent").fadeIn();
+//
+//
+// $("#startButton").on("click", function() {
+//       $(".landingcontent").fadeOut();
+//
+//       setTimeout(function() {
+//           $("#landing-page").fadeOut();
+//       }, 500);
+//
+//       setTimeout(function() {
+//       // $("#main-page").animateRotate(0, 0);
+//       // $("#main-page").css("height", "25px");
+//       // $("#main-page").css("width", "375px");
+//           $("#main-page").fadeIn();
+//           $(".maincontent").fadeIn(300);
+//           drawStacked();
+//       }, 300);
+//   });
+// });

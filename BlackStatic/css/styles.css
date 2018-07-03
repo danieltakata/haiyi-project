@@ -9,8 +9,13 @@ html, body {
  color: black
 }
 
+.studentCards{
+  width: auto;
+  overflow-x: auto;
+  white-space: nowrap;
+}
 
-#landing-page {
+/* #landing-page {
     position: absolute;
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
@@ -29,7 +34,6 @@ html, body {
 }
 
 .maincontent {
-    /* padding-top: 40px; */
     padding-bottom: 40px;
     display: none;
     width: 100%;
@@ -38,7 +42,7 @@ html, body {
 .main-visualization {
   padding-top: 32px;
   padding-bottom:32px;
-}
+} */
 
 
 .black {
