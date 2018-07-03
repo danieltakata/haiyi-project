@@ -3,21 +3,21 @@ $(function() {
   $(".landingcontent").fadeIn();
 
   $("#startButton").on("click", function() {
-        $(".landingcontent").fadeOut();
+    $(".landingcontent").fadeOut();
 
-        setTimeout(function() {
-            $("#landing-page").fadeOut();
-        }, 500);
+    setTimeout(function() {
+      $("#landing-page").fadeOut();
+    }, 500);
 
-        setTimeout(function() {
-        // $("#main-page").animateRotate(0, 0);
-        // $("#main-page").css("height", "25px");
-        // $("#main-page").css("width", "375px");
-            $("#main-page").fadeIn();
-            $(".maincontent").fadeIn(300);
-            updateResult()
-        }, 300);
-    });
+    setTimeout(function() {
+      // $("#main-page").animateRotate(0, 0);
+      // $("#main-page").css("height", "25px");
+      // $("#main-page").css("width", "375px");
+      $("#main-page").fadeIn();
+      $(".maincontent").fadeIn(300);
+      updateResult()
+    }, 300);
+  });
 
   // constant term
   var SVM_constant = -17.08976608
@@ -32,11 +32,10 @@ $(function() {
     stemWt = -0.8304791985,
     otherWt = -0.1947351929,
     // country weights
-    usaWt = -0.5237106007,
-    canadaWt = 0.01552394752,
-    asiaWt = 0.5767599123,
-    euroWt = -0.0685732591,
-    elseWt = 0,
+    usaWt = 0,
+    asiaWt = 1.03588023043,
+    euroWt = 0.48266027481,
+    elseWt = 0.513354407198,
     //
     psWt = 0.8300898821,
     diverWt = 0.4184694261,
@@ -69,72 +68,54 @@ $(function() {
     diverVal = 3;
 
   var weights = [
-	0.114911184251    // GRE-verb
-    ,0.0880320310069  // GRE-quant
-    ,0.2926697271     // GRE-write
-    ,1.584509831      // GPA
-    ,0.00294640714041 // Inst-Rank
-    ,1                // Major
-    ,1                // Country of origin
-    ,1                // Recommendation letter 1
-	,0.00643092126893 // Rec1 inst
-    ,1                // Recommendation letter 2
-	,0.00163152813703 // Rec2 inst
-    ,1                // Recommendation letter 3
-	,0.00109465199226 // Rec3 inst
-    ,0.756277254266   // Personal Statement
-    ,0.317935719456   // Diversity score
-	];
+    0.114911184251 // GRE-verb
+    , 0.0880320310069 // GRE-quant
+    , 0.2926697271 // GRE-write
+    , 1.584509831 // GPA
+    , 0.00294640714041 // Inst-Rank
+    , 1 // Major
+    , 1 // Country of origin
+    , 1 // Recommendation letter 1
+    , 0.00643092126893 // Rec1 inst
+    , 1 // Recommendation letter 2
+    , 0.00163152813703 // Rec2 inst
+    , 1 // Recommendation letter 3
+    , 0.00109465199226 // Rec3 inst
+    , 0.756277254266 // Personal Statement
+    , 0.317935719456 // Diversity score
+  ];
   // inital values
   var vals = [
-    5              // GRE-verb - 130
-    ,8             // GRE-quant - 130
-    ,2             // GRE-write
-    ,2.2           // GPA
-    ,69            // 1000 - Inst-Rank
+    12             // GRE-verb - 130
+    ,10            // GRE-quant - 130
+    ,3             // GRE-write
+    ,3.2           // GPA
+    ,274           // 1000 - Inst-Rank
     ,1.5594831748  // Major
-    ,0             // Country of origin
-    ,2.00627220247 // Recommendation letter 1
-	,156           // 1000 - Rec1 inst rank
-    ,1.52087808051 // Recommendation letter 2
-	,89            // 1000 - Rec2 inst rank
-    ,1.51416715224 // Recommendation letter 3
-	,212           // 1000 - Rec3 inst rank
-    ,1             // Personal Statement - 1
+  ,0             // Country of origin
+    ,0             // Recommendation letter 1
+  ,0             // 1000 - Rec1 inst rank
+    ,0             // Recommendation letter 2
+  ,0             // 1000 - Rec2 inst rank
+    ,0             // Recommendation letter 3
+  ,0             // 1000 - Rec3 inst rank
+    ,2             // Personal Statement - 1
     ,1             // Diversity score - 1
-	];
+  ];
+
 
   var studentData = [
-    ['Total Score'
-	, 'GRE-verb'
-	, 'GRE-quant'
-	, 'GRE-write'
-	, 'GPA'
-	, 'Inst-Rank'
-	, 'Major'
-  , 'Country'
-	, 'Rec1'
-	, 'Rec1 Rank'
-	, 'Rec2'
-	, 'Rec2 Rank'
-	, 'Rec3'
-	, 'Rec3 Rank'
-	, 'PS'
-	, 'Diversity'
-	],
-    ['',0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec1 Rank', 'Rec2', 'Rec2 Rank', 'Rec3', 'Rec3 Rank', 'PS', 'Diversity'],
+    ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
-  for ( var i=0; i<studentData.length; i++) {
-	  studentData[1][i+1] = vals[i]*weights[i];
+  for (var i = 0; i < studentData.length; i++) {
+    studentData[1][i + 1] = vals[i] * weights[i];
   }
 
-  var threshold = 42.962524 - 130*weights[0] - 130*weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
+  var threshold = 42.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
 
   var barcolors = ['#F01010', '#FB0074', '#C82CCC', '#006DFF', '#0089FF', '#90A0E0', '#00BF70', '#00BF70', '#009F00', '#009F00', '#5BE500', '#5BE500', '#FFA500', '#E05050', '#FF90B0']
 
-  for (var i = 1; i < studentData.length; i ++){
-    studentData[1][i] = studentData[1][i] / 33.66839414 * 100
-  }
 
 
   $("#greV-input").change(function() {
@@ -270,16 +251,16 @@ $(function() {
   $("#major-dropdown").selectmenu({
     change: function(event, ui) {
       let majorWt = 0;
-      switch ($("#major-dropdown").val()){
+      switch ($("#major-dropdown").val()) {
         case 'csce':
           majorWt = csceWt;
-        break;
+          break;
         case 'stem':
           majorWt = stemWt;
-        break;
+          break;
         case 'other':
           majorWt = otherWt;
-        break;
+          break;
       }
       studentData[1][6] = majorWt * weights[5];
       updateResult();
@@ -289,7 +270,7 @@ $(function() {
   $("#ctry-dropdown").selectmenu({
     change: function(event, ui) {
       let countryWt = 0;
-      switch ($("#ctry-dropdown").val()){
+      switch ($("#ctry-dropdown").val()) {
         case 'usa':
           countryWt = usaWt;
           break;
@@ -314,7 +295,7 @@ $(function() {
   $("#rec1-dropdown").selectmenu({
     change: function(event, ui) {
       let rec1Wt = 0;
-      switch ($("#rec1-dropdown").val()){
+      switch ($("#rec1-dropdown").val()) {
         case 'rec1top5Wt':
           rec1Wt = rec1top5Wt;
           break;
@@ -336,7 +317,7 @@ $(function() {
   $("#rec2-dropdown").selectmenu({
     change: function(event, ui) {
       let rec2Wt = 0;
-      switch ($("#rec2-dropdown").val()){
+      switch ($("#rec2-dropdown").val()) {
         case 'rec2top5Wt':
           rec2Wt = rec2top5Wt;
           break;
@@ -358,7 +339,7 @@ $(function() {
   $("#rec3-dropdown").selectmenu({
     change: function(event, ui) {
       let rec3Wt = 0;
-      switch ($("#rec3-dropdown").val()){
+      switch ($("#rec3-dropdown").val()) {
         case 'rec3top5Wt':
           rec3Wt = rec3top5Wt;
           break;
@@ -507,29 +488,34 @@ $(function() {
     }
   });
 
-function updateResult() {
-  var totalScore = studentData[1][1]+studentData[1][2]+studentData[1][3]+studentData[1][4]+studentData[1][5]+studentData[1][6]+studentData[1][7]+studentData[1][8]+studentData[1][9]+studentData[1][10]+studentData[1][11];
+  function updateResult() {
+    // var totalScore = studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] + studentData[1][6] + studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] + studentData[1][11];
+    var totalScore = 0;
+    for (var i = 1; i < studentData[1].length; i++) {
+      totalScore += studentData[1][i];
+    }
+    // console.log(totalScore);
 
-  // Loading animation
-  $("#result").css('opacity',1).animate({opacity:0}
-    , 200, function () {
-      $(".loader").css('visibility','visible');
+    // Loading animation
+    $("#result").css('opacity', 1).animate({
+      opacity: 0
+    }, 0.1, function() {
+      $(".loader").css('visibility', 'visible');
       setTimeout(function() {
-        $(".loader").css('visibility','hidden');
-        if (totalScore >= 250) {
+        $(".loader").css('visibility', 'hidden');
+        if (totalScore >= threshold) {
           $("#result").text("Admission accepted.");
           $("#result").css("color", "green");
         } else {
           $("#result").text("Admission rejected.");
           $("#result").css("color", "red");
         }
-        $("#result").css('opacity',0).animate({opacity:1}, 200);
+        $("#result").css('opacity', 0).animate({
+          opacity: 1
+        }, 200);
       }, 500);
-  });
+    });
 
-
-
-
-}
+  }
 
 });
