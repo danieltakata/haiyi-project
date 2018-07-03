@@ -1,24 +1,357 @@
-$(function() {
+var app = new Vue({
+  el: '#app',
+  data: {
+    students: [
+  {
+    "admission": 1,
+    "GREv": 32,
+    "GREq": 40,
+    "GREw": 4.7,
+    "GPA": 3.6,
+    "Major": "Computer Science",
+    "inst_rank": 193,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 192,
+    "RL2": "Top 10%",
+    "RL2inst": 192,
+    "RL3": "Top 10%",
+    "RL3inst": 179
+  },
+  {
+    "admission": 0,
+    "GREv": 13,
+    "GREq": 29,
+    "GREw": 2.7,
+    "GPA": 3.59,
+    "Major": "Computer Science",
+    "inst_rank": 190,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 167,
+    "RL2": "Top 10%",
+    "RL2inst": 203,
+    "RL3": "Top 10%",
+    "RL3inst": 193
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.81,
+    "Major": "Computer Science",
+    "inst_rank": 186,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 4,
+    "RL1": "Top 10%",
+    "RL1inst": 189,
+    "RL2": "Top 10%",
+    "RL2inst": 205,
+    "RL3": "Top 10%",
+    "RL3inst": 192
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.42,
+    "Major": "Computer Science",
+    "inst_rank": 190,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 4,
+    "RL1": "Top 10%",
+    "RL1inst": 205,
+    "RL2": "Top 10%",
+    "RL2inst": 194,
+    "RL3": "Top 10%",
+    "RL3inst": 206
+  },
+  {
+    "admission": 0,
+    "GREv": 22,
+    "GREq": 34,
+    "GREw": 4,
+    "GPA": 3.56,
+    "Major": "Computer Science",
+    "inst_rank": 1,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 207,
+    "RL2": "Top 10%",
+    "RL2inst": 209,
+    "RL3": "Top 10%",
+    "RL3inst": 210
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.56,
+    "Major": "Computer Science",
+    "inst_rank": 346.7302743,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 216,
+    "RL2": "Top 10%",
+    "RL2inst": 203,
+    "RL3": "Top 10%",
+    "RL3inst": 183
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.56,
+    "Major": "Computer Science",
+    "inst_rank": 190,
+    "Country": "US",
+    "PS": 5,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 178,
+    "RL2": "Top 10%",
+    "RL2inst": 193,
+    "RL3": "Top 10%",
+    "RL3inst": 200
+  },
+  {
+    "admission": 0,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.58,
+    "Major": "STEM",
+    "inst_rank": 180,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 159,
+    "RL2": "Top 10%",
+    "RL2inst": 180,
+    "RL3": "Top 10%",
+    "RL3inst": 205
+  },
+  {
+    "admission": 0,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.6,
+    "Major": "STEM",
+    "inst_rank": 190,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 5,
+    "RL1": "Top 10%",
+    "RL1inst": 198,
+    "RL2": "Top 10%",
+    "RL2inst": 203,
+    "RL3": "Top 10%",
+    "RL3inst": 176
+  },
+  {
+    "admission": 0,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.6,
+    "Major": "STEM",
+    "inst_rank": 200,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 2,
+    "RL1": "Top 10%",
+    "RL1inst": 203,
+    "RL2": "Top 10%",
+    "RL2inst": 196,
+    "RL3": "Top 10%",
+    "RL3inst": 206
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.74,
+    "Major": "STEM",
+    "inst_rank": 194,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 5%",
+    "RL1inst": 1,
+    "RL2": "Top 10%",
+    "RL2inst": 200,
+    "RL3": "Top 10%",
+    "RL3inst": 208
+  },
+  {
+    "admission": 0,
+    "GREv": 23,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.57,
+    "Major": "STEM",
+    "inst_rank": 202,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 494,
+    "RL2": "Top 10%",
+    "RL2inst": 203,
+    "RL3": "Top 10%",
+    "RL3inst": 212
+  },
+  {
+    "admission": 1,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.57,
+    "Major": "STEM",
+    "inst_rank": 196,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 206,
+    "RL2": "Top 5%",
+    "RL2inst": 1,
+    "RL3": "Top 10%",
+    "RL3inst": 224
+  },
+  {
+    "admission": 0,
+    "GREv": 22,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.6,
+    "Major": "STEM",
+    "inst_rank": 185,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 4,
+    "RL1": "Top 10%",
+    "RL1inst": 189,
+    "RL2": "Top 50%",
+    "RL2inst": 482,
+    "RL3": "Top 10%",
+    "RL3inst": 213
+  },
+  {
+    "admission": 0,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 3.5,
+    "GPA": 3.57,
+    "Major": "STEM",
+    "inst_rank": 190,
+    "Country": "US",
+    "PS": 3,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 162,
+    "RL2": "Top 10%",
+    "RL2inst": 205,
+    "RL3": "Top 5%",
+    "RL3inst": 1
+  },
+  {
+    "admission": 0,
+    "GREv": 23,
+    "GREq": 34,
+    "GREw": 4,
+    "GPA": 3.71,
+    "Major": "STEM",
+    "inst_rank": 199,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 4,
+    "RL1": "Top 10%",
+    "RL1inst": 198,
+    "RL2": "Top 10%",
+    "RL2inst": 193,
+    "RL3": "Top 50%",
+    "RL3inst": 464
+  },
+  {
+    "admission": 1,
+    "GREv": 23,
+    "GREq": 34,
+    "GREw": 3.5,
+    "GPA": 3.71,
+    "Major": "Computer Science",
+    "inst_rank": 190,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 3.5,
+    "RL1": "Top 10%",
+    "RL1inst": 192,
+    "RL2": "Top 10%",
+    "RL2inst": 200,
+    "RL3": "Top 10%",
+    "RL3inst": 204
+  },
+  {
+    "admission": 0,
+    "GREv": 23,
+    "GREq": 35,
+    "GREw": 4,
+    "GPA": 3.49,
+    "Major": "Other",
+    "inst_rank": 186,
+    "Country": "US",
+    "PS": 4,
+    "Diversity": 4,
+    "RL1": "Top 10%",
+    "RL1inst": 207,
+    "RL2": "Top 10%",
+    "RL2inst": 197,
+    "RL3": "Top 10%",
+    "RL3inst": 186
+  }
+],
+    landingPage: 1
+  }
+})
 
-
-$("#landing-page").fadeIn();
-$(".landingcontent").fadeIn();
-
-
-$("#startButton").on("click", function() {
-      $(".landingcontent").fadeOut();
-
-      setTimeout(function() {
-          $("#landing-page").fadeOut();
-      }, 500);
-
-      setTimeout(function() {
-      // $("#main-page").animateRotate(0, 0);
-      // $("#main-page").css("height", "25px");
-      // $("#main-page").css("width", "375px");
-          $("#main-page").fadeIn();
-          $(".maincontent").fadeIn(300);
-          drawStacked();
-      }, 300);
-  });
-});
+// $(function() {
+//
+//
+// $("#landing-page").fadeIn();
+// $(".landingcontent").fadeIn();
+//
+//
+// $("#startButton").on("click", function() {
+//       $(".landingcontent").fadeOut();
+//
+//       setTimeout(function() {
+//           $("#landing-page").fadeOut();
+//       }, 500);
+//
+//       setTimeout(function() {
+//       // $("#main-page").animateRotate(0, 0);
+//       // $("#main-page").css("height", "25px");
+//       // $("#main-page").css("width", "375px");
+//           $("#main-page").fadeIn();
+//           $(".maincontent").fadeIn(300);
+//           drawStacked();
+//       }, 300);
+//   });
+// });

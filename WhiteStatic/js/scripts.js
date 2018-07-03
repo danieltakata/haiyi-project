@@ -13,9 +13,6 @@ $("#startButton").on("click", function() {
       }, 500);
 
       setTimeout(function() {
-      // $("#main-page").animateRotate(0, 0);
-      // $("#main-page").css("height", "25px");
-      // $("#main-page").css("width", "375px");
           $("#main-page").fadeIn();
           $(".maincontent").fadeIn(300);
           drawStacked();
@@ -25,28 +22,28 @@ $("#startButton").on("click", function() {
 google.charts.load('current', {packages: ['corechart', 'bar']});
 // google.charts.setOnLoadCallback(drawStacked);
 
-var greVerW = 1, greQuanW = 1, greWriW = 3, gpaW = 25, rankW = 0.1, masW = 15, psW = 20, diverW = 2, recW = 10;
+var greVerW = 0.7, greQuanW = 0.7, greWriW = 3, gpaW = 25, rankW = 0.1, masW = 15, psW = 20, diverW = 2, recW = 10;
 function drawStacked() {
       var data = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
          'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
           'PS Score',  'Diversity Score',
-          'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
-        ['', 160*greVerW, 169*greQuanW, 4*greWriW, 3.51*gpaW, (700-168)*rankW, 0*masW, 3.5*psW, 4*diverW, 8*recW, 8*recW, 8*recW],
+          'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
+        ['', 162*greVerW, 170*greQuanW, 4.7*greWriW, 3.6*gpaW, (1000-193)*rankW, 0*masW, 3.5*psW, 4*diverW, 8*recW, 8*recW, 8*recW],
       ]);
       var data2 = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
-         'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
+         'GRE - writing', 'GPA', 'Ranking of Inst',
           'PS Score',  'Diversity Score',
-          'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
-        ['', 144*greVerW, 152*greQuanW,3*greWriW,3.69*gpaW, (700-32)*rankW, 0*masW,1.5*psW,1.5*diverW,2*recW,2*recW,2*recW],
+          'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
+        ['', 143*greVerW, 159*greQuanW,2.7*greWriW,3.59*gpaW, (1000-190)*rankW, 3*psW,3.5*diverW,2*recW,2*recW,2*recW],
       ]);
       var data3 = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
-         'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
+         'GRE - writing', 'GPA', 'Ranking of Inst',
           'PS Score',  'Diversity Score',
-          'RL1 percentile',  'RL2 percentile',  'RL3 percentile'],
-        ['', 168*greVerW, 166*greQuanW, 5.5*greWriW,3.87*gpaW,(700-650)*rankW,1*masW,5*psW,5*diverW,11*recW,11*recW,11*recW ],
+          'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
+        ['', 152*greVerW, 165*greQuanW, 4*greWriW,3.81*gpaW,(1000-186)*rankW,4*psW,4*diverW,11*recW,11*recW,11*recW ],
       ]);
       //
 
