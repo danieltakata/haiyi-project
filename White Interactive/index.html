@@ -3,12 +3,6 @@
 <html lang="en">
 
 <head>
-  <style>
-    label {
-      padding-bottom: 6px;
-      padding-top: 11px;
-    }
-  </style>
   <meta charset="utf-8">
 
   <title>Grad Admission Data Visualization</title>
@@ -33,16 +27,31 @@
 
 <body>
 
+  <div id="landing-page">
+    <div class="landingcontent">
+      <div class="jumbotron">
+        <h1 class="display-4">Hello!</h1>
+        <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+        <hr class="my-4">
+        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works. This algorithm works by adding together the applicant’s scores in different areas to create a total score. The algorithm compares this sum to an acceptance threshold it has calculated based on data from previous years. If the applicant’s total score is above this threshold, they are accepted. On the following page you will see the different factors that are taken into account by the algorithm when deciding whether or not to admit an applicant. You can adjust the values below to find out the exact contribution of each score, and see the total impact on the decision. The chart below these scores represent how various factors contribute to the algorithm’s decision. (any other info needed so they can answer questions at the end)
+        </p>
+        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+
+        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+      </div>
+
+    </div>
+  </div>
 
 
+  <div id="main-page">
+    <div class="maincontent">
 
-  <div class="jumbotron">
-    <h1 class="display-4">Hello!</h1>
-    <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+  <div class="jumbotron main-visualization">
+    <!-- <h1 class="display-4">Admission Explainer</h1> -->
+    <p class="lead">Admission decision helper.</p>
     <hr class="my-4">
-    <p>Part of the admission process was done with the help of an SVM machine learning algorithm that was trained and tested with previous years' application data to accurately match our admission committee's decision process. This means the algorithm calculates
-      numerical scores for each input, weights them, and sums the result to determine a final score for each user, which is then compared with an acceptance threshold. If the score is higher, the person is accepted. You can tweak the values below to find
-      out the exact contribution of each score, and see the total impact on the decision. The contribution of each value is color-coded in the bar.</p>
+    <p class="">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
 
     <div class="card">
       <div class="card-body">
@@ -308,21 +317,28 @@
                 </div>
                 <div class='col-1'>1</div>
               </div>
-              
+
             </div>
           </div>
+
         </div>
         </br>
-        <div id="chart_div"></div>
+
+        <div class="loader"></div>
+        <div class="result" id="chart_div"></div>
+        <p class="text-center result" id="footnote">
+          *Hovering over a section on the graph will show the contribution of that section to the total score, after being weighted</p>
+          <h5 class="text-center result" id="result" style="color: red">Admission rejected</h5>
 
       </div>
 
-      <p class="text-center" id="footnote">
-        *Hovering over a section on the graph will show the contribution of that section to the total score, after being weighted</p>
-      <h5 class="text-center" id="result" style="color: red">Sorry, rejected...</h5>
+
+
     </div>
 
   </div>
+</div>
+</div>
 
 
 

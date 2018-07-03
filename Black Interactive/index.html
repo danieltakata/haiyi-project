@@ -2,56 +2,70 @@
 
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-  
-    <title>Grad Admission Data Visualization</title>
-    <!-- <meta name="description" content="The HTML5 Herald"> -->
-    <!-- <meta name="author" content="SitePoint"> -->
-  
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
-    <!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
-  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <!--[if lt IE 9]>
+<head>
+  <meta charset="utf-8">
+
+  <title>Grad Admission Data Visualization</title>
+  <!-- <meta name="description" content="The HTML5 Herald"> -->
+  <!-- <meta name="author" content="SitePoint"> -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
+  <!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <!--[if lt IE 9]>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
-  </head>
+</head>
 
 <body>
 
+  <div id="landing-page">
+      <div class="landingcontent">
+        <div class="jumbotron">
+          <h1 class="display-4">Hello!</h1>
+          <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+          <hr class="my-4">
+          <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works. On the following page you will see the different factors that are taken into account by the algorithm when deciding whether or not to admit an applicant. You can adjust the values below to find out the exact contribution of each score, and see the total impact on the decision. (any other info needed so they can answer questions at the end)</p>
+          <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
 
-  
+          <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+        </div>
 
-  <div class="jumbotron">
-    <h1 class="display-4">Hello!</h1>
-    <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
-    <hr class="my-4">
-    <p>Part of the admission process was done with the help of an algorithm that was trained and tested with previous years' application data 
-      to accurately match our admission committee's decision process. You can tweak the values below to find out the approximate 
-      contribution of each score, and see the total impact on the decision.</p>
+      </div>
+    </div>
 
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
 
-          <div class="row">
-            <h2>
-              Example Admission Result
-            </h2>
+    <div id="main-page">
+      <div class="maincontent">
 
-          </div>
-          <form id="my-form">
 
-         <!--Features Text/Input/Sliders-->
-         <div class="row">
+        <div class="jumbotron main-visualization">
+          <!-- <h1 class="display-4">Admission Explainer</h1> -->
+          <p class="lead">Admission decision helper.</p>
+          <hr class="my-4">
+          <p class="">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="container">
+
+                <div class="row">
+                  <h2>
+                Example Admission Result
+              </h2>
+
+                </div>
+
+                  <!--Features Text/Input/Sliders-->
+                  <div class="row">
             <div class="col-12">
               <!--GRE-V Row-->
               <div class='row'>
@@ -303,84 +317,32 @@
                 </div>
                 <div class='col-1'>1</div>
               </div>
-              
+
             </div>
           </div>
 
-        </br>
-          <!-- Old Code
-          <div class="row">
-            <div class="col">
-              
+                  </br>
 
 
-            </div>
-            <div class="col">
 
-              
-            </div>
-            <div class="col">
-
-              
-              <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
+              </div>
+              <h5 class="text-center" id="result" style="color:red">Admission rejected.</h5>
+              <div class="loader"></div>
 
             </div>
-          </div> -->
-
-        <!-- </br>
-          <div class="row">
-            <div class="col">
-              
-                <input type="text" maxlength=100 id="aGPA" readonly style="border:0" color:#000000 value="Most important!">
-
-
-            </div>
-            <div class="col">
-
-              
-              <input type="text" maxlength=60 id="aGRE" readonly style="border:0" color:#000000 value="">
-
-            </div>
-            <div class="col">
-
-              
-              <input type="text" maxlength=60 id="aRecommendation" readonly style="border:0" color:#000000 value="">
-
-            </div>
-          </div> -->
-
-        <!-- </br>
-        <div class="row">
-          <div class="col">
-            
-            </br>
 
           </div>
-          <div class="col">
-
-           
-          </br>
-          </div>
-          <div class="col"></div>
-          
-        </div> -->
-
-
-        
+        </div>
       </div>
-      <h5 class="text-center" id="result" style="color:red">Sorry, rejected...</h5>
-
     </div>
 
-  </div>
 
 
 
 
 
 
-  <!-- Javascript below -->
-  <script src="js/scripts.js"></script>
-</body>
-
+    <!-- Javascript below -->
+    <script src="js/scripts.js"></script>
+  </body>
 </html>

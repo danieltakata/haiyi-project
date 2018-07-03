@@ -19,7 +19,7 @@ $("#startButton").on("click", function() {
           $("#main-page").fadeIn();
           $(".maincontent").fadeIn(300);
           drawStacked();
-      }, 1000);
+      }, 300);
   });
 
 google.charts.load('current', {packages: ['corechart', 'bar']});

@@ -1,3 +1,80 @@
+
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  width: 100%;
+}
+
+div.sli {
+  position: relative;
+  top: 9px;
+}
+
+.black {
+ color: black
+}
+
+#landing-page {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+    /* display: none; */
+}
+
+#main-page {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    margin: auto;
+    display: none;
+}
+
+.landingcontent {
+  padding: 50px 100px 0px 100px;
+}
+
+.maincontent {
+    /* padding-top: 40px; */
+    padding-bottom: 40px;
+    display: none;
+    width: 100%;
+}
+
+.main-visualization {
+  padding-top: 32px;
+  padding-bottom:32px;
+}
+
+
+.black {
+  color: black
+}
+
+
 #footnote {
     font-style: italic
+}
+
+.loader {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 150px;
+
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+    display: hidden;
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

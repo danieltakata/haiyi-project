@@ -51,19 +51,40 @@ $(function() {
     diverVal = 3;
 
   var studentData = [
-    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 
-    'Country', 'Rec1', 'Rec2', 'Rec3', 
-    'Rec1-inst', 'Rec2-inst', 'Rec3-inst', 
+    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major',
+    'Country', 'Rec1', 'Rec2', 'Rec3',
+    'Rec1-inst', 'Rec2-inst', 'Rec3-inst',
     'PS', 'Diversity'],
     ['', (greVerVal-130) * greVerWt, (greQuanVal-130) * greQuanWt, greWriVal * greWriWt, gpaVal * gpaWt, rankVal * rankWt, csceWt,
-      usaWt, rec1top5Wt, rec2top5Wt, rec3top5Wt, 
-      rec1instVal * rec1instWt, rec2instVal * rec2instWt, rec3instVal * rec3instWt, 
+      usaWt, rec1top5Wt, rec2top5Wt, rec3top5Wt,
+      rec1instVal * rec1instWt, rec2instVal * rec2instWt, rec3instVal * rec3instWt,
       psVal * psWt, diverVal * diverWt
     ]
-
   ]
 
-   
+
+  $("#landing-page").fadeIn();
+  $(".landingcontent").fadeIn();
+
+
+  $("#startButton").on("click", function() {
+        $(".landingcontent").fadeOut();
+
+        setTimeout(function() {
+            $("#landing-page").fadeOut();
+        }, 500);
+
+        setTimeout(function() {
+        // $("#main-page").animateRotate(0, 0);
+        // $("#main-page").css("height", "25px");
+        // $("#main-page").css("width", "375px");
+            $("#main-page").fadeIn();
+            $(".maincontent").fadeIn(300);
+            updateResult();
+        }, 300);
+    });
+
+
   $("#greV-input").change(function(){
     $("#greV-slider").slider("value",$("#greV-input").val());
     updateResult();
@@ -232,7 +253,7 @@ $("#ctry-dropdown").selectmenu({
       case 'other':
       studentData[1][7] = elseWt;
       break;
-    }      
+    }
     studentData[1][7] = studentData[1][7];
     updateResult();
   }
@@ -253,7 +274,7 @@ $("#rec1-dropdown").selectmenu({
       case 'rec1top50Wt':
       studentData[1][8] = rec1top50Wt;
       break;
-    }      
+    }
     studentData[1][8] = studentData[1][8];
     updateResult();
   }
@@ -274,7 +295,7 @@ $("#rec2-dropdown").selectmenu({
       case 'rec2top50Wt':
       studentData[1][9] = rec2top50Wt;
       break;
-    }      
+    }
     studentData[1][9] = studentData[1][9];
     updateResult();
   }
@@ -295,7 +316,7 @@ $("#rec3-dropdown").selectmenu({
       case 'rec3top50Wt':
       studentData[1][10] = rec3top50Wt;
       break;
-    }      
+    }
     studentData[1][10] = studentData[1][10];
     updateResult();
   }
@@ -432,22 +453,28 @@ updateResult();
 
 
 function updateResult() {
-  var totalScore = studentData[1][1]+studentData[1][2]+studentData[1][3]+studentData[1][4]+studentData[1][5]+studentData[1][6]+
-  studentData[1][7]+studentData[1][8]+studentData[1][9]+studentData[1][10]+studentData[1][11]+studentData[1][12]+studentData[1][13]
-  +studentData[1][14]+studentData[1][15];
-  totalScore += SVM_constant;
-  console.log('SCORE: ' + totalScore);
-  console.log("Value * Weight for each:")
-  for(var i = 1; i < studentData[1].length; i++){
-    console.log('' + studentData[0][i] + ' ' +  studentData[1][i]);
-  }
-  if(totalScore>=0){
-    $("#result").text("Yay, accepted!")
-    $("#result").css("color","green")
-  } else {
-    document.getElementById("result").innerHTML = "Sorry, rejected..."
-    $("#result").css("color", "red")
-  }
+  var totalScore = studentData[1][1]+studentData[1][2]+studentData[1][3]+studentData[1][4]+studentData[1][5]+studentData[1][6]+studentData[1][7]+studentData[1][8]+studentData[1][9]+studentData[1][10]+studentData[1][11];
+
+  // Loading animation
+  $("#result").css('opacity',1).animate({opacity:0}
+    , 200, function () {
+      $(".loader").css('visibility','visible');
+      setTimeout(function() {
+        $(".loader").css('visibility','hidden');
+        if (totalScore >= 250) {
+          $("#result").text("Admission accepted.");
+          $("#result").css("color", "green");
+        } else {
+          $("#result").text("Admission rejected.");
+          $("#result").css("color", "red");
+        }
+        $("#result").css('opacity',0).animate({opacity:1}, 200);
+      }, 500);
+  });
+
+
+
+
 }
-  
+
 });
