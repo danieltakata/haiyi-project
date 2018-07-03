@@ -217,8 +217,7 @@ $("#rank-slider").slider({
   }
 });
 
-$("#major-dropdown").selectmenu({
-  change: function(event, ui) {
+$("#major-dropdown").change(function(){
     switch ($("#major-dropdown").val()){
       case 'csce':
       studentData[1][6] = csceWt;
@@ -232,11 +231,9 @@ $("#major-dropdown").selectmenu({
     }
     studentData[1][6] = studentData[1][6];
     updateResult();
-  }
 });
 
-$("#ctry-dropdown").selectmenu({
-  change: function(event, ui) {
+$("#ctry-dropdown").change(function(){
     switch ($("#ctry-dropdown").val()){
       case 'usa':
       studentData[1][7] = usaWt;
@@ -256,11 +253,9 @@ $("#ctry-dropdown").selectmenu({
     }
     studentData[1][7] = studentData[1][7];
     updateResult();
-  }
 });
 
-$("#rec1-dropdown").selectmenu({
-  change: function(event, ui) {
+$("#rec1-dropdown").change(function(){
     switch ($("#rec1-dropdown").val()){
       case 'rec1top5Wt':
       studentData[1][8] = rec1top5Wt;
@@ -277,11 +272,9 @@ $("#rec1-dropdown").selectmenu({
     }
     studentData[1][8] = studentData[1][8];
     updateResult();
-  }
 });
 
-$("#rec2-dropdown").selectmenu({
-  change: function(event, ui) {
+$("#rec2-dropdown").change(function(){
     switch ($("#rec2-dropdown").val()){
       case 'rec2top5Wt':
       studentData[1][9] = rec2top5Wt;
@@ -298,11 +291,9 @@ $("#rec2-dropdown").selectmenu({
     }
     studentData[1][9] = studentData[1][9];
     updateResult();
-  }
 });
 
-$("#rec3-dropdown").selectmenu({
-  change: function(event, ui) {
+$("#rec3-dropdown").change(function(){
     switch ($("#rec3-dropdown").val()){
       case 'rec3top5Wt':
       studentData[1][10] = rec3top5Wt;
@@ -319,7 +310,6 @@ $("#rec3-dropdown").selectmenu({
     }
     studentData[1][10] = studentData[1][10];
     updateResult();
-  }
 });
 
 $("#rec1rank-input").change(function() {
