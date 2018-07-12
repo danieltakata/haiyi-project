@@ -19,10 +19,36 @@ $("#startButton").on("click", function() {
       }, 300);
   });
 
+// $(document).ready(function() {
+  $("#myCarousel").on("slid.bs.carousel", function(e) {
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 3;
+    var totalItems = $(".carousel-item").length;
+
+    if (idx >= totalItems - (itemsPerSlide - 1)) {
+      var it = itemsPerSlide - (totalItems - idx);
+      for (var i = 0; i < it; i++) {
+        // append slides to end
+        if (e.direction == "left") {
+          $(".carousel-item")
+            .eq(i)
+            .appendTo(".carousel-inner");
+        } else {
+          $(".carousel-item")
+            .eq(0)
+            .appendTo($(this).find(".carousel-inner"));
+        }
+      }
+    }
+  });
+// });
+
 google.charts.load('current', {packages: ['corechart', 'bar']});
 // google.charts.setOnLoadCallback(drawStacked);
 
 var greVerW = 0.7, greQuanW = 0.7, greWriW = 3, gpaW = 25, rankW = 0.1, masW = 15, psW = 20, diverW = 2, recW = 10;
+
 function drawStacked() {
       var data = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
@@ -75,5 +101,6 @@ function drawStacked() {
       var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
       chart.draw(data3, options);
     }
+
 
 });
