@@ -21,7 +21,6 @@ $("#startButton").on("click", function() {
 
   // populate the cards
   for (var i = 2; i<=10; i++) {
-    $("#studentCard_1")
     var clone = $("#studentCard_1").clone();
     clone.attr("id", 'studentCard_'+i);
 
@@ -33,6 +32,7 @@ $("#startButton").on("click", function() {
     // var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
     // chart.draw(data, options);
   }
+  $("#studentCard_1").addClass('active');
 
 
 // $(document).ready(function() {
@@ -107,17 +107,12 @@ function drawStacked() {
         legend: { position: 'none' }
       };
 
-
+      // Render charts for all profiles
       for (var i = 1; i<=10; i++) {
         var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
         chart.draw(data, options);
       }
 
-      // var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
-      // chart.draw(data2, options);
-      //
-      // var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
-      // chart.draw(data3, options);
     }
 
 
