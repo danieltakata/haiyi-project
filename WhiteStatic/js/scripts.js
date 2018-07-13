@@ -19,6 +19,22 @@ $("#startButton").on("click", function() {
       }, 300);
   });
 
+  // populate the cards
+  for (var i = 2; i<=10; i++) {
+    $("#studentCard_1")
+    var clone = $("#studentCard_1").clone();
+    clone.attr("id", 'studentCard_'+i);
+
+    clone.find("#chart_div_1").attr("id","chart_div_" + i);
+    clone.find("#studentName").text("Student " + i);
+
+    //append clone on the end
+    $("#myCarousel-container").append(clone);
+    // var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
+    // chart.draw(data, options);
+  }
+
+
 // $(document).ready(function() {
   $("#myCarousel").on("slid.bs.carousel", function(e) {
     var $e = $(e.relatedTarget);
@@ -92,14 +108,16 @@ function drawStacked() {
       };
 
 
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
+      for (var i = 1; i<=10; i++) {
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
+        chart.draw(data, options);
+      }
 
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
-      chart.draw(data2, options);
-
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
-      chart.draw(data3, options);
+      // var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
+      // chart.draw(data2, options);
+      //
+      // var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
+      // chart.draw(data3, options);
     }
 
 
