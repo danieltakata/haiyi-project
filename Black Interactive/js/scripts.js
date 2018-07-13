@@ -15,6 +15,7 @@ $(function() {
       // $("#main-page").css("width", "375px");
       $("#main-page").fadeIn();
       $(".maincontent").fadeIn(300);
+      $('[data-toggle="tooltip"]').tooltip();
       updateResult()
     }, 300);
   });
