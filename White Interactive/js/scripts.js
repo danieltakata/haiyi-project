@@ -146,11 +146,11 @@ google.charts.setOnLoadCallback(function() {
   ];
 
 
-  $("#greV-input").change(function() {
-    $("#greV-slider").slider("value", $("#greV-input").val() - 130);
-    updateResult();
-  });
-  $("#greV-input").val(vals[0] + 130);
+  // $("#greV-input").change(function() {
+  //   $("#greV-slider").slider("value", $("#greV-input").val() - 130);
+  //   updateResult();
+  // });
+  // $("#greV-input").val(vals[0] + 130);
 
 
   $("#greV-slider").slider({
@@ -164,7 +164,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greV-input").val(ui.value + 130)
+      $("#greV-data").text('Value: '+(ui.value + 130))
     },
     change: function(event, ui) {
       studentData[1][1] = ui.value * weights[0]; //greV
@@ -174,11 +174,11 @@ google.charts.setOnLoadCallback(function() {
   });
   $("#greV-slider .ui-slider-range").css('background', barcolors[0]);
 
-  $("#greQ-input").change(function() {
-    $("#greQ-slider").slider("value", $("#greQ-input").val() - 130);
-    updateResult();
-  });
-  $("#greQ-input").val(vals[1] + 130);
+  // $("#greQ-input").change(function() {
+  //   $("#greQ-slider").slider("value", $("#greQ-input").val() - 130);
+  //   updateResult();
+  // });
+  // $("#greQ-input").val(vals[1] + 130);
 
 
   $("#greQ-slider").slider({
@@ -192,7 +192,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greQ-input").val(ui.value + 130)
+      $("#greQ-data").text('Value: '+(ui.value + 130))
     },
     change: function(event, ui) {
       studentData[1][2] = ui.value * weights[1]; //greQ
@@ -202,11 +202,11 @@ google.charts.setOnLoadCallback(function() {
   });
   $("#greQ-slider .ui-slider-range").css('background', barcolors[1]);
 
-  $("#greW-input").change(function() {
-    $("#greW-slider").slider("value", $("#greW-input").val());
-    updateResult();
-  });
-  $("#greW-input").val(vals[2]);
+  // $("#greW-input").change(function() {
+  //   $("#greW-slider").slider("value", $("#greW-input").val());
+  //   updateResult();
+  // });
+  // $("#greW-input").val(vals[2]);
 
   $("#greW-slider").slider({
     // options
@@ -219,7 +219,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greW-input").val(ui.value)
+      $("#greW-data").text('Value: '+ui.value)
     },
     change: function(event, ui) {
       studentData[1][3] = ui.value * weights[2]; //greW
@@ -229,11 +229,11 @@ google.charts.setOnLoadCallback(function() {
   });
   $("#greW-slider .ui-slider-range").css('background', barcolors[2]);
 
-  $("#gpa-input").change(function() {
-    $("#gpa-slider").slider("value", $("#gpa-input").val());
-    updateResult();
-  });
-  $("#gpa-input").val(vals[3]);
+  // $("#gpa-input").change(function() {
+  //   $("#gpa-slider").slider("value", $("#gpa-input").val());
+  //   updateResult();
+  // });
+  // $("#gpa-input").val(vals[3]);
 
   $("#gpa-slider").slider({
     // options
@@ -246,7 +246,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#gpa-input").val(ui.value)
+      $("#gpa-data").text('Value: '+ui.value)
     },
     change: function(event, ui) {
       studentData[1][4] = ui.value * weights[3];
@@ -257,11 +257,11 @@ google.charts.setOnLoadCallback(function() {
   });
   $("#gpa-slider .ui-slider-range").css('background', barcolors[3]);
 
-  $("#rank-input").change(function() {
-    $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
-    updateResult();
-  });
-  $("#rank-input").val(1000 - vals[4])
+  // $("#rank-input").change(function() {
+  //   $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rank-input").val(1000 - vals[4])
 
   $("#rank-slider").slider({
     // options
@@ -274,7 +274,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rank-input").val(1000 - ui.value)
+      $("#rank-data").text('Value: '+(1000 - ui.value))
     },
     change: function(event, ui) {
       studentData[1][5] = ui.value * weights[4];
@@ -401,11 +401,11 @@ google.charts.setOnLoadCallback(function() {
     }
   });
 
-  $("#rec1rank-input").change(function() {
-    $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
-    updateResult();
-  });
-  $("#rec1rank-input").val(1000 - vals[8]);
+  // $("#rec1rank-input").change(function() {
+  //   $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rec1rank-input").val(1000 - vals[8]);
 
   $("#rec1rank-slider").slider({
     // options
@@ -413,7 +413,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec1rank-input").val(1000 - ui.value)
+      $("#rec1rank-data").text('Value: '+(1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -429,11 +429,11 @@ google.charts.setOnLoadCallback(function() {
   });
   $("#rec1rank-slider .ui-slider-range").css('background', barcolors[7]);
 
-  $("#rec2rank-input").change(function() {
-    $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
-    updateResult();
-  });
-  $("#rec2rank-input").val(1000 - vals[10]);
+  // $("#rec2rank-input").change(function() {
+  //   $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rec2rank-input").val(1000 - vals[10]);
 
   $("#rec2rank-slider").slider({
     // options
@@ -441,7 +441,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec2rank-input").val(1000 - ui.value)
+      $("#rec2rank-data").text('Value: '+(1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -459,11 +459,11 @@ google.charts.setOnLoadCallback(function() {
 
 
 
-  $("#rec3rank-input").change(function() {
-    $("#rec3rank-slider").slider("value", 1000 - $("#rec3rank-input").val());
-    updateResult();
-  });
-  $("#rec3rank-input").val(1000 - vals[12]);
+  // $("#rec3rank-input").change(function() {
+  //   $("#rec3rank-slider").slider("value", 1000 - $("#rec3rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rec3rank-input").val(1000 - vals[12]);
 
   $("#rec3rank-slider").slider({
     // options
@@ -471,7 +471,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec3rank-input").val(1000 - ui.value)
+      $("#rec3rank-data").text('Value: '+(1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -486,11 +486,11 @@ google.charts.setOnLoadCallback(function() {
   });
   $("#rec3rank-slider .ui-slider-range").css('background', barcolors[11]);
 
-  $("#ps-input").change(function() {
-    $("#ps-slider").slider("value", $("#ps-input").val() - 1);
-    updateResult();
-  });
-  $("#ps-input").val(vals[13] + 1)
+  // $("#ps-input").change(function() {
+  //   $("#ps-slider").slider("value", $("#ps-input").val() - 1);
+  //   updateResult();
+  // });
+  // $("#ps-input").val(vals[13] + 1)
 
 
   $("#ps-slider").slider({
@@ -504,7 +504,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#ps-input").val(ui.value + 1)
+      $("#ps-data").text('Value: '+(ui.value + 1))
     },
     change: function(event, ui) {
       studentData[1][14] = ui.value * weights[13];
@@ -514,11 +514,11 @@ google.charts.setOnLoadCallback(function() {
   });
   $("#ps-slider .ui-slider-range").css('background', barcolors[12]);
 
-  $("#diver-input").change(function() {
-    $("#diver-slider").slider("value", $("#diver-input").val() - 1);
-    updateResult();
-  });
-  $("#diver-input").val(vals[14] + 1);
+  // $("#diver-input").change(function() {
+  //   $("#diver-slider").slider("value", $("#diver-input").val() - 1);
+  //   updateResult();
+  // });
+  // $("#diver-input").val(vals[14] + 1);
 
   $("#diver-slider").slider({
     // options
@@ -531,7 +531,7 @@ google.charts.setOnLoadCallback(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#diver-input").val(ui.value + 1)
+      $("#diver-data").text('Value: '+(ui.value + 1))
     },
     change: function(event, ui) {
       studentData[1][15] = ui.value * weights[14];
