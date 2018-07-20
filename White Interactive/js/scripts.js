@@ -104,11 +104,11 @@ google.charts.setOnLoadCallback(function() {
     , 274 // 1000 - Inst-Rank
     , 1.5594831748 // Major
     , 0 // Country of origin
-    , 0 // Recommendation letter 1
+    , 0.87623872879 // Recommendation letter 1
     , 0 // 1000 - Rec1 inst rank
-    , 0 // Recommendation letter 2
+    , 0.44907150816 // Recommendation letter 2
     , 0 // 1000 - Rec2 inst rank
-    , 0 // Recommendation letter 3
+    , 0.27703027917 // Recommendation letter 3
     , 0 // 1000 - Rec3 inst rank
     , 2 // Personal Statement - 1
     , 1 // Diversity score - 1
@@ -119,9 +119,10 @@ google.charts.setOnLoadCallback(function() {
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec1 Rank', 'Rec2', 'Rec2 Rank', 'Rec3', 'Rec3 Rank', 'PS', 'Diversity'],
     ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
-  for (var i = 0; i < studentData.length; i++) {
+  for (var i = 0; i < studentData[1].length-1; i++) {
     studentData[1][i + 1] = vals[i] * weights[i];
   }
+
 
   var threshold = 42.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
 

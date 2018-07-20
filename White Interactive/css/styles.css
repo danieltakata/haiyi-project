@@ -82,3 +82,9 @@ div.sli {
 .tooltip2 {
     border-bottom: 1px dotted black;
 }
+
+.scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 350px;
+}

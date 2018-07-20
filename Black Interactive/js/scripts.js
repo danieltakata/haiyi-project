@@ -95,11 +95,11 @@ $(function() {
     ,274           // 1000 - Inst-Rank
     ,1.5594831748  // Major
     ,0             // Country of origin
-    ,0             // Recommendation letter 1
+    ,0.87623872879 // Recommendation letter 1
     ,0             // 1000 - Rec1 inst rank
-    ,0             // Recommendation letter 2
+    ,0.44907150816 // Recommendation letter 2
     ,0             // 1000 - Rec2 inst rank
-    ,0             // Recommendation letter 3
+    ,0.27703027917 // Recommendation letter 3
     ,0             // 1000 - Rec3 inst rank
     ,2             // Personal Statement - 1
     ,1             // Diversity score - 1
@@ -110,7 +110,7 @@ $(function() {
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec1 Rank', 'Rec2', 'Rec2 Rank', 'Rec3', 'Rec3 Rank', 'PS', 'Diversity'],
     ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
-  for (var i = 0; i < studentData.length; i++) {
+  for (var i = 0; i < studentData[1].length-1; i++) {
     studentData[1][i + 1] = vals[i] * weights[i];
   }
 
