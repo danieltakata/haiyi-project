@@ -19,10 +19,52 @@ $("#startButton").on("click", function() {
       }, 300);
   });
 
+  // populate the cards
+  for (var i = 2; i<=10; i++) {
+    var clone = $("#studentCard_1").clone();
+    clone.attr("id", 'studentCard_'+i);
+
+    clone.find("#chart_div_1").attr("id","chart_div_" + i);
+    clone.find("#studentName").text("Student " + i);
+
+    //append clone on the end
+    $("#myCarousel-container").append(clone);
+    // var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
+    // chart.draw(data, options);
+  }
+  $("#studentCard_1").addClass('active');
+
+
+// $(document).ready(function() {
+  $("#myCarousel").on("slid.bs.carousel", function(e) {
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 3;
+    var totalItems = $(".carousel-item").length;
+
+    if (idx >= totalItems - (itemsPerSlide - 1)) {
+      var it = itemsPerSlide - (totalItems - idx);
+      for (var i = 0; i < it; i++) {
+        // append slides to end
+        if (e.direction == "left") {
+          $(".carousel-item")
+            .eq(i)
+            .appendTo(".carousel-inner");
+        } else {
+          $(".carousel-item")
+            .eq(0)
+            .appendTo($(this).find(".carousel-inner"));
+        }
+      }
+    }
+  });
+// });
+
 google.charts.load('current', {packages: ['corechart', 'bar']});
 // google.charts.setOnLoadCallback(drawStacked);
 
 var greVerW = 0.7, greQuanW = 0.7, greWriW = 3, gpaW = 25, rankW = 0.1, masW = 15, psW = 20, diverW = 2, recW = 10;
+
 function drawStacked() {
       var data = google.visualization.arrayToDataTable([
         ['Name', 'GRE - verbal',  'GRE - quant',
@@ -65,15 +107,13 @@ function drawStacked() {
         legend: { position: 'none' }
       };
 
+      // Render charts for all profiles
+      for (var i = 1; i<=10; i++) {
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
+        chart.draw(data, options);
+      }
 
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-      chart.draw(data, options);
-
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div2'));
-      chart.draw(data2, options);
-
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div3'));
-      chart.draw(data3, options);
     }
+
 
 });
