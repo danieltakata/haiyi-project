@@ -138,7 +138,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greV-data").text('Value: '+(ui.value + 130))
+      $("#greV-data").text((ui.value + 130))
     },
     change: function(event, ui) {
       studentData[1][1] = ui.value * weights[0]; //greV
@@ -164,7 +164,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greQ-data").text('Value: '+(ui.value + 130))
+      $("#greQ-data").text((ui.value + 130))
     },
     change: function(event, ui) {
       studentData[1][2] = ui.value * weights[1]; //greQ
@@ -189,7 +189,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greW-data").text('Value: '+(ui.value))
+      $("#greW-data").text((ui.value))
     },
     change: function(event, ui) {
       studentData[1][3] = ui.value * weights[2]; //greW
@@ -214,7 +214,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#gpa-data").text('Value: '+ui.value)
+      $("#gpa-data").text(ui.value)
     },
     change: function(event, ui) {
       studentData[1][4] = ui.value * weights[3];
@@ -240,7 +240,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rank-data").text('Value: '+(1000 - ui.value))
+      $("#rank-data").text((1000 - ui.value))
     },
     change: function(event, ui) {
       studentData[1][5] = ui.value * weights[4];
@@ -372,7 +372,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec1rank-data").text('Value: '+(1000 - ui.value))
+      $("#rec1rank-data").text((1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -398,7 +398,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec2rank-data").text('Value: '+(1000 - ui.value))
+      $("#rec2rank-data").text((1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -426,7 +426,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec3rank-data").text('Value: '+(1000 - ui.value))
+      $("#rec3rank-data").text((1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -457,7 +457,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#ps-data").text('Value: '+(ui.value + 1))
+      $("#ps-data").text((ui.value + 1))
     },
     change: function(event, ui) {
       studentData[1][14] = ui.value * weights[13];
@@ -482,7 +482,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#diver-data").text('Value: '+(ui.value + 1))
+      $("#diver-data").text((ui.value + 1))
     },
     change: function(event, ui) {
       studentData[1][15] = ui.value * weights[14];

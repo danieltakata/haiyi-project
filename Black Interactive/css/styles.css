@@ -63,3 +63,27 @@ width: 100%;
 .tooltip2 {
     border-bottom: 1px dotted black
 }
+
+.interaction-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 330px);
+    /* height: 100%; */
+}
+
+.result-container{
+  background-color: white;
+  position: sticky;
+  bottom: 0px;
+  z-index: 20;
+}
+
+.data-value{
+  width: 60px;
+  border-radius: 10px;
+  background-color: #cdffc9;
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: #999999;
+}

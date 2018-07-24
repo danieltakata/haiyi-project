@@ -26,6 +26,7 @@ div.sli {
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
     display: none;
+    height: 100vh;
 }
 
 .landingcontent {
@@ -34,14 +35,19 @@ div.sli {
 
 .maincontent {
     /* padding-top: 40px; */
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
     display: none;
     width: 100%;
 }
 
 .main-visualization {
-  padding-top: 32px;
-  padding-bottom:32px;
+  /* height: 95vh; */
+  padding-top: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  /* padding: 0 !important; */
+  /* margin: 0 !important; */
+
 }
 
 
@@ -83,8 +89,17 @@ div.sli {
     border-bottom: 1px dotted black;
 }
 
-.scroll {
+
+.interaction-container {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 350px;
+    max-height: calc(100vh - 530px);
+    /* height: 100%; */
+}
+
+.result-container{
+  background-color: white;
+  position: sticky;
+  bottom: 0px;
+  z-index: 20;
 }
