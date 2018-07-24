@@ -94,13 +94,13 @@ $(function() {
     ,3.2           // GPA
     ,274           // 1000 - Inst-Rank
     ,1.5594831748  // Major
-  ,0             // Country of origin
-    ,0             // Recommendation letter 1
-  ,0             // 1000 - Rec1 inst rank
-    ,0             // Recommendation letter 2
-  ,0             // 1000 - Rec2 inst rank
-    ,0             // Recommendation letter 3
-  ,0             // 1000 - Rec3 inst rank
+    ,0             // Country of origin
+    ,0.87623872879 // Recommendation letter 1
+    ,0             // 1000 - Rec1 inst rank
+    ,0.44907150816 // Recommendation letter 2
+    ,0             // 1000 - Rec2 inst rank
+    ,0.27703027917 // Recommendation letter 3
+    ,0             // 1000 - Rec3 inst rank
     ,2             // Personal Statement - 1
     ,1             // Diversity score - 1
   ];
@@ -110,7 +110,7 @@ $(function() {
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec1 Rank', 'Rec2', 'Rec2 Rank', 'Rec3', 'Rec3 Rank', 'PS', 'Diversity'],
     ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
-  for (var i = 0; i < studentData.length; i++) {
+  for (var i = 0; i < studentData[1].length-1; i++) {
     studentData[1][i + 1] = vals[i] * weights[i];
   }
 
@@ -120,11 +120,11 @@ $(function() {
 
 
 
-  $("#greV-input").change(function() {
-    $("#greV-slider").slider("value", $("#greV-input").val() - 130);
-    updateResult();
-  });
-  $("#greV-input").val(vals[0] + 130);
+  // $("#greV-input").change(function() {
+  //   $("#greV-slider").slider("value", $("#greV-input").val() - 130);
+  //   updateResult();
+  // });
+  // $("#greV-input").val(vals[0] + 130);
 
 
   $("#greV-slider").slider({
@@ -138,7 +138,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greV-input").val(ui.value + 130)
+      $("#greV-data").text((ui.value + 130))
     },
     change: function(event, ui) {
       studentData[1][1] = ui.value * weights[0]; //greV
@@ -146,11 +146,11 @@ $(function() {
     }
   });
 
-  $("#greQ-input").change(function() {
-    $("#greQ-slider").slider("value", $("#greQ-input").val() - 130);
-    updateResult();
-  });
-  $("#greQ-input").val(vals[1] + 130);
+  // $("#greQ-input").change(function() {
+  //   $("#greQ-slider").slider("value", $("#greQ-input").val() - 130);
+  //   updateResult();
+  // });
+  // $("#greQ-input").val(vals[1] + 130);
 
 
   $("#greQ-slider").slider({
@@ -164,7 +164,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greQ-input").val(ui.value + 130)
+      $("#greQ-data").text((ui.value + 130))
     },
     change: function(event, ui) {
       studentData[1][2] = ui.value * weights[1]; //greQ
@@ -172,11 +172,11 @@ $(function() {
     }
   });
 
-  $("#greW-input").change(function() {
-    $("#greW-slider").slider("value", $("#greW-input").val());
-    updateResult();
-  });
-  $("#greW-input").val(vals[2]);
+  // $("#greW-input").change(function() {
+  //   $("#greW-slider").slider("value", $("#greW-input").val());
+  //   updateResult();
+  // });
+  // $("#greW-input").val(vals[2]);
 
   $("#greW-slider").slider({
     // options
@@ -189,7 +189,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#greW-input").val(ui.value)
+      $("#greW-data").text((ui.value))
     },
     change: function(event, ui) {
       studentData[1][3] = ui.value * weights[2]; //greW
@@ -197,11 +197,11 @@ $(function() {
     }
   });
 
-  $("#gpa-input").change(function() {
-    $("#gpa-slider").slider("value", $("#gpa-input").val());
-    updateResult();
-  });
-  $("#gpa-input").val(vals[3]);
+  // $("#gpa-input").change(function() {
+  //   $("#gpa-slider").slider("value", $("#gpa-input").val());
+  //   updateResult();
+  // });
+  // $("#gpa-input").val(vals[3]);
 
   $("#gpa-slider").slider({
     // options
@@ -214,7 +214,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#gpa-input").val(ui.value)
+      $("#gpa-data").text(ui.value)
     },
     change: function(event, ui) {
       studentData[1][4] = ui.value * weights[3];
@@ -223,11 +223,11 @@ $(function() {
     }
   });
 
-  $("#rank-input").change(function() {
-    $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
-    updateResult();
-  });
-  $("#rank-input").val(1000 - vals[4])
+  // $("#rank-input").change(function() {
+  //   $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rank-input").val(1000 - vals[4])
 
   $("#rank-slider").slider({
     // options
@@ -240,7 +240,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rank-input").val(1000 - ui.value)
+      $("#rank-data").text((1000 - ui.value))
     },
     change: function(event, ui) {
       studentData[1][5] = ui.value * weights[4];
@@ -360,11 +360,11 @@ $(function() {
     }
   });
 
-  $("#rec1rank-input").change(function() {
-    $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
-    updateResult();
-  });
-  $("#rec1rank-input").val(1000 - vals[8]);
+  // $("#rec1rank-input").change(function() {
+  //   $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rec1rank-input").val(1000 - vals[8]);
 
   $("#rec1rank-slider").slider({
     // options
@@ -372,7 +372,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec1rank-input").val(1000 - ui.value)
+      $("#rec1rank-data").text((1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -386,11 +386,11 @@ $(function() {
     }
   });
 
-  $("#rec2rank-input").change(function() {
-    $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
-    updateResult();
-  });
-  $("#rec2rank-input").val(1000 - vals[10]);
+  // $("#rec2rank-input").change(function() {
+  //   $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rec2rank-input").val(1000 - vals[10]);
 
   $("#rec2rank-slider").slider({
     // options
@@ -398,7 +398,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec2rank-input").val(1000 - ui.value)
+      $("#rec2rank-data").text((1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -414,11 +414,11 @@ $(function() {
 
 
 
-  $("#rec3rank-input").change(function() {
-    $("#rec3rank-slider").slider("value", 1000 - $("#rec3rank-input").val());
-    updateResult();
-  });
-  $("#rec3rank-input").val(1000 - vals[12]);
+  // $("#rec3rank-input").change(function() {
+  //   $("#rec3rank-slider").slider("value", 1000 - $("#rec3rank-input").val());
+  //   updateResult();
+  // });
+  // $("#rec3rank-input").val(1000 - vals[12]);
 
   $("#rec3rank-slider").slider({
     // options
@@ -426,7 +426,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#rec3rank-input").val(1000 - ui.value)
+      $("#rec3rank-data").text((1000 - ui.value))
     },
     range: "min",
     min: 0,
@@ -439,11 +439,11 @@ $(function() {
     }
   });
 
-  $("#ps-input").change(function() {
-    $("#ps-slider").slider("value", $("#ps-input").val() - 1);
-    updateResult();
-  });
-  $("#ps-input").val(vals[13] + 1)
+  // $("#ps-input").change(function() {
+  //   $("#ps-slider").slider("value", $("#ps-input").val() - 1);
+  //   updateResult();
+  // });
+  // $("#ps-input").val(vals[13] + 1)
 
 
   $("#ps-slider").slider({
@@ -457,7 +457,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#ps-input").val(ui.value + 1)
+      $("#ps-data").text((ui.value + 1))
     },
     change: function(event, ui) {
       studentData[1][14] = ui.value * weights[13];
@@ -465,11 +465,11 @@ $(function() {
     }
   });
 
-  $("#diver-input").change(function() {
-    $("#diver-slider").slider("value", $("#diver-input").val() - 1);
-    updateResult();
-  });
-  $("#diver-input").val(vals[14] + 1);
+  // $("#diver-input").change(function() {
+  //   $("#diver-slider").slider("value", $("#diver-input").val() - 1);
+  //   updateResult();
+  // });
+  // $("#diver-input").val(vals[14] + 1);
 
   $("#diver-slider").slider({
     // options
@@ -482,7 +482,7 @@ $(function() {
       // code
     },
     slide: function(event, ui) {
-      $("#diver-input").val(ui.value + 1)
+      $("#diver-data").text((ui.value + 1))
     },
     change: function(event, ui) {
       studentData[1][15] = ui.value * weights[14];
