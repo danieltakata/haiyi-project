@@ -1,119 +1,540 @@
 $(function() {
 
 
-$("#landing-page").fadeIn();
-$(".landingcontent").fadeIn();
+$('#landing-page').fadeIn();
+$('.landingcontent').fadeIn();
 
 
-$("#startButton").on("click", function() {
-      $(".landingcontent").fadeOut();
+$('#startButton').on('click', function() {
+      $('.landingcontent').fadeOut();
 
       setTimeout(function() {
-          $("#landing-page").fadeOut();
+          $('#landing-page').fadeOut();
       }, 500);
 
       setTimeout(function() {
-          $("#main-page").fadeIn();
-          $(".maincontent").fadeIn(300);
+          $('#main-page').fadeIn();
+          $('.maincontent').fadeIn(300);
           drawStacked();
       }, 300);
   });
-
   // populate the cards
-  for (var i = 2; i<=10; i++) {
-    var clone = $("#studentCard_1").clone();
-    clone.attr("id", 'studentCard_'+i);
-
-    clone.find("#chart_div_1").attr("id","chart_div_" + i);
-    clone.find("#studentName").text("Student " + i);
+  for (var i = 2; i<=students.length; i++) {
+    var clone = $('#studentCard_1').clone();
+    clone.attr('id', 'studentCard_'+i);
+    clone.find('#chart_div_1').attr('id','chart_div_' + i);
+    clone.find('#studentName').text('Student ' + i);
+	for (var key in students[i-1]) {
+		if (key == 'GRE-verbal' || key == 'GRE-quantitative'){
+			clone.find('#' + key).text(students[i-1][key]+130);
+		}
+		else if (key != 'admission') {
+			clone.find('#' + key).text(students[i-1][key]);
+		}
+	}
 
     //append clone on the end
-    $("#myCarousel-container").append(clone);
+    $('#myCarousel-container').append(clone);
     // var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
     // chart.draw(data, options);
   }
-  $("#studentCard_1").addClass('active');
+  $('#studentCard_1').addClass('active');
 
 
 // $(document).ready(function() {
-  $("#myCarousel").on("slid.bs.carousel", function(e) {
+  $('#myCarousel').on('slid.bs.carousel', function(e) {
     var $e = $(e.relatedTarget);
     var idx = $e.index();
     var itemsPerSlide = 3;
-    var totalItems = $(".carousel-item").length;
+    var totalItems = $('.carousel-item').length;
 
     if (idx >= totalItems - (itemsPerSlide - 1)) {
       var it = itemsPerSlide - (totalItems - idx);
       for (var i = 0; i < it; i++) {
         // append slides to end
-        if (e.direction == "left") {
-          $(".carousel-item")
+        if (e.direction == 'left') {
+          $('.carousel-item')
             .eq(i)
-            .appendTo(".carousel-inner");
+            .appendTo('.carousel-inner');
         } else {
-          $(".carousel-item")
+          $('.carousel-item')
             .eq(0)
-            .appendTo($(this).find(".carousel-inner"));
+            .appendTo($(this).find('.carousel-inner'));
         }
       }
     }
   });
-// });
+});
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
 // google.charts.setOnLoadCallback(drawStacked);
 
-var greVerW = 0.7, greQuanW = 0.7, greWriW = 3, gpaW = 25, rankW = 0.1, masW = 15, psW = 20, diverW = 2, recW = 10;
+var weights = [
+	''                // Name -- NOTHING HERE
+	,0.114911184251   // GRE-verb
+	,0.0880320310069  // GRE-quant
+	,0.2926697271     // GRE-write
+	,1.584509831      // GPA
+	,1                // Major
+	,0.00294640714041 // Inst-Rank
+	,1                // Country of origin
+	,0.756277254266   // Personal Statement
+	,0.317935719456   // Diversity score
+	,1                // Recommendation letter 1
+	,0.00643092126893 // Rec1 inst
+	,1                // Recommendation letter 2
+	,0.00163152813703 // Rec2 inst
+	,1                // Recommendation letter 3
+	,0.00109465199226 // Rec3 inst
+];
+
+var threshold = 19.0653422959;
 
 function drawStacked() {
-      var data = google.visualization.arrayToDataTable([
-        ['Name', 'GRE - verbal',  'GRE - quant',
-         'GRE - writing', 'GPA', 'Ranking of Inst', 'Master/Bachelor (1/0)',
-          'PS Score',  'Diversity Score',
-          'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
-        ['', 162*greVerW, 170*greQuanW, 4.7*greWriW, 3.6*gpaW, (1000-193)*rankW, 0*masW, 3.5*psW, 4*diverW, 8*recW, 8*recW, 8*recW],
-      ]);
-      var data2 = google.visualization.arrayToDataTable([
-        ['Name', 'GRE - verbal',  'GRE - quant',
-         'GRE - writing', 'GPA', 'Ranking of Inst',
-          'PS Score',  'Diversity Score',
-          'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
-        ['', 143*greVerW, 159*greQuanW,2.7*greWriW,3.59*gpaW, (1000-190)*rankW, 3*psW,3.5*diverW,2*recW,2*recW,2*recW],
-      ]);
-      var data3 = google.visualization.arrayToDataTable([
-        ['Name', 'GRE - verbal',  'GRE - quant',
-         'GRE - writing', 'GPA', 'Ranking of Inst',
-          'PS Score',  'Diversity Score',
-          'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
-        ['', 152*greVerW, 165*greQuanW, 4*greWriW,3.81*gpaW,(1000-186)*rankW,4*psW,4*diverW,11*recW,11*recW,11*recW ],
-      ]);
-      //
+	//
 
-      var options = {
-        title:'Admission Result',
-        chartArea: {width: '80%'},
-        isStacked: true,
-        hAxis: {
-          title: '',
-          minValue: 0,
-          maxValue: 1200,
-          gridlines:{
-            color:"black"
-          },
-          ticks: [{v:600,f:"acceptance threshold"},{v:1200, f:""}]
-        },
-        // grouped by color of similar shade
-        colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF'],
-        legend: { position: 'none' }
-      };
+	var options = {
+		title:'Admission Result',
+		chartArea: {width: '80%'},
+		isStacked: true,
+		hAxis: {
+			title: '',
+			minValue: 0,
+			maxValue: 40.236724062345,
+			gridlines:{
+				color:'black'
+			},
+			ticks: [{v:threshold,f:'strong candidate'},{v:40.236724062345, f:''}]
+		},
+		// grouped by color of similar shade
+		colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF'],
+		legend: { position: 'none' }
+	};
 
-      // Render charts for all profiles
-      for (var i = 1; i<=10; i++) {
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
-        chart.draw(data, options);
-      }
+	// Render charts for all profiles
+	for (var i = 1; i<=students.length; i++) {
+		
+		var data = [
+			['Name', 'GRE-verbal',  'GRE-quantitative',
+			'GRE-writing', 'GPA', 'Major', 'Institution-Rank',
+			'Country', 'Personal-Statement',  'Diversity-Score',
+			'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
+			['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		];
+		for (var j=1; j<data[0].length; j++) {
+			switch (data[0][j]) {
+				case 'Major':
+					switch (students[i-1]['Major']) {
+						case 'Computer Science':
+							data[1][j] = 1.5594831748;
+							break;
+						case 'STEM':
+							data[1][j] = 0.30693782874;
+							break;
+						default:
+							data[1][j] = 0;
+					}
+					break;
+				case 'Institution-Rank':
+					data[1][j] = (1000 - students[i-1]['Institution-Rank'])*weights[j];
+					break;
+				case 'Country':
+					switch (students[i-1]['Major']) {
+						case 'US':
+							data[1][j] = 0;
+							break;
+						default:
+							data[1][j] = 0.513354407198;
+					}
+					break;
+				case 'Personal-Statement':
+					data[1][j] = (students[i-1]['Personal-Statement']-1)*weights[j];
+					break;
+				case 'Diversity-Score':
+					data[1][j] = (students[i-1]['Diversity-Score']-1)*weights[j];
+					break;
+				case 'Recommendation Letter 1':
+					data[1][j] = (1000 - students[i-1]['RL1inst'])*weights[11];
+					switch (students[i-1]['RL1']) {
+						case 'Top 5%':
+							data[1][j] += 2.00627220247;
+							break;
+						case 'Top 10%':
+							data[1][j] += 1.11329686474;
+							break;
+						case 'Top 20%':
+							data[1][j] += 0.87623872879;
+							break;
+						default:
+							break;
+					}
+					break;
+				case 'Recommendation Letter 2':
+					data[1][j] = (1000 - students[i-1]['RL2inst'])*weights[13];
+					switch (students[i-1]['RL2']) {
+						case 'Top 5%':
+							data[1][j] += 1.52087808051;
+							break;
+						case 'Top 10%':
+							data[1][j] += 1.00101344554;
+							break;
+						case 'Top 20%':
+							data[1][j] += 0.44907150816;
+							break;
+						default:
+							break;
+					}
+					break;
+				case 'Recommendation Letter 3':
+					data[1][j] = (1000 - students[i-1]['RL3inst'])*weights[15];
+					switch (students[i-1]['RL3']) {
+						case 'Top 5%':
+							data[1][j] += 1.51416715224;
+							break;
+						case 'Top 10%':
+							data[1][j] += 0.93864978431;
+							break;
+						case 'Top 20%':
+							data[1][j] += 0.27703027917;
+							break;
+						default:
+							break;
+					}
+					break;
+				default:
+					data[1][j] = students[i-1][data[0][j]]*weights[j];
+					break;
+			}
+		}
+		data = google.visualization.arrayToDataTable(data);
+		var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
+		chart.draw(data, options);
+	}
 
-    }
-
-
-});
+}
+var students = [
+  {
+    'admission': 1,
+    'GRE-verbal': 32,
+    'GRE-quantitative': 40,
+    'GRE-writing': 4.5,
+    'GPA': 3.6,
+    'Major': 'Computer Science',
+    'Institution-Rank': 193,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 192,
+    'RL2': 'Top 10%',
+    'RL2inst': 192,
+    'RL3': 'Top 10%',
+    'RL3inst': 179
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 13,
+    'GRE-quantitative': 29,
+    'GRE-writing': 2.5,
+    'GPA': 3.59,
+    'Major': 'Computer Science',
+    'Institution-Rank': 190,
+    'Country': 'US',
+    'Personal-Statement': 3,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 167,
+    'RL2': 'Top 10%',
+    'RL2inst': 203,
+    'RL3': 'Top 10%',
+    'RL3inst': 193
+  },
+  {
+    'admission': 1,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 35,
+    'GRE-writing': 4,
+    'GPA': 3.81,
+    'Major': 'Computer Science',
+    'Institution-Rank': 186,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 4,
+    'RL1': 'Top 10%',
+    'RL1inst': 189,
+    'RL2': 'Top 10%',
+    'RL2inst': 205,
+    'RL3': 'Top 10%',
+    'RL3inst': 192
+  },
+  {
+    'admission': 1,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 35,
+    'GRE-writing': 3.5,
+    'GPA': 3.42,
+    'Major': 'Computer Science',
+    'Institution-Rank': 190,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 4,
+    'RL1': 'Top 10%',
+    'RL1inst': 205,
+    'RL2': 'Top 10%',
+    'RL2inst': 194,
+    'RL3': 'Top 10%',
+    'RL3inst': 206
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 34,
+    'GRE-writing': 4,
+    'GPA': 3.56,
+    'Major': 'Computer Science',
+    'Institution-Rank': 1,
+    'Country': 'US',
+    'Personal-Statement': 3,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 207,
+    'RL2': 'Top 10%',
+    'RL2inst': 209,
+    'RL3': 'Top 10%',
+    'RL3inst': 210
+  },
+  {
+    'admission': 1,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 35,
+    'GRE-writing': 4,
+    'GPA': 3.56,
+    'Major': 'Computer Science',
+    'Institution-Rank': 347,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 216,
+    'RL2': 'Top 10%',
+    'RL2inst': 203,
+    'RL3': 'Top 10%',
+    'RL3inst': 183
+  },
+  {
+    'admission': 1,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 34,
+    'GRE-writing': 3.5,
+    'GPA': 3.56,
+    'Major': 'Computer Science',
+    'Institution-Rank': 190,
+    'Country': 'US',
+    'Personal-Statement': 5,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 178,
+    'RL2': 'Top 10%',
+    'RL2inst': 193,
+    'RL3': 'Top 10%',
+    'RL3inst': 200
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 23,
+    'GRE-quantitative': 35,
+    'GRE-writing': 4,
+    'GPA': 3.58,
+    'Major': 'STEM',
+    'Institution-Rank': 180,
+    'Country': 'US',
+    'Personal-Statement': 3,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 159,
+    'RL2': 'Top 10%',
+    'RL2inst': 180,
+    'RL3': 'Top 10%',
+    'RL3inst': 205
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 23,
+    'GRE-quantitative': 35,
+    'GRE-writing': 3.5,
+    'GPA': 3.6,
+    'Major': 'STEM',
+    'Institution-Rank': 190,
+    'Country': 'US',
+    'Personal-Statement': 3,
+    'Diversity-Score': 5,
+    'RL1': 'Top 10%',
+    'RL1inst': 198,
+    'RL2': 'Top 10%',
+    'RL2inst': 203,
+    'RL3': 'Top 10%',
+    'RL3inst': 176
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 35,
+    'GRE-writing': 4,
+    'GPA': 3.6,
+    'Major': 'STEM',
+    'Institution-Rank': 200,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 2,
+    'RL1': 'Top 10%',
+    'RL1inst': 203,
+    'RL2': 'Top 10%',
+    'RL2inst': 196,
+    'RL3': 'Top 10%',
+    'RL3inst': 206
+  },
+  {
+    'admission': 1,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 35,
+    'GRE-writing': 3.5,
+    'GPA': 3.74,
+    'Major': 'STEM',
+    'Institution-Rank': 194,
+    'Country': 'US',
+    'Personal-Statement': 3,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 5%',
+    'RL1inst': 1,
+    'RL2': 'Top 10%',
+    'RL2inst': 200,
+    'RL3': 'Top 10%',
+    'RL3inst': 208
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 23,
+    'GRE-quantitative': 34,
+    'GRE-writing': 3.5,
+    'GPA': 3.57,
+    'Major': 'STEM',
+    'Institution-Rank': 202,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 494,
+    'RL2': 'Top 10%',
+    'RL2inst': 203,
+    'RL3': 'Top 10%',
+    'RL3inst': 212
+  },
+  {
+    'admission': 1,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 35,
+    'GRE-writing': 4,
+    'GPA': 3.57,
+    'Major': 'STEM',
+    'Institution-Rank': 196,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 206,
+    'RL2': 'Top 5%',
+    'RL2inst': 1,
+    'RL3': 'Top 10%',
+    'RL3inst': 224
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 22,
+    'GRE-quantitative': 35,
+    'GRE-writing': 4,
+    'GPA': 3.6,
+    'Major': 'STEM',
+    'Institution-Rank': 185,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 4,
+    'RL1': 'Top 10%',
+    'RL1inst': 189,
+    'RL2': 'Top 50%',
+    'RL2inst': 482,
+    'RL3': 'Top 10%',
+    'RL3inst': 213
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 23,
+    'GRE-quantitative': 35,
+    'GRE-writing': 3.5,
+    'GPA': 3.57,
+    'Major': 'STEM',
+    'Institution-Rank': 190,
+    'Country': 'US',
+    'Personal-Statement': 3,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 162,
+    'RL2': 'Top 10%',
+    'RL2inst': 205,
+    'RL3': 'Top 5%',
+    'RL3inst': 1
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 23,
+    'GRE-quantitative': 34,
+    'GRE-writing': 4,
+    'GPA': 3.71,
+    'Major': 'STEM',
+    'Institution-Rank': 199,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 4,
+    'RL1': 'Top 10%',
+    'RL1inst': 198,
+    'RL2': 'Top 10%',
+    'RL2inst': 193,
+    'RL3': 'Top 50%',
+    'RL3inst': 464
+  },
+  {
+    'admission': 1,
+    'GRE-verbal': 23,
+    'GRE-quantitative': 34,
+    'GRE-writing': 3.5,
+    'GPA': 3.71,
+    'Major': 'Computer Science',
+    'Institution-Rank': 190,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 3.5,
+    'RL1': 'Top 10%',
+    'RL1inst': 192,
+    'RL2': 'Top 10%',
+    'RL2inst': 200,
+    'RL3': 'Top 10%',
+    'RL3inst': 204
+  },
+  {
+    'admission': 0,
+    'GRE-verbal': 23,
+    'GRE-quantitative': 35,
+    'GRE-writing': 4,
+    'GPA': 3.49,
+    'Major': 'Other',
+    'Institution-Rank': 186,
+    'Country': 'US',
+    'Personal-Statement': 4,
+    'Diversity-Score': 4,
+    'RL1': 'Top 10%',
+    'RL1inst': 207,
+    'RL2': 'Top 10%',
+    'RL2inst': 197,
+    'RL3': 'Top 10%',
+    'RL3inst': 186
+  }
+];
