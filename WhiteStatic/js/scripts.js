@@ -113,100 +113,112 @@ function drawStacked() {
 
 	// Render charts for all profiles
 	for (var i = 1; i<=students.length; i++) {
-		
-		var data = [
+
+		var studentData = [
 			['Name', 'GRE-verbal',  'GRE-quantitative',
 			'GRE-writing', 'GPA', 'Major', 'Institution-Rank',
 			'Country', 'Personal-Statement',  'Diversity-Score',
 			'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
 			['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 		];
-		for (var j=1; j<data[0].length; j++) {
-			switch (data[0][j]) {
+		for (var j=1; j<studentData[0].length; j++) {
+			switch (studentData[0][j]) {
 				case 'Major':
 					switch (students[i-1]['Major']) {
 						case 'Computer Science':
-							data[1][j] = 1.5594831748;
+							studentData[1][j] = 1.5594831748;
 							break;
 						case 'STEM':
-							data[1][j] = 0.30693782874;
+							studentData[1][j] = 0.30693782874;
 							break;
 						default:
-							data[1][j] = 0;
+							studentData[1][j] = 0;
 					}
 					break;
 				case 'Institution-Rank':
-					data[1][j] = (1000 - students[i-1]['Institution-Rank'])*weights[j];
+					studentData[1][j] = (1000 - students[i-1]['Institution-Rank'])*weights[j];
 					break;
 				case 'Country':
 					switch (students[i-1]['Major']) {
 						case 'US':
-							data[1][j] = 0;
+							studentData[1][j] = 0;
 							break;
 						default:
-							data[1][j] = 0.513354407198;
+							studentData[1][j] = 0.513354407198;
 					}
 					break;
 				case 'Personal-Statement':
-					data[1][j] = (students[i-1]['Personal-Statement']-1)*weights[j];
+					studentData[1][j] = (students[i-1]['Personal-Statement']-1)*weights[j];
 					break;
 				case 'Diversity-Score':
-					data[1][j] = (students[i-1]['Diversity-Score']-1)*weights[j];
+					studentData[1][j] = (students[i-1]['Diversity-Score']-1)*weights[j];
 					break;
 				case 'Recommendation Letter 1':
-					data[1][j] = (1000 - students[i-1]['RL1inst'])*weights[11];
+					studentData[1][j] = (1000 - students[i-1]['RL1inst'])*weights[11];
 					switch (students[i-1]['RL1']) {
 						case 'Top 5%':
-							data[1][j] += 2.00627220247;
+							studentData[1][j] += 2.00627220247;
 							break;
 						case 'Top 10%':
-							data[1][j] += 1.11329686474;
+							studentData[1][j] += 1.11329686474;
 							break;
 						case 'Top 20%':
-							data[1][j] += 0.87623872879;
+							studentData[1][j] += 0.87623872879;
 							break;
 						default:
 							break;
 					}
 					break;
 				case 'Recommendation Letter 2':
-					data[1][j] = (1000 - students[i-1]['RL2inst'])*weights[13];
+					studentData[1][j] = (1000 - students[i-1]['RL2inst'])*weights[13];
 					switch (students[i-1]['RL2']) {
 						case 'Top 5%':
-							data[1][j] += 1.52087808051;
+							studentData[1][j] += 1.52087808051;
 							break;
 						case 'Top 10%':
-							data[1][j] += 1.00101344554;
+							studentData[1][j] += 1.00101344554;
 							break;
 						case 'Top 20%':
-							data[1][j] += 0.44907150816;
+							studentData[1][j] += 0.44907150816;
 							break;
 						default:
 							break;
 					}
 					break;
 				case 'Recommendation Letter 3':
-					data[1][j] = (1000 - students[i-1]['RL3inst'])*weights[15];
+					studentData[1][j] = (1000 - students[i-1]['RL3inst'])*weights[15];
 					switch (students[i-1]['RL3']) {
 						case 'Top 5%':
-							data[1][j] += 1.51416715224;
+							studentData[1][j] += 1.51416715224;
 							break;
 						case 'Top 10%':
-							data[1][j] += 0.93864978431;
+							studentData[1][j] += 0.93864978431;
 							break;
 						case 'Top 20%':
-							data[1][j] += 0.27703027917;
+							studentData[1][j] += 0.27703027917;
 							break;
 						default:
 							break;
 					}
 					break;
 				default:
-					data[1][j] = students[i-1][data[0][j]]*weights[j];
+					studentData[1][j] = students[i-1][studentData[0][j]]*weights[j];
 					break;
 			}
 		}
-		data = google.visualization.arrayToDataTable(data);
+
+
+    var dataTable = studentData;
+    // var dataTable = $.extend(true, [], studentData);
+    var numFeatures = dataTable[0].length;
+    for (var j = 0; j < numFeatures; j++) {
+      dataTable[0].splice(j * 2 + 1, 0, {
+        type: 'string',
+        role: 'tooltip'
+      })
+      dataTable[1].splice(j * 2 + 1, 0, dataTable[0][j * 2])
+    }
+    var data = google.visualization.arrayToDataTable(dataTable);
 		var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
 		chart.draw(data, options);
 	}
