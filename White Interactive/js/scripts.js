@@ -119,7 +119,7 @@ google.charts.setOnLoadCallback(function() {
     ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec1 Rank', 'Rec2', 'Rec2 Rank', 'Rec3', 'Rec3 Rank', 'PS', 'Diversity'],
     ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
-  for (var i = 0; i < studentData[1].length-1; i++) {
+  for (var i = 0; i < studentData[1].length - 1; i++) {
     studentData[1][i + 1] = vals[i] * weights[i];
   }
 
@@ -587,7 +587,16 @@ google.charts.setOnLoadCallback(function() {
       }
     });
 
-    var data = google.visualization.arrayToDataTable(studentData);
+    var dataTable = $.extend(true, [], studentData);
+    var numFeatures = dataTable[0].length;
+    for (var i = 0; i < numFeatures; i++) {
+      dataTable[0].splice(i * 2 + 1, 0, {
+        type: 'string',
+        role: 'tooltip'
+      })
+      dataTable[1].splice(i * 2 + 1, 0, dataTable[0][i * 2])
+    }
+    var data = google.visualization.arrayToDataTable(dataTable);
 
     var options = {
       title: 'Admission Result',
