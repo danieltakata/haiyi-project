@@ -1,8 +1,9 @@
 $(function() {
   $('#nextStepButton').click(function() {
-    if (confirm("Are you sure you are ready to move on to the next step? You will not be able to go back.")) {
-      window.location.replace('https://goo.gl/forms/r6JOaUa1oDpxOrG92');
-    } else {}
+    window.location.replace('https://goo.gl/forms/r6JOaUa1oDpxOrG92');
+    // if (confirm("Are you sure you are ready to move on to the next step? You will not be able to go back.")) {
+    //   window.location.replace('https://goo.gl/forms/r6JOaUa1oDpxOrG92');
+    // } else {}
   });
 
   $("#landing-page").fadeIn();
