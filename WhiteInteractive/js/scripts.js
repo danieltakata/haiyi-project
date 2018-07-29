@@ -1,5 +1,10 @@
 $(function() {
   $(".landingcontent").hide();
+  $('#nextStepButton').click(function() {
+    if (confirm("Are you sure you are ready to move on to the next step? You will not be able to go back.")) {
+      window.location.replace('https://goo.gl/forms/r6JOaUa1oDpxOrG92');
+    } else {}
+  });
 });
 
 // Load Google Charts first
