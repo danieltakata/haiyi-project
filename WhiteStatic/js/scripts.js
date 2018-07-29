@@ -1,43 +1,41 @@
 $(function() {
 
-  $('#nextStepButton').click(function () {
+  $('#nextStepButton').click(function() {
     if (confirm("Are you sure you are ready to move on to the next step? You will not be able to go back.")) {
       window.location.replace('https://www.google.com');
-    } else {
-    }
+    } else {}
   });
 
-$('#landing-page').fadeIn();
-$('.landingcontent').fadeIn();
+  $('#landing-page').fadeIn();
+  $('.landingcontent').fadeIn();
 
 
-$('#startButton').on('click', function() {
-      $('.landingcontent').fadeOut();
+  $('#startButton').on('click', function() {
+    $('.landingcontent').fadeOut();
 
-      setTimeout(function() {
-          $('#landing-page').fadeOut();
-      }, 500);
+    setTimeout(function() {
+      $('#landing-page').fadeOut();
+    }, 500);
 
-      setTimeout(function() {
-          $('#main-page').fadeIn();
-          $('.maincontent').fadeIn(300);
-          drawStacked();
-      }, 300);
+    setTimeout(function() {
+      $('#main-page').fadeIn();
+      $('.maincontent').fadeIn(300);
+      drawStacked();
+    }, 300);
   });
   // populate the cards
-  for (var i = 2; i<=students.length; i++) {
+  for (var i = 2; i <= students.length; i++) {
     var clone = $('#studentCard_1').clone();
-    clone.attr('id', 'studentCard_'+i);
-    clone.find('#chart_div_1').attr('id','chart_div_' + i);
+    clone.attr('id', 'studentCard_' + i);
+    clone.find('#chart_div_1').attr('id', 'chart_div_' + i);
     clone.find('#studentName').text('Student ' + i);
-	for (var key in students[i-1]) {
-		if (key == 'GRE-verbal' || key == 'GRE-quantitative'){
-			clone.find('#' + key).text(students[i-1][key]+130);
-		}
-		else if (key != 'admission') {
-			clone.find('#' + key).text(students[i-1][key]);
-		}
-	}
+    for (var key in students[i - 1]) {
+      if (key == 'GRE-verbal' || key == 'GRE-quantitative') {
+        clone.find('#' + key).text(students[i - 1][key] + 130);
+      } else if (key != 'admission') {
+        clone.find('#' + key).text(students[i - 1][key]);
+      }
+    }
 
     //append clone on the end
     $('#myCarousel-container').append(clone);
@@ -47,7 +45,7 @@ $('#startButton').on('click', function() {
   $('#studentCard_1').addClass('active');
 
 
-// $(document).ready(function() {
+  // $(document).ready(function() {
   $('#myCarousel').on('slid.bs.carousel', function(e) {
     var $e = $(e.relatedTarget);
     var idx = $e.index();
@@ -72,146 +70,159 @@ $('#startButton').on('click', function() {
   });
 });
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.load('current', {
+  packages: ['corechart', 'bar']
+});
 // google.charts.setOnLoadCallback(drawStacked);
 
 var weights = [
-	''                // Name -- NOTHING HERE
-	,0.114911184251   // GRE-verb
-	,0.0880320310069  // GRE-quant
-	,0.2926697271     // GRE-write
-	,1.584509831      // GPA
-	,1                // Major
-	,0.00294640714041 // Inst-Rank
-	,1                // Country of origin
-	,0.756277254266   // Personal Statement
-	,0.317935719456   // Diversity score
-	,1                // Recommendation letter 1
-	,0.00643092126893 // Rec1 inst
-	,1                // Recommendation letter 2
-	,0.00163152813703 // Rec2 inst
-	,1                // Recommendation letter 3
-	,0.00109465199226 // Rec3 inst
+  '' // Name -- NOTHING HERE
+  , 0.114911184251 // GRE-verb
+  , 0.0880320310069 // GRE-quant
+  , 0.2926697271 // GRE-write
+  , 1.584509831 // GPA
+  , 1 // Major
+  , 0.00294640714041 // Inst-Rank
+  , 1 // Country of origin
+  , 0.756277254266 // Personal Statement
+  , 0.317935719456 // Diversity score
+  , 1 // Recommendation letter 1
+  , 0.00643092126893 // Rec1 inst
+  , 1 // Recommendation letter 2
+  , 0.00163152813703 // Rec2 inst
+  , 1 // Recommendation letter 3
+  , 0.00109465199226 // Rec3 inst
 ];
 
 var threshold = 19.0653422959;
 
 function drawStacked() {
-	//
+  //
 
-	var options = {
-		title:'Admission Result',
-		chartArea: {width: '80%'},
-		isStacked: true,
-		hAxis: {
-			title: '',
-			minValue: 0,
-			maxValue: 40.236724062345,
-			gridlines:{
-				color:'black'
-			},
-			ticks: [{v:threshold,f:'strong candidate'},{v:40.236724062345, f:''}]
-		},
-		// grouped by color of similar shade
-		colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF'],
-		legend: { position: 'none' }
-	};
+  var options = {
+    title: 'Admission Result',
+    chartArea: {
+      width: '80%'
+    },
+    isStacked: true,
+    hAxis: {
+      title: '',
+      minValue: 0,
+      maxValue: 40.236724062345,
+      gridlines: {
+        color: 'black'
+      },
+      ticks: [{
+        v: threshold,
+        f: 'strong candidate'
+      }, {
+        v: 40.236724062345,
+        f: ''
+      }]
+    },
+    // grouped by color of similar shade
+    colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF'],
+    legend: {
+      position: 'none'
+    }
+  };
 
-	// Render charts for all profiles
-	for (var i = 1; i<=students.length; i++) {
+  // Render charts for all profiles
+  for (var i = 1; i <= students.length; i++) {
 
-		var studentData = [
-			['Name', 'GRE-verbal',  'GRE-quantitative',
-			'GRE-writing', 'GPA', 'Major', 'Institution-Rank',
-			'Country', 'Personal-Statement',  'Diversity-Score',
-			'Recommendation Letter 1',  'Recommendation Letter 2',  'Recommendation Letter 3'],
-			['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		];
-		for (var j=1; j<studentData[0].length; j++) {
-			switch (studentData[0][j]) {
-				case 'Major':
-					switch (students[i-1]['Major']) {
-						case 'Computer Science':
-							studentData[1][j] = 1.5594831748;
-							break;
-						case 'STEM':
-							studentData[1][j] = 0.30693782874;
-							break;
-						default:
-							studentData[1][j] = 0;
-					}
-					break;
-				case 'Institution-Rank':
-					studentData[1][j] = (1000 - students[i-1]['Institution-Rank'])*weights[j];
-					break;
-				case 'Country':
-					switch (students[i-1]['Major']) {
-						case 'US':
-							studentData[1][j] = 0;
-							break;
-						default:
-							studentData[1][j] = 0.513354407198;
-					}
-					break;
-				case 'Personal-Statement':
-					studentData[1][j] = (students[i-1]['Personal-Statement']-1)*weights[j];
-					break;
-				case 'Diversity-Score':
-					studentData[1][j] = (students[i-1]['Diversity-Score']-1)*weights[j];
-					break;
-				case 'Recommendation Letter 1':
-					studentData[1][j] = (1000 - students[i-1]['RL1inst'])*weights[11];
-					switch (students[i-1]['RL1']) {
-						case 'Top 5%':
-							studentData[1][j] += 2.00627220247;
-							break;
-						case 'Top 10%':
-							studentData[1][j] += 1.11329686474;
-							break;
-						case 'Top 20%':
-							studentData[1][j] += 0.87623872879;
-							break;
-						default:
-							break;
-					}
-					break;
-				case 'Recommendation Letter 2':
-					studentData[1][j] = (1000 - students[i-1]['RL2inst'])*weights[13];
-					switch (students[i-1]['RL2']) {
-						case 'Top 5%':
-							studentData[1][j] += 1.52087808051;
-							break;
-						case 'Top 10%':
-							studentData[1][j] += 1.00101344554;
-							break;
-						case 'Top 20%':
-							studentData[1][j] += 0.44907150816;
-							break;
-						default:
-							break;
-					}
-					break;
-				case 'Recommendation Letter 3':
-					studentData[1][j] = (1000 - students[i-1]['RL3inst'])*weights[15];
-					switch (students[i-1]['RL3']) {
-						case 'Top 5%':
-							studentData[1][j] += 1.51416715224;
-							break;
-						case 'Top 10%':
-							studentData[1][j] += 0.93864978431;
-							break;
-						case 'Top 20%':
-							studentData[1][j] += 0.27703027917;
-							break;
-						default:
-							break;
-					}
-					break;
-				default:
-					studentData[1][j] = students[i-1][studentData[0][j]]*weights[j];
-					break;
-			}
-		}
+    var studentData = [
+      ['Name', 'GRE-verbal', 'GRE-quantitative',
+        'GRE-writing', 'GPA', 'Major', 'Institution-Rank',
+        'Country', 'Personal-Statement', 'Diversity-Score',
+        'Recommendation Letter 1', 'Recommendation Letter 2', 'Recommendation Letter 3'
+      ],
+      ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    ];
+    for (var j = 1; j < studentData[0].length; j++) {
+      switch (studentData[0][j]) {
+        case 'Major':
+          switch (students[i - 1]['Major']) {
+            case 'Computer Science':
+              studentData[1][j] = 1.5594831748;
+              break;
+            case 'STEM':
+              studentData[1][j] = 0.30693782874;
+              break;
+            default:
+              studentData[1][j] = 0;
+          }
+          break;
+        case 'Institution-Rank':
+          studentData[1][j] = (1000 - students[i - 1]['Institution-Rank']) * weights[j];
+          break;
+        case 'Country':
+          switch (students[i - 1]['Major']) {
+            case 'US':
+              studentData[1][j] = 0;
+              break;
+            default:
+              studentData[1][j] = 0.513354407198;
+          }
+          break;
+        case 'Personal-Statement':
+          studentData[1][j] = (students[i - 1]['Personal-Statement'] - 1) * weights[j];
+          break;
+        case 'Diversity-Score':
+          studentData[1][j] = (students[i - 1]['Diversity-Score'] - 1) * weights[j];
+          break;
+        case 'Recommendation Letter 1':
+          studentData[1][j] = (1000 - students[i - 1]['RL1inst']) * weights[11];
+          switch (students[i - 1]['RL1']) {
+            case 'Top 5%':
+              studentData[1][j] += 2.00627220247;
+              break;
+            case 'Top 10%':
+              studentData[1][j] += 1.11329686474;
+              break;
+            case 'Top 20%':
+              studentData[1][j] += 0.87623872879;
+              break;
+            default:
+              break;
+          }
+          break;
+        case 'Recommendation Letter 2':
+          studentData[1][j] = (1000 - students[i - 1]['RL2inst']) * weights[13];
+          switch (students[i - 1]['RL2']) {
+            case 'Top 5%':
+              studentData[1][j] += 1.52087808051;
+              break;
+            case 'Top 10%':
+              studentData[1][j] += 1.00101344554;
+              break;
+            case 'Top 20%':
+              studentData[1][j] += 0.44907150816;
+              break;
+            default:
+              break;
+          }
+          break;
+        case 'Recommendation Letter 3':
+          studentData[1][j] = (1000 - students[i - 1]['RL3inst']) * weights[15];
+          switch (students[i - 1]['RL3']) {
+            case 'Top 5%':
+              studentData[1][j] += 1.51416715224;
+              break;
+            case 'Top 10%':
+              studentData[1][j] += 0.93864978431;
+              break;
+            case 'Top 20%':
+              studentData[1][j] += 0.27703027917;
+              break;
+            default:
+              break;
+          }
+          break;
+        default:
+          studentData[1][j] = students[i - 1][studentData[0][j]] * weights[j];
+          break;
+      }
+    }
 
 
     var dataTable = studentData;
@@ -225,13 +236,13 @@ function drawStacked() {
       dataTable[1].splice(j * 2 + 1, 0, dataTable[0][j * 2])
     }
     var data = google.visualization.arrayToDataTable(dataTable);
-		var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
-		chart.draw(data, options);
-	}
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
+    chart.draw(data, options);
+  }
 
 }
-var students = [
-  {
+
+var students = [{
     'admission': 1,
     'GRE-verbal': 32,
     'GRE-quantitative': 40,
