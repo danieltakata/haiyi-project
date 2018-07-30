@@ -490,10 +490,10 @@ $(function() {
       setTimeout(function() {
         $(".loader").css('visibility', 'hidden');
         if (totalScore >= threshold) {
-          $("#result").text("Admission accepted.");
+          $("#result").text("Strong applicant");
           $("#result").css("color", "green");
         } else {
-          $("#result").text("Admission rejected.");
+          $("#result").text("Weak applicant");
           $("#result").css("color", "red");
         }
         $("#result").css('opacity', 0).animate({
