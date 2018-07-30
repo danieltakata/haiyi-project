@@ -140,21 +140,19 @@
                   </div>
                   <!--Institution Rank Row-->
                   <div class='row align-items-center'>
-                    <div class='col-3'>
+                    <div class='col-6'>
                       <label class='tooltip2' data-toggle="tooltip" title='National Ranking for the institution that highest relevant education was received at. Enter a value from 1-1000'>Institution Rank: </label>
 
                     </div>
-                    <div class='col-3'>
-                      <div id='rank-data' class="btn btn-light">726</div>
-                      <!-- <input type="text" id="rank-input" title="Enter Institution Rank from 1-1000" name="name" value="200" /> -->
+                    <div class='col-6 text-center'>
+                      <select name="" id="institution-dropdown">
+                            <!-- <option selected="true" disabled="true" >Select</option> -->
+                            <option selected="true" value="tier1">Tier 1 Institute</option>
+                            <option value="tier2">Tier 2 Institute</option>
+                            <option value="tier3">Tier 3 Institute</option>
+                          </select>
 
                     </div>
-                    <div class='col-1'>1000</div>
-                    <div class='col-4'>
-                      <div id="rank-slider"></div>
-
-                    </div>
-                    <div class='col-1'>1</div>
                   </div>
                   <!--Major Row-->
                   <div class='row align-items-center'>
@@ -235,31 +233,11 @@
                     <div class='col-6 text-center'>
                       <select name="" id="rec1-dropdown">
                             <!-- <option selected="true" disabled="true" >Select</option> -->
-                            <option value="rec1top5Wt">Top 5%</option>
-                            <option value="rec1top10Wt">Top 10%</option>
-                            <option selected="true" value="rec1top20Wt">Top 20%</option>
-                            <option value="rec1top50Wt">Top 50%</option>
+                            <option value="rec1top5Wt">Strong Letter</option>
+                            <option selected="true" value="rec1top20Wt">Average Letter</option>
+                            <option value="rec1top50Wt">Weak Letter</option>
                           </select>
-
                     </div>
-                  </div>
-                  <!--Rec1 Institute Row-->
-                  <div class='row align-items-center'>
-                    <div class='col-3'>
-                      <label class='tooltip2' data-toggle="tooltip" title='National Ranking of the institution of origin for the first letter of recommendation. Enter a value from 1-1000'>Recommender 1 Institute Rank: </label>
-
-                    </div>
-                    <div class='col-3'>
-                      <div id='rec1rank-data' class="btn btn-light">1000</div>
-                      <!-- <input type="text" id="rec1rank-input" title="Enter Rec1 Institution Rank from 1-1000" name="name" value="500" /> -->
-
-                    </div>
-                    <div class='col-1'>1000</div>
-                    <div class='col-4'>
-                      <div id="rec1rank-slider"></div>
-
-                    </div>
-                    <div class='col-1'>1</div>
                   </div>
                   <!--Rec2 Row-->
                   <div class='row align-items-center'>
@@ -270,33 +248,14 @@
                     <div class='col-6 text-center'>
                       <select name="" id="rec2-dropdown">
                             <!-- <option selected="true" disabled="true" >Select</option> -->
-                            <option value="rec2top5Wt">Top 5%</option>
-                            <option value="rec2top10Wt">Top 10%</option>
-                            <option selected="true" value="rec2top20Wt">Top 20%</option>
-                            <option value="rec2top50Wt">Top 50%</option>
+                            <option value="rec2top5Wt">Strong Letter</option>
+                            <option selected="true" value="rec2top20Wt">Average Letter</option>
+                            <option value="rec2top50Wt">Weak Letter</option>
                           </select>
 
                     </div>
                   </div>
-                  <!--Rec2 Institute Row-->
-                  <div class='row align-items-center'>
-                    <div class='col-3'>
-                      <label class='tooltip2' data-toggle="tooltip" title='National Ranking of the institution of origin for the second letter of recommendation. Enter a value from 1-1000'>Recommender 2 Institute Rank: </label>
-
-                    </div>
-                    <div class='col-3'>
-                      <div id='rec2rank-data' class="btn btn-light">1000</div>
-                      <!-- <input type="text" id="rec2rank-input" title="Enter Rec2 Institution Rank from 1-1000" name="name" value="500" /> -->
-
-                    </div>
-                    <div class='col-1'>1000</div>
-                    <div class='col-4'>
-                      <div id="rec2rank-slider"></div>
-
-                    </div>
-                    <div class='col-1'>1</div>
-                  </div>
-                  <!--Rec3 Row-->
+                                    <!--Rec3 Row-->
                   <div class='row align-items-center'>
                     <div class='col-6'>
                       <label class='tooltip2' data-toggle="tooltip" title="Percentile ranking for third letter of recommendation">Letter of Recommendation 3: </label>
@@ -305,31 +264,66 @@
                     <div class='col-6 text-center'>
                       <select name="" id="rec3-dropdown">
                             <!-- <option selected="true" disabled="true" >Select</option> -->
-                            <option value="rec3top5Wt">Top 5%</option>
-                            <option value="rec3top10Wt">Top 10%</option>
-                            <option selected="true" value="rec3top20Wt">Top 20%</option>
-                            <option value="rec3top50Wt">Top 50%</option>
+                            <option value="rec3top5Wt">Strong Letter</option>
+                            <option selected="true" value="rec3top20Wt">Average Letter</option>
+                            <option value="rec3top50Wt">Weak Letter</option>
                           </select>
 
                     </div>
                   </div>
-                  <!--Rec3 Institute Row-->
+                  <!--Rec1 Institute Row-->
                   <div class='row align-items-center'>
                     <div class='col-3'>
-                      <label class='tooltip2' data-toggle="tooltip" title='National Ranking of the institution of origin for the third letter of recommendation. Enter a value from 1-1000'>Recommender 3 Institute Rank: </label>
+                      <label class='tooltip2' data-toggle="tooltip" title='???'>Mystery Attribute 1:</label>
 
                     </div>
                     <div class='col-3'>
-                      <div id='rec3rank-data' class="btn btn-light">1000</div>
-                      <!-- <input type="text" id="rec3rank-input" title="Enter Rec3 Institution Rank from 1-1000" name="name" value="500" /> -->
-
-                    </div>
-                    <div class='col-1'>1000</div>
-                    <div class='col-4'>
-                      <div id="rec3rank-slider"></div>
+                      <div id='mystery1-data' class="btn btn-light">50</div>
+                      <!-- <input type="text" id="mystery1-input" title="Enter Rec1 Institution Rank from 1-1000" name="name" value="500" /> -->
 
                     </div>
                     <div class='col-1'>1</div>
+                    <div class='col-4'>
+                      <div id="mystery1-slider"></div>
+
+                    </div>
+                    <div class='col-1'>100</div>
+                  </div>
+                  <!--Rec2 Institute Row-->
+                  <div class='row align-items-center'>
+                    <div class='col-3'>
+                      <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Mystery Attribute 2:</label>
+
+                    </div>
+                    <div class='col-3'>
+                      <div id='mystery2-data' class="btn btn-light">50</div>
+                      <!-- <input type="text" id="mystery2-input" title="Enter Rec2 Institution Rank from 1-1000" name="name" value="500" /> -->
+
+                    </div>
+                    <div class='col-1'>1</div>
+                    <div class='col-4'>
+                      <div id="mystery2-slider"></div>
+
+                    </div>
+                    <div class='col-1'>100</div>
+                  </div>
+                  <!--Rec3 Institute Row-->
+                  <div class='row align-items-center'>
+                    <div class='col-3'>
+                      <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Mystery Attribute 3:</label>
+
+                    </div>
+                    <div class='col-3'>
+                      <div id='mystery3-data' class="btn btn-light">50</div>
+                      <!-- <input type="text" id="mystery3-input" title="Enter Rec3 Institution Rank from 1-1000" name="name" value="500" /> -->
+
+                    </div>
+                    <div class='col-1'>1</div>
+                    <div class='col-4'>
+                      <div id="mystery3-slider"></div>
+
+                    </div>
+                    <div class='col-1'>100</div>
                   </div>
 
                 </div>

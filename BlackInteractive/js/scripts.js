@@ -30,11 +30,11 @@ $(function() {
   // constant term
   var SVM_constant = -17.08976608
   // weights
-  var greVerWt = 0.1376453793,
-    greQuanWt = 0.07802271239,
-    greWriWt = 0.3124308781,
-    gpaWt = 1.456150174,
-    rankWt = 0.003788262564,
+  var
+    // Institution Rank weights
+    tier1Wt = 0.5,
+    tier2Wt = 0.30693782874,
+    tier3Wt = 0,
     // major weights
     csceWt = 1.5594831748,
     stemWt = 0.30693782874,
@@ -44,9 +44,6 @@ $(function() {
     asiaWt = 1.03588023043,
     euroWt = 0.48266027481,
     elseWt = 0.513354407198,
-    //
-    psWt = 0.8300898821,
-    diverWt = 0.4184694261,
     // recommendation weights
     rec1top5Wt = 2.00627220247,
     rec1top10Wt = 1.11329686474,
@@ -59,37 +56,22 @@ $(function() {
     rec3top5Wt = 1.51416715224,
     rec3top10Wt = 0.93864978431,
     rec3top20Wt = 0.27703027917,
-    rec3top50Wt = 0,
-
-    rec1instWt = -0.006982607425,
-    rec2instWt = -1.58e-03,
-    rec3instWt = -1.58e-03
-  // default values (for sliders)
-  var greVerVal = 170,
-    greQuanVal = 170,
-    greWriVal = 3,
-    gpaVal = 3.6,
-    rankVal = 200,
-    rec1instVal = 500,
-    rec2instVal = 500,
-    rec3instVal = 500,
-    psVal = 3,
-    diverVal = 3;
+    rec3top50Wt = 0
 
   var weights = [
     0.114911184251 // GRE-verb
     , 0.0880320310069 // GRE-quant
     , 0.2926697271 // GRE-write
     , 1.584509831 // GPA
-    , 0.00294640714041 // Inst-Rank
+    , 1 // Inst-Rank
     , 1 // Major
     , 1 // Country of origin
     , 1 // Recommendation letter 1
-    , 0.00643092126893 // Rec1 inst
     , 1 // Recommendation letter 2
-    , 0.00163152813703 // Rec2 inst
     , 1 // Recommendation letter 3
-    , 0.00109465199226 // Rec3 inst
+    , 0.00643092126893 // Mystery 1
+    , 0.00163152813703 // Mystery 2
+    , 0.00109465199226 // Mystery 3
     , 0.756277254266 // Personal Statement
     , 0.317935719456 // Diversity score
   ];
@@ -99,22 +81,22 @@ $(function() {
     ,10            // GRE-quant - 130
     ,3             // GRE-write
     ,3.2           // GPA
-    ,274           // 1000 - Inst-Rank
+    ,1           // 1000 - Inst-Rank
     ,1.5594831748  // Major
     ,0             // Country of origin
     ,0.87623872879 // Recommendation letter 1
-    ,0             // 1000 - Rec1 inst rank
     ,0.44907150816 // Recommendation letter 2
-    ,0             // 1000 - Rec2 inst rank
     ,0.27703027917 // Recommendation letter 3
-    ,0             // 1000 - Rec3 inst rank
+    ,50             // Mystery 1
+    ,50             // Mystery 2
+    ,50             // Mystery 3
     ,2             // Personal Statement - 1
     ,1             // Diversity score - 1
   ];
 
 
   var studentData = [
-    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec1 Rank', 'Rec2', 'Rec2 Rank', 'Rec3', 'Rec3 Rank', 'PS', 'Diversity'],
+    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec2', 'Rec3', 'Mystery1', 'Mystery2', 'Mystery3', 'PS', 'Diversity'],
     ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
   for (var i = 0; i < studentData[1].length-1; i++) {
@@ -230,31 +212,26 @@ $(function() {
     }
   });
 
-  // $("#rank-input").change(function() {
-  //   $("#rank-slider").slider("value", 1000 - $("#rank-input").val());
-  //   updateResult();
-  // });
-  // $("#rank-input").val(1000 - vals[4])
-
-  $("#rank-slider").slider({
-    // options
-    range: "min",
-    value: vals[4],
-    min: 0,
-    max: 999,
-    step: 1,
-    start: function(event, ui) {
-      // code
-    },
-    slide: function(event, ui) {
-      $("#rank-data").text((1000 - ui.value))
-    },
+  $("#institution-dropdown").selectmenu({
     change: function(event, ui) {
-      studentData[1][5] = ui.value * weights[4];
-      //      adjustedData[4] = (ui.value-studentData[2][5])*rankWt;
+      let institutionWt = 0;
+      switch ($("#institution-dropdown").val()) {
+        case 'tier1':
+          institutionWt = tier1Wt;
+          break;
+        case 'tier2':
+          institutionWt = tier2Wt;
+          break;
+        case 'tier3':
+          institutionWt = tier3Wt;
+          break;
+      }
+      studentData[1][5] = institutionWt * weights[4];
       updateResult();
     }
   });
+
+
 
 
   $("#major-dropdown").selectmenu({
@@ -340,7 +317,7 @@ $(function() {
           rec2Wt = rec2top50Wt;
           break;
       }
-      studentData[1][10] = rec2Wt * weights[9];
+      studentData[1][9] = rec2Wt * weights[8];
       updateResult();
     }
   });
@@ -362,55 +339,29 @@ $(function() {
           rec3Wt = rec3top50Wt;
           break;
       }
-      studentData[1][12] = rec3Wt * weights[11];
+      studentData[1][10] = rec3Wt * weights[9];
       updateResult();
     }
   });
 
-  // $("#rec1rank-input").change(function() {
-  //   $("#rec1rank-slider").slider("value", 1000 - $("#rec1rank-input").val());
+  // $("#mystery1-input").change(function() {
+  //   $("#mystery1-slider").slider("value", 1000 - $("#mystery1-input").val());
   //   updateResult();
   // });
-  // $("#rec1rank-input").val(1000 - vals[8]);
+  // $("#mystery1-input").val(1000 - vals[8]);
 
-  $("#rec1rank-slider").slider({
+  $("#mystery1-slider").slider({
     // options
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#rec1rank-data").text((1000 - ui.value))
+      $("#mystery1-data").text((ui.value))
     },
     range: "min",
     min: 0,
-    max: 999,
-    value: vals[8],
-    step: 1,
-    change: function(event, ui) {
-      studentData[1][9] = ui.value * weights[8];
-      //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
-      updateResult();
-    }
-  });
-
-  // $("#rec2rank-input").change(function() {
-  //   $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
-  //   updateResult();
-  // });
-  // $("#rec2rank-input").val(1000 - vals[10]);
-
-  $("#rec2rank-slider").slider({
-    // options
-    start: function(event, ui) {
-      // code
-    },
-    slide: function(event, ui) {
-      $("#rec2rank-data").text((1000 - ui.value))
-    },
-    range: "min",
-    min: 0,
-    max: 999,
-    value: vals[10],
+    max: 100,
+    value: vals[11],
     step: 1,
     change: function(event, ui) {
       studentData[1][11] = ui.value * weights[10];
@@ -419,25 +370,51 @@ $(function() {
     }
   });
 
-
-
-  // $("#rec3rank-input").change(function() {
-  //   $("#rec3rank-slider").slider("value", 1000 - $("#rec3rank-input").val());
+  // $("#mystery2-input").change(function() {
+  //   $("#mystery2-slider").slider("value", 1000 - $("#mystery2-input").val());
   //   updateResult();
   // });
-  // $("#rec3rank-input").val(1000 - vals[12]);
+  // $("#mystery2-input").val(1000 - vals[10]);
 
-  $("#rec3rank-slider").slider({
+  $("#mystery2-slider").slider({
     // options
     start: function(event, ui) {
       // code
     },
     slide: function(event, ui) {
-      $("#rec3rank-data").text((1000 - ui.value))
+      $("#mystery2-data").text((ui.value))
     },
     range: "min",
     min: 0,
-    max: 999,
+    max: 100,
+    value: vals[11],
+    step: 1,
+    change: function(event, ui) {
+      studentData[1][12] = ui.value * weights[11];
+      //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
+      updateResult();
+    }
+  });
+
+
+
+  // $("#mystery3-input").change(function() {
+  //   $("#mystery3-slider").slider("value", 1000 - $("#mystery3-input").val());
+  //   updateResult();
+  // });
+  // $("#mystery3-input").val(1000 - vals[12]);
+
+  $("#mystery3-slider").slider({
+    // options
+    start: function(event, ui) {
+      // code
+    },
+    slide: function(event, ui) {
+      $("#mystery3-data").text((ui.value))
+    },
+    range: "min",
+    min: 0,
+    max: 100,
     value: vals[12],
     step: 1,
     change: function(event, ui) {
