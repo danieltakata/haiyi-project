@@ -31,13 +31,18 @@
     <div class="landingcontent">
       <div class="jumbotron">
         <h1 class="display-4">Step 2</h1>
-        <p class="lead">This is a web tool that explains an admission algorithm.</p>
+        <p class="lead">This is a web tool that explains an academic admission algorithm.</p>
         <hr class="my-4">
-        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
-          On the following page you will see the different factors that are taken into account by the algorithm when deciding whether or not to admit an applicant. You can adjust the values to see the total impact on the decision.</p>
-        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+        <p class="lead">Imagine you are a student who is interested in applying to a masters program. This program uses a computer algorithm to automate admission decisions based on data from prior applicants.
+        </p>
+        <p class="lead">
+          You will now explore a web tool that was created to help users understand this algorithm. You will then be asked questions about your understanding and experience. You will also be able to earn bonus reward by correctly answering certain sections of the questionnaire, so please take your time and be accurate! </p>
+        <p class="lead">Please spend the next few minutes exploring the tool. You will be able to return to the interface at any time during the survey.</p>
+        <p class="lead">
+          Click on "Start" to proceed to the next step.
+        </p>
 
-        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+        <button type="button" id="startButton" class="btn btn-primary">Start</button>
       </div>
 
     </div>
@@ -232,9 +237,9 @@
                     <div class='col-6 text-center'>
                       <select name="" id="rec1-dropdown">
                             <!-- <option selected="true" disabled="true" >Select</option> -->
-                            <option value="rec1top5Wt">Strong Letter</option>
-                            <option selected="true" value="rec1top20Wt">Average Letter</option>
-                            <option value="rec1top50Wt">Weak Letter</option>
+                            <option value="rec1strong">Strong Letter</option>
+                            <option selected="true" value="rec1average">Average Letter</option>
+                            <option value="rec1weak">Weak Letter</option>
                           </select>
                     </div>
                   </div>
@@ -247,9 +252,9 @@
                     <div class='col-6 text-center'>
                       <select name="" id="rec2-dropdown">
                             <!-- <option selected="true" disabled="true" >Select</option> -->
-                            <option value="rec2top5Wt">Strong Letter</option>
-                            <option selected="true" value="rec2top20Wt">Average Letter</option>
-                            <option value="rec2top50Wt">Weak Letter</option>
+                            <option value="rec2strong">Strong Letter</option>
+                            <option selected="true" value="rec2average">Average Letter</option>
+                            <option value="rec2weak">Weak Letter</option>
                           </select>
 
                     </div>
@@ -263,9 +268,9 @@
                     <div class='col-6 text-center'>
                       <select name="" id="rec3-dropdown">
                             <!-- <option selected="true" disabled="true" >Select</option> -->
-                            <option value="rec3top5Wt">Strong Letter</option>
-                            <option selected="true" value="rec3top20Wt">Average Letter</option>
-                            <option value="rec3top50Wt">Weak Letter</option>
+                            <option value="rec3strong">Strong Letter</option>
+                            <option selected="true" value="rec3average">Average Letter</option>
+                            <option value="rec3weak">Weak Letter</option>
                           </select>
 
                     </div>
@@ -335,6 +340,7 @@
             </div>
             <div class="result-container">
               <h5 class="text-center" id="result" style="color:red">Weak applicant</h5>
+              <!-- <button type="button" class="btn btn-info">Info</button> -->
               <div class="loader"></div>
             </div>
 
@@ -346,7 +352,7 @@
 
     <footer class="footer">
       <div class="container">
-        <p class="lead">When you have familiraized yourself with the algorithm, press the ready button to proceed to the next step.</p>
+        <p class="lead">When you have familiraized yourself with the algorithm, press the ready button to start the survey.</p>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nextModal">
           Ready
@@ -359,7 +365,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Next step</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -369,12 +375,12 @@
               In the next step, you will complete a survey that evaluates your understanding to the algorithm.
             </p>
             <p>
-              Note that you would not be able to go back once you proceed. Are you sure you want to are ready for the survey?
+              You can still refer back to the interface as you answer questions on the survey.
             </p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button id="nextStepButton" type="button" class="btn btn-warning">Next step</button>
+            <button id="nextStepButton" type="button" class="btn btn-warning" data-dismiss="modal">Next step</button>
           </div>
         </div>
       </div>
