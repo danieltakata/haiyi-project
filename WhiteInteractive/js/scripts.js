@@ -94,14 +94,14 @@ google.charts.setOnLoadCallback(function() {
       , 1 // Inst-Rank
       , 1 // Major
       , 1 // Country of origin
+      , 0.756277254266 // Personal Statement
+      , 0.317935719456 // Diversity score
       , 1 // Recommendation letter 1
       , 1 // Recommendation letter 2
       , 1 // Recommendation letter 3
       , 0.03643092126893 // Mystery 1
       , -0.0363152813703 // Mystery 2
       , 0.000109465199226 // Mystery 3
-      , 0.756277254266 // Personal Statement
-      , 0.317935719456 // Diversity score
     ];
     // inital values
     var vals = [
@@ -112,19 +112,19 @@ google.charts.setOnLoadCallback(function() {
       ,1           // 1000 - Inst-Rank
       ,1.5594831748  // Major
       ,0             // Country of origin
+      ,2             // Personal Statement - 1
+      ,1             // Diversity score - 1
       ,0.87623872879 // Recommendation letter 1
       ,0.44907150816 // Recommendation letter 2
       ,0.27703027917 // Recommendation letter 3
       ,50             // Mystery 1
       ,50             // Mystery 2
       ,50             // Mystery 3
-      ,2             // Personal Statement - 1
-      ,1             // Diversity score - 1
     ];
   
   
     var studentData = [
-      ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec2', 'Rec3', 'Mystery1', 'Mystery2', 'Mystery3', 'PS', 'Diversity'],
+      ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'PS', 'Diversity', 'Rec1', 'Rec2', 'Rec3', 'Mystery1', 'Mystery2', 'Mystery3'],
       ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
     for (var i = 0; i < studentData[1].length-1; i++) {
@@ -147,14 +147,14 @@ google.charts.setOnLoadCallback(function() {
     , '#9D7562' // Inst-Rank
     , '#f7a55d' // Major
     , '#B99483' // Country of origin
+    , '#df585c' // Personal Statement
+    , '#fd9d9b' // Diversity score
     , '#5ca053' // Recommendation letter 1
     , '#4d9794' // Recommendation letter 2
     , '#5079a5' // Recommendation letter 3
     , '#74b869' // mystery1
     , '#6baaa5' // mystery2
     , '#77a2c6' // mystery3
-    , '#df585c' // Personal Statement
-    , '#fd9d9b' // Diversity score
   ];
 
 
@@ -356,7 +356,7 @@ google.charts.setOnLoadCallback(function() {
           rec1Wt = rec1weak;
           break;
       }
-      studentData[1][8] = rec1Wt * weights[7];
+      studentData[1][10] = rec1Wt * weights[9];
       drawStacked();
       updateResult();
     }
@@ -376,7 +376,7 @@ google.charts.setOnLoadCallback(function() {
           rec2Wt = rec2weak;
           break;
       }
-      studentData[1][9] = rec2Wt * weights[8];
+      studentData[1][11] = rec2Wt * weights[10];
       drawStacked();
       updateResult();
     }
@@ -397,7 +397,7 @@ google.charts.setOnLoadCallback(function() {
           break;
       }
 
-      studentData[1][10] = rec3Wt * weights[9];
+      studentData[1][12] = rec3Wt * weights[11];
       drawStacked();
       updateResult();
     }
@@ -423,13 +423,13 @@ google.charts.setOnLoadCallback(function() {
     value: vals[11],
     step: 1,
     change: function(event, ui) {
-      studentData[1][11] = ui.value * weights[10];
+      studentData[1][13] = ui.value * weights[12];
       //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       drawStacked();
       updateResult();
     }
   });
-  $("#mystery1-slider .ui-slider-range").css('background', barcolors[7]);
+  $("#mystery1-slider .ui-slider-range").css('background', barcolors[12]);
 
   // $("#rec2rank-input").change(function() {
   //   $("#rec2rank-slider").slider("value", 1000 - $("#rec2rank-input").val());
@@ -451,13 +451,13 @@ google.charts.setOnLoadCallback(function() {
     value: vals[11],
     step: 1,
     change: function(event, ui) {
-      studentData[1][12] = ui.value * weights[11];
+      studentData[1][14] = ui.value * weights[13];
       //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       drawStacked();
       updateResult();
     }
   });
-  $("#mystery2-slider .ui-slider-range").css('background', barcolors[9]);
+  $("#mystery2-slider .ui-slider-range").css('background', barcolors[13]);
 
 
 
@@ -481,12 +481,12 @@ google.charts.setOnLoadCallback(function() {
     value: vals[12],
     step: 1,
     change: function(event, ui) {
-      studentData[1][13] = ui.value * weights[12];
+      studentData[1][15] = ui.value * weights[14];
       drawStacked();
       updateResult();
     }
   });
-  $("#mystery3-slider .ui-slider-range").css('background', barcolors[11]);
+  $("#mystery3-slider .ui-slider-range").css('background', barcolors[14]);
 
   // $("#ps-input").change(function() {
   //   $("#ps-slider").slider("value", $("#ps-input").val() - 1);
@@ -509,12 +509,12 @@ google.charts.setOnLoadCallback(function() {
       $("#ps-data").text((ui.value + 1))
     },
     change: function(event, ui) {
-      studentData[1][14] = ui.value * weights[13];
+      studentData[1][8] = ui.value * weights[7];
       drawStacked();
       updateResult();
     }
   });
-  $("#ps-slider .ui-slider-range").css('background', barcolors[12]);
+  $("#ps-slider .ui-slider-range").css('background', barcolors[7]);
 
   // $("#diver-input").change(function() {
   //   $("#diver-slider").slider("value", $("#diver-input").val() - 1);
@@ -536,12 +536,12 @@ google.charts.setOnLoadCallback(function() {
       $("#diver-data").text((ui.value + 1))
     },
     change: function(event, ui) {
-      studentData[1][15] = ui.value * weights[14];
+      studentData[1][9] = ui.value * weights[8];
       drawStacked();
       updateResult();
     }
   });
-  $("#diver-slider .ui-slider-range").css('background', barcolors[13]);
+  $("#diver-slider .ui-slider-range").css('background', barcolors[8]);
 
 
 
