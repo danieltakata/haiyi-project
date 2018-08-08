@@ -65,14 +65,14 @@ $(function() {
     , 1 // Inst-Rank
     , 1 // Major
     , 1 // Country of origin
+    , 0.756277254266 // Personal Statement
+    , 0.317935719456 // Diversity score
     , 1 // Recommendation letter 1
     , 1 // Recommendation letter 2
     , 1 // Recommendation letter 3
     , 0.03643092126893 // Mystery 1
     , -0.0363152813703 // Mystery 2
     , 0.000109465199226 // Mystery 3
-    , 0.756277254266 // Personal Statement
-    , 0.317935719456 // Diversity score
   ];
   // inital values
   var vals = [
@@ -83,19 +83,19 @@ $(function() {
     ,1           // 1000 - Inst-Rank
     ,1.5594831748  // Major
     ,0             // Country of origin
+    ,2             // Personal Statement - 1
+    ,1             // Diversity score - 1
     ,0.87623872879 // Recommendation letter 1
     ,0.44907150816 // Recommendation letter 2
     ,0.27703027917 // Recommendation letter 3
     ,50             // Mystery 1
     ,50             // Mystery 2
     ,50             // Mystery 3
-    ,2             // Personal Statement - 1
-    ,1             // Diversity score - 1
   ];
 
 
   var studentData = [
-    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'Rec1', 'Rec2', 'Rec3', 'Mystery1', 'Mystery2', 'Mystery3', 'PS', 'Diversity'],
+    ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'PS', 'Diversity', 'Rec1', 'Rec2', 'Rec3', 'Mystery1', 'Mystery2', 'Mystery3'],
     ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];
   for (var i = 0; i < studentData[1].length-1; i++) {
@@ -295,7 +295,7 @@ $(function() {
           rec1Wt = rec1weak;
           break;
       }
-      studentData[1][8] = rec1Wt * weights[7];
+      studentData[1][10] = rec1Wt * weights[9];
       updateResult();
     }
   });
@@ -314,7 +314,7 @@ $(function() {
           rec2Wt = rec2weak;
           break;
       }
-      studentData[1][9] = rec2Wt * weights[8];
+      studentData[1][11] = rec2Wt * weights[10];
       updateResult();
     }
   });
@@ -334,7 +334,7 @@ $(function() {
           break;
       }
 
-      studentData[1][10] = rec3Wt * weights[9];
+      studentData[1][12] = rec3Wt * weights[11];
       updateResult();
     }
   });
@@ -359,7 +359,7 @@ $(function() {
     value: vals[11],
     step: 1,
     change: function(event, ui) {
-      studentData[1][11] = ui.value * weights[10];
+      studentData[1][13] = ui.value * weights[12];
       //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       updateResult();
     }
@@ -385,7 +385,7 @@ $(function() {
     value: vals[11],
     step: 1,
     change: function(event, ui) {
-      studentData[1][12] = ui.value * weights[11];
+      studentData[1][14] = ui.value * weights[13];
       //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       updateResult();
     }
@@ -413,7 +413,7 @@ $(function() {
     value: vals[12],
     step: 1,
     change: function(event, ui) {
-      studentData[1][13] = ui.value * weights[12];
+      studentData[1][15] = ui.value * weights[14];
       updateResult();
     }
   });
@@ -439,7 +439,7 @@ $(function() {
       $("#ps-data").text((ui.value + 1))
     },
     change: function(event, ui) {
-      studentData[1][14] = ui.value * weights[13];
+      studentData[1][8] = ui.value * weights[7];
       updateResult();
     }
   });
@@ -464,7 +464,7 @@ $(function() {
       $("#diver-data").text((ui.value + 1))
     },
     change: function(event, ui) {
-      studentData[1][15] = ui.value * weights[14];
+      studentData[1][9] = ui.value * weights[8];
       updateResult();
     }
   });
