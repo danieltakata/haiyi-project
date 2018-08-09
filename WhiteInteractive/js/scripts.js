@@ -38,7 +38,17 @@ google.charts.setOnLoadCallback(function() {
   });
 
   var constant = -67.3342 ; //Constant term for linear regression
-  var negative_offset= 4.596 + 2.2719 + 1.7803 + 100*1.7543 + 100*0.0382// for offsetting the negative value, to be added to decision boundary
+
+  var negative_offset= 0.4228 + 4.596 + 2.2719 + 1.7803 + 100*1.7543 + 100*0.0382 ;// for offsetting the negative value, to be added to decision boundary (negative dummy variables + negative cont. variables)
+  
+  // Original threshold (previous code)
+  // var original_threshold = 42.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
+
+  var low_threshold = 50 + negative_offset; // Threshold + negative offset
+  
+  var mid_threshold = 150 + negative_offset; // Threshold + negative offset
+  
+  var high_threshold = 250 + negative_offset; // Threshold + negative offset
 
   // weights for categorical variables
   var
@@ -69,11 +79,11 @@ google.charts.setOnLoadCallback(function() {
     rec3weak = 1.7803
 
     var weights = [
-      0.8923 // GRE-verb
-      , 0.1238 // GRE-quant
+      0.1238 // GRE-verb
+      , 0.8923 // GRE-quant
       , 0.3635 // GRE-write
       , 39.87 // GPA
-      , 1 // Inst-Rank
+      , 1 // Inst-Tier
       , 1 // Major
       , 1 // Country of origin
       , 5.1267 // Personal Statement
@@ -113,11 +123,6 @@ google.charts.setOnLoadCallback(function() {
       studentData[1][i + 1] = vals[i] * weights[i];
     }
 
-    // Original threshold
-    var original_threshold = 42.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
-
-    var low_threshold = 37.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
-    var high_threshold = 47.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
 
   // var barcolors = ['#F01010', '#FB0074', '#C82CCC', '#006DFF', '#0089FF', '#90A0E0', '#00BF70', '#00BF70', '#009F00', '#009F00', '#5BE500', '#5BE500', '#FFA500', '#E05050', '#FF90B0']
 
@@ -540,7 +545,6 @@ google.charts.setOnLoadCallback(function() {
     for (var i = 1; i < studentData[1].length; i++) {
       totalScore += studentData[1][i];
     }
-    totalScore += constant;
     console.log(totalScore);
 
     // Loading animation
@@ -553,10 +557,10 @@ google.charts.setOnLoadCallback(function() {
         if (totalScore >= high_threshold) {
           $("#result").text("Likely accepted");
           $("#result").css("color", "green");
-        } else if (totalScore >= original_threshold && totalScore < high_threshold){
+        } else if (totalScore >= mid_threshold && totalScore < high_threshold){
           $("#result").text("Probably accepted");
           $("#result").css("color", "LimeGreen ");
-        } else if (totalScore >= low_threshold && totalScore < original_threshold){
+        } else if (totalScore >= low_threshold && totalScore < mid_threshold){
           $("#result").text("Probably rejected");
           $("#result").css("color", "crimson ");
         } else {
@@ -604,15 +608,18 @@ google.charts.setOnLoadCallback(function() {
       hAxis: {
         title: '',
         minValue: 0,
-        maxValue: constant + 400,
+        maxValue: 400 + negative_offset,
         gridlines: {
           color: "black",
         },
         ticks: [{
-          v: original_threshold,
-          f: "Acceptance Threshold"
+          v: low_threshold,
+          f: ""
         }, {
-          v: 40.236724062345,
+          v: mid_threshold,
+          f: ""
+        }, {
+          v: high_threshold,
           f: ""
         }]
       },
