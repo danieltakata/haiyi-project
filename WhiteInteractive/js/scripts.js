@@ -40,14 +40,14 @@ google.charts.setOnLoadCallback(function() {
   var constant = -67.3342 ; //Constant term for linear regression
 
   var negative_offset= 0.4228 + 4.596 + 2.2719 + 1.7803 + 100*1.7543 + 100*0.0382 ;// for offsetting the negative value, to be added to decision boundary (negative dummy variables + negative cont. variables)
-  
+
   // Original threshold (previous code)
   // var original_threshold = 42.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
 
   var low_threshold = 50 + negative_offset; // Threshold + negative offset
-  
+
   var mid_threshold = 150 + negative_offset; // Threshold + negative offset
-  
+
   var high_threshold = 250 + negative_offset; // Threshold + negative offset
 
   // weights for categorical variables
@@ -555,16 +555,16 @@ google.charts.setOnLoadCallback(function() {
       setTimeout(function() {
         $(".loader").css('visibility', 'hidden');
         if (totalScore >= high_threshold) {
-          $("#result").text("Likely accepted");
+          $("#result").text("Very likely to be accepted");
           $("#result").css("color", "green");
         } else if (totalScore >= mid_threshold && totalScore < high_threshold){
-          $("#result").text("Probably accepted");
+          $("#result").text("Somewhat likely to be accepted");
           $("#result").css("color", "LimeGreen ");
         } else if (totalScore >= low_threshold && totalScore < mid_threshold){
-          $("#result").text("Probably rejected");
+          $("#result").text("Somewhat likely to be rejected");
           $("#result").css("color", "crimson ");
         } else {
-          $("#result").text("Likely rejected");
+          $("#result").text("Very likely to be rejected");
           $("#result").css("color", "red");
         }
         $("#result").css('opacity', 0).animate({
@@ -617,7 +617,7 @@ google.charts.setOnLoadCallback(function() {
           f: ""
         }, {
           v: mid_threshold,
-          f: ""
+          f: "Decision\nboundary"
         }, {
           v: high_threshold,
           f: ""

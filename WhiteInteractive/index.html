@@ -30,18 +30,18 @@
   <div id="landing-page">
     <div class="landingcontent">
       <div class="jumbotron">
-        <h1 class="display-4">Hello!</h1>
-        <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+        <h1 class="display-4">Step 2</h1>
+        <p class="lead">This is a web tool that explains an academic admission algorithm.</p>
         <hr class="my-4">
-        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
-          This algorithm works by adding together the applicant’s scores in different areas to create a total score. The algorithm compares this sum to an acceptance threshold it has calculated based on data from previous years. If the applicant’s total
-          score is above this threshold, they are accepted. On the following page you will see the different factors that are taken into account by the algorithm when deciding whether or not to admit an applicant. You can adjust the values below to find
-          out the exact contribution of each score, and see the total impact on the decision. The chart below these scores represent how various factors contribute to the algorithm’s decision. (any other info needed so they can answer questions at the
-          end)
+        <p class="lead">Imagine you are a student who is interested in applying to a masters program. This program uses a computer algorithm to automate admission decisions based on data from prior applicants.
         </p>
-        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
-
-        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+        <p class="lead">
+          You will now explore a web tool that was created to help users understand this algorithm. You will then be asked questions about your understanding and experience.</p>
+        <p class="lead">You will be able to return to the interface at any time during the survey. You can also earn bonus reward by correctly answering certain sections of the next survey. So please try to understand the algorithm in the next few minutes.</p>
+        <p class="lead">
+          Click on "Start" button to proceed.
+        </p>
+        <button type="button" id="startButton" class="btn btn-primary">Start</button>
       </div>
 
     </div>
@@ -282,7 +282,7 @@
                     <!--Rec1 Institute Row-->
                     <div class='row align-items-center'>
                       <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title='???'>Mystery Attribute 1:</label>
+                        <label class='tooltip2' data-toggle="tooltip" title='One of the attributes considered in the application. We have left out the name in the tool.'>Additional Attribute 1:</label>
 
                       </div>
                       <div class='col-3'>
@@ -300,7 +300,7 @@
                     <!--Rec2 Institute Row-->
                     <div class='row align-items-center'>
                       <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Mystery Attribute 2:</label>
+                        <label class='tooltip2' data-toggle="tooltip" title='One of the attributes considered in the application. We have left out the name in the tool.'>Additional Attribute 2:</label>
 
                       </div>
                       <div class='col-3'>
@@ -318,7 +318,7 @@
                     <!--Rec3 Institute Row-->
                     <div class='row align-items-center'>
                       <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Mystery Attribute 3:</label>
+                        <label class='tooltip2' data-toggle="tooltip" title='One of the attributes considered in the application. We have left out the name in the tool.'>Additional Attribute 3:</label>
 
                       </div>
                       <div class='col-3'>
@@ -347,8 +347,8 @@
               <div class="loader"></div>
               <div class="result" id="chart_div" style="width:100%"></div>
               <p class="text-center result" id="footnote">
-                *Hovering over a section on the graph will show the contribution of that section to the total score, after being weighted</p>
-              <h5 class="text-center result" id="result" style="color: red">Admission rejected</h5>
+                *Hovering over a section on the graph will show the contribution of that section to the total score</p>
+              <h5 class="text-center result" id="result" style="color: red"></h5>
             </div>
           </div>
 
@@ -360,11 +360,11 @@
 
     <footer class="footer">
       <div class="container">
-        <p class="lead">When you have familiraized yourself with the algorithm, press the ready button to proceed to the next step.</p>
+        <p class="lead">When you have familiraized yourself with the algorithm, you can to continue to answer the questions on the survey.</p>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nextModal">
+        <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nextModal">
           Ready
-        </button>
+        </button> -->
       </div>
     </footer>
 
