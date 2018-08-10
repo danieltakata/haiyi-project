@@ -32,7 +32,7 @@ html, body {
 }
 
 .slider::-ms-fill-lower {
-	background-color: #8080FF;
+	background: #8080FF;
 }
 
 div.sli {
