@@ -90,12 +90,12 @@ div.sli {
 }
 
 
-.interaction-container {
+/*.interaction-container {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: calc(100vh - 530px);
-    /* height: 100%; */
-}
+     height: 100%; 
+} */
 
 .result-container{
   background-color: white;
