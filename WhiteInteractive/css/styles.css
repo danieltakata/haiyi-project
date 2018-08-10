@@ -1,17 +1,47 @@
 
 html, body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  width: 100%;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	width: 100%;
+}
+
+.slider {
+	-webkit-appearance: none;
+	height: 4px;
+	border-radius: 2px;
+	background: #d3d3d3;
+	outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #8080FF;
+	cursor: pointer;
+}
+    
+.slider::-moz-slider-thumb {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	background: #8080FF;
+	cursor: pointer;
+}
+
+.slider::-ms-fill-lower {
+	background: #8080FF;
 }
 
 div.sli {
-  position: relative;
-  top: 9px;
+	position: relative;
+	top: 9px;
 }
 
 .black {
- color: black
+	color: black
 }
 
 #landing-page {
@@ -45,6 +75,7 @@ div.sli {
   padding-top: 20px;
   padding-bottom: 0px;
   margin-bottom: 0px;
+
   /* padding: 0 !important; */
   /* margin: 0 !important; */
 
@@ -90,12 +121,12 @@ div.sli {
 }
 
 
-.interaction-container {
+/*.interaction-container {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: calc(100vh - 530px);
-    /* height: 100%; */
-}
+     height: 100%; 
+} */
 
 .result-container{
   background-color: white;

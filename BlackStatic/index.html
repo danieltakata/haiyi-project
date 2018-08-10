@@ -24,23 +24,18 @@
 
 <body>
 
-  <div id="landing-page">
-    <div class="landingcontent">
-      <div class="jumbotron">
-        <h1 class="display-4">Hello!</h1>
-        <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
-        <hr class="my-4">
-        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
-          On the following page you will see the scores for three applicants to the university, along with whether those candidates were admitted. For each applicant, you will see the different factors that are taken into account by the algorithm when
-          deciding whether or not to admit. (other instructions for what to pay attention to based on what questions they’ll be asked at the end).
-        </p>
-        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+	<div id="landing-page">
+    	<div class="landingcontent">
+	      <div class="jumbotron">
+	        <h1 class="display-4">Step 2</h1>
+	        <p class="lead">The master's program you applied to provided several example applications. Their algorithm judged whether each application was likely to be accepted.</p>
+	        <hr class="my-4">
+	        <p class="lead">Please spend the next few minutes exploring the following page, familiarizing yourself with how specific aspects of an application affect the algorithm's decision.</p>
 
-        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
-      </div>
-
-    </div>
-  </div>
+	        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+	      </div>
+    	</div>
+  	</div>
 
   <div id="main-page">
     <div class="maincontent">
@@ -50,7 +45,7 @@
         <p class="lead">Admission decision helper.</p>
         <!-- <button id="nextStepButton" type="button" class="btn btn-success" style="float: right;">Next step</button> -->
         <hr>
-        <p class="">Please spend the next few minutes exploring the page, paying particular attention to your understanding of how the algorithm works. When you are ready, press the ready button on the right.</p>
+        <p class="">When you feel familiar with the algorithm, continue to the next step of the survey. You may return to this page at any time.</p>
       </div>
 
       <div class="container-fluid">
@@ -66,38 +61,35 @@
                   <h5 id="studentName" class="card-title">Student 1</h5>
                 </div>
 
-                <div class="card-body">
-                  <p class="card-text ">GRE - Verbal: <span id="GRE-verbal" class="btn btn-light" title='Verbal score for the Graduate Readiness Exam. Value ranges from 130-170'>162</span></p>
-                  <p class="card-text ">GRE - Quantitative: <span id="GRE-quantitative" class="btn btn-light" title='Quantitative score for the Graduate Readiness Exam. Value ranges from 130-170'>170</span></p>
-                  <p class="card-text ">GRE - Writing: <span id="GRE-writing" class="btn btn-light" title='Writing score for the Graduate Readiness Exam. Value ranges from 0-6'>4.5</span></p>
-                </div>
+                  <div class="card-body">
+					<p class="card-text ">GRE - Verbal: <span id="GRE-verbal" class="btn btn-light" title='Verbal score for the Graduate Readiness Exam. Value ranges from 130-170'>162</span></p>
+					<p class="card-text ">GRE - Quantitative: <span id="GRE-quantitative" class="btn btn-light" title='Quantitative score for the Graduate Readiness Exam. Value ranges from 130-170'>170</span></p>
+					<p class="card-text ">GRE - Writing: <span id="GRE-writing" class="btn btn-light" title='Writing score for the Graduate Readiness Exam. Value ranges from 0-6'>4.5</span></p>
+				  </div>
 
-                <div class="card-body">
-                  <p class="card-text ">GPA: <span id="GPA" class="btn btn-light" title='Grade Point Average for highest relevant education. Value ranges from 0.0-4.0'>3.6</span></p>
-                  <p class="card-text ">Major: <span id="Major" class="btn btn-light" title='Major that the student graduated from'>Computer Science</span></p>
-                </div>
+				  <div class="card-body">
+					<p class="card-text ">GPA: <span id="GPA" class="btn btn-light" title='Grade Point Average for highest relevant education. Value ranges from 0.0-4.0'>3.6</span></p>
+					<p class="card-text ">Major: <span id="Major" class="btn btn-light" title='Major that the student graduated from'>Computer Science</span></p>
+				  </div>
 
-                <div class="card-body">
-                  <p class="card-text ">University Ranking: <span id="Institution-Rank" class="btn btn-light" title='Global Ranking for the institution that highest relevant education was received at. Value ranges from 1-1000'>193</span></p>
-                  <p class="card-text ">Country of Education: <span id="Country" class="btn btn-light" title="Country that the student receives the highest degree">US</span></p>
-                  <p class="card-text ">Personal Statement: <span id="Personal-Statement" class="btn btn-light" title='Graded score for Personal Statement Essay. Value ranges from 1-5'>4</span></p>
-                  <p class="card-text ">Diversity Score: <span id="Diversity-Score" class="btn btn-light" title='Graded score for Diversity Statement Essay. Value ranges from 1-5.'>3.5</span></p>
-                </div>
+				  <div class="card-body">
+					<p class="card-text ">University Ranking: <span id="Institution-Rank" class="btn btn-light" title='Global Ranking for the institution that highest relevant education was received at. Organized into three tiers.'>Tier 2</span></p>
+					<p class="card-text ">Country of Education: <span id="Country" class="btn btn-light" title="Country that the student receives the highest degree">US</span></p>
+					<p class="card-text ">Personal Statement: <span id="Personal-Statement" class="btn btn-light" title='Graded score for Personal Statement Essay. Value ranges from 1-5'>4</span></p>
+					<p class="card-text ">Diversity Score: <span id="Diversity-Score" class="btn btn-light" title='Graded score for Diversity Statement Essay. Value ranges from 1-5.'>3.5</span></p>
+				  </div>
 
-                <div class="card-body">
-                  <p class="card-text ">Recommendation Letter 1 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
-                  <p class="card-text "><span id="RL1">Top 10%</span>, from a university ranked <span id="RL1inst">192</span></p>
-                  <p class="card-text ">Recommendation Letter 2 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
-                  <p class="card-text "><span id="RL2">Top 10%</span>, from a university ranked <span id="RL2inst">192</span></p>
-                  <p class="card-text ">Recommendation Letter 3 <span title='Graded score for first letter of recommendation. Value ranges from 1-100'></span>:</p>
-                  <p class="card-text "><span id="RL3">Top 10%</span>, from a university ranked <span id="RL3inst">179</span></p>
-                </div>
+				  <div class="card-body">
+					<p class="card-text ">Recommendation Letter 1: <span title='Grade for first letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL1">Strong</span></p>
+					<p class="card-text ">Recommendation Letter 2: <span title='Grade for second letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL2">Normal</span></p>
+					<p class="card-text ">Recommendation Letter 3: <span title='Grade for third letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL3">None</span></p>
+				  </div>
 
-                <div class="card-body">
-                  <p class="card-text ">Mystery Attribute 1: <span title='This attribute is unknown. Value ranges from 1-100'>11</span></p>
-                  <p class="card-text ">Mystery Attribute 2: <span title='This attribute is unknown. Value ranges from 1-100'>54</span></p>
-                  <p class="card-text ">Mystery Attribute 3: <span title='This attribute is unknown. Value ranges from 1-100'>73</span></p>
-                </div>
+				  <div class="card-body">
+					<p class="card-text ">Additional Attribute 1: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional1">11</span></p>
+					<p class="card-text ">Additional Attribute 2: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional2">54</span></p>
+					<p class="card-text ">Additional Attribute 3: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional3">73</span></p>
+				  </div>
 
                 <div class="card-footer text-success">
                   Admitted
@@ -120,42 +112,6 @@
       </div>
     </div>
 
-
-    <footer class="footer">
-      <div class="container">
-        <p class="lead">When you have familiraized yourself with the algorithm, press the ready button to proceed to the next step.</p>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nextModal">
-          Ready
-        </button>
-      </div>
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="nextModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>
-              In the next step, you will complete a survey that evaluates your understanding to the algorithm.
-            </p>
-            <p>
-              Note that you would not be able to go back once you proceed. Are you sure you want to are ready for the survey?
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button id="nextStepButton" type="button" class="btn btn-warning">Next step</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </div>
 
