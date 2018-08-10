@@ -25,15 +25,10 @@
 	<div id="landing-page">
     	<div class="landingcontent">
 	      <div class="jumbotron">
-	        <h1 class="display-4">Hello!</h1>
-	        <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
+	        <h1 class="display-4">Step 2</h1>
+	        <p class="lead">The master's program you applied to provided this web tool to visualize how their algorithm processes applications.</p>
 	        <hr class="my-4">
-	        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
-	          This algorithm works by adding together the applicant’s scores in different areas to create a total score. The algorithm compares this sum to an acceptance threshold it has calculated based on data from previous years. If the applicant’s total
-	          score is above this threshold, they are accepted. On the following page you will see the scores for three applicants to the university, along with whether those candidates were admitted. The chart below these scores represent how various factors
-	          contributed to the algorithm’s decision.
-	        </p>
-	        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+	        <p class="lead">Please spend the next few minutes exploring the following page, familiarizing yourself with how specific aspects of an application affect the algorithm's decision.</p>
 
 	        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
 	      </div>
@@ -48,7 +43,7 @@
 		        <p class="lead">Admission decision helper.</p>
 						<!-- <button id="nextStepButton" type="button" class="btn btn-success" style="float: right;">Next step</button> -->
 		        <hr>
-		        <p class="">Please spend the next few minutes exploring the page, paying particular attention to your understanding of how the algorithm works. When you are ready, press the ready button on the right.</p>
+		        <p class="">When you feel familiar with the algorithm, continue to the next step of the survey. You may return to this page at any time.</p>
 		    </div>
 
 		  	<div class="container-fluid">
@@ -72,11 +67,11 @@
 
 			                  <div class="card-body">
 			                    <p class="card-text ">GPA: <span id="GPA" class="btn btn-light" title='Grade Point Average for highest relevant education. Value ranges from 0.0-4.0'>3.6</span></p>
-			                    <p class="card-text ">Major: <span id="Major" class="btn btn-light" title='Major that the student graduated from'>Computer Science</span></p>
+			                    <p class="card-text ">Undergraduate Major: <span id="Major" class="btn btn-light" title='Major that the student graduated from'>Computer Science</span></p>
 			                  </div>
 
 			                  <div class="card-body">
-			                    <p class="card-text ">University Ranking: <span id="Institution-Rank" class="btn btn-light" title='Global Ranking for the institution that highest relevant education was received at. Organized into three tiers.'>Tier 2</span></p>
+			                    <p class="card-text ">Undergraduate University Ranking: <span id="Institution-Rank" class="btn btn-light" title='Global Ranking for the institution that highest relevant education was received at. Organized into three tiers.'>Tier 2</span></p>
 			                    <p class="card-text ">Country of Education: <span id="Country" class="btn btn-light" title="Country that the student receives the highest degree">US</span></p>
 			                    <p class="card-text ">Personal Statement: <span id="Personal-Statement" class="btn btn-light" title='Graded score for Personal Statement Essay. Value ranges from 1-5'>4</span></p>
 			                    <p class="card-text ">Diversity Score: <span id="Diversity-Score" class="btn btn-light" title='Graded score for Diversity Statement Essay. Value ranges from 1-5.'>3.5</span></p>
@@ -117,41 +112,6 @@
 
 		</div>
 
-    <footer class="footer">
-      <div class="container">
-        <p class="lead">When you have familiarized yourself with the algorithm, press the ready button to proceed to the next step.</p>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nextModal">
-          Ready
-        </button>
-      </div>
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="nextModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>
-              In the next step, you will complete a survey that evaluates your understanding to the algorithm.
-            </p>
-            <p>
-              Note that you would not be able to go back once you proceed. Are you sure you want to are ready for the survey?
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button id="nextStepButton" type="button" class="btn btn-warning">Next step</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
 	</div>
 

@@ -177,6 +177,10 @@ google.charts.setOnLoadCallback(function() {
     },
     slide: function(event, ui) {
       $("#greV-data").text((ui.value + 130))
+      studentData[1][1] = ui.value * weights[0]; //greV
+      drawStacked();
+      updateResult();
+	  
     },
     change: function(event, ui) {
       studentData[1][1] = ui.value * weights[0]; //greV
