@@ -114,13 +114,13 @@ function drawStacked() {
         color: 'black'
       },
       ticks: [{
-        v: constant + 100,
+        v: constant + 50,
         f: 'weak\nreject'
       }, {
-        v: constant + 200,
+        v: constant + 150,
         f: 'weak\naccept'
       }, {
-        v: constant + 300,
+        v: constant + 250,
         f: 'strong\naccept'
       }, {
         v: constant + 420,

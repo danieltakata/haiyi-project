@@ -60,6 +60,7 @@
               <div class='interaction-container'>
                 <!--Features Text/Input/Sliders-->
                 <div class="row">
+
                     <!--Academic Section-->
                     <div class='col-6'>
                       <div class='row-align-items-left'><b>Academic</b></div>
@@ -89,9 +90,11 @@
                         <div class='col-3 text-center'>
                           <select name="" id="major-dropdown">
                                 <!-- <option selected="true" disabled="true" >Select</option> -->
-                                <option selected="true" value="csce">CS/CE</option>
-                                <option value="stem">STEM</option>
-                                <option value="other">Other</option>
+                                <option selected="true" value="humanities">Humanities</option>
+                                <option value="social_science">Social Science</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="natural_science">Natural Science</option>
+                                <option value="business">Business</option>
                               </select>
 
                         </div>
@@ -106,9 +109,9 @@
                         <div class='col-3 text-center'>
                           <select name="" id="institution-dropdown">
                                 <!-- <option selected="true" disabled="true" >Select</option> -->
-                                <option selected="true" value="tier1">Tier 1 Institute</option>
-                                <option value="tier2">Tier 2 Institute</option>
-                                <option value="tier3">Tier 3 Institute</option>
+                                <option selected="true" value="tier1">Rank 1 - 100</option>
+                                <option value="tier2">Rank 101 - 500</option>
+                                <option value="tier3">Rank 501 - 1000</option>
                               </select>
 
                         </div>
@@ -122,13 +125,11 @@
                         </div>
                         <div class='col-3 text-center'>
                           <select name="" id="ctry-dropdown">
-                                <!-- <option selected="true" disabled="true" >Select</option> -->
-                                <option selected="true" value="usa">USA</option>
-                                <!-- <option value="canada">Canada</option> -->
-                                <!-- <option value="asia">Asia</option> -->
-                                <!-- <option value="euro">Europe</option> -->
-                                <option value="other">Other</option>
-                              </select>
+                              <option selected="true" value="usa">United States</option>
+                              <option value="china">China</option>
+                              <option value="india">India</option>
+                              <option value="europe">Europe</option>
+                            </select>
 
                         </div>
                       </div>
@@ -288,7 +289,7 @@
                     <!--Mystery1 Row-->
                     <div class='row align-items-center'>
                         <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='???'>Mystery Attribute 1:</label>
+                          <label class='tooltip2' data-toggle="tooltip" title='???'>Additional Attribute 1:</label>
 
                         </div>
                         <div class='col-5'>
@@ -305,7 +306,7 @@
                       <!--Mystery2 Row-->
                       <div class='row align-items-center'>
                         <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Mystery Attribute 2:</label>
+                          <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Additional Attribute 2:</label>
 
                         </div>
                         <div class='col-5'>
@@ -322,7 +323,7 @@
                       <!--Mystery3 Row-->
                       <div class='row align-items-center'>
                         <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Mystery Attribute 3:</label>
+                          <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Additional Attribute 3:</label>
 
                         </div>
                         <div class='col-5'>
@@ -354,8 +355,8 @@
               <div class="loader"></div>
               <div class="result" id="chart_div" style="width:100%"></div>
               <p class="text-center result" id="footnote">
-                *Hovering over a section on the graph will show its name</p>
-              <h5 class="text-center result" id="result" style="color: red">Admission rejected</h5>
+                *Hovering over a section on the graph will show the contribution of that section to the total score</p>
+              <h5 class="text-center result" id="result" style="color: red"></h5>
             </div>
           </div>
 

@@ -37,71 +37,63 @@ google.charts.setOnLoadCallback(function() {
     }, 300);
   });
 
+  var constant = -67.3342 ; //Constant term for linear regression
 
-  // weights
-  var greVerWt = 0.1376453793,
-    greQuanWt = 0.07802271239,
-    greWriWt = 0.3124308781,
-    gpaWt = 1.456150174,
-    rankWt = 0.003788262564,
+  var negative_offset= 0.4228 + 4.596 + 2.2719 + 1.7803 + 100*1.7543 + 100*0.0382 ;// for offsetting the negative value, to be added to decision boundary (negative dummy variables + negative cont. variables)
+
+  // Original threshold (previous code)
+  // var original_threshold = 42.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
+
+  var low_threshold = 50 + negative_offset; // Threshold + negative offset
+
+  var mid_threshold = 150 + negative_offset; // Threshold + negative offset
+
+  var high_threshold = 250 + negative_offset; // Threshold + negative offset
+
+  // weights for categorical variables
+  var
     // Institution Rank weights
-    tier1Wt = 0.5,
-    tier2Wt = 0.30693782874,
+    tier1Wt = 7.0613,
+    tier2Wt = 2.8189,
     tier3Wt = 0,
     // major weights
-    csceWt = 1.5594831748,
-    stemWt = 0.30693782874,
-    otherWt = 0,
+    engineeringWt = 	3.4903,
+    naturalscienceWt = 3.8394,
+    humanitiesWt = 6.0665,
+    socialscienceWt = 0,
+    businessWt = 	8.0240,
     // country weights
-    usaWt = 0,
-    asiaWt = 1.03588023043,
-    euroWt = 0.48266027481,
-    elseWt = 0.513354407198,
-    //
-    psWt = 0.8300898821,
-    diverWt = 0.4184694261,
+    usaWt = 15.8596,
+    chinaWt = 4.3393,
+    indiaWt = 0,
+    europeWt = 0.4228,
     // recommendation weights
-    rec1strong = 2.00627220247,
-    rec1average = 1.11329686474,
-    rec1weak = 0,
-    rec2strong = 2.00627220247,
-    rec2average = 1.11329686474,
+    rec1strong = 2.2719,
+    rec1average = 4.596,
+    rec1weak = 6.8679,
+    rec2strong = 10.9469,
+    rec2average = 5.8508,
     rec2weak = 0,
-    rec3strong = 2.00627220247,
-    rec3average = 1.11329686474,
-    rec3weak = 0
-
-    rec1instWt = -0.006982607425,
-    rec2instWt = -1.58e-03,
-    rec3instWt = -1.58e-03
-  // default values (for sliders)
-  var greVerVal = 170,
-    greQuanVal = 170,
-    greWriVal = 3,
-    gpaVal = 3.6,
-    rankVal = 200,
-    rec1instVal = 500,
-    rec2instVal = 500,
-    rec3instVal = 500,
-    psVal = 3,
-    diverVal = 3;
+    rec3strong = 3.4996,
+    rec3average = 5.2799,
+    rec3weak = 1.7803
 
     var weights = [
-      0.114911184251 // GRE-verb
-      , 0.0880320310069 // GRE-quant
-      , 0.2926697271 // GRE-write
-      , 1.584509831 // GPA
-      , 1 // Inst-Rank
+      0.1238 // GRE-verb
+      , 0.8923 // GRE-quant
+      , 0.3635 // GRE-write
+      , 39.87 // GPA
+      , 1 // Inst-Tier
       , 1 // Major
       , 1 // Country of origin
-      , 0.756277254266 // Personal Statement
-      , 0.317935719456 // Diversity score
+      , 5.1267 // Personal Statement
+      , 1.1396 // Diversity score
       , 1 // Recommendation letter 1
       , 1 // Recommendation letter 2
       , 1 // Recommendation letter 3
-      , 0.03643092126893 // Mystery 1
-      , -0.0363152813703 // Mystery 2
-      , 0.000109465199226 // Mystery 3
+      , 0.0382 // Mystery 1
+      , 1.6931 // Mystery 2
+      , 1.7543 // Mystery 3
     ];
     // inital values
     var vals = [
@@ -121,22 +113,17 @@ google.charts.setOnLoadCallback(function() {
       ,50             // Mystery 2
       ,50             // Mystery 3
     ];
-  
-  
+
+
     var studentData = [
-      ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'PS', 'Diversity', 'Rec1', 'Rec2', 'Rec3', 'Mystery1', 'Mystery2', 'Mystery3'],
+      ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'PS', 'Diversity', 'Rec1', 'Rec2', 'Rec3', 'Additional1', 'Additional2', 'Additional3'],
       ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
     for (var i = 0; i < studentData[1].length-1; i++) {
       studentData[1][i + 1] = vals[i] * weights[i];
     }
-  
-    // Original threshold
-    var original_threshold = 42.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
-  
-    var low_threshold = 37.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
-    var high_threshold = 47.962524 - 130 * weights[0] - 130 * weights[1] + 0.622140334514 + 0.805488066489 + 0.742740758554 + 0.875925686442 + 0.513354407198 - weights[13] - weights[14] //threshold needs to minus weight of PS/ diversity?
-  
+
+
   // var barcolors = ['#F01010', '#FB0074', '#C82CCC', '#006DFF', '#0089FF', '#90A0E0', '#00BF70', '#00BF70', '#009F00', '#009F00', '#5BE500', '#5BE500', '#FFA500', '#E05050', '#FF90B0']
 
   var barcolors = [
@@ -304,14 +291,20 @@ google.charts.setOnLoadCallback(function() {
     change: function(event, ui) {
       let majorWt = 0;
       switch ($("#major-dropdown").val()) {
-        case 'csce':
-          majorWt = csceWt;
+        case 'engineering':
+          majorWt = engineeringWt;
           break;
-        case 'stem':
-          majorWt = stemWt;
+        case 'humanities':
+          majorWt = humanitiesWt;
           break;
-        case 'other':
-          majorWt = otherWt;
+        case 'socialscience':
+          majorWt = socialscienceWt;
+          break;
+        case 'naturalscience':
+          majorWt = naturalscienceWt;
+          break;
+        case 'business':
+          majorWt = businessWt;
           break;
       }
       studentData[1][6] = majorWt * weights[5];
@@ -334,7 +327,7 @@ google.charts.setOnLoadCallback(function() {
           countryWt = asiaWt;
           break;
         case 'euro':
-          countryWt = euroWt;
+          countryWt = europeWt;
           break;
         case 'other':
           countryWt = elseWt;
@@ -427,7 +420,7 @@ google.charts.setOnLoadCallback(function() {
     value: vals[11],
     step: 1,
     change: function(event, ui) {
-      studentData[1][13] = ui.value * weights[12];
+      studentData[1][13] = (100-ui.value) * weights[12];
       //    adjustedData[6] = (ui.value-studentData[2][7])*recWt
       drawStacked();
       updateResult();
@@ -485,7 +478,7 @@ google.charts.setOnLoadCallback(function() {
     value: vals[12],
     step: 1,
     change: function(event, ui) {
-      studentData[1][15] = ui.value * weights[14];
+      studentData[1][15] = (100-ui.value) * weights[14];
       drawStacked();
       updateResult();
     }
@@ -556,7 +549,7 @@ google.charts.setOnLoadCallback(function() {
     for (var i = 1; i < studentData[1].length; i++) {
       totalScore += studentData[1][i];
     }
-    // console.log(totalScore);
+    console.log(totalScore);
 
     // Loading animation
     $("#result").css('opacity', 1).animate({
@@ -566,16 +559,16 @@ google.charts.setOnLoadCallback(function() {
       setTimeout(function() {
         $(".loader").css('visibility', 'hidden');
         if (totalScore >= high_threshold) {
-          $("#result").text("Likely accepted");
+          $("#result").text("Very likely to be accepted");
           $("#result").css("color", "green");
-        } else if (totalScore >= original_threshold && totalScore < high_threshold){
-          $("#result").text("Probably accepted");
+        } else if (totalScore >= mid_threshold && totalScore < high_threshold){
+          $("#result").text("Somewhat likely to be accepted");
           $("#result").css("color", "LimeGreen ");
-        } else if (totalScore >= low_threshold && totalScore < original_threshold){
-          $("#result").text("Probably rejected");
+        } else if (totalScore >= low_threshold && totalScore < mid_threshold){
+          $("#result").text("Somewhat likely to be rejected");
           $("#result").css("color", "crimson ");
         } else {
-          $("#result").text("Likely rejected");
+          $("#result").text("Very likely to be rejected");
           $("#result").css("color", "red");
         }
         $("#result").css('opacity', 0).animate({
@@ -587,8 +580,6 @@ google.charts.setOnLoadCallback(function() {
   }
 
   function drawStacked() {
-
-    var correction = 0.5237106007 + 0.8304791985 + 0.8421408468 + 0.8250712596 + 0.8450858476 + 0.006982607425 * 1000 + 1.58e-03 * 1000 + 1.58e-03 * 1000
 
     var donutRangeSlider = new google.visualization.ControlWrapper({
       'controlType': 'NumberRangeFilter',
@@ -621,15 +612,18 @@ google.charts.setOnLoadCallback(function() {
       hAxis: {
         title: '',
         minValue: 0,
-        maxValue: 40.236724062345,
+        maxValue: 400 + negative_offset,
         gridlines: {
           color: "black",
         },
         ticks: [{
-          v: original_threshold,
-          f: "Acceptance Threshold"
+          v: low_threshold,
+          f: ""
         }, {
-          v: 40.236724062345,
+          v: mid_threshold,
+          f: "Decision\nboundary"
+        }, {
+          v: high_threshold,
           f: ""
         }]
       },
