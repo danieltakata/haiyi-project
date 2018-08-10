@@ -27,25 +27,18 @@
 
 <body>
 
-  <div id="landing-page">
-    <div class="landingcontent">
-      <div class="jumbotron">
-        <h1 class="display-4">Hello!</h1>
-        <p class="lead">This is a simple visualization of an application to the University of Minnesota.</p>
-        <hr class="my-4">
-        <p class="lead"> Imagine you are a student who has applied to graduate school. The university you applied to uses an automated algorithm to help make admissions decisions, and has created the following interface to help you understand how the algorithm works.
-          This algorithm works by adding together the applicant’s scores in different areas to create a total score. The algorithm compares this sum to an acceptance threshold it has calculated based on data from previous years. If the applicant’s total
-          score is above this threshold, they are accepted. On the following page you will see the different factors that are taken into account by the algorithm when deciding whether or not to admit an applicant. You can adjust the values below to find
-          out the exact contribution of each score, and see the total impact on the decision. The chart below these scores represent how various factors contribute to the algorithm’s decision. (any other info needed so they can answer questions at the
-          end)
-        </p>
-        <p class="lead">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+	<div id="landing-page">
+    	<div class="landingcontent">
+	      <div class="jumbotron">
+	        <h1 class="display-4">Step 2</h1>
+	        <p class="lead">The master's program you applied to provided this web tool to visualize how their algorithm processes an application.</p>
+	        <hr class="my-4">
+	        <p class="lead">Please spend the next few minutes exploring the following page, familiarizing yourself with how specific aspects of an application affect the algorithm's decision.</p>
 
-        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
-      </div>
-
-    </div>
-  </div>
+	        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
+	      </div>
+    	</div>
+  	</div>
 
 
   <div id="main-page">
@@ -56,7 +49,7 @@
         <p class="lead">Admission decision helper.</p>
         <!-- <button id="nextStepButton" type="button" class="btn btn-success" style="float: right;">Next step</button> -->
         <hr class="my-4">
-        <p class="">Please spend the next few minutes exploring the following page, paying particular attention to your understanding of how the algorithm works.</p>
+        <p class="">When you feel familiar with the algorithm, continue to the next step of the survey. You may return to this page at any time.</p>
 
         <div class="card">
           <div class="card-body">
@@ -356,41 +349,7 @@
       </div>
     </div>
 
-    <footer class="footer">
-      <div class="container">
-        <p class="lead">When you have familiraized yourself with the algorithm, press the ready button to proceed to the next step.</p>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#nextModal">
-          Ready
-        </button>
-      </div>
-    </footer>
 
-    <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="nextModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>
-              In the next step, you will complete a survey that evaluates your understanding to the algorithm.
-            </p>
-            <p>
-              Note that you would not be able to go back once you proceed. Are you sure you want to are ready for the survey?
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button id="nextStepButton" type="button" class="btn btn-warning">Next step</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
   </div>
