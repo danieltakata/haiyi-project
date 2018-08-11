@@ -35,14 +35,14 @@ html, body {
 	background: #8080FF;
 }
 
-div.sli {
-	position: relative;
-	top: 9px;
+.ui-slider .ui-slider-handle{
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-.black {
-	color: black
-}
+
 
 #landing-page {
     position: absolute;
@@ -73,7 +73,7 @@ div.sli {
 .main-visualization {
   /* height: 95vh; */
   padding-top: 20px;
-  padding-bottom: 0px;
+  padding-bottom: 20px;
   margin-bottom: 0px;
 
   /* padding: 0 !important; */
@@ -81,14 +81,14 @@ div.sli {
 
 }
 
-
 .black {
   color: black
 }
 
 
 #footnote {
-    font-style: italic
+    font-style: italic;
+    font-size: 14px;
 }
 
 .loader {
@@ -145,4 +145,23 @@ div.sli {
   display: inline-block;
   vertical-align:  text-top;
   margin-right: 10px;
+}
+
+#result{
+  text-align: center;
+  width: 400px;
+  margin: 50px auto;
+  padding: 5px;
+  border: 2px solid #999999;
+}
+
+.instruction{
+  text-align: center;
+  color: #ad0000;
+  font-size: 20px"
+}
+
+.attribute-title{
+  font-weight: 900;
+  font-size: 25px;
 }

@@ -74,10 +74,21 @@ google.charts.setOnLoadCallback(function() {
     $("#mystery2-slider .ui-slider-range").css('background', barcolors[13]);
     $("#mystery3-slider .ui-slider-range").css('background', barcolors[14]);
 
+    $("#greV-label").css('background-color', barcolors[0]);
+    $("#greQ-label").css('background-color', barcolors[1]);
+    $("#greW-label").css('background-color', barcolors[2]);
     $("#gpa-label").css('background-color', barcolors[3]);
     $("#major-label").css('background-color', barcolors[5]);
     $("#institution-label").css('background-color', barcolors[4]);
     $("#ctry-label").css('background-color', barcolors[6]);
+    $("#ps-label").css('background-color', barcolors[7]);
+    $("#diver-label").css('background-color', barcolors[8]);
+    $("#rec1-label").css('background-color', barcolors[9]);
+    $("#rec2-label").css('background-color', barcolors[10]);
+    $("#rec3-label").css('background-color', barcolors[11]);
+    $("#mystery1-label").css('background-color', barcolors[12]);
+    $("#mystery2-label").css('background-color', barcolors[13]);
+    $("#mystery3-label").css('background-color', barcolors[14]);
   }
 
   function initializeSliders() {
@@ -426,7 +437,7 @@ google.charts.setOnLoadCallback(function() {
     console.log(totalScore);
 
     // Loading animation
-    $("#result").css('opacity', 1).animate({
+    $(".result-container").css('opacity', 1).animate({
       opacity: 0
     }, 0.1, function() {
       $(".loader").css('visibility', 'visible');
@@ -445,7 +456,7 @@ google.charts.setOnLoadCallback(function() {
           $("#result").text("Very likely to be rejected");
           $("#result").css("color", "red");
         }
-        $("#result").css('opacity', 0).animate({
+        $(".result-container").css('opacity', 0).animate({
           opacity: 1
         }, 200);
       }, 500);
