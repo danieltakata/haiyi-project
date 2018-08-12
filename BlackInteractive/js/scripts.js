@@ -392,7 +392,6 @@ $(function() {
   }
 
   function updateResult() {
-    // var totalScore = studentData[1][1] + studentData[1][2] + studentData[1][3] + studentData[1][4] + studentData[1][5] + studentData[1][6] + studentData[1][7] + studentData[1][8] + studentData[1][9] + studentData[1][10] + studentData[1][11];
     var totalScore = 0;
     for (var i = 1; i < studentData[1].length; i++) {
       totalScore += studentData[1][i];
@@ -505,7 +504,7 @@ var vals = [
 
 
 var studentData = [
-  ['Total Score', 'GRE-verb', 'GRE-quant', 'GRE-write', 'GPA', 'Inst-Rank', 'Major', 'Country', 'PS', 'Diversity', 'Rec1', 'Rec2', 'Rec3', 'Additional1', 'Additional2', 'Additional3'],
+  ['Total Score', 'GRE-Verbal', 'GRE-Quant', 'GRE-Writing', 'GPA', 'Institution-Rank', 'Major', 'Country', 'Personal Statement', 'Diversity Statement', 'Letter of Recommendation #1', 'Letter of Recommendation #2', 'Letter of Recommendation #3', 'Additional Attribute 1', 'Additional Attribute 2', 'Additional Attribute 3'],
   ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
