@@ -34,7 +34,7 @@ google.charts.setOnLoadCallback(function() {
     }, 300);
   });
 
-  $( "#startButton" ).trigger( "click" );
+  // $( "#startButton" ).trigger( "click" );
 
   initialize();
 

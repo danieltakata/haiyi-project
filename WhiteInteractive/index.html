@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Grad Admission Data Visualization</title>
+  <title>Grad Admission Tool</title>
   <!-- <meta name="description" content="The HTML5 Herald"> -->
   <!-- <meta name="author" content="SitePoint"> -->
 
@@ -28,10 +28,14 @@
 
   <div id="landing-page">
     <div class="landingcontent">
-      <div class="jumbotron">
-        <h1 class="display-4">The master's program provides this tool to applicants</h1> Try to understand how each <b>specific aspect</b> of an application affects the algorithm's decision.
+      <div class="jumbotron" style="padding-bottom: 20px;">
+        <h1 class="display-5">Tutorial: How to use the tool</h1>
+        <p>
+          The tool explains how each <b>specific aspect</b> of an application affects the algorithm's decision.
+        </p>
         <hr class="my-4">
-
+        <img src="./img/tutorial.png" class="img-fluid" style="max-height: 70vh;">
+        <br />
         <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
       </div>
     </div>
@@ -68,7 +72,7 @@
                     <div class="row align-items-center align-middle">
                       <div class="col-5 align-middle">
                         <div class="square" id="gpa-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='Grade Point Average for highest relevant education. Enter a value from 0.0-4.0'>GPA: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Grade Point Average for most recent relevant education'>GPA: </div>
                       </div>
                       <div class="col-4">
                         <div id="gpa-slider" class="slider"></div>
@@ -82,7 +86,7 @@
                     <div class="row align-items-center align-middle">
                       <div class='col-5'>
                         <div class="square" id="major-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title="Major received from highest relevant education. Enter CS/CE, STEM, or some other">Major: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title="Applicant's major for the most recent degree">Major: </div>
                       </div>
                       <div class='col-5'>
                         <select id="major-dropdown" class="selectpicker" data-width="auto">
@@ -100,7 +104,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="institution-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='National Ranking for the institution that highest relevant education was received at. Enter a value from 1-1000'>Institute Rank: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title='International ranking of the institution where the applicant received the most recent degree'>Institution Rank: </div>
                       </div>
                       <div class='col-5'>
                         <select id="institution-dropdown" class="selectpicker" data-width="auto">
@@ -115,7 +119,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="ctry-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title="Country of origin. Enter USA, Canada, Asia, Europe, or some other">Country: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title="County where student received the most recent degree">Country: </div>
                       </div>
                       <div class='col-5'>
                         <select name="" id="ctry-dropdown"  class="selectpicker" data-width="auto">
@@ -141,7 +145,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5 align-middle'>
                         <div class="square" id="greV-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='Verbal score for the Graduate Readiness Exam. Enter a value from 130-170'>GRE Verbal: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test verbal section'>GRE Verbal: </div>
                       </div>
                       <div class='col-4'>
                         <div id="greV-slider" class="slider"></div>
@@ -157,7 +161,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="greQ-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='Quantitative score for the Graduate Readiness Exam. Enter a value from 130-170'>GRE Quant.: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test quantitative section'>GRE Quant.: </div>
                       </div>
                       <div class='col-4'>
                         <div id="greQ-slider" class="slider"></div>
@@ -172,7 +176,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="greW-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='Writing score for the Graduate Readiness Exam. Enter a value from 0-6'>GRE Writing: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test writing section'>GRE Writing: </div>
                       </div>
                       <div class='col-4'>
                         <div id="greW-slider" class="slider"></div>
@@ -203,7 +207,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="ps-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='Graded score for Personal Statement Essay. Enter a value from 1-5'>Personal Statement: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Graded score for Personal Statement Essay'>Personal Statement: </div>
                       </div>
                       <div class='col-4'>
                         <div id="ps-slider" class="slider"></div>
@@ -219,7 +223,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="diver-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='Graded score for Diversity Statement Essay. Enter a value from 1-5.'>Diversity Statement: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Graded score for Diversity Statement Essay'>Diversity Statement: </div>
                       </div>
                       <div class='col-4'>
                         <div id="diver-slider" class="slider"></div>
@@ -234,7 +238,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="rec1-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title="Percentile ranking for first letter of recommendation">Letter of Recom. #1: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #1: </div>
 
                       </div>
                       <div class='col-5'>
@@ -250,7 +254,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="rec2-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title="Percentile ranking for second letter of recommendation">Letter of Recom. #2: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #2: </div>
 
                       </div>
                       <div class='col-5'>
@@ -267,7 +271,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="rec3-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title="Percentile ranking for third letter of recommendation">Letter of Recom. #3: </div>
+                        <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #3: </div>
 
                       </div>
                       <div class='col-5'>
@@ -294,7 +298,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="mystery1-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='???'>Additional Attribute 1:</div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 1:</div>
                       </div>
                       <div class='col-4'>
                         <div id="mystery1-slider" class="slider"></div>
@@ -309,7 +313,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="mystery2-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Additional Attribute 2:</div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 2:</div>
                       </div>
                       <div class='col-4'>
                         <div id="mystery2-slider" class="slider"></div>
@@ -324,7 +328,7 @@
                     <div class='row align-items-center align-middle'>
                       <div class='col-5'>
                         <div class="square" id="mystery3-label"></div>
-                        <div class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Additional Attribute 3:</div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 3:</div>
 
                       </div>
                       <div class='col-4'>

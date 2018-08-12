@@ -42,7 +42,10 @@ html, body {
   display: inline-block;
 }
 
-
+#startButton{
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
 
 #landing-page {
     position: absolute;
