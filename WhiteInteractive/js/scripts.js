@@ -29,6 +29,7 @@ google.charts.setOnLoadCallback(function() {
       $("#main-page").fadeIn();
       $(".maincontent").fadeIn(300);
       $('[data-toggle="tooltip"]').tooltip();
+      initialize();
       updateResult()
       drawStacked()
     }, 300);
@@ -36,7 +37,6 @@ google.charts.setOnLoadCallback(function() {
 
   // $( "#startButton" ).trigger( "click" );
 
-  initialize();
 
 
   function initialize() {

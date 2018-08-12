@@ -21,13 +21,13 @@ $(function() {
       $("#main-page").fadeIn();
       $(".maincontent").fadeIn(300);
       $('[data-toggle="tooltip"]').tooltip();
+      initialize();
       updateResult()
     }, 300);
   });
 
   $( "#startButton" ).trigger( "click" );
 
-  initialize();
 
   function initialize() {
     initializeSliders();
