@@ -40,12 +40,11 @@
   <div id="main-page">
     <div class="maincontent">
 
-      <div class="jumbotron main-visualization">
+      <div class="main-visualization">
         <!-- <h1 class="display-4">Admission Explainer</h1> -->
-        <p class="lead">Admission decision helper.</p>
+        <p class="lead instruction" >You are using a web tool that helps explain how the algorithm processes an application.</p>
         <!-- <button id="nextStepButton" type="button" class="btn btn-success" style="float: right;">Next step</button> -->
         <hr>
-        <p class="">When you feel familiar with the algorithm, continue to the next step of the survey. You may return to this page at any time.</p>
       </div>
 
       <div class="container-fluid">
@@ -53,21 +52,21 @@
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
           <div id="myCarousel-container" class="carousel-inner row w-100 mx-auto">
             <div id="studentCard_1" class="carousel-item col-md-4">
-              <div class="card border-success md-3 text-center">
+              <div class="card md-3 text-center" id="card-border">
 
-                <div class="card-body text-success">
+                <div class="card-body">
                   <h5 id="studentName" class="card-title">Student 1</h5>
                 </div>
 
                 <div class="card-body">
                   <div class="square greV-label"></div>
-                  <p class="card-text attribute">GRE - Verbal: <span id="GRE-verbal" class="btn btn-light" title='Verbal score for the Graduate Readiness Exam. Value ranges from 130-170'>162</span></p>
+                  <p class="card-text attribute">GRE - Verbal: <span id="GRE-verbal" class="btn btn-light" title='Verbal score for the Graduate Readiness Exam. Value ranges from 130-170'></span></p>
                   <br/>
                   <div class="square greQ-label"></div>
-                  <p class="card-text attribute">GRE - Quantitative: <span id="GRE-quantitative" class="btn btn-light" title='Quantitative score for the Graduate Readiness Exam. Value ranges from 130-170'>170</span></p>
+                  <p class="card-text attribute">GRE - Quantitative: <span id="GRE-quantitative" class="btn btn-light" title='Quantitative score for the Graduate Readiness Exam. Value ranges from 130-170'></span></p>
                   <br/>
                   <div class="square greW-label"></div>
-                  <p class="card-text attribute">GRE - Writing: <span id="GRE-writing" class="btn btn-light" title='Writing score for the Graduate Readiness Exam. Value ranges from 0-6'>4.5</span></p>
+                  <p class="card-text attribute">GRE - Writing: <span id="GRE-writing" class="btn btn-light" title='Writing score for the Graduate Readiness Exam. Value ranges from 0-6'></span></p>
                 </div>
 
                 <div class="card-body">
@@ -76,55 +75,56 @@
                   <br/>
 
                   <div class="square major-label"></div>
-                  <p class="card-text attribute">Major: <span id="Major" class="btn btn-light" title='Major that the student graduated from'>Computer Science</span></p>
+                  <p class="card-text attribute">Major: <span id="Major" class="btn btn-light" title='Major that the student graduated from'></span></p>
                 </div>
 
                 <div class="card-body">
                   <div class="square institution-label"></div>
-                  <p class="card-text attribute">University Ranking: <span id="Institution-Rank" class="btn btn-light" title='Global Ranking for the institution that highest relevant education was received at. Organized into three tiers.'>Tier 2</span></p>
+                  <p class="card-text attribute">University Ranking: <span id="Institution-Rank" class="btn btn-light" title='Global Ranking for the institution that highest relevant education was received at. Organized into three tiers.'></span></p>
                   <br/>
 
                   <div class="square ctry-label"></div>
-                  <p class="card-text attribute">Country of Education: <span id="Country" class="btn btn-light" title="Country that the student receives the highest degree">US</span></p>
+                  <p class="card-text attribute">Country of Education: <span id="Country" class="btn btn-light" title="Country that the student receives the highest degree"></span></p>
                   <br/>
 
                   <div class="square ps-label"></div>
-                  <p class="card-text attribute">Personal Statement: <span id="Personal-Statement" class="btn btn-light" title='Graded score for Personal Statement Essay. Value ranges from 1-5'>4</span></p>
+                  <p class="card-text attribute">Personal Statement: <span id="Personal-Statement" class="btn btn-light" title='Graded score for Personal Statement Essay. Value ranges from 1-5'></span></p>
                   <br/>
 
                   <div class="square diver-label"></div>
-                  <p class="card-text attribute">Diversity Score: <span id="Diversity-Score" class="btn btn-light" title='Graded score for Diversity Statement Essay. Value ranges from 1-5.'>3.5</span></p>
+                  <p class="card-text attribute">Diversity Statement: <span id="Diversity-Statement" class="btn btn-light" title='Graded score for Diversity Statement Essay. Value ranges from 1-5.'></span></p>
                 </div>
 
                 <div class="card-body">
                   <div class="square rec1-label"></div>
-                  <p class="card-text attribute">Recommendation Letter 1: <span title='Grade for first letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL1" class="btn btn-light">Strong</span></p>
+                  <p class="card-text attribute">Recommendation Letter 1: <span title='Grade for first letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL1" class="btn btn-light"></span></p>
                   <br/>
 
                   <div class="square rec2-label"></div>
-                  <p class="card-text attribute">Recommendation Letter 2: <span title='Grade for second letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL2" class="btn btn-light">Normal</span></p>
+                  <p class="card-text attribute">Recommendation Letter 2: <span title='Grade for second letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL2" class="btn btn-light"></span></p>
                   <br/>
 
                   <div class="square rec3-label"></div>
-                  <p class="card-text attribute">Recommendation Letter 3: <span title='Grade for third letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL3" class="btn btn-light">None</span></p>
+                  <p class="card-text attribute">Recommendation Letter 3: <span title='Grade for third letter of recommendation. May be "Strong", "Normal", "Weak", or "None".' id="RL3" class="btn btn-light"></span></p>
                   <br/>
                 </div>
 
                 <div class="card-body">
                   <div class="square mystery1-label"></div>
-                  <p class="card-text attribute">Additional Attribute 1: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional1" class="btn btn-light">11</span></p>
+                  <p class="card-text attribute">Additional Attribute 1: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional1" class="btn btn-light"></span></p>
                   <br/>
 
                   <div class="square mystery2-label"></div>
-                  <p class="card-text attribute">Additional Attribute 2: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional2" class="btn btn-light">54</span></p>
+                  <p class="card-text attribute">Additional Attribute 2: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional2" class="btn btn-light"></span></p>
                   <br/>
 
                   <div class="square mystery3-label"></div>
-                  <p class="card-text attribute">Additional Attribute 3: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional3" class="btn btn-light">73</span></p>
+                  <p class="card-text attribute">Additional Attribute 3: <span title='The effect of this attribute may be inferred. Value ranges from 1-1000' id="Additional3" class="btn btn-light"></span></p>
                 </div>
 
-                <div class="card-footer text-success">
-                  Admitted
+                <div class="card-footer">
+                  <p id="result">
+                  </p>
                   <div id="chart_div_1"></div>
                 </div>
               </div>
@@ -143,6 +143,10 @@
 			    </a>
         </div>
       </div>
+
+      <hr>
+      <p style="text-align: center; font-size: 20px; margin-top: 20px">Once you have familiarized yourself with the algorithm, go on to the survey. </p>
+
 
     </div>
 

@@ -26,7 +26,7 @@ $(function() {
     }, 300);
   });
 
-  $( "#startButton" ).trigger( "click" );
+  $("#startButton").trigger("click");
 
   // Not sure what this does
   $('#myCarousel').on('slid.bs.carousel', function(e) {
@@ -41,12 +41,12 @@ $(function() {
         // append slides to end
         if (e.direction == 'left') {
           $('.carousel-item')
-          .eq(i)
-          .appendTo('.carousel-inner');
+            .eq(i)
+            .appendTo('.carousel-inner');
         } else {
           $('.carousel-item')
-          .eq(0)
-          .appendTo($(this).find('.carousel-inner'));
+            .eq(0)
+            .appendTo($(this).find('.carousel-inner'));
         }
       }
     }
@@ -78,23 +78,54 @@ $(function() {
 
   function populateCards() {
     // populate the cards
-    for (var i = 2; i <= students.length; i++) {
-      var clone = $('#studentCard_1').clone();
-      clone.attr('id', 'studentCard_' + i);
-      clone.find('#chart_div_1').attr('id', 'chart_div_' + i);
-      clone.find('#studentName').text('Student ' + i);
-      for (var key in students[i - 1]) {
+    for (var i = 0; i < students.length; i++) {
+      if (i == 0) {
+        var card = $('#studentCard_1');
+      } else {
+        var card = $('#studentCard_1').clone();
+      }
+      card.attr('id', 'studentCard_' + (i + 1));
+      card.find('#chart_div_1').attr('id', 'chart_div_' + (i + 1));
+      card.find('#card-border').removeClass("border-success border-danger");
+
+
+      card.find('#studentName').text('Student ' + (i + 1));
+      for (var key in students[i]) {
         if (key == 'GRE-verbal' || key == 'GRE-quantitative') {
-          clone.find('#' + key).text(students[i - 1][key] + 130);
+          card.find('#' + key).text(students[i][key] + 130);
+        } else if (key == 'LinearRegression') {
+          // Check student accept/ reject
+          let totalScore = students[i][key];
+          console.log('student: ' + i + ' scores: ' + totalScore);
+          if (totalScore >= high_threshold) {
+            card.find('#result').text("Very likely to be accepted");
+            card.find('#result').css("color", "green");
+            card.find('#studentName').css("color", "green");
+            card.find('#card-border').addClass("border-success");
+          } else if (totalScore >= mid_threshold && totalScore < high_threshold) {
+            card.find('#result').text("Somewhat likely to be accepted");
+            card.find('#result').css("color", "LimeGreen ");
+            card.find('#studentName').css("color", "LimeGreen");
+            card.find('#card-border').addClass("border-success");
+          } else if (totalScore >= low_threshold && totalScore < mid_threshold) {
+            card.find('#result').text("Somewhat likely to be rejected");
+            card.find('#result').css("color", "crimson ");
+            card.find('#studentName').css("color", "crimson");
+            card.find('#card-border').addClass("border-danger");
+          } else {
+            card.find('#result').text("Very likely to be rejected");
+            card.find('#result').css("color", "red");
+            card.find('#studentName').css("color", "red");
+            card.find('#card-border').addClass("border-danger");
+          }
         } else {
-          clone.find('#' + key).text(students[i - 1][key]);
+          card.find('#' + key).text(students[i][key]);
         }
       }
-
-      //append clone on the end
-      $('#myCarousel-container').append(clone);
-      // var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + i));
-      // chart.draw(data, options);
+      if (i > 0) {
+        //append clone on the end
+        $('#myCarousel-container').append(card);
+      }
     }
     $('#studentCard_1').addClass('active');
 
@@ -122,21 +153,18 @@ function drawStacked() {
         color: 'black'
       },
       ticks: [{
-        v: constant + 50,
-        f: 'weak\nreject'
+        v: low_threshold,
+        f: ""
       }, {
-        v: constant + 150,
-        f: 'weak\naccept'
+        v: mid_threshold,
+        f: "Decision\nboundary"
       }, {
-        v: constant + 250,
-        f: 'strong\naccept'
-      }, {
-        v: constant + 420,
-        f: ''
+        v: high_threshold,
+        f: ""
       }]
     },
     // grouped by color of similar shade
-    colors: ['#CC0000', '#FF0000', '#FF9999', '#5BE500', '#62D119', '#A8E57F', '#8900E5', '#AD33FF', '#D699FF', '#00F7FF', '#99FBFF'],
+    colors: barcolors,
     legend: {
       position: 'none'
     }
@@ -149,8 +177,8 @@ function drawStacked() {
       ['Name', 'GRE-verbal', 'GRE-quantitative',
         'GRE-writing', 'GPA', 'Major', 'Institution-Rank',
         'Country', 'Personal-Statement', 'Diversity-Score',
-        'Recommendation Letter 1', 'Recommendation Letter 2', 'Recommendation Letter 3',
-		'Additional1', 'Additional2', 'Additional3'
+        'Letter of Recommendation #1', 'Letter of Recommendation #2', 'Letter of Recommendation #3',
+        'Additional Attribute 1', 'Additional Attribute 2', 'Additional Attribute 3'
       ],
       ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
@@ -158,109 +186,121 @@ function drawStacked() {
       switch (studentData[0][j]) {
         case 'Major':
           switch (students[i - 1]['Major']) {
-            case 'Computer Science':
-              studentData[1][j] = 11.4202;
+            case 'Engineering':
+              studentData[1][j] = engineeringWt;
               break;
             case 'Social Sciences':
-              studentData[1][j] = 0.2982;
+              studentData[1][j] = socialscienceWt;
               break;
             case 'Business':
-              studentData[1][j] = 4.9187;
+              studentData[1][j] = businessWt;
+              break;
+            case 'Humanities':
+              studentData[1][j] = humanitiesWt;
+              break;
+            case 'Natura Science':
+              studentData[1][j] = naturalscienceWt;
               break;
             default:
               studentData[1][j] = 0;
           }
           break;
         case 'Institution-Rank':
-		  switch (students[i - 1]['Institution-Rank']) {
-			case 'Tier 1':
-			  studentData[1][j] = 9.1883;
-			  break;
-			case 'Tier 2':
-			  studentData[1][j] = 6.757;
-			  break;
-			case 'Tier 3':
-			  studentData[1][j] = 0;
-			  break;
-			default:
-			  studentData[1][j] = 0;
-			  break;
-	      }
+          switch (students[i - 1]['Institution-Rank']) {
+            case 'Rank 1-100':
+              studentData[1][j] = tier1Wt;
+              break;
+            case 'Rank 101-500':
+              studentData[1][j] = tier2Wt;
+              break;
+            case 'Rank 501-1000':
+              studentData[1][j] = tier3Wt;
+              break;
+            default:
+              studentData[1][j] = 0;
+              break;
+          }
           break;
         case 'Country':
           switch (students[i - 1]['Country']) {
             case 'US':
-              studentData[1][j] = 14.1486;
+              studentData[1][j] = usaWt;
               break;
-            case 'Canada':
-              studentData[1][j] = 2.2122;
+            case 'Europe':
+              studentData[1][j] = europeWt;
               break;
-            case 'Asia':
-              studentData[1][j] = 7.5458;
+            case 'China':
+              studentData[1][j] = chinaWt;
+              break;
+            case 'India':
+              studentData[1][j] = indiaWt;
               break;
             default:
               studentData[1][j] = 0;
           }
           break;
-        case 'Personal-Statement':
-          studentData[1][j] = (students[i - 1]['Personal-Statement'] - 1) * weights[j];
-          break;
-        case 'Diversity-Score':
-          studentData[1][j] = (students[i - 1]['Diversity-Score'] - 1) * weights[j];
-          break;
-        case 'Recommendation Letter 1':
+          // case 'Personal-Statement':
+          //   studentData[1][j] = (students[i - 1]['Personal-Statement'] - 1) * weights[j];
+          //   break;
+          // case 'Diversity-Score':
+          //   studentData[1][j] = (students[i - 1]['Diversity-Score'] - 1) * weights[j];
+          //   break;
+        case 'Letter of Recommendation #1':
           switch (students[i - 1]['RL1']) {
             case 'Strong':
-              studentData[1][j] = 8.8008;
+              studentData[1][j] = rec1strong;
               break;
-            case 'Normal':
-              studentData[1][j] = 6.665;
+            case 'Average':
+              studentData[1][j] = rec1average;
               break;
             case 'Weak':
-              studentData[1][j] = 4.5292;
+              studentData[1][j] = rec1weak;
               break;
             default:
-			  studentData[1][j] = 0;
+              studentData[1][j] = 0;
               break;
           }
           break;
-        case 'Recommendation Letter 2':
+        case 'Letter of Recommendation #2':
           switch (students[i - 1]['RL2']) {
             case 'Strong':
-              studentData[1][j] = 8.6641;
+              studentData[1][j] = rec2strong;
               break;
-            case 'Normal':
-              studentData[1][j] = 6.5283;
+            case 'Average':
+              studentData[1][j] = rec2average;
               break;
             case 'Weak':
-              studentData[1][j] = 4.3925;
+              studentData[1][j] = rec2weak;
               break;
             default:
-			  studentData[1][j] = 0;
+              studentData[1][j] = 0;
               break;
           }
           break;
-        case 'Recommendation Letter 3':
+        case 'Letter of Recommendation #3':
           switch (students[i - 1]['RL3']) {
             case 'Strong':
-              studentData[1][j] = 5.9163;
+              studentData[1][j] = rec3strong;
               break;
-            case 'Normal':
-              studentData[1][j] = 3.7805;
+            case 'Average':
+              studentData[1][j] = rec3average;
               break;
             case 'Weak':
-              studentData[1][j] = 1.6447;
+              studentData[1][j] = rec3weak;
               break;
             default:
-			  studentData[1][j] = 0;
+              studentData[1][j] = 0;
               break;
           }
           break;
-        case 'Additional2':
-          studentData[1][j] = (students[i - 1]['Additional2'] - 1) * weights[j];
+        case 'Additional Attribute 1':
+          studentData[1][j] = (100 - students[i - 1]['Additional1']) * weights[j];
           break;
-        case 'Additional3':
-          studentData[1][j] = (1000 - students[i - 1]['Additional3']) * weights[j];
+        case 'Additional Attribute 2':
+          studentData[1][j] = (students[i - 1]['Additional2']) * weights[j];
+          break;
+        case 'Additional Attribute 3':
+          studentData[1][j] = (100 - students[i - 1]['Additional3']) * weights[j];
           break;
         default:
           studentData[1][j] = students[i - 1][studentData[0][j]] * weights[j];
@@ -268,7 +308,7 @@ function drawStacked() {
       }
     }
 
-
+    console.log(studentData);
     var dataTable = studentData;
     // var dataTable = $.extend(true, [], studentData);
     var numFeatures = dataTable[0].length;
@@ -304,24 +344,53 @@ var barcolors = [
   , '#77a2c6' // mystery3
 ];
 
+var
+  // Institution Rank weights
+  tier1Wt = 7.0613,
+  tier2Wt = 2.8189,
+  tier3Wt = 0,
+  // major weights
+  engineeringWt = 3.4903,
+  naturalscienceWt = 3.8394,
+  humanitiesWt = 6.0665,
+  socialscienceWt = 0,
+  businessWt = 8.0240,
+  // country weights
+  usaWt = 15.8596,
+  chinaWt = 4.3393,
+  indiaWt = 0,
+  europeWt = 0.4228,
+  // recommendation weights
+  rec1strong = 2.2719,
+  rec1average = 4.596,
+  rec1weak = 6.8679,
+  rec2strong = 10.9469,
+  rec2average = 5.8508,
+  rec2weak = 0,
+  rec3strong = 3.4996,
+  rec3average = 5.2799,
+  rec3weak = 1.7803
 
 var weights = [
-  '' // Name -- NOTHING HERE
-  , 0.0783 // GRE-verb
-  , 0.9369 // GRE-quant
-  , 0.9971 // GRE-write
-  , 44.6156 // GPA
+  0.1238 // GRE-verb
+  , 0.8923 // GRE-quant
+  , 0.3635 // GRE-write
+  , 39.87 // GPA
+  , 1 // Inst-Tier
   , 1 // Major
-  , 1 // Inst-Rank
   , 1 // Country of origin
-  , 2.009 // Personal Statement
-  , 7.3425 // Diversity score
+  , 5.1267 // Personal Statement
+  , 1.1396 // Diversity score
   , 1 // Recommendation letter 1
   , 1 // Recommendation letter 2
   , 1 // Recommendation letter 3
-  , 0
-  , 0.1852
-  , 0.1454
+  , 0.0382 // Mystery 1
+  , 1.6931 // Mystery 2
+  , 1.7543 // Mystery 3
 ];
 
-var constant = 139.279;
+var constant = -67.3342; //Constant term for linear regression
+var negative_offset = 0.4228 + 4.596 + 2.2719 + 1.7803 + 100 * 1.7543 + 100 * 0.0382; // for offsetting the negative value, to be added to decision boundary (negative dummy variables + negative cont. variables)
+var low_threshold = 50 + negative_offset - constant; // Threshold + negative offset
+var mid_threshold = 150 + negative_offset - constant; // Threshold + negative offset
+var high_threshold = 250 + negative_offset - constant; // Threshold + negative offset

@@ -175,3 +175,14 @@ html, body {
 .attribute{
   display: inline-block;
 }
+
+.instruction{
+  text-align: center;
+  color: #383838;
+  font-size: 20px;
+}
+
+#startButton{
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
