@@ -22,7 +22,6 @@ $(function() {
       $('#main-page').fadeIn();
       $('.maincontent').fadeIn(300);
       initialize();
-      drawStacked();
     }, 300);
   });
 
@@ -55,6 +54,7 @@ $(function() {
   function initialize() {
     populateCards()
     setColor();
+    drawStacked();
   }
 
   function setColor() {
@@ -96,7 +96,7 @@ $(function() {
         } else if (key == 'LinearRegression') {
           // Check student accept/ reject
           let totalScore = students[i][key];
-          console.log('student: ' + i + ' scores: ' + totalScore);
+          // console.log('student: ' + i + ' scores: ' + totalScore);
           if (totalScore >= high_threshold) {
             card.find('#result').text("Very likely to be accepted");
             card.find('#result').css("color", "green");
@@ -182,6 +182,7 @@ function drawStacked() {
       ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
     for (var j = 1; j < studentData[0].length; j++) {
+      console.log(studentData[0][j]);
       switch (studentData[0][j]) {
         case 'Major':
           switch (students[i]['Major']) {
@@ -307,7 +308,7 @@ function drawStacked() {
       }
     }
 
-    console.log(studentData);
+    // console.log(studentData);
     var dataTable = studentData;
     // var dataTable = $.extend(true, [], studentData);
     var numFeatures = dataTable[0].length;
