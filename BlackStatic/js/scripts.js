@@ -23,8 +23,30 @@ $(function() {
       initialize();
     }, 300);
   });
-  $( "#startButton" ).trigger( "click" );
+  $("#startButton").trigger("click");
 
+  $('#myCarousel').on('slid.bs.carousel', function(e) {
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 3;
+    var totalItems = $('.carousel-item').length;
+
+    if (idx >= totalItems - (itemsPerSlide - 1)) {
+      var it = itemsPerSlide - (totalItems - idx);
+      for (var i = 0; i < it; i++) {
+        // append slides to end
+        if (e.direction == 'left') {
+          $('.carousel-item')
+          .eq(i)
+          .appendTo('.carousel-inner');
+        } else {
+          $('.carousel-item')
+          .eq(0)
+          .appendTo($(this).find('.carousel-inner'));
+        }
+      }
+    }
+  });
 
 
   function initialize() {
@@ -51,22 +73,56 @@ $(function() {
   }
 
   function populateCards() {
+
     // populate the cards
-    for (var i = 2; i <= students.length; i++) {
-      var clone = $('#studentCard_1').clone();
-      clone.attr('id', 'studentCard_' + i);
-      clone.find('#chart_div_1').attr('id', 'chart_div_' + i);
-      clone.find('#studentName').text('Student ' + i);
-      for (var key in students[i - 1]) {
+    for (var i = 0; i < students.length; i++) {
+      if (i == 0) {
+        var card = $('#studentCard_1');
+      } else {
+        var card = $('#studentCard_1').clone();
+      }
+      card.attr('id', 'studentCard_' + (i + 1));
+      card.find('#chart_div_1').attr('id', 'chart_div_' + (i + 1));
+      card.find('#card-border').removeClass("border-success border-danger");
+
+
+      card.find('#studentName').text('Student ' + (i + 1));
+      for (var key in students[i]) {
         if (key == 'GRE-verbal' || key == 'GRE-quantitative') {
-          clone.find('#' + key).text(students[i - 1][key] + 130);
-        } else if (key != 'admission') {
-          clone.find('#' + key).text(students[i - 1][key]);
+          card.find('#' + key).text(students[i][key] + 130);
+        } else if (key == 'LinearRegression') {
+          // Check student accept/ reject
+          let totalScore = students[i][key];
+          console.log(totalScore);
+          if (totalScore >= high_threshold) {
+            card.find('#result').text("Very likely to be accepted");
+            card.find('#result').css("color", "green");
+            card.find('#studentName').css("color", "green");
+            card.find('#card-border').addClass("border-success");
+          } else if (totalScore >= mid_threshold && totalScore < high_threshold) {
+            card.find('#result').text("Somewhat likely to be accepted");
+            card.find('#result').css("color", "LimeGreen ");
+            card.find('#studentName').css("color", "LimeGreen");
+            card.find('#card-border').addClass("border-success");
+          } else if (totalScore >= low_threshold && totalScore < mid_threshold) {
+            card.find('#result').text("Somewhat likely to be rejected");
+            card.find('#result').css("color", "crimson ");
+            card.find('#studentName').css("color", "crimson");
+            card.find('#card-border').addClass("border-danger");
+          } else {
+            card.find('#result').text("Very likely to be rejected");
+            card.find('#result').css("color", "red");
+            card.find('#studentName').css("color", "red");
+            card.find('#card-border').addClass("border-danger");
+          }
+        } else {
+          card.find('#' + key).text(students[i][key]);
         }
       }
-
-      //append clone on the end
-      $('#myCarousel-container').append(clone);
+      if (i > 0) {
+        //append clone on the end
+        $('#myCarousel-container').append(card);
+      }
     }
     $('#studentCard_1').addClass('active');
   }
@@ -92,3 +148,9 @@ var barcolors = [
   , '#6baaa5' // mystery2
   , '#77a2c6' // mystery3
 ];
+
+var constant = -67.3342; //Constant term for linear regression
+var negative_offset = 0.4228 + 4.596 + 2.2719 + 1.7803 + 100 * 1.7543 + 100 * 0.0382; // for offsetting the negative value, to be added to decision boundary (negative dummy variables + negative cont. variables)
+var low_threshold = 50 + negative_offset - constant; // Threshold + negative offset
+var mid_threshold = 150 + negative_offset - constant; // Threshold + negative offset
+var high_threshold = 250 + negative_offset - constant; // Threshold + negative offset
