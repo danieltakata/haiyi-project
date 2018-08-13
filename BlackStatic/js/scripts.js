@@ -23,7 +23,7 @@ $(function() {
       initialize();
     }, 300);
   });
-  $("#startButton").trigger("click");
+  // $("#startButton").trigger("click");
 
   $('#myCarousel').on('slid.bs.carousel', function(e) {
     var $e = $(e.relatedTarget);
