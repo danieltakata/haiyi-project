@@ -294,16 +294,20 @@ function drawStacked() {
           }
           break;
         case 'Additional Attribute 1':
-          studentData[1][j] = (100 - students[i]['Additional1']) * weights[j];
+          studentData[1][j] = (100 - students[i]['Additional1']) * weights[j-1];
           break;
         case 'Additional Attribute 2':
-          studentData[1][j] = (students[i]['Additional2']) * weights[j];
+          studentData[1][j] = (students[i]['Additional2']) * weights[j-1];
           break;
         case 'Additional Attribute 3':
-          studentData[1][j] = (100 - students[i]['Additional3']) * weights[j];
+          studentData[1][j] = (100 - students[i]['Additional3']) * weights[j-1];
           break;
         default:
-          studentData[1][j] = students[i][studentData[0][j]] * weights[j];
+          if(studentData[0][j] == 'GPA') {
+            console.log(students[i][studentData[0][j]]);
+            console.log(weights[j-1]);
+          }
+          studentData[1][j] = students[i][studentData[0][j]] * weights[j-1];
           break;
       }
     }
