@@ -27,6 +27,30 @@ $(function() {
 
   $("#startButton").trigger("click");
 
+  // $(".carousel_navigate").click(function () {
+  //   currentID--;
+  //   setTimeout(function() {
+  //     drawStacked(currentID);
+  //   },100);
+  // });
+  //
+  // $("#nextCarousel").click(function () {
+  //   currentID++;
+  //   // setTimeout(function() {
+  //   //   drawStacked(currentID);
+  //   // },100);
+  // });
+
+  $('#myCarousel').on('slide.bs.carousel', function (e) {
+    var $e = $(e.relatedTarget);
+    var studentID = $e.index();
+    console.log(studentID);
+    setTimeout(function() {
+      drawStacked(studentID);
+    },100);
+    // drawStacked(currentID);
+});
+
   // Not sure what this does
   // $('#myCarousel').on('slid.bs.carousel', function(e) {
   //   var $e = $(e.relatedTarget);
@@ -54,7 +78,7 @@ $(function() {
   function initialize() {
     populateCards()
     setColor();
-    drawStacked();
+    drawStacked(0);
   }
 
   function setColor() {
@@ -137,7 +161,7 @@ google.charts.load('current', {
 });
 
 
-function drawStacked() {
+function drawStacked(studentID) {
   var options = {
     title: 'Admission Result',
     chartArea: {
@@ -169,9 +193,9 @@ function drawStacked() {
     }
   };
 
-  // Render charts for all profiles
-  for (var i = 0; i < students.length; i++) {
 
+
+  // Render charts for all profiles
     var studentData = [
       ['Name', 'GRE-verbal', 'GRE-quantitative',
         'GRE-writing', 'GPA', 'Major', 'Institution-Rank',
@@ -182,10 +206,10 @@ function drawStacked() {
       ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ];
     for (var j = 1; j < studentData[0].length; j++) {
-      console.log(studentData[0][j]);
+      // console.log(studentData[0][j]);
       switch (studentData[0][j]) {
         case 'Major':
-          switch (students[i]['Major']) {
+          switch (students[studentID]['Major']) {
             case 'Engineering':
               studentData[1][j] = engineeringWt;
               break;
@@ -206,7 +230,7 @@ function drawStacked() {
           }
           break;
         case 'Institution-Rank':
-          switch (students[i]['Institution-Rank']) {
+          switch (students[studentID]['Institution-Rank']) {
             case 'Rank 1-100':
               studentData[1][j] = tier1Wt;
               break;
@@ -222,7 +246,7 @@ function drawStacked() {
           }
           break;
         case 'Country':
-          switch (students[i]['Country']) {
+          switch (students[studentID]['Country']) {
             case 'US':
               studentData[1][j] = usaWt;
               break;
@@ -246,7 +270,7 @@ function drawStacked() {
           //   studentData[1][j] = (students[i - 1]['Diversity-Score'] - 1) * weights[j];
           //   break;
         case 'Letter of Recommendation #1':
-          switch (students[i]['RL1']) {
+          switch (students[studentID]['RL1']) {
             case 'Strong':
               studentData[1][j] = rec1strong;
               break;
@@ -262,7 +286,7 @@ function drawStacked() {
           }
           break;
         case 'Letter of Recommendation #2':
-          switch (students[i]['RL2']) {
+          switch (students[studentID]['RL2']) {
             case 'Strong':
               studentData[1][j] = rec2strong;
               break;
@@ -278,7 +302,7 @@ function drawStacked() {
           }
           break;
         case 'Letter of Recommendation #3':
-          switch (students[i]['RL3']) {
+          switch (students[studentID]['RL3']) {
             case 'Strong':
               studentData[1][j] = rec3strong;
               break;
@@ -294,20 +318,20 @@ function drawStacked() {
           }
           break;
         case 'Additional Attribute 1':
-          studentData[1][j] = (100 - students[i]['Additional1']) * weights[j-1];
+          studentData[1][j] = (100 - students[studentID]['Additional1']) * weights[j-1];
           break;
         case 'Additional Attribute 2':
-          studentData[1][j] = (students[i]['Additional2']) * weights[j-1];
+          studentData[1][j] = (students[studentID]['Additional2']) * weights[j-1];
           break;
         case 'Additional Attribute 3':
-          studentData[1][j] = (100 - students[i]['Additional3']) * weights[j-1];
+          studentData[1][j] = (100 - students[studentID]['Additional3']) * weights[j-1];
           break;
         default:
           if(studentData[0][j] == 'GPA') {
-            console.log(students[i][studentData[0][j]]);
+            console.log(students[studentID][studentData[0][j]]);
             console.log(weights[j-1]);
           }
-          studentData[1][j] = students[i][studentData[0][j]] * weights[j-1];
+          studentData[1][j] = students[studentID][studentData[0][j]] * weights[j-1];
           break;
       }
     }
@@ -324,9 +348,8 @@ function drawStacked() {
       dataTable[1].splice(j * 2 + 1, 0, dataTable[0][j * 2])
     }
     var data = google.visualization.arrayToDataTable(dataTable);
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + (i+1) ));
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div_' + (studentID+1) ));
     chart.draw(data, options);
-  }
 
 }
 

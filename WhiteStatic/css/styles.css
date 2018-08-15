@@ -129,3 +129,11 @@ html, body {
   margin-top: 20px;
   margin-bottom: 0px;
 }
+
+.chart_div {
+  max-width: 100%;
+}
+
+#result{
+  font-size: 20px;
+}
