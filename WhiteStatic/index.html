@@ -50,97 +50,254 @@
       <div class="container-fluid">
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-          <div id="myCarousel-container" class="carousel-inner row w-100 mx-auto">
-            <div id="studentCard_1" class="carousel-item col-md-4">
-              <div class="card md-3 text-center" id="card-border">
-
-                <div class="card-body">
-                  <h5 id="studentName" class="card-title">Student 1</h5>
+          <div id="myCarousel-container" class="carousel-inner mx-auto">
+              <div id="studentCard_1" class="carousel-item">
+                <div class="card col-md-12 text-center" id="card-border">
+                  <div class="card-body">
+                  <h3 id="studentName" class="card-title">Student 1</h3>
                 </div>
+                <div class="container">
 
-                <div class="card-body">
-                  <div class="square greV-label"></div>
-                  <p class="card-text attribute">GRE - Verbal: <span id="GRE-verbal" class="btn btn-light" title='Score for the Graduate Record Examinations (GRE)  verbal section. Score ranges from 130 - 170.'></span></p>
-                  <br/>
-                  <div class="square greQ-label"></div>
-                  <p class="card-text attribute">GRE - Quantitative: <span id="GRE-quantitative" class="btn btn-light" title='Score for the Graduate Record Examinations (GRE) quantitative section. Score ranges from 130 - 170.'></span></p>
-                  <br/>
-                  <div class="square greW-label"></div>
-                  <p class="card-text attribute">GRE - Writing: <span id="GRE-writing" class="btn btn-light" title='Score for the Graduate Record Examinations (GRE) writing section. Score ranges from 0 - 6.'></span></p>
-                </div>
+                  <div class='interaction-container'>
+                    <!--Features Text/Input/Sliders-->
 
-                <div class="card-body">
-                  <div class="square gpa-label"></div>
-                  <p class="card-text attribute">GPA: <span id="GPA" class="btn btn-light" title='The grade point average (GPA) for the applicant&#39;s most recent education. GPA ranges from 0 - 4.'>3.6</span></p>
-                  <br/>
+                    <!--Begin First Half-->
+                    <div class="row">
+                      <!--Academic Section-->
+                      <div class='col-6'>
+                        <div class='row-align-items-left attribute-title'>
+                          Academic
+                        </div>
 
-                  <div class="square major-label"></div>
-                  <p class="card-text attribute">Major: <span id="Major" class="btn btn-light" title='Major that the student graduated from'></span></p>
-                </div>
+                        <!--GPA Row-->
+                        <div class="row align-items-center align-middle">
+                          <div class="col-md-7 align-middle">
+                            <div class="square gpa-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Grade Point Average for most recent relevant education'>GPA: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='GPA' class="btn btn-light"></div>
+                          </div>
+                        </div>
 
-                <div class="card-body">
-                  <div class="square institution-label"></div>
-                  <p class="card-text attribute">University Ranking: <span id="Institution-Rank" class="btn btn-light" title='International ranking of the institution where the applicant received the most recent degree'></span></p>
-                  <br/>
+                        <!--Major Row-->
+                        <div class="row align-items-center align-middle">
+                          <div class='col-md-7'>
+                            <div class="square major-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title="Applicant's major for the most recent degree">Undergraduate Major: </div>
+                          </div>
+                            <div class='col-md-5'>
+                              <div id='Major' class="btn btn-light"></div>
+                          </div>
+                        </div>
 
-                  <div class="square ctry-label"></div>
-                  <p class="card-text attribute">Country of Education: <span id="Country" class="btn btn-light" title="The county where the applicant received the most recent degree. Values include U.S., India, China, and Europe"></span></p>
-                  <br/>
+                        <!--Institution Rank Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square institution-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='International ranking of the institution where the applicant received the most recent degree'>Institution Rank: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Institution-Rank' class="btn btn-light"></div>
+                          </div>
+                        </div>
 
-                  <div class="square ps-label"></div>
-                  <p class="card-text attribute">Personal Statement: <span id="Personal-Statement" class="btn btn-light" title='The score of the Statement of Purpose essay of the applicant, graded by the admission committee. A score of 1 is the lowest, 5 is the highest.'></span></p>
-                  <br/>
+                        <!--Country Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square ctry-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title="County where student received the most recent degree">Country: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Country' class="btn btn-light"></div>
+                          </div>
+                        </div>
 
-                  <div class="square diver-label"></div>
-                  <p class="card-text attribute">Diversity Statement: <span id="Diversity-Statement" class="btn btn-light" title='The score of the Diversity Statement essay of the applicant, graded by the admission committee. A score of 1 is the lowest, 5 is the highest.'></span></p>
-                </div>
+                      </div>
+                      <!--End Academic-->
 
-                <div class="card-body">
-                  <div class="square rec1-label"></div>
-                  <p class="card-text attribute">Letter of Recom. #1: <span title='Evaluation of applicant by the recommendation letter writers. Values include Strong, Average, and Weak.' id="RL1" class="btn btn-light"></span></p>
-                  <br/>
+                      <!--Test Scores Section-->
+                      <div class='col-6'>
+                        <div class='row-align-items-left attribute-title'>
+                          Test Scores
+                        </div>
 
-                  <div class="square rec2-label"></div>
-                  <p class="card-text attribute">Letter of Recom. #2: <span title='Evaluation of applicant by the recommendation letter writers. Values include Strong, Average, and Weak.' id="RL2" class="btn btn-light"></span></p>
-                  <br/>
+                        <!--GRE-V Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7 align-middle'>
+                            <div class="square greV-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test verbal section'>GRE Verbal: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='GRE-verbal' class="btn btn-light"></div>
+                          </div>
+                        </div>
 
-                  <div class="square rec3-label"></div>
-                  <p class="card-text attribute">Letter of Recom. #3: <span title='Evaluation of applicant by the recommendation letter writers. Values include Strong, Average, and Weak.' id="RL3" class="btn btn-light"></span></p>
-                  <br/>
-                </div>
+                        <!--GRE-Q Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square greQ-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test quantitative section'>GRE Quant.: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='GRE-quantitative' class="btn btn-light"></div>
+                          </div>
+                        </div>
 
-                <div class="card-body">
-                  <div class="square mystery1-label"></div>
-                  <p class="card-text attribute">Placeholder Attribute 1:<span title='Unlike the other attributes, these exist only for the purposes of this experiment and will not be included in a real world implementation.' id="Additional1" class="btn btn-light"></span></p>
-                  <br/>
+                        <!--GRE-W Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square greW-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test writing section'>GRE Writing: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='GRE-writing' class="btn btn-light"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Test Score-->
+                    </div>
+                    <!--End First Half-->
 
-                  <div class="square mystery2-label"></div>
-                  <p class="card-text attribute">Placeholder Attribute 2:<span title='Unlike the other attributes, these exist only for the purposes of this experiment and will not be included in a real world implementation.' id="Additional2" class="btn btn-light"></span></p>
-                  <br/>
+                    </br>
+                    </br>
 
-                  <div class="square mystery3-label"></div>
-                  <p class="card-text attribute">Placeholder Attribute 3:<span title='Unlike the other attributes, these exist only for the purposes of this experiment and will not be included in a real world implementation.' id="Additional3" class="btn btn-light"></span></p>
-                </div>
+                    <!--Begin Second Half-->
+                    <div class='row'>
+                      <!--Application Materials Section-->
+                      <div class='col-6'>
+                        <div class='row-align-items-left attribute-title'>
+                          Application Materials
+                        </div>
 
-                <div class="card-footer">
-                  <p id="result">
-                  </p>
-                  <div id="chart_div_1"></div>
+                        <!--Personal Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square ps-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Graded score for Personal Statement Essay'>Personal Statement: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Personal-Statement' class="btn btn-light"></div>
+                          </div>
+
+                        </div>
+                        <!--Diversity Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square diver-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Graded score for Diversity Statement Essay'>Diversity Statement: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Diversity-Statement' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                        <!--Rec1 Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square rec1-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #1: </div>
+
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='RL1' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                        <!--Rec2 Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square rec2-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #2: </div>
+
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='RL2' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                        <!--Rec3 Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square rec3-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #3: </div>
+
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='RL3' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!--End Application-->
+
+
+                      <div class='col-6'>
+                        <!--Fourth section can be used for Miscellaneous, etc-->
+                        <div class='row-align-items-left attribute-title'>
+                          Miscellaneous
+                        </div>
+
+                        <!--Mystery1 Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square mystery1-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 1:</div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Additional1' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                        <!--Mystery2 Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square mystery2-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 2:</div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Additional2' class="btn btn-light"></div>
+                          </div>
+
+                        </div>
+                        <!--Mystery3 Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square mystery3-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 3:</div>
+
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Additional3' class="btn btn-light"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Misc.-->
+
+                    </div>
+                    <!--End Second Half-->
+                    <br />
+                    <br />
+                    <div class="card-footer">
+                      <p id="result">
+                      </p>
+                      <div id="chart_div_1"></div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
+
+              </div>
             </div>
-
-
-          </div>
-          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-			      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			      <span class="sr-only">Previous</span>
-			    </a>
-
+          <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"  style="float: left;">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
           <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-			      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			      <span class="sr-only">Next</span>
-			    </a>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
       </div>
 
