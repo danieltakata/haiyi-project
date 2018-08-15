@@ -26,7 +26,7 @@ $(function() {
     }, 300);
   });
 
-  $( "#startButton" ).trigger( "click" );
+  // $( "#startButton" ).trigger( "click" );
 
 
   function initialize() {
@@ -50,7 +50,7 @@ $(function() {
     updateCountry();
     updateRecLetter();
     updateInstitution();
-    setColor();
+    // setColor();
   }
 
   function setColor() {

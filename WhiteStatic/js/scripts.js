@@ -25,7 +25,7 @@ $(function() {
     }, 300);
   });
 
-  $("#startButton").trigger("click");
+  // $("#startButton").trigger("click");
 
   // $(".carousel_navigate").click(function () {
   //   currentID--;
