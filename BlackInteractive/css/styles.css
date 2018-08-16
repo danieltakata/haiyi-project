@@ -164,3 +164,8 @@ body {
   font-weight: 900;
   font-size: 20px;
 }
+
+.footnote {
+    margin-top: 5px;
+    font-size: 14px;
+}

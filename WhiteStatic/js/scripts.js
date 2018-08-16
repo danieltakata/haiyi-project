@@ -113,7 +113,7 @@ $(function() {
       card.find('#card-border').removeClass("border-success border-danger");
 
 
-      card.find('#studentName').text('Student ' + (i + 1));
+      card.find('#studentName').text('Student ' + (i + 1) + "/20");
       for (var key in students[i]) {
         if (key == 'GRE-verbal' || key == 'GRE-quantitative') {
           card.find('#' + key).text(students[i][key] + 130);
