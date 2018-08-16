@@ -18,6 +18,10 @@ body {
     display: none;
 }
 
+#startButton{
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
 
 .landingcontent {
   padding: 50px 100px 0px 100px;
