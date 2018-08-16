@@ -87,12 +87,12 @@ html, body {
 }
 
 .loader {
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     right: 0;
-    bottom: 150px;
-
-
+		/* bottom: 150px; */
+		display: none;
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -127,10 +127,10 @@ html, body {
 } */
 
 .result-container{
-  background-color: white;
+  /* background-color: white;
   position: sticky;
   bottom: 0px;
-  z-index: 20;
+  z-index: 20; */
 }
 
 .square {
@@ -145,7 +145,7 @@ html, body {
 #result{
   text-align: center;
   width: 400px;
-  margin: 50px auto;
+  margin: 25px auto;
   padding: 5px;
   border: 2px solid #999999;
 }

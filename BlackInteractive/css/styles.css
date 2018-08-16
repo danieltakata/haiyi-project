@@ -1,5 +1,5 @@
 body {
-    font-family: 'Questrial', sans-serif;
+  font-family: 'Questrial', sans-serif;
 	font-size: 18px;
 	width: 100%;
 }
@@ -37,11 +37,12 @@ body {
 
 
 .loader {
-    position: absolute;
+    /* position: absolute; */
+    display: none;
     left: 0;
     right: 0;
     bottom: 0px;
-
+    margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -82,16 +83,16 @@ body {
 }
 
 .result-container{
-  background-color: white;
+  /* background-color: white;
   position: sticky;
   bottom: 0px;
-  z-index: 20;
+  z-index: 20; */
 }
 
 #result{
   text-align: center;
   width: 400px;
-  margin: 50px auto;
+  margin: 30px auto;
   padding: 5px;
   border: 2px solid #999999;
 }
