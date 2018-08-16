@@ -95,8 +95,8 @@ html, body {
 
 }
 
-#footnote {
-    font-style: italic;
+.footnote {
+    margin-top: 5px;
     font-size: 14px;
 }
 
@@ -173,4 +173,9 @@ html, body {
 .attribute-title{
   font-weight: 900;
   font-size: 25px;
+}
+
+.attribute-title2{
+  font-weight: 900;
+  font-size: 20px;
 }
