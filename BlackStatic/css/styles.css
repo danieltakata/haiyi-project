@@ -48,8 +48,15 @@ html, body {
 .tutorial-button {
   position: absolute;
   z-index: 20;
-  right: 10vw;
+  right: 5vw;
   bottom: 80px;
+}
+
+.tooltip2 {
+  /* border-bottom: 1px dotted #000; */
+  text-decoration: none;
+  width: auto;
+  display: inline-block;
 }
 
 @media (min-width: 992px) {

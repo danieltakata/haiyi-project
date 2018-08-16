@@ -21,6 +21,7 @@ $(function() {
     setTimeout(function() {
       $('#main-page').fadeIn();
       $('.maincontent').fadeIn(300);
+      $('[data-toggle="tooltip"]').tooltip();
       initialize();
     }, 300);
   });
@@ -46,6 +47,7 @@ $(function() {
     var studentID = $e.index();
     console.log(studentID);
     setTimeout(function() {
+      $('[data-toggle="tooltip"]').tooltip();
       drawStacked(studentID);
     },100);
     // drawStacked(currentID);

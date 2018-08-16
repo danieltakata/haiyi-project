@@ -20,9 +20,17 @@ $(function() {
     setTimeout(function() {
       $('#main-page').fadeIn();
       $('.maincontent').fadeIn(300);
+      $('[data-toggle="tooltip"]').tooltip();
       initialize();
     }, 300);
   });
+
+
+  $('#myCarousel').on('slide.bs.carousel', function (e) {
+    setTimeout(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    },100);
+});
   // $("#startButton").trigger("click");
 
   // $('#myCarousel').on('slid.bs.carousel', function(e) {
