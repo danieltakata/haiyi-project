@@ -596,7 +596,7 @@ var vals = [
 
 
 var studentData = [
-  ['Total Score', 'GRE-Verbal', 'GRE-Quant', 'GRE-Writing', 'GPA', 'Institution-Rank', 'Major', 'Country', 'Personal Statement', 'Diversity Statement', 'Letter of Recommendation #1', 'Letter of Recommendation #2', 'Letter of Recommendation #3', 'Additional Attribute 1', 'Additional Attribute 2', 'Additional Attribute 3'],
+  ['Total Score', 'GRE-Verbal', 'GRE-Quant', 'GRE-Writing', 'GPA', 'Institution-Rank', 'Major', 'Country', 'Statement of Purpose', 'Diversity Statement', 'Letter of Recommendation #1', 'Letter of Recommendation #2', 'Letter of Recommendation #3', 'Additional Attribute 1', 'Additional Attribute 2', 'Additional Attribute 3'],
   ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
