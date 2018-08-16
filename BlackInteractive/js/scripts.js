@@ -402,9 +402,9 @@ $(function() {
     $("#result").css('opacity', 1).animate({
       opacity: 0
     }, 0.1, function() {
-      $(".loader").css('visibility', 'visible');
+      $(".loader").css('display', 'block');
       setTimeout(function() {
-        $(".loader").css('visibility', 'hidden');
+        $(".loader").css('display', 'none');
         if (totalScore >= high_threshold) {
           $("#result").text("Very likely to be accepted");
           $("#result").css("color", "green");
