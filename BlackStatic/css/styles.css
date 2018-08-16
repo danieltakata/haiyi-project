@@ -45,6 +45,20 @@ html, body {
   padding-bottom: 8px;
 }
 
+.tutorial-button {
+  position: absolute;
+  z-index: 20;
+  right: 10vw;
+  bottom: 100px;
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-height: 90% ;
+    max-width: 90%;
+  }
+}
+
 .carousel {
   text-align: center;
 }

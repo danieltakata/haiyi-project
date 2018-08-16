@@ -45,6 +45,20 @@ html, body {
   padding-bottom: 8px;
 }
 
+.tutorial-button {
+  position: absolute;
+  z-index: 20;
+  right: 10vw;
+  bottom: 10px;
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-height: 90% ;
+    max-width: 90%;
+  }
+}
+
 /* #GRE-verbal{
   color: #CC0000;
 }

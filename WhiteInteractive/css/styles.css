@@ -5,6 +5,20 @@ html, body {
 	width: 100%;
 }
 
+.tutorial-button {
+  position: absolute;
+  z-index: 20;
+  right: 10vw;
+  bottom: 50px;
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-height: 90% ;
+    max-width: 90%;
+  }
+}
+
 .slider {
 	-webkit-appearance: none;
 	height: 4px;
