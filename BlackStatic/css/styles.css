@@ -1,5 +1,7 @@
-body {
-width: 100%;
+html, body {
+	font-family: 'Questrial', sans-serif;
+	font-size: 16px;
+	width: 100%;
 }
 
 #landing-page {
@@ -32,98 +34,86 @@ width: 100%;
   padding-bottom:32px;
 }
 
+.card-title{
+  margin-bottom: 0;
+}
 .card-text{
   margin-bottom: 0;
 }
 .card-body{
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
-
-/* show 3 items */
-.carousel-inner .active,
-.carousel-inner .active + .carousel-item,
-.carousel-inner .active + .carousel-item + .carousel-item {
-  display: block;
-}
-
-.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item,
-.carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left) + .carousel-item + .carousel-item {
-  transition: none;
-}
-
-.carousel-inner .carousel-item-next,
-.carousel-inner .carousel-item-prev {
-  position: relative;
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
-}
-
-.carousel-inner .active.carousel-item + .carousel-item + .carousel-item + .carousel-item {
+.tutorial-button {
   position: absolute;
-  top: 0;
-  right: -33.3333%;
-  z-index: -1;
-  display: block;
-  visibility: visible;
+  z-index: 20;
+  right: 10vw;
+  bottom: 80px;
 }
 
-/* left or forward direction */
-.active.carousel-item-left + .carousel-item-next.carousel-item-left,
-.carousel-item-next.carousel-item-left + .carousel-item,
-.carousel-item-next.carousel-item-left + .carousel-item + .carousel-item,
-.carousel-item-next.carousel-item-left + .carousel-item + .carousel-item + .carousel-item {
-  position: relative;
-  -webkit-transform: translate3d(-100%, 0, 0);
-          transform: translate3d(-100%, 0, 0);
-  visibility: visible;
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-height: 90% ;
+    max-width: 90%;
+  }
 }
 
-/* farthest right hidden item must be abso position for animations */
-.carousel-inner .carousel-item-prev.carousel-item-right {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  display: block;
-  visibility: visible;
+.carousel {
+  text-align: center;
 }
 
-/* right or prev direction */
-.active.carousel-item-right + .carousel-item-prev.carousel-item-right,
-.carousel-item-prev.carousel-item-right + .carousel-item,
-.carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item,
-.carousel-item-prev.carousel-item-right + .carousel-item + .carousel-item + .carousel-item {
-  position: relative;
-  -webkit-transform: translate3d(100%, 0, 0);
-          transform: translate3d(100%, 0, 0);
-  visibility: visible;
-  display: block;
-  visibility: visible;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
-  /*border-radius: 50%;
-  border: 1px solid black;*/
-  background-image: none;
+.carousel-inner {
+  width: 80%;
 }
 
 .carousel-control-next-icon:after
 {
   content: '>';
   font-size: 55px;
-  color: blue;
+  color: grey;
 }
 
 .carousel-control-prev-icon:after {
   content: '<';
   font-size: 55px;
-  color: blue;
+  color: grey;
+}
+
+.square {
+  height: 18px;
+  width: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align:  text-top;
+  margin-right: 10px;
+}
+
+.attribute-title{
+  font-weight: 900;
+  font-size: 25px;
+}
+
+.attribute{
+  display: inline-block;
+}
+
+.instruction{
+  text-align: center;
+  color: #383838;
+  font-size: 20px;
+}
+
+#startButton{
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+#result{
+  font-size: 20px;
+}
+
+.footnote {
+    margin-top: 5px;
+    font-size: 14px;
 }

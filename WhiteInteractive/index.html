@@ -5,259 +5,260 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Grad Admission Data Visualization</title>
+  <title>Grad Admission Tool</title>
   <!-- <meta name="description" content="The HTML5 Herald"> -->
   <!-- <meta name="author" content="SitePoint"> -->
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="./css/styles.css">
-  <!-- <script src="//code.jquery.com/jquery-3.3.1.min.js"></script> -->
-  <!-- <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
+  <link href="https://fonts.googleapis.com/css?family=Barlow|Questrial" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://www.gstatic.com/charts/loader.js"></script>
-  <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 </head>
 
 <body>
 
-	<div id="landing-page">
-    	<div class="landingcontent">
-	      <div class="jumbotron">
-	        <h1 class="display-4">The master's program provides this tool to applicants</h1>
-			Try to understand how each <b>specific aspect</b> of an application affects the algorithm's decision.
-	        <hr class="my-4">
-
-	        <button type="button" id="startButton" class="btn btn-primary">Let's Start</button>
-	      </div>
-    	</div>
-  	</div>
+  <div id="landing-page">
+    <div class="landingcontent">
+      <div class="jumbotron" style="padding-bottom: 20px;">
+        <h1 class="display-5">Tutorial: How to use the tool</h1>
+        <p>
+          The tool explains how the algorithm evaluates student applications to the master program and makes admission decision.
+        </p>
+        <hr class="my-4">
+        <img src="./img/tutorial.png" class="img-fluid" style="max-height: 70vh;">
+        <br />
+        <button type="button" id="startButton" class="btn btn-primary">I'm ready</button>
+      </div>
+    </div>
+  </div>
 
 
   <div id="main-page">
     <div class="maincontent">
 
-      <div class="jumbotron main-visualization">
+      <!-- <div class="jumbotron main-visualization"> -->
+      <div class="main-visualization">
         <!-- <h1 class="display-4">Admission Explainer</h1> -->
-        <p class="lead" style="text-align: center; color: #C0A030; font-size: 20px" >You are using a web tool that helps explain how the algorithm processes an application.</p>
+        <p class="lead instruction" >You are using a web tool that helps explain how the algorithm processes an application.</p>
         <!-- <button id="nextStepButton" type="button" class="btn btn-success" style="float: right;">Next step</button> -->
-<!--         <hr class="my-4">
+        <!--         <hr class="my-4">
         <p class="">When you feel familiar with the algorithm, continue to the next step of the survey. You may return to this page at any time.</p> -->
 
         <div class="card">
           <div class="card-body">
             <div class="container">
 
-              <div class="row">
-
-              </div>
               <div class='interaction-container'>
                 <!--Features Text/Input/Sliders-->
+
+                <!--Begin First Half-->
                 <div class="row">
+                  <!--Academic Section-->
+                  <div class='col-md-6'>
+                    <div class='row-align-items-left attribute-title'>
+                      Academic
+                    </div>
 
-                    <!--Academic Section-->
-                    <div class='col-6'>
-                      <div class='row-align-items-left'><b>Academic</b></div>
-                      <!--GPA Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='Grade Point Average for highest relevant education. Enter a value from 0.0-4.0'>GPA: </label>
-
-                        </div>
-                        <div class='col-5'>
-                            <div id="gpa-slider"></div>
-
-                        </div>
-                        <div class='col-1'>
-                          <div id='gpa-data' class="btn btn-light">3.2</div>
-                          <!-- <input type="text" id="gpa-input" title="Enter GPA from 0.0-4.0" name="name" value="2" /> -->
-
-                        </div>
+                    <!--GPA Row-->
+                    <div class="row align-items-center align-middle">
+                      <div class="col-md-5 align-middle">
+                        <div class="square" id="gpa-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The grade point average (GPA) for the applicant&#39;s most recent education. GPA ranges from 0 - 4.'>GPA: </div>
                       </div>
-
-                      <!--Major Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title="Major received from highest relevant education. Enter CS/CE, STEM, or some other">Major: </label>
-
-                        </div>
-                        <div class='col-3 text-center'>
-                          <select name="" id="major-dropdown">
-                                <!-- <option selected="true" disabled="true" >Select</option> -->
-                                <option selected="true" value="humanities">Humanities</option>
-                                <option value="social_science">Social Science</option>
-                                <option value="engineering">Engineering</option>
-                                <option value="natural_science">Natural Science</option>
-                                <option value="business">Business</option>
-                              </select>
-
-                        </div>
+                      <div class="col-md-4">
+                        <div id="gpa-slider" class="slider"></div>
                       </div>
-
-                      <!--Institution Rank Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='National Ranking for the institution that highest relevant education was received at. Enter a value from 1-1000'>Institute Rank: </label>
-
-                        </div>
-                        <div class='col-3 text-center'>
-                          <select name="" id="institution-dropdown">
-                                <!-- <option selected="true" disabled="true" >Select</option> -->
-                                <option selected="true" value="tier1">Rank 1 - 100</option>
-                                <option value="tier2">Rank 101 - 500</option>
-                                <option value="tier3">Rank 501 - 1000</option>
-                              </select>
-
-                        </div>
+                      <div class='col-md-1'>
+                        <div id='gpa-data' class="btn btn-light"></div>
                       </div>
+                    </div>
 
-                      <!--Country Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title="Country of origin. Enter USA, Canada, Asia, Europe, or some other">Country: </label>
-
-                        </div>
-                        <div class='col-3 text-center'>
-                          <select name="" id="ctry-dropdown">
-                              <option selected="true" value="usa">United States</option>
-                              <option value="china">China</option>
-                              <option value="india">India</option>
-                              <option value="europe">Europe</option>
-                            </select>
-
-                        </div>
+                    <!--Institution Rank Row-->
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="institution-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='International ranking of the institution where the applicant received the most recent degree'>Institution Rank: </div>
                       </div>
-
-                    </div> <!--End Academic-->
-
-                    <!--Language Tests Section-->
-                    <div class='col-6'>
-                      <div class='row-align-items-left'><b>Language Tests</b></div>
-                      <!--GRE-V Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='Verbal score for the Graduate Readiness Exam. Enter a value from 130-170'>GRE Verbal: </label>
-
-                        </div>
-                        <div class='col-5'>
-                            <div id="greV-slider"></div>
-
-                        </div>
-                        <div class='col-1'>
-                          <div id='greV-data' class="btn btn-light">142</div>
-                          <!-- <input type="text" id="greV-input" title="Enter GRE-Verbal Score from 130-170" name="name" value="150" /> -->
-
-                        </div>
+                      <div class='col-md-5'>
+                        <select id="institution-dropdown" class="selectpicker" data-width="auto">
+                          <option selected="true" value="tier1">Rank 1 - 100</option>
+                          <option value="tier2">Rank 101 - 500</option>
+                          <option value="tier3">Rank 501 - 1000</option>
+                        </select>
                       </div>
-                      <!--GRE-Q Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='Quantitative score for the Graduate Readiness Exam. Enter a value from 130-170'>GRE Quant.: </label>
+                    </div>
 
-                        </div>
-                        <div class='col-5'>
-                          <div id="greQ-slider"></div>
-
-                        </div>
-                        <div class='col-1'>
-                            <div id='greQ-data' class="btn btn-light">140</div>
-                            <!-- <input type="text" id="greQ-input" title="Enter GRE-Quantitative Score from 130-170" name="name" value="150" /> -->
-
-                        </div>
+                    <!--Major Row-->
+                    <div class="row align-items-center align-middle">
+                      <div class='col-md-5'>
+                        <div class="square" id="major-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title="The academic major of the applicant in the most recent degree. Values include Engineering, Natural Science, Social Science, Humanities, and Business.">Undergraduate Major: </div>
                       </div>
-                      <!--GRE-W Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='Writing score for the Graduate Readiness Exam. Enter a value from 0-6'>GRE Writing: </label>
-
-                        </div>
-                        <div class='col-5'>
-                            <div id="greW-slider"></div>
-
-                        </div>
-                        <div class='col-1'>
-                          <div id='greW-data' class="btn btn-light">3</div>
-                          <!-- <input type="text" id="greW-input" title="Enter GRE-Writing Score from 0-6" name="name" value="3" /> -->
-
-                        </div>
+                      <div class='col-md-5'>
+                        <select id="major-dropdown" class="selectpicker" data-width="auto">
+                          <option selected="true" value="humanities">Humanities</option>
+                          <option value="social_science">Social Science</option>
+                          <option value="engineering">Engineering</option>
+                          <option value="natural_science">Natural Science</option>
+                          <option value="business">Business</option>
+                        </select>
 
                       </div>
+                    </div>
 
 
-                    </div> <!--End Language-->
+                    <!--Country Row-->
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="ctry-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title="The county where the applicant received the most recent degree. Values include U.S., India, China, and Europe">Country: </div>
+                      </div>
+                      <div class='col-md-5'>
+                        <select name="" id="ctry-dropdown"  class="selectpicker" data-width="auto">
+                            <option selected="true" value="usa">United States</option>
+                            <option value="china">China</option>
+                            <option value="india">India</option>
+                            <option value="europe">Europe</option>
+                          </select>
 
+                      </div>
+                    </div>
 
+                  </div>
+                  <!--End Academic-->
+
+                  <!--Test Scores Section-->
+                  <div class='col-md-6'>
+                    <div class='row-align-items-left attribute-title'>
+                      Test Scores
+                    </div>
+
+                    <!--GRE-V Row-->
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5 align-middle'>
+                        <div class="square" id="greV-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Score for the Graduate Record Examinations (GRE)  verbal section. Score ranges from 130 - 170.'>GRE Verbal: </div>
+                      </div>
+                      <div class='col-md-4'>
+                        <div id="greV-slider" class="slider"></div>
+
+                      </div>
+                      <div class='col-md-1'>
+                        <div id='greV-data' class="btn btn-light">142</div>
+                        <!-- <input type="text" id="greV-input" title="Enter GRE-Verbal Score from 130-170" name="name" value="150" /> -->
+                      </div>
+                    </div>
+
+                    <!--GRE-Q Row-->
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="greQ-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Score for the Graduate Record Examinations (GRE) quantitative section. Score ranges from 130 - 170.'>GRE Quant.: </div>
+                      </div>
+                      <div class='col-md-4'>
+                        <div id="greQ-slider" class="slider"></div>
+                      </div>
+                      <div class='col-md-1'>
+                        <div id='greQ-data' class="btn btn-light">140</div>
+                        <!-- <input type="text" id="greQ-input" title="Enter GRE-Quantitative Score from 130-170" name="name" value="150" /> -->
+                      </div>
+                    </div>
+
+                    <!--GRE-W Row-->
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="greW-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='Score for the Graduate Record Examinations (GRE) writing section. Score ranges from 0 - 6.'>GRE Writing: </div>
+                      </div>
+                      <div class='col-md-4'>
+                        <div id="greW-slider" class="slider"></div>
+
+                      </div>
+                      <div class='col-md-1'>
+                        <div id='greW-data' class="btn btn-light">3</div>
+                        <!-- <input type="text" id="greW-input" title="Enter GRE-Writing Score from 0-6" name="name" value="3" /> -->
+                      </div>
+                    </div>
+                  </div>
+                  <!--End Test Score-->
                 </div>
-              </br>
-              </br>
+                <!--End First Half-->
+
+                </br>
+
+                <!--Begin Second Half-->
                 <div class='row'>
                   <!--Application Materials Section-->
-                  <div class='col-6'>
-                  <div class='row-align-items-left'><b>Application Materials</b></div>
+                  <div class='col-md-6'>
+                    <div class='row-align-items-left attribute-title'>
+                      Application Materials
+                    </div>
+
                     <!--Personal Row-->
-                    <div class='row align-items-center'>
-                      <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title='Graded score for Personal Statement Essay. Enter a value from 1-5'>Personal Statement: </label>
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="ps-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The score of the Statement of Purpose essay of the applicant, graded by the admission committee. A score of 1 is the lowest, 5 is the highest.'>Statement of Purpose: </div>
+                      </div>
+                      <div class='col-md-4'>
+                        <div id="ps-slider" class="slider"></div>
 
                       </div>
-                      <div class='col-5'>
-                          <div id="ps-slider"></div>
-
-                      </div>
-                      <div class='col-1'>
+                      <div class='col-md-1'>
                         <div id='ps-data' class="btn btn-light">3</div>
                         <!-- <input type="text" id="ps-input" title="Enter Personal Statement Score from 1-5" name="name" value="3" /> -->
-
                       </div>
 
                     </div>
                     <!--Diversity Row-->
-                    <div class='row align-items-center'>
-                      <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title='Graded score for Diversity Statement Essay. Enter a value from 1-5.'>Diversity Statement: </label>
-
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="diver-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The score of the Diversity Statement essay of the applicant, graded by the admission committee. A score of 1 is the lowest, 5 is the highest.'>Diversity Statement: </div>
                       </div>
-                      <div class='col-5'>
-                          <div id="diver-slider"></div>
-
+                      <div class='col-md-4'>
+                        <div id="diver-slider" class="slider"></div>
                       </div>
-                      <div class='col-1'>
+                      <div class='col-md-1'>
                         <div id='diver-data' class="btn btn-light">2</div>
                         <!-- <input type="text" id="diver-input" title="Enter Diversity Statement Score from 1-5" name="name" value="3" /> -->
-
                       </div>
-
                     </div>
+
                     <!--Rec1 Row-->
-                    <div class='row align-items-center'>
-                      <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title="Percentile ranking for first letter of recommendation">Rec. Letter 1: </label>
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="rec1-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the applicant by the recommendation letter writers. Values include Strong, Average, and Weak.">Letter of Recom. #1: </div>
 
                       </div>
-                      <div class='col-3 text-center'>
-                        <select name="" id="rec1-dropdown">
-                              <!-- <option selected="true" disabled="true" >Select</option> -->
-                              <option value="rec1strong">Strong Letter</option>
-                              <option selected="true" value="rec1average">Average Letter</option>
-                              <option value="rec1weak">Weak Letter</option>
-                            </select>
+                      <div class='col-md-5'>
+                        <select id="rec1-dropdown" class="selectpicker" data-width="auto">
+                          <option value="rec1strong">Strong Letter</option>
+                          <option selected="true" value="rec1average">Average Letter</option>
+                          <option value="rec1weak">Weak Letter</option>
+                        </select>
                       </div>
                     </div>
+
                     <!--Rec2 Row-->
-                    <div class='row align-items-center'>
-                      <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title="Percentile ranking for second letter of recommendation">Rec. Letter 2: </label>
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="rec2-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the applicant by the recommendation letter writers. Values include Strong, Average, and Weak.">Letter of Recom. #2: </div>
 
                       </div>
-                      <div class='col-3 text-center'>
-                        <select name="" id="rec2-dropdown">
-                              <!-- <option selected="true" disabled="true" >Select</option> -->
+                      <div class='col-md-5'>
+                        <select name="" id="rec2-dropdown" class="selectpicker" data-width="auto">
                               <option value="rec2strong">Strong Letter</option>
                               <option selected="true" value="rec2average">Average Letter</option>
                               <option value="rec2weak">Weak Letter</option>
@@ -265,15 +266,16 @@
 
                       </div>
                     </div>
+
                     <!--Rec3 Row-->
-                    <div class='row align-items-center'>
-                      <div class='col-3'>
-                        <label class='tooltip2' data-toggle="tooltip" title="Percentile ranking for third letter of recommendation">Rec. Letter 3: </label>
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="rec3-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the applicant by the recommendation letter writers. Values include Strong, Average, and Weak.">Letter of Recom. #3: </div>
 
                       </div>
-                      <div class='col-3 text-center'>
-                        <select name="" id="rec3-dropdown">
-                              <!-- <option selected="true" disabled="true" >Select</option> -->
+                      <div class='col-md-5'>
+                        <select id="rec3-dropdown" class="selectpicker" data-width="auto">
                               <option value="rec3strong">Strong Letter</option>
                               <option selected="true" value="rec3average">Average Letter</option>
                               <option value="rec3weak">Weak Letter</option>
@@ -282,99 +284,107 @@
                       </div>
                     </div>
 
-                </div> <!--End Application-->
-                  <div class='col-6'>
-                  <!--Fourth section can be used for Miscellaneous, etc-->
-                    <div class='row-align-items-left'><b>Miscellaneous</b></div>
+                  </div>
+                  <!--End Application-->
+
+
+                  <div class='col-md-6'>
+                    <!--Fourth section can be used for Miscellaneous, etc-->
+                    <div class='row-align-items-left attribute-title2'>
+                      The names of the following attributes are omitted
+                    </div>
+
                     <!--Mystery1 Row-->
-                    <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='???'>Additional Attribute 1:</label>
-
-                        </div>
-                        <div class='col-5'>
-                            <div id="mystery1-slider"></div>
-
-                        </div>
-                        <div class='col-1'>
-                          <div id='mystery1-data' class="btn btn-light">50</div>
-                          <!-- <input type="text" id="mystery1-input" title="Enter Rec1 Institution Rank from 1-1000" name="name" value="500" /> -->
-
-                        </div>
-
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="mystery1-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The names of these attributes are omitted. They are added to evaluate your understanding to the algorithm.'>Additional Attribute 1:</div>
                       </div>
-                      <!--Mystery2 Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Additional Attribute 2:</label>
-
-                        </div>
-                        <div class='col-5'>
-                            <div id="mystery2-slider"></div>
-
-                        </div>
-                        <div class='col-1'>
-                          <div id='mystery2-data' class="btn btn-light">50</div>
-                          <!-- <input type="text" id="mystery2-input" title="Enter Rec2 Institution Rank from 1-1000" name="name" value="500" /> -->
-
-                        </div>
-
+                      <div class='col-md-4'>
+                        <div id="mystery1-slider" class="slider"></div>
                       </div>
-                      <!--Mystery3 Row-->
-                      <div class='row align-items-center'>
-                        <div class='col-3'>
-                          <label class='tooltip2' data-toggle="tooltip" title='A mystery attribute'>Additional Attribute 3:</label>
+                      <div class='col-md-1'>
+                        <div id='mystery1-data' class="btn btn-light">50</div>
+                        <!-- <input type="text" id="mystery1-input" title="Enter Rec1 Institution Rank from 1-1000" name="name" value="500" /> -->
+                      </div>
+                    </div>
 
-                        </div>
-                        <div class='col-5'>
-                            <div id="mystery3-slider"></div>
-
-                        </div>
-                        <div class='col-1'>
-                          <div id='mystery3-data' class="btn btn-light">50</div>
-                          <!-- <input type="text" id="mystery3-input" title="Enter Rec3 Institution Rank from 1-1000" name="name" value="500" /> -->
-
-                        </div>
-
+                    <!--Mystery2 Row-->
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="mystery2-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The names of these attributes are omitted. They are added to evaluate your understanding to the algorithm.'>Additional Attribute 2:</div>
+                      </div>
+                      <div class='col-md-4'>
+                        <div id="mystery2-slider" class="slider"></div>
+                      </div>
+                      <div class='col-md-1'>
+                        <div id='mystery2-data' class="btn btn-light">50</div>
+                        <!-- <input type="text" id="mystery2-input" title="Enter Rec2 Institution Rank from 1-1000" name="name" value="500" /> -->
                       </div>
 
+                    </div>
+                    <!--Mystery3 Row-->
+                    <div class='row align-items-center align-middle'>
+                      <div class='col-md-5'>
+                        <div class="square" id="mystery3-label"></div>
+                        <div class='tooltip2' data-toggle="tooltip" title='The names of these attributes are omitted. They are added to evaluate your understanding to the algorithm.'>Additional Attribute 3:</div>
 
-                  </div> <!--End Misc.-->
-                </div> <!--End Row 2-->
+                      </div>
+                      <div class='col-md-4'>
+                        <div id="mystery3-slider" class="slider"></div>
+
+                      </div>
+                      <div class='col-md-1'>
+                        <div id='mystery3-data' class="btn btn-light">50</div>
+                        <!-- <input type="text" id="mystery3-input" title="Enter Rec3 Institution Rank from 1-1000" name="name" value="500" /> -->
+                      </div>
+                    </div>
+                  </div>
+                  <!--End Misc.-->
 
                 </div>
+                <!--End Second Half-->
+
               </div>
-              <!--End Container-->
 
-            </div>
-            <!--End Card-->
-
-            </br>
-
-            <div class='container result-container'>
+              <br />
               <div class="loader"></div>
-              <div class="result" id="chart_div" style="width:100%"></div>
-              <p class="text-center result" id="footnote">
-                *Hovering over a section on the graph will show the contribution of that section to the total score</p>
-              <h5 class="text-center result" id="result" style="color: red"></h5>
+              <div class='result-container'>
+                <div class="result" id="chart_div" style="width:100%"></div>
+                <!-- <p class="text-center result" id="footnote">
+                *Hovering over the graph to see the breakdown of the total score
+              </p> -->
+              <h5 class="text-center result" id="result" ></h5>
+              </div>
+
+
             </div>
+            <!--End Container-->
+
+            <button type="button" class="btn btn-info tutorial-button" data-toggle="modal" data-target=".bd-example-modal-lg">Help!</button>
+
           </div>
-
+          <!--End Card-->
         </div>
-        <!--End Card-->
-		<p style="text-align: center; font-size: 20px">Once you have familiarized yourself with the algorithm, go on to the survey. </p>
-		<!--continue to the next step of the survey. You may return to this page at any time.-->
 
+        <!--End Card-->
+        <p style="text-align: center; font-size: 20px; margin-top: 20px">Once you have familiarized yourself with the algorithm, <a href="https://umn.qualtrics.com/jfe/form/SV_0TAmz9C6lwVOwAZ" target="_blank"><span>Click here</span></a> to go back to the survey. </p>
       </div>
+      <!--continue to the next step of the survey. You may return to this page at any time.-->
+
     </div>
 
-
-
-
+    <div class="modal fade bd-example-modal-lg tutorial" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg tutorial">
+        <div class="modal-content">
+          <img src="./img/tutorial.png" class="img-fluid tutorial" >
+        </div>
+      </div>
+    </div>
   </div>
 
-
-
+  </div>
 
 
   <!-- Javascript below -->
