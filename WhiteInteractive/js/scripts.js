@@ -232,6 +232,7 @@ google.charts.setOnLoadCallback(function() {
           $("#diver-data").text((ui.value))
         },
         change: function(event, ui) {
+          alert(ui.value * weights[8]);
           studentData[1][9] = ui.value * weights[8];
           drawStacked();
           updateResult();
@@ -376,10 +377,10 @@ google.charts.setOnLoadCallback(function() {
       case 'humanities':
         majorWt = humanitiesWt;
         break;
-      case 'socialscience':
+      case 'social_science':
         majorWt = socialscienceWt;
         break;
-      case 'naturalscience':
+      case 'natural_science':
         majorWt = naturalscienceWt;
         break;
       case 'business':
@@ -395,17 +396,14 @@ google.charts.setOnLoadCallback(function() {
       case 'usa':
         countryWt = usaWt;
         break;
-      case 'canada':
-        countryWt = canadaWt;
+      case 'china':
+        countryWt = chinaWt;
         break;
-      case 'asia':
-        countryWt = asiaWt;
-        break;
-      case 'euro':
+      case 'europe':
         countryWt = europeWt;
         break;
-      case 'other':
-        countryWt = elseWt;
+      case 'india':
+        countryWt = indiaWt;
         break;
     }
     studentData[1][7] = countryWt * weights[6];
@@ -472,6 +470,8 @@ google.charts.setOnLoadCallback(function() {
         'filterColumnLabel': 'GPA'
       }
     });
+
+    console.log(studentData[1]);
 
     var dataTable = $.extend(true, [], studentData);
     var numFeatures = dataTable[0].length;
