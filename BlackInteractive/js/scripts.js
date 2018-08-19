@@ -429,11 +429,9 @@ var constant = -67.3342; //Constant term for linear regression
 
 var negative_offset = 0.4228 + 4.596 + 2.2719 + 1.7803 + 100 * 1.7543 + 100 * 0.0382; // for offsetting the negative value, to be added to decision boundary (negative dummy variables + negative cont. variables)
 
-var low_threshold = 50 + negative_offset; // Threshold + negative offset
-
-var mid_threshold = 150 + negative_offset; // Threshold + negative offset
-
-var high_threshold = 250 + negative_offset; // Threshold + negative offset
+var low_threshold = 50 + negative_offset - constant; // Threshold + negative offset
+var mid_threshold = 150 + negative_offset - constant; // Threshold + negative offset
+var high_threshold = 250 + negative_offset - constant; // Threshold + negative offset
 
 // weights for categorical variables
 var
