@@ -340,10 +340,10 @@ $(function() {
       case 'humanities':
         majorWt = humanitiesWt;
         break;
-      case 'socialscience':
+      case 'social_science':
         majorWt = socialscienceWt;
         break;
-      case 'naturalscience':
+      case 'natural_science':
         majorWt = naturalscienceWt;
         break;
       case 'business':
@@ -359,17 +359,14 @@ $(function() {
       case 'usa':
         countryWt = usaWt;
         break;
-      case 'canada':
-        countryWt = canadaWt;
+      case 'china':
+        countryWt = chinaWt;
         break;
-      case 'asia':
-        countryWt = asiaWt;
-        break;
-      case 'euro':
+      case 'europe':
         countryWt = europeWt;
         break;
-      case 'other':
-        countryWt = elseWt;
+      case 'india':
+        countryWt = indiaWt;
         break;
     }
     studentData[1][7] = countryWt * weights[6];
@@ -514,15 +511,15 @@ var barcolors = [
   , '#c191b3' // GRE-quant
   , '#d3a7c7' // GRE-write
   , '#f08d39' // GPA
-  , '#9D7562' // Inst-Rank
-  , '#f7a55d' // Major
+  , '#f7a55d' // Inst-Rank
+  , '#9D7562' // Major
   , '#B99483' // Country of origin
   , '#df585c' // Personal Statement
   , '#fd9d9b' // Diversity score
   , '#5ca053' // Recommendation letter 1
-  , '#4d9794' // Recommendation letter 2
-  , '#5079a5' // Recommendation letter 3
-  , '#74b869' // mystery1
-  , '#6baaa5' // mystery2
-  , '#77a2c6' // mystery3
+  , '#74b869' // Recommendation letter 2
+  , '#4d9794' // Recommendation letter 3
+  , '#3cb7cc' // mystery1
+  , '#aec7e8' // mystery2
+  , '#1f77b4' // mystery3
 ];
