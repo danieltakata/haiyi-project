@@ -96,8 +96,10 @@ $(function() {
 
       card.find('#studentName').text('Student ' + (i + 1) + "/20");
       for (var key in students[i]) {
-        if (key == 'GRE-verbal' || key == 'GRE-quantitative') {
-          card.find('#' + key).text(students[i][key] + 130);
+        var htmlID = key.replace(/ /g, '-');
+        htmlID = htmlID.replace(/#/g, '');
+        if (key == 'GRE-Verbal' || key == 'GRE-Quantitative') {
+          card.find('#' + htmlID).text(students[i][key] + 130);
         } else if (key == 'LinearRegression') {
           // Check student accept/ reject
           let totalScore = students[i][key];
@@ -124,7 +126,7 @@ $(function() {
             card.find('#card-border').addClass("border-danger");
           }
         } else {
-          card.find('#' + key).text(students[i][key]);
+          card.find('#' + htmlID).text(students[i][key]);
         }
       }
       if (i > 0) {

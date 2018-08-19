@@ -232,7 +232,6 @@ google.charts.setOnLoadCallback(function() {
           $("#diver-data").text((ui.value))
         },
         change: function(event, ui) {
-          alert(ui.value * weights[8]);
           studentData[1][9] = ui.value * weights[8];
           drawStacked();
           updateResult();
