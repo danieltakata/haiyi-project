@@ -21,6 +21,7 @@ $(function() {
     setTimeout(function() {
       $('#main-page').fadeIn();
       $('.maincontent').fadeIn(300);
+      $('[data-toggle="tooltip"]').tooltip();
       initialize();
     }, 300);
   });
@@ -44,8 +45,8 @@ $(function() {
   $('#myCarousel').on('slide.bs.carousel', function (e) {
     var $e = $(e.relatedTarget);
     var studentID = $e.index();
-    console.log(studentID);
     setTimeout(function() {
+      $('[data-toggle="tooltip"]').tooltip();
       drawStacked(studentID);
     },100);
     // drawStacked(currentID);
@@ -113,10 +114,13 @@ $(function() {
       card.find('#card-border').removeClass("border-success border-danger");
 
 
-      card.find('#studentName').text('Student ' + (i + 1));
+      card.find('#studentName').text('Student ' + (i + 1) + "/20");
       for (var key in students[i]) {
-        if (key == 'GRE-verbal' || key == 'GRE-quantitative') {
-          card.find('#' + key).text(students[i][key] + 130);
+        var htmlID = key.replace(/ /g, '-');
+        htmlID = htmlID.replace(/#/g, '');
+
+        if (key == 'GRE-Verbal' || key == 'GRE-Quantitative') {
+          card.find('#' + htmlID).text(students[i][key] + 130);
         } else if (key == 'LinearRegression') {
           // Check student accept/ reject
           let totalScore = students[i][key];
@@ -143,7 +147,7 @@ $(function() {
             card.find('#card-border').addClass("border-danger");
           }
         } else {
-          card.find('#' + key).text(students[i][key]);
+          card.find('#' + htmlID).text(students[i][key]);
         }
       }
       if (i > 0) {
@@ -196,20 +200,16 @@ function drawStacked(studentID) {
 
 
   // Render charts for all profiles
-    var studentData = [
-      ['Name', 'GRE-verbal', 'GRE-quantitative',
-        'GRE-writing', 'GPA', 'Major', 'Institution-Rank',
-        'Country', 'Personal-Statement', 'Diversity-Score',
-        'Letter of Recommendation #1', 'Letter of Recommendation #2', 'Letter of Recommendation #3',
-        'Additional Attribute 1', 'Additional Attribute 2', 'Additional Attribute 3'
-      ],
-      ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ];
+  var studentData = [
+    ['Total Score', 'GRE-Verbal', 'GRE-Quantitative', 'GRE-Writing', 'GPA', 'Institution Rank', 'Undergraduate Major', 'Country', 'Statement of Purpose', 'Diversity Statement', 'Letter of Recommendation #1', 'Letter of Recommendation #2', 'Letter of Recommendation #3', 'Additional Attribute 1', 'Additional Attribute 2', 'Additional Attribute 3'],
+    ['', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+
     for (var j = 1; j < studentData[0].length; j++) {
       // console.log(studentData[0][j]);
       switch (studentData[0][j]) {
-        case 'Major':
-          switch (students[studentID]['Major']) {
+        case 'Undergraduate Major':
+          switch (students[studentID]['Undergraduate Major']) {
             case 'Engineering':
               studentData[1][j] = engineeringWt;
               break;
@@ -229,8 +229,8 @@ function drawStacked(studentID) {
               studentData[1][j] = 0;
           }
           break;
-        case 'Institution-Rank':
-          switch (students[studentID]['Institution-Rank']) {
+        case 'Institution Rank':
+          switch (students[studentID]['Institution Rank']) {
             case 'Rank 1-100':
               studentData[1][j] = tier1Wt;
               break;
@@ -270,7 +270,7 @@ function drawStacked(studentID) {
           //   studentData[1][j] = (students[i - 1]['Diversity-Score'] - 1) * weights[j];
           //   break;
         case 'Letter of Recommendation #1':
-          switch (students[studentID]['RL1']) {
+          switch (students[studentID]['Letter of Recommendation #1']) {
             case 'Strong':
               studentData[1][j] = rec1strong;
               break;
@@ -286,7 +286,7 @@ function drawStacked(studentID) {
           }
           break;
         case 'Letter of Recommendation #2':
-          switch (students[studentID]['RL2']) {
+          switch (students[studentID]['Letter of Recommendation #2']) {
             case 'Strong':
               studentData[1][j] = rec2strong;
               break;
@@ -302,7 +302,7 @@ function drawStacked(studentID) {
           }
           break;
         case 'Letter of Recommendation #3':
-          switch (students[studentID]['RL3']) {
+          switch (students[studentID]['Letter of Recommendation #3']) {
             case 'Strong':
               studentData[1][j] = rec3strong;
               break;
@@ -318,25 +318,26 @@ function drawStacked(studentID) {
           }
           break;
         case 'Additional Attribute 1':
-          studentData[1][j] = (100 - students[studentID]['Additional1']) * weights[j-1];
+          studentData[1][j] = (100 - students[studentID]['Additional Attribute 1']) * weights[j-1];
           break;
         case 'Additional Attribute 2':
-          studentData[1][j] = (students[studentID]['Additional2']) * weights[j-1];
+          studentData[1][j] = (students[studentID]['Additional Attribute 2']) * weights[j-1];
           break;
         case 'Additional Attribute 3':
-          studentData[1][j] = (100 - students[studentID]['Additional3']) * weights[j-1];
+          studentData[1][j] = (100 - students[studentID]['Additional Attribute 3']) * weights[j-1];
           break;
         default:
-          if(studentData[0][j] == 'GPA') {
-            console.log(students[studentID][studentData[0][j]]);
-            console.log(weights[j-1]);
-          }
           studentData[1][j] = students[studentID][studentData[0][j]] * weights[j-1];
           break;
       }
     }
 
-    // console.log(studentData);
+    var sum = 0;
+    for (var k = 1; k < studentData[1].length; k++) {
+      sum += studentData[1][k];
+    }
+    console.log(sum);
+    console.log(studentData);
     var dataTable = studentData;
     // var dataTable = $.extend(true, [], studentData);
     var numFeatures = dataTable[0].length;

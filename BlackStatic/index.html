@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Grad Admission Tool</title>
+  <title>Admissions Tool</title>
   <!-- <meta name="description" content="The HTML5 Herald"> -->
   <!-- <meta name="author" content="SitePoint"> -->
 
@@ -35,7 +35,7 @@
         <hr class="my-4">
         <img src="./img/tutorial.png" class="img-fluid" style="max-height: 70vh;">
         <br />
-        <button type="button" id="startButton" class="btn btn-primary">I'm ready</button>
+        <button type="button" id="startButton" class="btn btn-primary">Next</button>
       </div>
     </div>
   </div>
@@ -65,60 +65,6 @@
 
                     <!--Begin First Half-->
                     <div class="row">
-                      <!--Academic Section-->
-                      <div class='col-6'>
-                        <div class='row-align-items-left attribute-title'>
-                          Academic
-                        </div>
-
-                        <!--GPA Row-->
-                        <div class="row align-items-center align-middle">
-                          <div class="col-md-7 align-middle">
-                            <div class="square" id="gpa-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='Grade Point Average for most recent relevant education'>GPA: </div>
-                          </div>
-                          <div class='col-md-5'>
-                            <div id='GPA' class="btn btn-light"></div>
-                          </div>
-                        </div>
-
-                        <!--Institution Rank Row-->
-                        <div class='row align-items-center align-middle'>
-                          <div class='col-md-7'>
-                            <div class="square" id="institution-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='International ranking of the institution where the applicant received the most recent degree'>Institution Rank: </div>
-                          </div>
-                          <div class='col-md-5'>
-                            <div id='Institution-Rank' class="btn btn-light"></div>
-                          </div>
-                        </div>
-
-                        <!--Major Row-->
-                        <div class="row align-items-center align-middle">
-                          <div class='col-md-7'>
-                            <div class="square" id="major-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title="Applicant's major for the most recent degree">Undergraduate Major: </div>
-                          </div>
-                            <div class='col-md-5'>
-                              <div id='Major' class="btn btn-light"></div>
-                          </div>
-                        </div>
-
-
-                        <!--Country Row-->
-                        <div class='row align-items-center align-middle'>
-                          <div class='col-md-7'>
-                            <div class="square" id="ctry-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title="County where student received the most recent degree">Country: </div>
-                          </div>
-                          <div class='col-md-5'>
-                            <div id='Country' class="btn btn-light"></div>
-                          </div>
-                        </div>
-
-                      </div>
-                      <!--End Academic-->
-
                       <!--Test Scores Section-->
                       <div class='col-6'>
                         <div class='row-align-items-left attribute-title'>
@@ -129,10 +75,10 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7 align-middle'>
                             <div class="square" id="greV-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test verbal section'>GRE Verbal:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Score for the Graduate Record Examinations (GRE)  verbal section. Score ranges from 130 - 170.'>GRE Verbal:</div>
                           </div>
                           <div class='col-md-5'>
-                            <div id='GRE-verbal' class="btn btn-light"></div>
+                            <div id='GRE-Verbal' class="btn btn-light"></div>
                           </div>
                         </div>
 
@@ -140,10 +86,10 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="greQ-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test quantitative section'>GRE Quant.:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Score for the Graduate Record Examinations (GRE) quantitative section. Score ranges from 130 - 170.'>GRE Quant.:</div>
                           </div>
                           <div class='col-md-5'>
-                            <div id='GRE-quantitative' class="btn btn-light"></div>
+                            <div id='GRE-Quantitative' class="btn btn-light"></div>
                           </div>
                         </div>
 
@@ -151,14 +97,68 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="greW-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='Applicant&#39;s score for the GRE test writing section'>GRE Writing:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title='Score for the Graduate Record Examinations (GRE) writing section. Score ranges from 0 - 6.'>GRE Writing:</div>
                           </div>
                           <div class='col-md-5'>
-                            <div id='GRE-writing' class="btn btn-light"></div>
+                            <div id='GRE-Writing' class="btn btn-light"></div>
                           </div>
                         </div>
                       </div>
                       <!--End Test Score-->
+
+                      <!--Academic Section-->
+                      <div class='col-6'>
+                        <div class='row-align-items-left attribute-title'>
+                          Academic
+                        </div>
+
+                        <!--GPA Row-->
+                        <div class="row align-items-center align-middle">
+                          <div class="col-md-7 align-middle">
+                            <div class="square" id="gpa-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The grade point average (GPA) for the applicant&#39;s most recent education. GPA ranges from 0 - 4.'>GPA: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='GPA' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                        <!--Institution Rank Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square" id="institution-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title='International ranking of the institution where the applicant received the most recent degree.'>Institution Rank: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Institution-Rank' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                        <!--Major Row-->
+                        <div class="row align-items-center align-middle">
+                          <div class='col-md-7'>
+                            <div class="square" id="major-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title="The academic major of the applicant in the most recent degree. Values include Engineering, Natural Science, Social Science, Humanities, and Business.">Undergraduate Major: </div>
+                          </div>
+                            <div class='col-md-5'>
+                              <div id='Undergraduate-Major' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+
+                        <!--Country Row-->
+                        <div class='row align-items-center align-middle'>
+                          <div class='col-md-7'>
+                            <div class="square" id="ctry-label"></div>
+                            <div class='tooltip2' data-toggle="tooltip" title="The county where the applicant received the most recent degree. Values include U.S., India, China, and Europe">Country: </div>
+                          </div>
+                          <div class='col-md-5'>
+                            <div id='Country' class="btn btn-light"></div>
+                          </div>
+                        </div>
+
+                      </div>
+                      <!--End Academic-->
                     </div>
                     <!--End First Half-->
 
@@ -177,10 +177,10 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="ps-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='Graded score for Personal Statement Essay'>Statement of Purpose:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The score of the Statement of Purpose essay of the applicant, graded by the admission committee. A score of 1 is the lowest, 5 is the highest.'>Statement of Purpose:</div>
                           </div>
                           <div class='col-md-5'>
-                            <div id='Personal-Statement' class="btn btn-light"></div>
+                            <div id='Statement-of-Purpose' class="btn btn-light"></div>
                           </div>
 
                         </div>
@@ -188,7 +188,7 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="diver-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='Graded score for Diversity Statement Essay'>Diversity Statement: </div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The score of the Diversity Statement essay of the applicant, graded by the admission committee. A score of 1 is the lowest, 5 is the highest.'>Diversity Statement: </div>
                           </div>
                           <div class='col-md-5'>
                             <div id='Diversity-Statement' class="btn btn-light"></div>
@@ -199,11 +199,11 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="rec1-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #1:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the applicant by the recommendation letter writers. Values include Strong, Average, and Weak.">Letter of Recom. #1:</div>
 
                           </div>
                           <div class='col-md-5'>
-                            <div id='RL1' class="btn btn-light"></div>
+                            <div id='Letter-of-Recommendation-1' class="btn btn-light"></div>
                           </div>
                         </div>
 
@@ -211,11 +211,11 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="rec2-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #2:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the applicant by the recommendation letter writers. Values include Strong, Average, and Weak.">Letter of Recom. #2:</div>
 
                           </div>
                           <div class='col-md-5'>
-                            <div id='RL2' class="btn btn-light"></div>
+                            <div id='Letter-of-Recommendation-2' class="btn btn-light"></div>
                           </div>
                         </div>
 
@@ -223,11 +223,11 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="rec3-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the letters of recommendation">Letter of Recom. #3:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title="Evaluation of the applicant by the recommendation letter writers. Values include Strong, Average, and Weak.">Letter of Recom. #3:</div>
 
                           </div>
                           <div class='col-md-5'>
-                            <div id='RL3' class="btn btn-light"></div>
+                            <div id='Letter-of-Recommendation-3' class="btn btn-light"></div>
                           </div>
                         </div>
 
@@ -245,10 +245,10 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="mystery1-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 1:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The names of these attributes are omitted. They are added to evaluate your understanding to the algorithm.'>Additional Attribute 1:</div>
                           </div>
                           <div class='col-md-5'>
-                            <div id='Additional1' class="btn btn-light"></div>
+                            <div id='Additional-Attribute-1' class="btn btn-light"></div>
                           </div>
                         </div>
 
@@ -256,10 +256,10 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="mystery2-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 2:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The names of these attributes are omitted. They are added to evaluate your understanding to the algorithm.'>Additional Attribute 2:</div>
                           </div>
                           <div class='col-md-5'>
-                            <div id='Additional2' class="btn btn-light"></div>
+                            <div id='Additional-Attribute-2' class="btn btn-light"></div>
                           </div>
 
                         </div>
@@ -267,11 +267,11 @@
                         <div class='row align-items-center align-middle'>
                           <div class='col-md-7'>
                             <div class="square" id="mystery3-label"></div>
-                            <div class='tooltip2' data-toggle="tooltip" title='The numeric attribues that are unique to this masters program application'>Additional Attribute 3:</div>
+                            <div class='tooltip2' data-toggle="tooltip" title='The names of these attributes are omitted. They are added to evaluate your understanding to the algorithm.'>Additional Attribute 3:</div>
 
                           </div>
                           <div class='col-md-5'>
-                            <div id='Additional3' class="btn btn-light"></div>
+                            <div id='Additional-Attribute-3' class="btn btn-light"></div>
                           </div>
                         </div>
                         <div class="row justify-content-md-center">
