@@ -180,14 +180,17 @@ function drawStacked(studentID) {
         color: 'black'
       },
       ticks: [{
+          v: 0,
+          f: "Very likely\nrejected"
+      }, {
         v: low_threshold,
-        f: ""
+        f: "Somewhat likely\nrejected"
       }, {
         v: mid_threshold,
-        f: "Decision\nboundary"
+        f: "Somewhat likely\naccepted"
       }, {
         v: high_threshold,
-        f: ""
+        f: "Very likely\naccepted"
       }]
     },
     // grouped by color of similar shade
