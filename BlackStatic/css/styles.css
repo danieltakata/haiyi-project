@@ -125,3 +125,7 @@ html, body {
     margin-top: 5px;
     font-size: 14px;
 }
+
+.bootstrap-select {
+	width: 100% !important;
+}
