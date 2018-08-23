@@ -103,7 +103,7 @@ $(function() {
         } else if (key == 'LinearRegression') {
           // Check student accept/ reject
           let totalScore = students[i][key];
-          console.log(totalScore);
+          // console.log(totalScore);
           if (totalScore >= high_threshold) {
             card.find('#result').text("Very likely to be accepted");
             card.find('#result').css("color", "green");

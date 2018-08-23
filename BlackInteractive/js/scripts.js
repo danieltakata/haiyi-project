@@ -83,7 +83,7 @@ $(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#greV-data").text((ui.value + 130))
         studentData[1][1] = ui.value * weights[0]; //greV
         updateResult();
@@ -106,7 +106,7 @@ $(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#greQ-data").text((ui.value + 130))
       },
       change: function(event, ui) {
@@ -126,7 +126,7 @@ $(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#greW-data").text(ui.value)
       },
       change: function(event, ui) {
@@ -145,7 +145,7 @@ $(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#gpa-data").text(ui.value)
       },
       change: function(event, ui) {
@@ -180,7 +180,7 @@ $(function() {
         start: function(event, ui) {
           // code
         },
-        slide: function(event, ui) {
+        stop: function(event, ui) {
           $("#ps-data").text((ui.value))
         },
         change: function(event, ui) {
@@ -199,7 +199,7 @@ $(function() {
         start: function(event, ui) {
           // code
         },
-        slide: function(event, ui) {
+        stop: function(event, ui) {
           $("#diver-data").text((ui.value))
         },
         change: function(event, ui) {
@@ -230,7 +230,7 @@ $(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#mystery1-data").text((ui.value))
       },
       range: "min",
@@ -250,7 +250,7 @@ $(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#mystery2-data").text((ui.value))
       },
       range: "min",
@@ -271,7 +271,7 @@ $(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#mystery3-data").text((ui.value))
       },
       range: "min",

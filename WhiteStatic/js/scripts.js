@@ -339,8 +339,8 @@ function drawStacked(studentID) {
     for (var k = 1; k < studentData[1].length; k++) {
       sum += studentData[1][k];
     }
-    console.log(sum);
-    console.log(studentData);
+    // console.log(sum);
+    // console.log(studentData);
     var dataTable = studentData;
     // var dataTable = $.extend(true, [], studentData);
     var numFeatures = dataTable[0].length;

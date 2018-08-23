@@ -103,7 +103,7 @@ google.charts.setOnLoadCallback(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#greV-data").text((ui.value + 130))
         studentData[1][1] = ui.value * weights[0]; //greV
         drawStacked();
@@ -128,7 +128,7 @@ google.charts.setOnLoadCallback(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#greQ-data").text((ui.value + 130))
       },
       change: function(event, ui) {
@@ -149,7 +149,7 @@ google.charts.setOnLoadCallback(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#greW-data").text(ui.value)
       },
       change: function(event, ui) {
@@ -169,7 +169,7 @@ google.charts.setOnLoadCallback(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#gpa-data").text(ui.value)
       },
       change: function(event, ui) {
@@ -208,7 +208,7 @@ google.charts.setOnLoadCallback(function() {
         start: function(event, ui) {
           // code
         },
-        slide: function(event, ui) {
+        stop: function(event, ui) {
           $("#ps-data").text((ui.value))
         },
         change: function(event, ui) {
@@ -228,7 +228,7 @@ google.charts.setOnLoadCallback(function() {
         start: function(event, ui) {
           // code
         },
-        slide: function(event, ui) {
+        stop: function(event, ui) {
           $("#diver-data").text((ui.value))
         },
         change: function(event, ui) {
@@ -263,7 +263,7 @@ google.charts.setOnLoadCallback(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#mystery1-data").text((ui.value))
       },
       range: "min",
@@ -284,7 +284,7 @@ google.charts.setOnLoadCallback(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#mystery2-data").text((ui.value))
       },
       range: "min",
@@ -306,7 +306,7 @@ google.charts.setOnLoadCallback(function() {
       start: function(event, ui) {
         // code
       },
-      slide: function(event, ui) {
+      stop: function(event, ui) {
         $("#mystery3-data").text((ui.value))
       },
       range: "min",
@@ -431,7 +431,7 @@ google.charts.setOnLoadCallback(function() {
     for (var i = 1; i < studentData[1].length; i++) {
       totalScore += studentData[1][i];
     }
-    console.log(totalScore);
+    // console.log(totalScore);
 
     // Loading animation
     $(".result-container").css('opacity', 1).animate({
@@ -470,7 +470,7 @@ google.charts.setOnLoadCallback(function() {
       }
     });
 
-    console.log(studentData[1]);
+    // console.log(studentData[1]);
 
     var dataTable = $.extend(true, [], studentData);
     var numFeatures = dataTable[0].length;
