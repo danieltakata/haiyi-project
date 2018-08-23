@@ -393,8 +393,8 @@ $(function() {
     for (var i = 1; i < studentData[1].length; i++) {
       totalScore += studentData[1][i];
     }
-    console.log(studentData[1]);
-    console.log(totalScore);
+    // console.log(studentData[1]);
+    // console.log(totalScore);
 
     // Loading animation
     $("#result").css('opacity', 1).animate({
